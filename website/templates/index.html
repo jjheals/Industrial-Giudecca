@@ -1,0 +1,102 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Industrial Giudecca</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.28/"></script>
+  <script type="module" src="https://js.arcgis.com/calcite-components/1.9.2/calcite.esm.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css" />
+  <link rel="stylesheet" href="../static/index.css">
+  
+  <script>
+    /* Script to initialize & control the map view */
+
+    // Set variables
+    const giudeccaCenterCoords = [12.326944, 45.424722]; // [Longitude, Latitude]
+    const apiKey = "AAPK93a81f690bfe4803b01517f002ec0df6mqCSe-aztHzy_caHr5Ve6B76YRZLVFtxbtZB6pjJIGzNRpNdNtiWWCQ8dnssesCr";
+    const defaultZoom = 15;
+    const defaultBasemap = "osm/hybrid"; // NOTE: update calcite-combobox to reflext the default selection if changed
+    
+    /* Main */
+    require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
+      
+      // Set API key
+      esriConfig.apiKey = apiKey;                           
+      
+      // Create a Map object
+      const map = new Map({
+        basemap: defaultBasemap
+      }); 
+      
+      // Create a MapView
+      const view = new MapView({
+        map: map,                       // Map object
+        center: giudeccaCenterCoords,   // Center 
+        zoom: defaultZoom,              // Zoom level
+        container: "viewDiv"            // Div element to contain the MapView
+      });
+      
+      /* updateBasemapStyle(basemapId) - update the map's style from the dropdown box
+       * @param basemapId - string representing the basemap style to change to 
+       */
+      const updateBasemapStyle = (basemapId) => {
+        view.map.basemap = basemapId;
+      };
+      
+      // Add the dropdown menu to change the map style 
+      const basemapStylesDiv = document.getElementById("basemapStyles");
+      view.ui.add(basemapStylesDiv, "top-right");
+      
+      const styleCombobox = document.getElementById("styleCombobox");
+      styleCombobox.addEventListener("calciteComboboxChange", (event) => {
+        updateBasemapStyle(event.target.value);
+      });
+    });
+    
+  </script>
+
+</head>
+
+<body>
+  <div id="site-title"><h1>Industrial Giudecca</h1></div>
+  <div id="viewDiv"></div>
+</body>
+  
+  <div id="basemapStyles" class="esri-widget">
+    <calcite-label>Basemap style</calcite-label>
+    <calcite-combobox id="styleCombobox" selection-mode="single" clear-disabled>
+      <calcite-combobox-item value="arcgis/navigation" text-label="arcgis/navigation"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/navigation-night" text-label="arcgis/navigation-night"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/streets" text-label="arcgis/streets"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/streets-relief" text-label="arcgis/streets-relief"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/streets-night" text-label="arcgis/streets-night"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/outdoor" text-label="arcgis/outdoor"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/imagery" text-label="arcgis/imagery"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/topographic" text-label="arcgis/topographic"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/terrain" text-label="arcgis/terrain"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/oceans" text-label="arcgis/oceans"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/light-gray" text-label="arcgis/light-gray"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/dark-gray" text-label="arcgis/dark-gray"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/human-geography" text-label="arcgis/human-geography"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/human-geography-dark" text-label="arcgis/human-geography-dark"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/charted-territory" text-label="arcgis/charted-territory"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/colored-pencil" text-label="arcgis/colored-pencil"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/nova" text-label="arcgis/nova"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/modern-antique" text-label="arcgis/modern-antique"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/midcentury" text-label="arcgis/midcentury"></calcite-combobox-item>
+      <calcite-combobox-item value="arcgis/newspaper" text-label="arcgis/newspaper"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/standard" text-label="osm/standard"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/standard-relief" text-label="osm/standard-relief"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/navigation" text-label="osm/navigation"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/navigation-dark" text-label="osm/navigation-dark"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/streets" text-label="osm/streets"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/hybrid" text-label="osm/hybrid" selected></calcite-combobox-item>
+      <calcite-combobox-item value="osm/light-gray" text-label="osm/light-gray"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/dark-gray" text-label="osm/dark-gray"></calcite-combobox-item>
+      <calcite-combobox-item value="osm/blueprint" text-label="osm/blueprint"></calcite-combobox-item>
+    </calcite-combobox>
+  </div>
+</html>
