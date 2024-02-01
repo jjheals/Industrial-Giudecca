@@ -7,57 +7,10 @@
 
   <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">                          <!-- ArcGIS/ESRI styling & themes -->
   <script src="https://js.arcgis.com/4.28/"></script>                                                           <!-- Required for ArcGIS API calls -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>                                           <!-- For OAuth workflow -->
   <script type="module" src="https://js.arcgis.com/calcite-components/1.9.2/calcite.esm.js"></script>           <!-- ArcGIS API JS module -->
-  <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css" />   <!-- ArcGIS styling -->
+  <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css"/>    <!-- ArcGIS styling -->
   <link rel="stylesheet" href="../static/index.css">                                                            <!-- Main stylesheet -->
-  
-  <!-- Map initialization script -->
-  <script>
-    /* Script to initialize & control the map view */
-
-    // Set variables
-    const giudeccaCenterCoords = [12.326944, 45.424722]; // [Longitude, Latitude]
-    const apiKey = "AAPK93a81f690bfe4803b01517f002ec0df6mqCSe-aztHzy_caHr5Ve6B76YRZLVFtxbtZB6pjJIGzNRpNdNtiWWCQ8dnssesCr";
-    const defaultZoom = 15;
-    const defaultBasemap = "osm/hybrid"; // NOTE: update calcite-combobox to reflext the default selection if changed
-    
-    /* Main */
-    require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
-      
-      // Set API key
-      esriConfig.apiKey = apiKey;                           
-      
-      // Create a Map object
-      const map = new Map({
-        basemap: defaultBasemap
-      }); 
-      
-      // Create a MapView
-      const view = new MapView({
-        map: map,                       // Map object
-        center: giudeccaCenterCoords,   // Center 
-        zoom: defaultZoom,              // Zoom level
-        container: "viewDiv"            // Div element to contain the MapView
-      });
-      
-      /* updateBasemapStyle(basemapId) - update the map's style from the dropdown box
-       * @param basemapId - string representing the basemap style to change to 
-       */
-      const updateBasemapStyle = (basemapId) => {
-        view.map.basemap = basemapId;
-      };
-      
-      // Add the dropdown menu to change the map style 
-      const basemapStylesDiv = document.getElementById("basemapStyles");
-      view.ui.add(basemapStylesDiv, "top-right");
-      
-      const styleCombobox = document.getElementById("styleCombobox");
-      styleCombobox.addEventListener("calciteComboboxChange", (event) => {
-        updateBasemapStyle(event.target.value);
-      });
-    });
-    
-  </script>
 
 </head>
 
@@ -66,9 +19,17 @@
     <div id="site-title"><h1>Industrial Giudecca</h1></div>
 
     <!-- Map -->
-    <div id="viewDiv"></div>             <!-- Map container -->
-    {% include "basemapStyles.html" %}   <!-- Map style selection dropdown -->
+    <iframe id="webMap" src="https://w-p-i.maps.arcgis.com/apps/instant/sidebar/index.html?appid=50cfe053ec2c4890b3f44f5cef7dc327" frameborder="0" style="border:0">iFrames are not supported on this page.</iframe>
 
+    <div class="appsContainer"> 
+
+      <!-- Timeline -->
+      <iframe id="employmentTimeline" class="arcgis-app" src="https://w-p-i.maps.arcgis.com/apps/instant/slider/index.html?appid=38a761e7a47c4d67ae22ce2976531b4c" frameborder="0" style="border:0">iFrames are not supported on this page.</iframe>
+
+      <!-- Add more apps ... -->
+      <!-- ... -->
+
+    </div>
 </body>
   
   
