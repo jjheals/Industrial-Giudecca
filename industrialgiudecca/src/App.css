@@ -49,6 +49,7 @@
 
 #blurb {
   font-family: var(--title-font);
+  font-size: 4vw;
   width: 100vw;
   position: relative;
   left: 50%;
@@ -59,6 +60,9 @@
   padding: 0 var(--container-side-padding);
   height: 100vh;
   display: flex;
+  text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 

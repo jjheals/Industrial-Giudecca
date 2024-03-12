@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe228b2-9205-4b31-b346-a5e9f9609f5d" name="Changes" comment="changed opacity">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="abe228b2-9205-4b31-b346-a5e9f9609f5d" name="Changes" comment="added blurb screen">
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/logo.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +84,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710240072147</updated>
-      <workItem from="1710240076241" duration="7042000" />
+      <workItem from="1710240076241" duration="7344000" />
     </task>
     <task id="LOCAL-00001" summary="add hamburger sidebar">
       <option name="closed" value="true" />
@@ -121,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710251888382</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added blurb screen">
+      <option name="closed" value="true" />
+      <created>1710253086418</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710253086418</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +148,7 @@
     <MESSAGE value="add hamburger sidebar fixed" />
     <MESSAGE value="added stucky picture" />
     <MESSAGE value="changed opacity" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed opacity" />
+    <MESSAGE value="added blurb screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="added blurb screen" />
   </component>
 </project>
