@@ -26,51 +26,56 @@ function App() {
                 <Sidebar isOpen={showSidebar} />
             </div>
             <main>
+
+                 <img src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description"/>
+                  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+
                 <head>
-                    <meta charSet="utf-8" />
+
+
+                    <meta charSet="utf-8"/>
+
                     <title>Industrial Giudecca</title>
-                    
-                    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-                    <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
                     
                     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css" />
                     <script src="https://js.arcgis.com/4.28/"></script>
                     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                     <script type="module" src="https://js.arcgis.com/calcite-components/1.9.2/calcite.esm.js"></script>
-                    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css" />
-                    <link rel="stylesheet" href="../static/index.css" />
+                    <link rel="stylesheet" type="text/css"
+                          href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css"/>
+                    <link rel="stylesheet" href="../static/index.css"/>
                 </head>
 
                 <body>
                 <div id="site-title"><h1>Industrial Giudecca</h1></div>
 
-                <div class="container"> 
-                    <div class="mapContainer"> 
+                <div class="container">
+                    <div class="mapContainer">
                         <iframe
                             id="webMap"
                             class="arcgis-app"
                             src="https://w-p-i.maps.arcgis.com/apps/instant/sidebar/index.html?appid=50cfe053ec2c4890b3f44f5cef7dc327"
                             frameBorder="0"
-                            style={{ border: "0" }}
+                            style={{border: "0"}}
                         >
                             iFrames are not supported on this page.
                         </iframe>
                     </div>
-                    
+
                     <div className="appsContainer">
                         <iframe
                             id="employmentTimeline"
                             className="arcgis-app"
                             src="https://w-p-i.maps.arcgis.com/apps/instant/slider/index.html?appid=38a761e7a47c4d67ae22ce2976531b4c"
                             frameBorder="0"
-                            style={{ border: "0" }}
+                            style={{border: "0"}}
                         >
                             iFrames are not supported on this page.
                         </iframe>
                     </div>
 
                 </div>
+
                 </body>
             </main>
         </div>
