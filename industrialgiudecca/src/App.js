@@ -39,11 +39,10 @@ function App() {
             </head>
 
             <div><Sidebar isOpen={showSidebar}/></div>
+            <div id="blurb"><p>History without memory</p></div>
             <img src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description"/>     
 
             <body>
-                <div id="site-title"><h1>Industrial Giudecca</h1></div>
-
                 <div class="container">
                     <div class="mapContainer">
                         <iframe
