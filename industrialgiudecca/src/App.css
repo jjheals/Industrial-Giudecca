@@ -2,6 +2,7 @@
   --container-side-padding: 15%;  /* Padding for the side of the main container */
   --container-top-padding: 5%;    /* Padding for the top and bottom of the main container */
   --arcgis-app-height: 40vw;      /* Height for ArcGIS apps displayed on the page */
+  --title-font: "Judson", Serif;
 }
 
 .App {
@@ -45,6 +46,12 @@
 
 
 /* Styles for page design */
+
+.site-title { 
+  font-family: var(--title-font);
+}
+
+
 .appsContainer {
   width: 50%;
   margin: auto;
