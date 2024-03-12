@@ -1,3 +1,9 @@
+:root { 
+  --container-side-padding: 15%;  /* Padding for the side of the main container */
+  --container-top-padding: 5%;    /* Padding for the top and bottom of the main container */
+  --arcgis-app-height: 40vw;      /* Height for ArcGIS apps displayed on the page */
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +41,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* Styles for page design */
+.appsContainer {
+  width: 50%;
+  margin: auto;
+  padding: 2%;
+  background-color: blue;
+}
+
+.mapsContainer { 
+  width: 100%;
+  margin: auto;
+  padding: 2%;
+  background-color: red;
+}
+
+.container { 
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--container-side-padding);
+  padding-right: var(--container-side-padding);
+  padding-top: var(--container-top-padding);
+  padding-bottom: var(--container-top-padding);
+  background-color: purple;
+}
+
+.arcgis-app { 
+  width: 100%;
+  height: var(--arcgis-app-height);
 }
