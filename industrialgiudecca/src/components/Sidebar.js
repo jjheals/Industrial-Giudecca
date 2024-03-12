@@ -19,9 +19,10 @@ const Sidebar = () => {
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <nav>
                     <ul>
-                        <li>Menu Item 1</li>
-                        <li>Menu Item 2</li>
-                        <li>Menu Item 3</li>
+                        <li class="sidebarElement">Factories</li>
+                        <li class="sidebarElement">Ports</li>
+                        <li class="sidebarElement">Photo Gallery</li>
+                        <li class="sidebarElement">Data Sheets</li>
                     </ul>
                 </nav>
             </div>
