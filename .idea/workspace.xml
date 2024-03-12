@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe228b2-9205-4b31-b346-a5e9f9609f5d" name="Changes" comment="add hamburger sidebar">
+    <list default="true" id="abe228b2-9205-4b31-b346-a5e9f9609f5d" name="Changes" comment="add hamburger sidebar fixed">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/public/stuckyHome.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +49,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/industrialgiudecca/public" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/industrialgiudecca/package.json" />
@@ -79,7 +86,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710240072147</updated>
-      <workItem from="1710240076241" duration="3433000" />
+      <workItem from="1710240076241" duration="5328000" />
     </task>
     <task id="LOCAL-00001" summary="add hamburger sidebar">
       <option name="closed" value="true" />
@@ -89,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710246261809</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add hamburger sidebar fixed">
+      <option name="closed" value="true" />
+      <created>1710246600842</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710246600842</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add hamburger sidebar" />
-    <option name="LAST_COMMIT_MESSAGE" value="add hamburger sidebar" />
+    <MESSAGE value="add hamburger sidebar fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="add hamburger sidebar fixed" />
   </component>
 </project>
