@@ -80,3 +80,7 @@
   width: 100%;
   height: var(--arcgis-app-height);
 }
+
+.frontImage { 
+  width: 100%;
+}

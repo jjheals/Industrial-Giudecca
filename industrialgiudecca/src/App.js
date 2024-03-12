@@ -40,7 +40,7 @@ function App() {
 
             <div><Sidebar isOpen={showSidebar}/></div>
             <div id="blurb"><p>History without memory</p></div>
-            <img src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description"/>     
+            <img id="frontImage" src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description"/>     
 
             <body>
                 <div class="container">
