@@ -13,6 +13,10 @@
     left: 20px;
 }
 
+.hamburger:hover + div > .sidebar {
+    left: 20px;
+}
+
 .hamburger {
     position: fixed;
     top: 20px;

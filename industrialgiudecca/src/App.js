@@ -14,11 +14,17 @@ function App() {
     return (
         <div className="App">
             <header>
-
+                <button className="hamburger" onClick={toggleSidebar}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </header>
 
-            {showSidebar && <Sidebar />}
 
+            <div>
+                <Sidebar isOpen={showSidebar} />
+            </div>
             <main>
                 <head>
                     <meta charSet="utf-8" />
