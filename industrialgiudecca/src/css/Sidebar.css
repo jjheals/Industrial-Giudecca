@@ -1,6 +1,8 @@
 
 .sidebar {
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 20px;
     left: -250px;
     width: 250px;
@@ -41,4 +43,10 @@
 
 .hamburger:hover + .sidebar {
     left: 20px;
+}
+
+.sidebarElement { 
+    text-align: left;
+    font-size: 1.5vw;
+    margin-top: 4%;
 }
