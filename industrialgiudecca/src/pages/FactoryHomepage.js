@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function FactoryHomepage() {
     const landscapeData = [
-        { id: 1, name: 'Factory 1', link: '/factory1' },
+        { id: 1, name: 'Stucky Factory', link: '/stucky-factory' },
         { id: 2, name: 'Factory 2', link: '/factory2' },
         { id: 3, name: 'Factory 3', link: '/factory3' },
         { id: 4, name: 'Factory 4', link: '/factory4' },
@@ -31,6 +31,7 @@ function FactoryHomepage() {
                 <section className="landscape-grid">
                     {landscapeData.map((landscape) => (
                         <div className="landscape-item" key={landscape.id}>
+
                             <Link to={landscape.link} className="landscape-link">
                                 <div className="landscape-placeholder"></div>
                             </Link>
@@ -40,6 +41,8 @@ function FactoryHomepage() {
                 </section>
             </main>
         </div>
+
+
     );
 }
 

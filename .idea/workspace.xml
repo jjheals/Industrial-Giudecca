@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe228b2-9205-4b31-b346-a5e9f9609f5d" name="Changes" comment="changes css FactoryHomepage">
+    <list default="true" id="abe228b2-9205-4b31-b346-a5e9f9609f5d" name="Changes" comment="sidebar changes for css">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/StuckyFactory.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/StuckyFactory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710240072147</updated>
       <workItem from="1710240076241" duration="9494000" />
-      <workItem from="1710317532308" duration="6351000" />
+      <workItem from="1710317532308" duration="8803000" />
     </task>
     <task id="LOCAL-00001" summary="add hamburger sidebar">
       <option name="closed" value="true" />
@@ -155,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710326304808</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="sidebar changes for css">
+      <option name="closed" value="true" />
+      <created>1710328586713</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710328586713</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +191,7 @@
     <MESSAGE value="blurb centeredv2" />
     <MESSAGE value="FactoryHomepage changes and added css etc" />
     <MESSAGE value="changes css FactoryHomepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes css FactoryHomepage" />
+    <MESSAGE value="sidebar changes for css" />
+    <option name="LAST_COMMIT_MESSAGE" value="sidebar changes for css" />
   </component>
 </project>

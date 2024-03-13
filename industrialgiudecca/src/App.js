@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import './css/Sidebar.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import FactoryHomepage from './pages/FactoryHomepage';
+import StuckyFactory from './pages/StuckyFactory';
 
 function App() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -78,6 +79,8 @@ function App() {
                         }
                     />
                     <Route path="/factory" element={<FactoryHomepage />} />
+                    <Route path="/stucky-factory" element={<StuckyFactory />} />
+
                 </Routes>
             </div>
         </Router>
