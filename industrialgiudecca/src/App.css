@@ -87,11 +87,16 @@
 }
 
 #blurbSubtitle {
-  font-size: 2.5vw;
+  font-size: 2vw;
 }
 
 #blurbText {
   font-size: 1.4vw;
+}
+
+#blurbCredits { 
+  margin-top: 1%;
+  font-size: 1vw;
 }
 
 .appsContainer {

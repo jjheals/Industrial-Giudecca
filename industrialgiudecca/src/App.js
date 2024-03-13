@@ -69,7 +69,8 @@ function App() {
                                     <div className="blurbRow" id="blurbTop">
                                         <hr className="blurbDivider"></hr>
                                         <p className="blurbElm" id="blurbTitle">La Giudecca</p>
-                                        <p className="blurbElm" id="blurbSubtitle">History without memory.</p>
+                                        <p className="blurbElm" id="blurbSubtitle">"History without memory."</p>
+                                        <p className="blurbElm" id="blurbCredits">Mario Marinoni</p>
                                         <hr className="blurbDivider"></hr>
                                     </div>
                                     <div className="blurbRow" id="blurbBottom">
