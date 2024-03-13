@@ -17,11 +17,6 @@ function App() {
         <Router>
             <div className="App">
                 <header>
-                    <button className="hamburger" onClick={toggleSidebar}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
 
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

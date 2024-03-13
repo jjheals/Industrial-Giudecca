@@ -1,6 +1,6 @@
+// Sidebar.js
 import React, { useState } from 'react';
 import '../css/Sidebar.css';
-
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +10,8 @@ const Sidebar = () => {
     };
 
     return (
-        <div>
-            <button className="hamburger" onClick={toggleSidebar}>
+        <div className="sidebar-container">
+            <button className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleSidebar}>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -19,10 +19,10 @@ const Sidebar = () => {
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <nav>
                     <ul>
-                        <li class="sidebarElement">Factories</li>
-                        <li class="sidebarElement">Ports</li>
-                        <li class="sidebarElement">Photo Gallery</li>
-                        <li class="sidebarElement">Data Sheets</li>
+                        <li className="sidebar-element">Factories</li>
+                        <li className="sidebar-element">Ports</li>
+                        <li className="sidebar-element">Photo Gallery</li>
+                        <li className="sidebar-element">Data Sheets</li>
                     </ul>
                 </nav>
             </div>

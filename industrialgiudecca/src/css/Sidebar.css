@@ -1,84 +1,84 @@
-:root { 
-    --sidebar-top: 2%;              /* Sidebar top position */
-    --sidebar-open-left: 1.5vw;     /* Sidebar position left when open */
-    --sidebar-width: 20vw;          /* Sidebar width */
-    --hamburger-dimensions: 2vw;    /* Dimensions for hamburger (height & width) */
-    --sidebar-z: 1000;              /* Z index for sidebar */
-
-    --sidebar-element-transition: 0.4s ease;    /* Transition when hovering over a sidebar element */
-    --sidebar-element-color: rgb(0, 102, 255);
-    --sidebar-element-hover-color: rgb(0, 187, 255);
+/* Sidebar.css */
+.sidebar-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
 }
 
 .sidebar {
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    top: var(--sidebar-top);
-    left: calc(var(--sidebar-width) * -1);
-    width: var(--sidebar-width);
-    height: calc(100vh - 40px);
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
     background-color: #f1f1f1;
     transition: left 0.3s ease;
-    z-index: var(--sidebar-z);
-    opacity: 0.90;
-    padding-top: 4%;
-    padding-left: 0;
+    padding-top: 60px;
+    overflow-y: auto;
 }
 
-.sidebar ul { 
-    list-style: none;   /* Remove bullets from sidebar elements */
+.sidebar.open {
+    left: 0;
 }
 
-.sidebar.open, .hamburger:hover + div > .sidebar  {
-    left: var(--sidebar-open-left);
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .hamburger {
-    position: fixed;
-    top: var(--sidebar-top);
-    left: var(--sidebar-open-left);
-    width: var(--hamburger-dimensions);
-    height: var(--hamburger-dimensions);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    z-index: calc(var(--sidebar-z) + 1);
-    margin-top: 1%;
-    margin-left: 1%;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0;
 }
-
-
 
 .hamburger span {
     display: block;
     width: 100%;
     height: 2px;
     background-color: #333;
-    margin-bottom: 25%;
+    transition: transform 0.3s ease;
 }
 
-.hamburger:hover + .sidebar {
-    left: var(--sidebar-open-left);
+.hamburger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
 }
 
-.sidebarElement { 
-    text-align: left;
-    font-size: 1.5vw;
-    margin: auto;
-    margin-top: 7%;
-    width: 96%;
-    padding: 2%;
-    transition: var(--sidebar-element-transition);
-    background-color: var(--sidebar-element-color);
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+.sidebar-element {
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    background-color: #0066ff;
+    color: #fff;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
-.sidebarElement:first-letter { 
+.sidebar-element:first-letter {
     font-size: larger;
 }
 
-.sidebarElement:hover { 
-    transition: var(--sidebar-element-transition);
-    background-color: var(--sidebar-element-hover-color);
+.sidebar-element:hover {
+    background-color: #00bbff;
 }
