@@ -61,8 +61,8 @@
   height: 100vh;
   display: flex;
   text-align: center;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -70,14 +70,12 @@
   width: 50%;
   margin: auto;
   padding: 2%;
-  background-color: blue;
 }
 
 .mapsContainer { 
   width: 100%;
   margin: auto;
   padding: 2%;
-  background-color: red;
 }
 
 .container { 
@@ -87,7 +85,6 @@
   padding-right: var(--container-side-padding);
   padding-top: var(--container-top-padding);
   padding-bottom: var(--container-top-padding);
-  background-color: purple;
 }
 
 .arcgis-app { 
