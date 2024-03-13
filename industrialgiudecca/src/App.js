@@ -65,12 +65,13 @@ function App() {
                         element={
                             <>
                                 <div><Sidebar isOpen={showSidebar} /></div>
-                                <div id="blurb" style={{ opacity: blurbOpacity }}>
-                                    <div className="blurbRow" id="blurbTop">
-                                        <hr className="blurbDivider"></hr>
-                                        <p className="blurbElm" id="blurbTitle">La Giudecca</p>
-                                        <p className="blurbElm" id="blurbSubtitle">History without memory.</p>
-                                        <hr className="blurbDivider"></hr>
+                                <div id="blurb">
+                                    <div class="blurbRow" id="blurbTop"> 
+                                        <hr class="blurbDivider"></hr>
+                                        <p class="blurbElm" id="blurbTitle">La Giudecca</p>
+                                        <p class="blurbElm" id="blurbSubtitle">History without memory.</p>
+                                        <p class="blurbElm" id="blurbCredits">Mario Marinoni</p>
+                                        <hr class="blurbDivider"></hr>
                                     </div>
                                     <div className="blurbRow" id="blurbBottom">
                                         <p className="blurbElm" id="blurbText">
@@ -79,8 +80,9 @@ function App() {
                                             Fabio Carrera, and SerenDPT, this website intends to enrich the story of the industrial
                                             Giudecca.
                                         </p>
-                                    </div>
+                                    </div>  
                                 </div>
+
                                 <Link to="/factory">
                                     <img id="frontImage" src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description" />
                                 </Link>

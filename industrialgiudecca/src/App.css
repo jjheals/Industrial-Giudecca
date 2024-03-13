@@ -50,9 +50,14 @@
 .blurbRow {
   width: 100%;
 }
-.blurbElm {
+
+#blurbTop { 
+  margin: 0;
+}
+
+.blurbElm { 
   margin: auto;
-  margin-top: 0;
+  margin-top: 5%;
 }
 
 .blurbDivider {
@@ -65,10 +70,10 @@
   flex-direction: column;
   font-family: var(--title-font);
   font-size: var(--title-font-size);
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
-  padding: 15% 20%;
-  height: 100vh;
+  padding: 22% 20% 30%;
+  height: 75vh;
   display: flex;
   text-align: center;
   align-items: center;
@@ -94,6 +99,12 @@
   font-size: 1.4vw;
 }
 
+#blurbCredits { 
+  font-style: italic;
+  font-size: 1vw;
+  margin-top: 2%;
+}
+
 .appsContainer {
   width: 50%;
   margin: auto;
@@ -111,7 +122,7 @@
   flex-direction: column;
   padding-left: var(--container-side-padding);
   padding-right: var(--container-side-padding);
-  padding-top: var(--container-top-padding);
+  padding-top: 0;
   padding-bottom: var(--container-top-padding);
   margin-top: 0; /* Adjusted margin-top to remove the white space */
 }
