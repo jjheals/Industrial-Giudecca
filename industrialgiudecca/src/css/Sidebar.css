@@ -21,11 +21,11 @@
     opacity: 0.85;
 }
 
-.sidebar.open {
-    left: var(--sidebar-open-left);
+.sidebar ul { 
+    list-style: none;   /* Remove bullets from sidebar elements */
 }
 
-.hamburger:hover + div > .sidebar {
+.sidebar.open, .hamburger:hover + div > .sidebar  {
     left: var(--sidebar-open-left);
 }
 
