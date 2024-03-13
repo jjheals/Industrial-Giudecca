@@ -6,14 +6,7 @@
     background-color: #f8f8f8;
 }
 
-header {
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 h1 {
     margin: 0;
