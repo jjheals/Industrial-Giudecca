@@ -1,20 +1,26 @@
+:root { 
+    --sidebar-z: 1000;
+    --sidebar-width: 17vw;
+    --hamburger-pos: 1.2vw;
+}
+
 /* Sidebar.css */
 .sidebar-container {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
+    top: 1.5vw;
+    left: 1.5vw;
+    z-index: var(--sidebar-z);
 }
 
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
-    width: 250px;
+    left: calc(var(--sidebar-width) * -1);
+    width: var(--sidebar-width);
     height: 100vh;
     background-color: #f1f1f1;
     transition: left 0.3s ease;
-    padding-top: 60px;
+    padding-top: 10%;
     overflow-y: auto;
 }
 
@@ -32,14 +38,14 @@
 
 .hamburger {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 30px;
-    height: 30px;
+    top: var(--hamburger-pos);
+    left: var(--hamburger-pos);
+    width: var(--hamburger-pos);
+    height: var(--hamburger-pos);
     background-color: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1001;
+    z-index: calc(var(--sidebar-z) + 1);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -71,7 +77,7 @@
     margin: 10px 0;
     padding: 10px;
     transition: background-color 0.3s ease;
-    background-color: #0066ff;
+    background-color: #0091ff;
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
