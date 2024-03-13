@@ -3,6 +3,7 @@
   --container-top-padding: 5%;    /* Padding for the top and bottom of the main container */
   --arcgis-app-height: 40vw;      /* Height for ArcGIS apps displayed on the page */
   --title-font: "Judson", Serif;
+  --title-font-size: 5vw;
 }
 
 .App {
@@ -46,17 +47,28 @@
 
 
 /* Styles for page design */
+
+.blurbRow { 
+  width: 100%;
+}
+.blurbElm { 
+  margin: auto;
+  margin-top: 0;
+}
+
+.blurbDivider { 
+  color: grey;
+  width: 100%;
+}
+
 #blurb {
+  display: flex;
+  flex-direction: column;
   font-family: var(--title-font);
-  font-size: 4vw;
+  font-size: var(--title-font-size);
   width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   box-sizing: border-box;
-  padding: 0 var(--container-side-padding);
+  padding: 15% 20%;
   height: 100vh;
   display: flex;
   text-align: center;
@@ -64,6 +76,13 @@
   justify-content: center;
 }
 
+#blurbSubtitle { 
+  font-size: 2.5vw;
+}
+
+#blurbText { 
+  font-size: 1.4vw;
+}
 
 .appsContainer {
   width: 50%;

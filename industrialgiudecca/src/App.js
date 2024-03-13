@@ -43,7 +43,23 @@ function App() {
                         element={
                             <>
                                 <div><Sidebar isOpen={showSidebar} /></div>
-                                <div id="blurb"><p>History without memory</p></div>
+                                <div id="blurb">
+                                    <div class="blurbRow" id="blurbTop"> 
+                                        <hr class="blurbDivider"></hr>
+                                        <p class="blurbElm" id="blurbTitle">La Giudecca</p>
+                                        <p class="blurbElm" id="blurbSubtitle">History without memory.</p>
+                                        <hr class="blurbDivider"></hr>
+                                    </div>
+                                    <div class="blurbRow" id="blurbBottom"> 
+                                        <p class="blurbElm" id="blurbText">
+                                            Giudecca was once the home to over 45 different factories. Despite having an amazing story, 
+                                            the industrial history of Giudecca is not widely known. With the help of Dr. Pietro Lando, 
+                                            Fabio Carrera, and SerenDPT, this website intends to enrich the story of the industrial 
+                                            Giudecca. 
+                                        </p>
+                                    </div>
+                                    
+                                </div>
                                 <Link to="/factory">
                                     <img id="frontImage" src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description" />
                                 </Link>
