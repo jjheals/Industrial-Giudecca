@@ -1,0 +1,126 @@
+:root {
+  --container-side-padding: 15%;  /* Padding for the side of the main container */
+  --container-top-padding: 5%;    /* Padding for the top and bottom of the main container */
+  --arcgis-app-height: 40vw;      /* Height for ArcGIS apps displayed on the page */
+  --title-font: "Judson", Serif;
+  --title-font-size: 5vw;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Styles for page design */
+
+.blurbRow { 
+  width: 100%;
+}
+
+#blurbTop { 
+  margin: 0;
+}
+
+.blurbElm { 
+  margin: auto;
+  margin-top: 5%;
+}
+
+.blurbDivider { 
+  color: grey;
+  width: 100%;
+}
+
+#blurb {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--title-font);
+  font-size: var(--title-font-size);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 22% 20% 30%;
+  height: 75vh;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#blurbSubtitle { 
+  font-size: 2.5vw;
+}
+
+#blurbText { 
+  font-size: 1.4vw;
+}
+
+#blurbCredits { 
+  font-style: italic;
+  font-size: 1vw;
+  margin-top: 2%;
+}
+
+.appsContainer {
+  width: 50%;
+  margin: auto;
+  padding: 2%;
+}
+
+.mapsContainer { 
+  width: 100%;
+  margin: auto;
+  padding: 2%;
+}
+
+.container { 
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--container-side-padding);
+  padding-right: var(--container-side-padding);
+  padding-top: 0;
+  padding-bottom: var(--container-top-padding);
+}
+
+.arcgis-app { 
+  width: 100%;
+  height: var(--arcgis-app-height);
+}
+
+.frontImage { 
+  width: 100%;
+}
