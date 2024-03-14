@@ -1,5 +1,6 @@
 // Sidebar.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/Sidebar.css';
 
 const Sidebar = () => {
@@ -19,7 +20,9 @@ const Sidebar = () => {
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <nav>
                     <ul>
-                        <li className="sidebar-element">Factories</li>
+                        <li className="sidebar-element">
+                            <Link to="/factory" onClick={toggleSidebar}>Factories</Link>
+                        </li>
                         <li className="sidebar-element">Ports</li>
                         <li className="sidebar-element">Photo Gallery</li>
                         <li className="sidebar-element">Data Sheets</li>
