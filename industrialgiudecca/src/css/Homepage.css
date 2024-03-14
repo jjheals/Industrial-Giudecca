@@ -1,0 +1,136 @@
+:root {
+    --container-side-padding: 15%;
+    --container-top-padding: 5%;
+    --arcgis-app-height: 40vw;
+    --title-font: "Judson", Serif;
+    --title-font-size: 5vw;
+}
+
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #ffffff;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Styles for page design */
+body {
+    margin-top: 100vh;
+}
+
+.blurbRow {
+    width: 100%;
+}
+.blurbElm {
+    margin: auto;
+    margin-top: 0;
+}
+
+.blurbDivider {
+    color: grey;
+    width: 100%;
+}
+
+#blurb {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--title-font);
+    font-size: var(--title-font-size);
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 15% 20%;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    opacity: 1;
+    transition: opacity 1s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
+}
+
+#blurb.fade-out {
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#blurbSubtitle {
+    font-size: 2vw;
+}
+
+#blurbText {
+    font-size: 1.4vw;
+}
+
+#blurbCredits {
+    margin-top: 1%;
+    font-size: 1vw;
+}
+
+.appsContainer {
+    width: 50%;
+    margin: auto;
+    padding: 2%;
+}
+
+.mapsContainer {
+    width: 100%;
+    margin: auto;
+    padding: 2%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--container-side-padding);
+    padding-right: var(--container-side-padding);
+    padding-top: var(--container-top-padding);
+    padding-bottom: var(--container-top-padding);
+    margin-top: 0; /* Adjusted margin-top to remove the white space */
+}
+
+.arcgis-app {
+    width: 100%;
+    height: var(--arcgis-app-height);
+}
+
+.frontImage {
+    width: 100%;
+}

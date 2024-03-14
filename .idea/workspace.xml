@@ -4,11 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed the z index on the factory image" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed blurb elemet if shouldnt work">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,18 +40,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -52,7 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710335489029</updated>
       <workItem from="1710335490217" duration="4554000" />
-      <workItem from="1710403808707" duration="602000" />
+      <workItem from="1710403808707" duration="2763000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -78,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710404284923</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed blurb elemet if shouldnt work">
+      <option name="closed" value="true" />
+      <created>1710404544938</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1710404544938</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,6 +112,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added the fade in / out" />
     <MESSAGE value="fixed the z index on the factory image" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the z index on the factory image" />
+    <MESSAGE value="fixed blurb elemet if shouldnt work" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed blurb elemet if shouldnt work" />
   </component>
 </project>

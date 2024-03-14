@@ -46,63 +46,6 @@
 }
 
 /* Styles for page design */
-body { 
-  margin-top: 100vh;
-}
-
-.blurbRow {
-  width: 100%;
-}
-.blurbElm {
-  margin: auto;
-  margin-top: 0;
-}
-
-.blurbDivider {
-  color: grey;
-  width: 100%;
-}
-
-#blurb {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--title-font);
-  font-size: var(--title-font-size);
-  width: 100vw;
-  box-sizing: border-box;
-  padding: 15% 20%;
-  height: 100vh;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: white;
-  opacity: 1;
-  transition: opacity 1s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
-}
-
-#blurb.fade-out {
-  opacity: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
-#blurbSubtitle {
-  font-size: 2vw;
-}
-
-#blurbText {
-  font-size: 1.4vw;
-}
-
-#blurbCredits { 
-  margin-top: 1%;
-  font-size: 1vw;
-}
 
 .appsContainer {
   width: 50%;
