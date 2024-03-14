@@ -20,7 +20,7 @@ function App() {
             const scrollPosition = window.scrollY;
             const blurbElement = document.getElementById('blurb');
             const blurbHeight = blurbElement.offsetHeight;
-            const scrollThreshold = blurbHeight * 0.1; // Adjust the threshold as needed
+            const scrollThreshold = blurbHeight * 0.01; // Adjust the threshold as needed
 
             if (scrollPosition < scrollThreshold) {
                 const opacity = 1 - scrollPosition / scrollThreshold;
