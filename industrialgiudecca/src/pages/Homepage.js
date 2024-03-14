@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 function Homepage() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [blurbOpacity, setBlurbOpacity] = useState(1);
+    const [showScrollArrow, setShowScrollArrow] = useState(false);
 
     const toggleSidebar = () => {
         setShowSidebar(!showSidebar);
@@ -34,6 +35,14 @@ function Homepage() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowScrollArrow(true);
+        }, 5000);
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (
@@ -75,6 +84,10 @@ function Homepage() {
                         Fabio Carrera, and SerenDPT, this website intends to enrich the story of the industrial
                         Giudecca.
                     </p>
+                </div>
+                <div className="blurbRow" id="blurbScroll">
+                    <p className="blurbElm" id="blurbScrollText">Scroll to Learn More</p>
+                    <div className={`scrollArrow ${showScrollArrow ? 'show' : ''}`}></div>
                 </div>
             </div>
             <Link to="/factory">
