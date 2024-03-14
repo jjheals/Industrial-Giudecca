@@ -20,7 +20,7 @@ function App() {
             const scrollPosition = window.scrollY;
             const blurbElement = document.getElementById('blurb');
             const blurbHeight = blurbElement.offsetHeight;
-            const scrollThreshold = blurbHeight * 0.001; // Adjust the threshold as needed
+            const scrollThreshold = blurbHeight * 0.1; // Adjust the threshold as needed
 
             if (scrollPosition < scrollThreshold) {
                 const opacity = 1 - scrollPosition / scrollThreshold;
@@ -65,8 +65,8 @@ function App() {
                         element={
                             <>
                                 <div><Sidebar isOpen={showSidebar} /></div>
-                                <div id="blurb" style={{ opacity: blurbOpacity }}>
-                                    <div className="blurbRow" id="blurbTop">
+                                <div id="blurb" style={{ opacity: blurbOpacity }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
+                                <div className="blurbRow" id="blurbTop">
                                         <hr className="blurbDivider"></hr>
                                         <p className="blurbElm" id="blurbTitle">La Giudecca</p>
                                         <p className="blurbElm" id="blurbSubtitle">History without memory.</p>
