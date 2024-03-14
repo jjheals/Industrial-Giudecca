@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed blurb elemet if shouldnt work">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="changes app.js to be router only">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710335489029</updated>
       <workItem from="1710335490217" duration="4554000" />
-      <workItem from="1710403808707" duration="2763000" />
+      <workItem from="1710403808707" duration="4097000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -103,16 +97,36 @@
       <option name="project" value="LOCAL" />
       <updated>1710404544938</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changes app.js to be router only">
+      <option name="closed" value="true" />
+      <created>1710406844142</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710406844142</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added the fade in / out" />
     <MESSAGE value="fixed the z index on the factory image" />
     <MESSAGE value="fixed blurb elemet if shouldnt work" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed blurb elemet if shouldnt work" />
+    <MESSAGE value="changes app.js to be router only" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes app.js to be router only" />
   </component>
 </project>
