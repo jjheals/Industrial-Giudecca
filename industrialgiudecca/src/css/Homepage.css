@@ -134,3 +134,46 @@ body {
 .frontImage {
     width: 100%;
 }
+
+#blurbScroll {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#blurbScrollText {
+    font-family: var(--title-font);
+    font-size: 1.0vw;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.scrollArrow {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    transform: rotate(45deg);
+    animation: scrollAnimation 3s infinite;
+    opacity: 0;
+
+}
+
+
+@keyframes scrollAnimation {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
