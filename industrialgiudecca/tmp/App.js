@@ -1,7 +1,7 @@
 // src/App.js
 import './App.css';
 import Sidebar from './components/Sidebar';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './css/Sidebar.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import FactoryHomepage from './pages/FactoryHomepage';
@@ -9,40 +9,18 @@ import StuckyFactory from './pages/StuckyFactory';
 
 function App() {
     const [showSidebar, setShowSidebar] = useState(false);
-    const [blurbOpacity, setBlurbOpacity] = useState(1);
 
     const toggleSidebar = () => {
         setShowSidebar(!showSidebar);
     };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            const blurbElement = document.getElementById('blurb');
-            const blurbHeight = blurbElement.offsetHeight;
-            const scrollThreshold = blurbHeight * 0.1; // Adjust the threshold as needed
-
-            if (scrollPosition < scrollThreshold) {
-                const opacity = 1 - scrollPosition / scrollThreshold;
-                setBlurbOpacity(opacity);
-            } else {
-                setBlurbOpacity(0);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     return (
         <Router>
             <div className="App">
                 <header>
+
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
                     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Judson" />
 
                     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css" />
@@ -65,23 +43,25 @@ function App() {
                         element={
                             <>
                                 <div><Sidebar isOpen={showSidebar} /></div>
-                                <div id="blurb" style={{ opacity: blurbOpacity }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
-                                <div className="blurbRow" id="blurbTop">
-                                        <hr className="blurbDivider"></hr>
-                                        <p className="blurbElm" id="blurbTitle">La Giudecca</p>
-                                        <p className="blurbElm" id="blurbSubtitle">"History without memory."</p>
-                                        <p className="blurbElm" id="blurbCredits">Mario Marinoni</p>
-                                        <hr className="blurbDivider"></hr>
+
+                                <div id="blurb">
+                                    <div class="blurbRow" id="blurbTop"> 
+                                        <hr class="blurbDivider"></hr>
+                                        <p class="blurbElm" id="blurbTitle">La Giudecca</p>
+                                        <p class="blurbElm" id="blurbSubtitle">"History without memory."</p>
+                                        <p class="blurbElm" id="blurbCredits">Mario Marinoni</p>
+                                        <hr class="blurbDivider"></hr>
                                     </div>
-                                    <div className="blurbRow" id="blurbBottom">
-                                        <p className="blurbElm" id="blurbText">
-                                            Giudecca was once the home to over 45 different factories. Despite having an amazing story,
-                                            the industrial history of Giudecca is not widely known. With the help of Dr. Pietro Lando,
-                                            Fabio Carrera, and SerenDPT, this website intends to enrich the story of the industrial
-                                            Giudecca.
+                                    <div class="blurbRow" id="blurbBottom"> 
+                                        <p class="blurbElm" id="blurbText">
+                                            Giudecca was once the home to over 45 different factories. Despite having an amazing story, 
+                                            the industrial history of Giudecca is not widely known. With the help of Dr. Pietro Lando, 
+                                            Fabio Carrera, and SerenDPT, this website intends to enrich the story of the industrial 
+                                            Giudecca. 
                                         </p>
-                                    </div>
+                                    </div>  
                                 </div>
+
                                 <Link to="/factory">
                                     <img id="frontImage" src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description" />
                                 </Link>
@@ -118,6 +98,7 @@ function App() {
                     />
                     <Route path="/factory" element={<FactoryHomepage />} />
                     <Route path="/stucky-factory" element={<StuckyFactory />} />
+
                 </Routes>
             </div>
         </Router>

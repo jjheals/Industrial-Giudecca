@@ -1,7 +1,7 @@
 :root {
-  --container-side-padding: 15%;
-  --container-top-padding: 5%;
-  --arcgis-app-height: 40vw;
+  --container-side-padding: 15%;  /* Padding for the side of the main container */
+  --container-top-padding: 5%;    /* Padding for the top and bottom of the main container */
+  --arcgis-app-height: 40vw;      /* Height for ArcGIS apps displayed on the page */
   --title-font: "Judson", Serif;
   --title-font-size: 5vw;
 }
@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #ffffff;
+  color: white;
 }
 
 .App-link {
@@ -45,17 +45,23 @@
   }
 }
 
+
 /* Styles for page design */
 
-.blurbRow {
+.blurbRow { 
   width: 100%;
 }
-.blurbElm {
-  margin: auto;
-  margin-top: 0;
+
+#blurbTop { 
+  margin: 0;
 }
 
-.blurbDivider {
+.blurbElm { 
+  margin: auto;
+  margin-top: 5%;
+}
+
+.blurbDivider { 
   color: grey;
   width: 100%;
 }
@@ -65,40 +71,28 @@
   flex-direction: column;
   font-family: var(--title-font);
   font-size: var(--title-font-size);
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
-  padding: 15% 20%;
-  height: 100vh;
+  padding: 22% 20% 30%;
+  height: 75vh;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: white;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out, z-index 0.5s step-end; /* Reduced transition duration */
 }
 
-#blurb.fade-out {
-  opacity: 0;
-  z-index: -1;
-  pointer-events: none;
+#blurbSubtitle { 
+  font-size: 2.5vw;
 }
 
-#blurbSubtitle {
-  font-size: 2vw;
-}
-
-#blurbText {
+#blurbText { 
   font-size: 1.4vw;
 }
 
 #blurbCredits { 
-  margin-top: 1%;
+  font-style: italic;
   font-size: 1vw;
+  margin-top: 2%;
 }
 
 .appsContainer {
@@ -107,27 +101,26 @@
   padding: 2%;
 }
 
-.mapsContainer {
+.mapsContainer { 
   width: 100%;
   margin: auto;
   padding: 2%;
 }
 
-.container {
+.container { 
   display: flex;
   flex-direction: column;
   padding-left: var(--container-side-padding);
   padding-right: var(--container-side-padding);
-  padding-top: var(--container-top-padding);
+  padding-top: 0;
   padding-bottom: var(--container-top-padding);
-  margin-top: 0; /* Adjusted margin-top to remove the white space */
 }
 
-.arcgis-app {
+.arcgis-app { 
   width: 100%;
   height: var(--arcgis-app-height);
 }
 
-.frontImage {
+.frontImage { 
   width: 100%;
 }
