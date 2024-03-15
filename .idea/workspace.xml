@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="added scroll down thingy">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="header is gone">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/public/stucky12.JPG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/StuckyFactory.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/StuckyFactory.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/StuckyFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/StuckyFactory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,19 +37,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/industrialgiudecca/public" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -64,7 +71,8 @@
       <option name="presentableId" value="Default" />
       <updated>1710335489029</updated>
       <workItem from="1710335490217" duration="4554000" />
-      <workItem from="1710403808707" duration="5916000" />
+      <workItem from="1710403808707" duration="9834000" />
+      <workItem from="1710490748477" duration="1522000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -122,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710414377392</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="header is gone">
+      <option name="closed" value="true" />
+      <created>1710421647666</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710421647666</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +162,7 @@
     <MESSAGE value="changes app.js to be router only" />
     <MESSAGE value="sidebar factory reroutes" />
     <MESSAGE value="added scroll down thingy" />
-    <option name="LAST_COMMIT_MESSAGE" value="added scroll down thingy" />
+    <MESSAGE value="header is gone" />
+    <option name="LAST_COMMIT_MESSAGE" value="header is gone" />
   </component>
 </project>

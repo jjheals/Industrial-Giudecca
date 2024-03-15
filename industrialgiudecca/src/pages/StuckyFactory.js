@@ -1,9 +1,24 @@
 // src/pages/StuckyFactory.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../css/StuckyFactory.css';
 import { Link } from 'react-router-dom';
 
 function StuckyFactory() {
+    useEffect(() => {
+        const handleScroll = () => {
+            const imageContainer = document.querySelector('.factory-image-container');
+            const scrollPosition = window.pageYOffset;
+            const translateY = scrollPosition * 0.5; // Adjust the parallax speed here
+            imageContainer.style.backgroundPositionY = `${translateY}px`;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <div className="stucky-factory">
             <header>
@@ -18,9 +33,12 @@ function StuckyFactory() {
 
             <main>
                 <section className="factory-info">
-                    <div className="factory-image-container">
-                        <p>Picture goes here</p>
-                    </div>
+                    <div
+                        className="factory-image-container"
+                        style={{
+                            backgroundImage: `url(${process.env.PUBLIC_URL}/stucky12.jpg)`,
+                        }}
+                    ></div>
                     <div className="factory-description">
                         <h2>About Stucky Factory</h2>
                         <p>
@@ -29,8 +47,7 @@ function StuckyFactory() {
                     </div>
                 </section>
 
-
-
+                <section className="white-space"></section>
             </main>
         </div>
     );

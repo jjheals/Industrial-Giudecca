@@ -5,6 +5,16 @@
     padding: 0;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 20px;
+    z-index: 1;
+}
+
 h1 {
     margin: 0;
 }
@@ -21,52 +31,42 @@ nav ul li {
 
 main {
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
+/* Ensure the text appears to start from the bottom of the image */
+.factory-description {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Keep for readability */
+    padding: 20px;
+    position: relative;
+    z-index: 2; /* Above the image */
+    margin-top: -50vh; /* Start the text halfway up the image */
+}
+
+/* Adjust the factory-info or the container of the description if needed */
 .factory-info {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 2; /* Ensure it's on top of the image */
+    /* Adjust margin-top if necessary based on your layout needs */
 }
 
+/* Additional adjustments to the image container for parallax effect */
 .factory-image-container {
-    width: 100%;
-    max-width: 400px;
-    height: 300px;
-    background-color: #e0e0e0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    height: 100vh; /* Ensure full viewport height */
+    background-size: cover; /* Adjust if the image should cover or contain */
+    background-position: center;
+    background-attachment: fixed; /* Enhance parallax */
+    z-index: 1; /* Below the text */
 }
 
-.factory-description {
-    text-align: center;
-}
 
-.factory-features ul,
-.factory-contact ul {
-    padding-left: 20px;
-}
-
-@media screen and (min-width: 768px) {
-    .factory-info {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: stretch;
-    }
-
-    .factory-image-container {
-        width: 50%;
-        margin-right: 20px;
-        margin-bottom: 0;
-    }
-
-    .factory-description {
-        width: 50%;
-        text-align: left;
-        background-color: #f2f2f2;
-        padding: 20px;
-    }
+.white-space {
+    height: 100vh;
+    background-color: #fff;
 }
