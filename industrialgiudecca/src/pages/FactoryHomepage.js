@@ -2,6 +2,7 @@
 import { React, useState, useEffect } from 'react';
 import '../css/FactoryHomepage.css';
 import '../Factory.js';
+import Sidebar from '../components/Sidebar';
 
 import { Link } from 'react-router-dom';
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
@@ -77,6 +78,7 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
 }
 
 function FactoryHomepage() {
+    const [showSidebar, setShowSidebar] = useState(false);
     const [factories, setFactories] = useState([]);
 
     useEffect(() => {
@@ -95,6 +97,9 @@ function FactoryHomepage() {
 
     return (
         <div className="factory-homepage">
+            <div>
+                <Sidebar isOpen={showSidebar} />
+            </div>
             <header>
                 <h1>Welcome to the Factory Homepage</h1>
                 <nav>

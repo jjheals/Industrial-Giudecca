@@ -7,10 +7,12 @@
 }
 
 h1 {
+    font-family: "Judson";
     margin: 0;
     font-size: 3vw;
     font-weight: 700;
     color: #333333;
+    text-align: center;
 }
 
 nav ul {
