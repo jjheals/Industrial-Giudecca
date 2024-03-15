@@ -23,7 +23,6 @@
 
 .App-header {
     background-color: #282c34;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,9 +45,6 @@
 }
 
 /* Styles for page design */
-body {
-    margin-top: 100vh;
-}
 
 .blurbRow {
     width: 100%;
@@ -76,7 +72,7 @@ body {
     text-align: center;
     align-items: center;
     justify-content: center;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     left: 0;
     z-index: 1;
@@ -133,7 +129,6 @@ body {
 
 .frontImage {
     width: 100%;
-
 }
 
 #blurbScroll {

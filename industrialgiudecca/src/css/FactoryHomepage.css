@@ -6,8 +6,6 @@
     background-color: #f8f8f8;
 }
 
-
-
 h1 {
     margin: 0;
     font-size: 32px;
@@ -43,9 +41,9 @@ nav ul li a:hover {
 }
 
 main {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 40px;
+    background-color: red;
 }
 
 .landscape-grid {

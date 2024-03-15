@@ -6,7 +6,6 @@ class Factory {
      * @param {dict} geometry 
      */
     constructor(attributes, geometry) { 
-        console.log("New factory");
         this.OBJECTID = attributes.OBJECTID;
         this.Opening_Date = attributes.Opening_Date;
         this.Closing_Date = attributes.Closing_Date;
@@ -37,3 +36,4 @@ class Factory {
         return s;
     }
 }
+
