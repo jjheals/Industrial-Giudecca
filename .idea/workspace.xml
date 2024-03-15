@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="paralaxing text scroll">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="stucky paralax scroll fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/public/stucky12.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/public/stucky12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/StuckyFactory.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/StuckyFactory.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/StuckyFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/StuckyFactory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +72,7 @@
       <updated>1710335489029</updated>
       <workItem from="1710335490217" duration="4554000" />
       <workItem from="1710403808707" duration="9834000" />
-      <workItem from="1710490748477" duration="2173000" />
+      <workItem from="1710490748477" duration="5334000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -145,7 +146,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710503113813</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="stucky paralax scroll fixed">
+      <option name="closed" value="true" />
+      <created>1710503860783</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710503860783</updated>
+    </task>
+    <task id="LOCAL-00011" summary="stucky paralax scroll fixed">
+      <option name="closed" value="true" />
+      <created>1710503938833</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710503938833</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +188,7 @@
     <MESSAGE value="added scroll down thingy" />
     <MESSAGE value="header is gone" />
     <MESSAGE value="paralaxing text scroll" />
-    <option name="LAST_COMMIT_MESSAGE" value="paralaxing text scroll" />
+    <MESSAGE value="stucky paralax scroll fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="stucky paralax scroll fixed" />
   </component>
 </project>

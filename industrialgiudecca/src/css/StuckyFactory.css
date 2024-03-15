@@ -1,4 +1,4 @@
-/* src/css/StuckyFactory.css */
+/* Updated CSS */
 .stucky-factory {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,17 +11,24 @@ header {
     left: 0;
     right: 0;
     background-color: #fff;
-    padding: 20px;
-    z-index: 1;
+    padding: 0px 10px; /* Reduced padding to make the header smaller */
+    transition: transform 0.3s;
+    z-index: 100;
+}
+
+header.hidden {
+    transform: translateY(-100%);
 }
 
 h1 {
     margin: 0;
+    font-size: 20px; /* Reduced font size for the heading */
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0; /* Removed margin to keep the navigation items closer to the heading */
 }
 
 nav ul li {
@@ -30,9 +37,8 @@ nav ul li {
 }
 
 main {
-    padding: 20px;
-    position: relative;
-    z-index: 1;
+    padding-top: 50px; /* Adjusted padding to accommodate the smaller header */
+    padding-bottom: 20px;
 }
 
 .factory-info {
@@ -40,26 +46,26 @@ main {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-    position: relative;
-    z-index: 2;
 }
 
 .factory-image-container {
     height: 100vh;
-    width: 75%;
+    width: 100%;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    z-index: 1;
+    margin-top: 20px;
 }
 
 .factory-description {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    width: 50%;
+    margin: -40vh auto 0;
     position: relative;
     z-index: 2;
-    margin-top: -50vh;
+    transform: translateY(0);
+    transition: transform 0.5s;
 }
 
 .white-space {
