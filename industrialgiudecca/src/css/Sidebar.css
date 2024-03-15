@@ -77,23 +77,34 @@ nav ul li a {
 }
 
 .sidebar-element {
-    font-size: 18px;
+    font-size: 1.5vw;
     margin: 10px 0;
     padding: 10px;
-    transition: background-color 0.3s ease;
+    
     color: #009dff;
     text-transform: uppercase;
     cursor: pointer;
 }
 
-.sidebar-element:first-letter {
+.sidebar-link:first-letter {
     font-size: larger;
 }
 
+.sidebar-link { 
+    transition: font-size 0.3s ease;
+}
+
 .sidebar-link:visited { 
+    transition: font-size 0.3s ease;
     color: #009dff;
 }
 
-.sidebar-element:hover {
-    background-color: #00bbff;
+.sidebar-link:visited:hover { 
+    transition: font-size 0.3s ease;
+    font-size: 2vw;
+}
+
+.sidebar-link:hover {
+    transition: font-size 0.3s ease;
+    font-size: 2vw;
 }
