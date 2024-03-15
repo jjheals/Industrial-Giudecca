@@ -20,31 +20,16 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
             authentication
         });
 
-        // Use the function to get attachments for a feature
-        getAttachments({
-            url: "https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/2/attachments/1",
-            objectId: 2, // Object ID of the feature you want to get attachments for
-            params: {
-                'token': "3NKHt6i2urmWtqOuugvr9VxQpnif6HTJRmHhwCX_kP7VKDCEgQQ1OPVC2doqDjIeHRharUDgPYk9SUdXbJBZAiOgjW1EmgXCAjRbmIqJ2xa4xTchDjz9_LUD0cztUh4Q"
-            }
-        })
-        .then(response => {
-            // Handle the response, which contains the attachments
-            console.log(response);
-        })
-        .catch(error => {
-            // Handle any errors that occur during the request
-            console.error('Error fetching attachments:', error);
-        });
-
         // Process the response and convert features into factories
         const factories = response.features.map(feature => {
-            return new Factory(feature.attributes, feature.geometry);
+            let factory = new Factory(feature.attributes, feature.geometry);
+            factory.getFactoryImage(apiToken);
+            return factory;
         });
 
         // Return the list of factories
-        console.log(factories);
         return factories;
+
     } catch (error) {
         console.error('Error fetching factories:', error);
         // Return an empty array in case of error
@@ -76,12 +61,15 @@ function FactoryHomepage() {
                 <Sidebar isOpen={showSidebar} />
             </div>
             <main>
+                <hr class="title-hr"></hr>
                 <h1>La Giudecca Factories</h1>
+                <hr class="title-hr"></hr>
+
                 <section className="landscape-grid">
                     {factories.map(factory => (
                         <div className="landscape-item" key={factory.Factory_ID}>
                             <Link to={factory.link} className="landscape-link">
-                                <div className="landscape-placeholder"></div>
+                                <div id={factory.Factory_ID} className="landscape-placeholder"></div>
                             </Link>
                             <h2>{factory.English_Name}</h2>
                         </div>

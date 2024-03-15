@@ -1,4 +1,4 @@
-
+import { getAttachments } from '@esri/arcgis-rest-feature-service';
 
 export default class Factory { 
 
@@ -7,7 +7,7 @@ export default class Factory {
      * @param {dict} attributes 
      * @param {dict} geometry 
      */
-    constructor(attributes, geometry) { 
+    constructor(attributes, geometry, img_url) { 
         this.OBJECTID = attributes.OBJECTID;
         this.Opening_Date = attributes.Opening_Date;
         this.Closing_Date = attributes.Closing_Date;
@@ -20,6 +20,7 @@ export default class Factory {
         this.Building_ID = attributes.Building_ID;
         this.x_coord = geometry.x;
         this.y_coord = geometry.y;
+        this.attachment = null;
 
         const name = attributes.English_Name;
         if(name == null) { 
@@ -43,6 +44,26 @@ export default class Factory {
         s += `X Coord: ${this.x_coord}\n`;
         s += `Y Coord: ${this.y_coord}\n`;
         return s;
+    }
+
+    async getFactoryImage(apiToken) { 
+        // Get the attachments for this feature
+        const attachments = await getAttachments({
+            url: `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/2/attachments/1`,
+            objectId: 2,
+            params: {
+                'token': apiToken
+            }
+        })
+        .then(response => {
+            // Handle the response, which contains the attachments
+            console.log(response);
+            this.attachment = response.Attachment
+        })
+        .catch(error => {
+            // Handle any errors that occur during the request
+            console.error('Error fetching attachments:', error);
+        });
     }
 }
 
