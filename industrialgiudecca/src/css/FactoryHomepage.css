@@ -6,18 +6,19 @@
     background-color: #f8f8f8;
 }
 
-h1 {
-    font-family: "Judson";
+#title { 
     margin: 0;
-    font-size: 3vw;
     color: #333333;
     text-align: center;
     padding: 1% 0;
+    font-family: "Judson";
+    font-size: 3vw;
 }
 
-#main {
+main {
     margin: 0 auto;
     background-color: #f8f8f8;
+    padding: 7vh 2%;
 }
 
 .title-hr { 
@@ -29,6 +30,7 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
     gap: 2vw;
     padding-top: 2%;
+    margin-top: 4%;
     background-color: #f8f8f8;
 }
 
