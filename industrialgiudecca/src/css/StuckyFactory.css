@@ -36,10 +36,7 @@ nav ul li {
     margin-right: 10px;
 }
 
-main {
-    padding-top: 50px; /* Adjusted padding to accommodate the smaller header */
-    padding-bottom: 20px;
-}
+
 
 .factory-info {
     display: flex;
