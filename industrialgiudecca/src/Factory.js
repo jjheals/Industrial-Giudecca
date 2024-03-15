@@ -1,4 +1,6 @@
-class Factory { 
+
+
+export default class Factory { 
 
     /** Factory(attributes, geometry)
      * @abstract 
@@ -12,12 +14,19 @@ class Factory {
         this.English_Name = attributes.English_Name;
         this.Italian_Name = attributes.Italian_Name;
         this.Factory_Description = attributes.Factory_Description;
-        this.Max_Employmenet = attributes.Max_Employment;
+        this.Max_Employment = attributes.Max_Employment;
         this.Factory_ID = attributes.Factory_ID;
         this.Factory_Active = attributes.Factory_Active;
         this.Building_ID = attributes.Building_ID;
         this.x_coord = geometry.x;
         this.y_coord = geometry.y;
+
+        const name = attributes.English_Name;
+        if(name == null) { 
+            this.link = `/id-${attributes.Factory_ID}`;
+        } else { 
+            this.link = `/${name.toLowerCase().replace(/ /g, '-')}`;
+        }
     }
 
     toString() { 
