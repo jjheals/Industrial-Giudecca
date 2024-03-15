@@ -26,7 +26,7 @@ function StuckyFactory() {
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/factory-homepage">Factory Homepage</Link></li>
+                        <li><Link to="/factory">Factory Homepage</Link></li>
                     </ul>
                 </nav>
             </header>
