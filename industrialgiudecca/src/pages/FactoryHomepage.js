@@ -5,7 +5,7 @@ import '../Factory.js';
 import Sidebar from '../components/Sidebar';
 
 import { Link } from 'react-router-dom';
-import { queryFeatures } from '@esri/arcgis-rest-feature-service';
+import { queryFeatures, getAttachments } from '@esri/arcgis-rest-feature-service';
 import { ApiKeyManager } from '@esri/arcgis-rest-request';
 
 class Factory { 
@@ -60,13 +60,27 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
             authentication
         });
 
+        // Use the function to get attachments for a feature
+        getAttachments({
+            url: "https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/2/attachments/1",
+            objectId: 2, // Object ID of the feature you want to get attachments for
+            params: {
+                'token': "3NKHt6i2urmWtqOuugvr9VxQpnif6HTJRmHhwCX_kP7VKDCEgQQ1OPVC2doqDjIeHRharUDgPYk9SUdXbJBZAiOgjW1EmgXCAjRbmIqJ2xa4xTchDjz9_LUD0cztUh4Q"
+            }
+        })
+        .then(response => {
+            // Handle the response, which contains the attachments
+            console.log(response);
+        })
+        .catch(error => {
+            // Handle any errors that occur during the request
+            console.error('Error fetching attachments:', error);
+        });
+
         // Process the response and convert features into factories
         const factories = response.features.map(feature => {
             return new Factory(feature.attributes, feature.geometry);
         });
-
-        // Update UI or perform other tasks with the factories data
-        //document.getElementById("result").textContent = JSON.stringify(response.features, null, 2);
 
         // Return the list of factories
         console.log(factories);
@@ -86,7 +100,7 @@ function FactoryHomepage() {
         // Fetch factories when component mounts
         fetchFactoriesFL(
             'https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0',
-            '3NKHt6i2urmWtqOuugvr9fKqpuCKP50hA-ktAvBOpv39x4frUbhFDsPYQpb_GWYTMzyFbCUEdCcpdhqomhgR-5oDSRS8kiu_F1JVVSYN9vBBzr4qcfpX8miMF2vBgNLE'
+            '3NKHt6i2urmWtqOuugvr9VxQpnif6HTJRmHhwCX_kP7VKDCEgQQ1OPVC2doqDjIeHRharUDgPYk9SUdXbJBZAiOgjW1EmgXCAjRbmIqJ2xa4xTchDjz9_LUD0cztUh4Q'
         )
         .then(factories => {
             setFactories(factories);
@@ -94,7 +108,7 @@ function FactoryHomepage() {
         .catch(error => {
             console.error('Error fetching factories:', error);
         });
-    }, []); // Empty dependency array ensures the effect runs only once on mount
+    }, []); // Empty dependency array
 
     return (
         <div className="factory-homepage">
