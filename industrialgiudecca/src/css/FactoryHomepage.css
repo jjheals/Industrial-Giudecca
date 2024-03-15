@@ -2,7 +2,7 @@
 .factory-homepage {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 5% 0;
     background-color: #f8f8f8;
 }
 
@@ -10,36 +10,9 @@ h1 {
     font-family: "Judson";
     margin: 0;
     font-size: 3vw;
-    font-weight: 700;
     color: #333333;
     text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 1.5vw;
-}
-
-nav ul li:first-child {
-    margin-left: 0;
-}
-
-nav ul li a {
-    color: #666666;
-    text-decoration: none;
-    font-size: 2vw;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #ff6600;
+    padding-bottom: 5%;
 }
 
 main {
@@ -71,14 +44,6 @@ main {
     height: 30vh;
     background-color: #eeeeee;
     margin-bottom: 1vh;
-}
-
-h2 {
-    margin: 0;
-    font-size: 1.7vw;
-    font-weight: 600;
-    padding: 1.5vw;
-    color: #333333;
 }
 
 footer {

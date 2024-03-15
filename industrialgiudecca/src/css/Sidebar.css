@@ -5,6 +5,10 @@
 }
 
 /* Sidebar.css */
+nav ul li a { 
+    text-decoration: none;
+}
+
 .sidebar-container {
     position: fixed;
     top: 1.5vw;

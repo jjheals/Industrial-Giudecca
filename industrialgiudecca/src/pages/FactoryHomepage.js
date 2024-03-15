@@ -69,6 +69,7 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
         //document.getElementById("result").textContent = JSON.stringify(response.features, null, 2);
 
         // Return the list of factories
+        console.log(factories);
         return factories;
     } catch (error) {
         console.error('Error fetching factories:', error);
@@ -85,7 +86,7 @@ function FactoryHomepage() {
         // Fetch factories when component mounts
         fetchFactoriesFL(
             'https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0',
-            '3NKHt6i2urmWtqOuugvr9SAg1zBYp13RdBAvh5dkZDDl6507-joZxbRSva0s4Bc-Pihv2UoIyZRJfJRbG8tWgWDt43IIhNKxz4KJKZ3ejPGE3ln6ZFCqM-VNzPcJUICU'
+            '3NKHt6i2urmWtqOuugvr9fKqpuCKP50hA-ktAvBOpv39x4frUbhFDsPYQpb_GWYTMzyFbCUEdCcpdhqomhgR-5oDSRS8kiu_F1JVVSYN9vBBzr4qcfpX8miMF2vBgNLE'
         )
         .then(factories => {
             setFactories(factories);
@@ -101,12 +102,7 @@ function FactoryHomepage() {
                 <Sidebar isOpen={showSidebar} />
             </div>
             <header>
-                <h1>Welcome to the Factory Homepage</h1>
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                    </ul>
-                </nav>
+                <h1>La Giudecca Factories</h1>
             </header>
             <main>
                 <section className="landscape-grid">
