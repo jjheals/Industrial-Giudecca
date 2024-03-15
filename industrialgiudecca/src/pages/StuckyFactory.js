@@ -7,9 +7,13 @@ function StuckyFactory() {
     useEffect(() => {
         const handleScroll = () => {
             const imageContainer = document.querySelector('.factory-image-container');
+            const factoryDescription = document.querySelector('.factory-description');
             const scrollPosition = window.pageYOffset;
-            const translateY = scrollPosition * 0.5; // Adjust the parallax speed here
-            imageContainer.style.backgroundPositionY = `${translateY}px`;
+            const translateYImage = scrollPosition * 0.5; // Adjust the parallax speed for the image
+            const translateYText = scrollPosition * 1.2; // Adjust the parallax speed for the text
+
+            imageContainer.style.backgroundPositionY = `${translateYImage}px`;
+            factoryDescription.style.transform = `translateY(${translateYText}px)`;
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -18,6 +22,8 @@ function StuckyFactory() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+
 
     return (
         <div className="stucky-factory">
