@@ -1,7 +1,7 @@
 :root {
-    --container-side-padding: 15%;
+    --container-side-padding: 10%;
     --container-top-padding: 5%;
-    --arcgis-app-height: 40vw;
+    --arcgis-app-height: 85vh;
     --title-font: "Judson", Serif;
     --title-font-size: 5vw;
 }
@@ -101,30 +101,29 @@
 }
 
 .appsContainer {
-    width: 50%;
+    width: 100%;
     margin: auto;
-    padding: 2%;
+    background-color: grey;
 }
 
 .mapsContainer {
     width: 100%;
     margin: auto;
     padding: 2%;
+    background-color: blue;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    padding-left: var(--container-side-padding);
-    padding-right: var(--container-side-padding);
-    padding-top: var(--container-top-padding);
-    padding-bottom: var(--container-top-padding);
+    padding: var(--container-top-padding) var(--container-side-padding);
     margin-top: 0; /* Adjusted margin-top to remove the white space */
 }
 
 .arcgis-app {
     width: 100%;
     height: var(--arcgis-app-height);
+    margin: auto;
 }
 
 .frontImage {
