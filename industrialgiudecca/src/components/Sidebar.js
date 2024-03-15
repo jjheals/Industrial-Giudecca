@@ -21,6 +21,9 @@ const Sidebar = () => {
                 <nav>
                     <ul>
                         <li className="sidebar-element">
+                            <Link to="/" onClick={toggleSidebar}>Home</Link>
+                        </li>
+                        <li className="sidebar-element">
                             <Link to="/factory" onClick={toggleSidebar}>Factories</Link>
                         </li>
                         <li className="sidebar-element">Ports</li>
