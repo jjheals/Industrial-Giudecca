@@ -31,6 +31,7 @@ main {
 
 .landscape-item {
     font-family: "Lato";
+    font-size: 1vw;
     text-align: center;
     background-color: #ffffff;
     border-radius: 10px;

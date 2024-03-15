@@ -81,14 +81,17 @@ nav ul li a {
     margin: 10px 0;
     padding: 10px;
     transition: background-color 0.3s ease;
-    background-color: #0091ff;
-    color: #fff;
+    color: #009dff;
     text-transform: uppercase;
     cursor: pointer;
 }
 
 .sidebar-element:first-letter {
     font-size: larger;
+}
+
+.sidebar-link:visited { 
+    color: #009dff;
 }
 
 .sidebar-element:hover {
