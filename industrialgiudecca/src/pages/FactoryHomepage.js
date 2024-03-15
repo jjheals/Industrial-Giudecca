@@ -28,6 +28,13 @@ class Factory {
         this.Building_ID = attributes.Building_ID;
         this.x_coord = geometry.x;
         this.y_coord = geometry.y;
+
+        const name = attributes.English_Name;
+        if(name == null) { 
+            this.link = `/id-${attributes.Factory_ID}`;
+        } else { 
+            this.link = `/${name.toLowerCase().replace(/ /g, '-')}`;
+        }
     }
 
     toString() { 
