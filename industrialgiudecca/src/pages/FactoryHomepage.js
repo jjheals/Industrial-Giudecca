@@ -75,10 +75,8 @@ function FactoryHomepage() {
             <div>
                 <Sidebar isOpen={showSidebar} />
             </div>
-            <header>
-                <h1>La Giudecca Factories</h1>
-            </header>
             <main>
+                <h1>La Giudecca Factories</h1>
                 <section className="landscape-grid">
                     {factories.map(factory => (
                         <div className="landscape-item" key={factory.Factory_ID}>

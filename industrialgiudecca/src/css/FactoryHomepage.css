@@ -2,7 +2,7 @@
 .factory-homepage {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 5% 0;
+    padding: 0;
     background-color: #f8f8f8;
 }
 
@@ -13,17 +13,20 @@ h1 {
     color: #333333;
     text-align: center;
     padding-bottom: 5%;
+    padding-top: 4%;
 }
 
 main {
     margin: 0 auto;
-    padding: 3vw;
+    background-color: #f8f8f8;
 }
 
 .landscape-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
     gap: 2vw;
+    padding-top: 2%;
+    background-color: #f8f8f8;
 }
 
 .landscape-item {
