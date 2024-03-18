@@ -19,7 +19,7 @@ function Homepage() {
             if (blurbElement) {
                 const scrollPosition = window.scrollY;
                 const blurbHeight = blurbElement.offsetHeight;
-                const scrollThreshold = blurbHeight * 0.3;
+                const scrollThreshold = blurbHeight * 0.7;
 
                 if (scrollPosition < scrollThreshold) {
                     const opacity = 1 - scrollPosition / scrollThreshold;

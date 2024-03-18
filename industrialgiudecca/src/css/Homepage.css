@@ -78,7 +78,7 @@
     z-index: 1;
     background-color: white;
     opacity: 1;
-    transition: opacity 1s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
+    transition: opacity 0s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
 }
 
 #blurb.fade-out {
