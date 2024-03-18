@@ -47,23 +47,22 @@ export default class Factory {
     }
 
     async getFactoryImage(apiToken) { 
-        // Get the attachments for this feature
-        const attachments = await getAttachments({
-            url: `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/2/attachments/1`,
-            objectId: 2,
-            params: {
-                'token': apiToken
-            }
-        })
-        .then(response => {
-            // Handle the response, which contains the attachments
-            console.log(response);
-            this.attachment = response.Attachment
-        })
-        .catch(error => {
+
+        try { 
+            const attachmentURL = `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/${this.OBJECTID}/attachments/1?token=${apiToken}`;
+        
+            // Get the ID of the element to display the image, which is identified by the factory ID
+            const elm = document.getElementById(this.Factory_ID);
+    
+            const img = document.createElement('img');  // Create img element 
+            img.src = attachmentURL;                    // Set img src 
+            elm.appendChild(img);                       // Append img to the elm 
+
+        } catch(error) { 
             // Handle any errors that occur during the request
             console.error('Error fetching attachments:', error);
-        });
+        }
+        
     }
 }
 

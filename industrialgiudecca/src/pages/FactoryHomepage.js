@@ -3,9 +3,12 @@ import { React, useState, useEffect } from 'react';
 import '../css/FactoryHomepage.css';
 import Factory from '../Factory.js';
 import Sidebar from '../components/Sidebar';
+import { Link } from 'react-router-dom';
+
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import { queryFeatures, getAttachments } from '@esri/arcgis-rest-feature-service';
 import { ApiKeyManager } from '@esri/arcgis-rest-request';
-import { Link } from 'react-router-dom';
+
 
 /** fetchFactoriesFL(serviceURL) 
  * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
@@ -14,6 +17,7 @@ import { Link } from 'react-router-dom';
  */
 async function fetchFactoriesFL(serviceURL, apiToken) { 
     try {
+        
         const authentication = ApiKeyManager.fromKey(apiToken);
         const response = await queryFeatures({
             url: serviceURL,
@@ -22,11 +26,15 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
 
         // Process the response and convert features into factories
         const factories = response.features.map(feature => {
+
+            console.log(feature);
+
             let factory = new Factory(feature.attributes, feature.geometry);
+            console.log(factory.Factory_ID);
             factory.getFactoryImage(apiToken);
             return factory;
         });
-
+        
         // Return the list of factories
         return factories;
 
