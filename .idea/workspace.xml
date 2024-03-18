@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="added photos bar">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/public/Junghas.JPG" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="photos tab">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/public/giudeccaHomePage.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Photos.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Photos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +72,7 @@
       <updated>1710335489029</updated>
       <workItem from="1710335490217" duration="4554000" />
       <workItem from="1710403808707" duration="9834000" />
-      <workItem from="1710490748477" duration="9756000" />
+      <workItem from="1710490748477" duration="14509000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -185,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710751264755</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="photos tab">
+      <option name="closed" value="true" />
+      <created>1710752272876</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1710752272876</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +224,7 @@
     <MESSAGE value="paralax text header needs to be fixed" />
     <MESSAGE value="fixed header size" />
     <MESSAGE value="added photos bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="added photos bar" />
+    <MESSAGE value="photos tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="photos tab" />
   </component>
 </project>

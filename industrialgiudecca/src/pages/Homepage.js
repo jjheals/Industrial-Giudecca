@@ -91,7 +91,7 @@ function Homepage() {
                 </div>
             </div>
             <Link to="/factory">
-                <img id="frontImage" src={`${process.env.PUBLIC_URL}/stuckyHome.jpg`} alt="Description" />
+                <img id="frontImage" src={`${process.env.PUBLIC_URL}/giudeccaHomePage.png`} alt="Description" />
             </Link>
 
             <body>
