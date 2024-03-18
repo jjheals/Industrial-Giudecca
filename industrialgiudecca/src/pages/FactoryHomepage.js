@@ -45,7 +45,7 @@ function FactoryHomepage() {
         // Fetch factories when component mounts
         fetchFactoriesFL(
             'https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0',
-            '3NKHt6i2urmWtqOuugvr9YgWD2FI3S8qQKSYvQfU6QUo2UNB3HYJ_7AF8pAmA-wtsJl-3gGpm0rKqMc92iIg8s1nnjdCJ9x7OnIJ-S7fahzXA3d3xqjYPOLLLhFVytvq'
+            '3NKHt6i2urmWtqOuugvr9bevU-gLa9CF7chw9jELL2d36pRwGZw70-ESHTXhjnDpYpa1ny0h6lh9-vFqqNkosSpNi_AdUNTMHYywgQ04mBJ1NRmULiRACcrluFZupXom'
         )
         .then(factories => {
             setFactories(factories);
