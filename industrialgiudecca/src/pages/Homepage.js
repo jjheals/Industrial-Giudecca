@@ -72,7 +72,7 @@ function Homepage() {
             <div id="blurb" style={{ opacity: blurbOpacity }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
                 <div className="blurbRow" id="blurbTop">
                     <hr className="blurbDivider"></hr>
-                    <p className="blurbElm" id="blurbTitle">La Giudecca</p>
+                    <p className="blurbElm" id="blurbTitle">Industrial Giudeccna</p>
                     <p className="blurbElm" id="blurbSubtitle">"History without memory."</p>
                     <p className="blurbElm" id="blurbCredits">Mario Marinoni</p>
                     <hr className="blurbDivider"></hr>
