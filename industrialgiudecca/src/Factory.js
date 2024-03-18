@@ -56,6 +56,7 @@ export default class Factory {
     
             const img = document.createElement('img');  // Create img element 
             img.src = attachmentURL;                    // Set img src 
+            img.className = "factory-image";
             elm.appendChild(img);                       // Append img to the elm 
 
         } catch(error) { 

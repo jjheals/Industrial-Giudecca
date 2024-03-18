@@ -57,6 +57,12 @@ main {
     background-color: rgb(0, 120, 167);
 }
 
+.factory-image { 
+    width: 17vw;
+    height: 16vw;
+}
+
+
 footer {
     background-color: #ffffff;
     padding: 1.5vw;
