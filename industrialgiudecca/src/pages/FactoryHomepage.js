@@ -70,7 +70,7 @@ function FactoryHomepage() {
             </div>
             <main>
                 <hr class="title-hr"></hr>
-                <h1 id="title">La Giudecca Factories</h1>
+                <h1 id="title">Giudecca Factories</h1>
                 <hr class="title-hr"></hr>
 
                 <section className="landscape-grid">
