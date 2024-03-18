@@ -21,7 +21,7 @@ export default class Factory {
         this.x_coord = geometry.x;
         this.y_coord = geometry.y;
         this.attachment = null;
-
+        
         const name = attributes.English_Name;
         if(name == null) { 
             this.link = `/id-${attributes.Factory_ID}`;
@@ -47,17 +47,67 @@ export default class Factory {
     }
 
     async getFactoryImage(apiToken) { 
+        // Url to get ALL attachments for an image
+        const attachmentsBaseURL = `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/${this.OBJECTID}/attachments`;
 
+        // Get info for all attachments and refine down to the FIRST (to be used as the cover on factories homepage)
+        fetch(`${attachmentsBaseURL}?token=${apiToken}`)
+        .then(response => { 
+            // Make sure response was OK
+            if(!response.ok) { 
+                throw new Error(`Error retrieving attachments for ${this.Factory_ID} (${this.English_Name})`);
+            }
+            return response.text() 
+        })
+        .then(html => {             
+
+            // Make API req and parse the HTML to extract a specific cell, since it will always be the same format
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const table = doc.getElementsByClassName('ftrTable');
+
+            // Return if there are no results (i.e. no attachments)
+            if(table.length == 0) return;
+            
+            // Extract the cells
+            const cells = doc.querySelectorAll('td');
+
+            // Extract the cell containing the ID
+            const idCell = cells[4];
+
+            console.log("ID");
+            console.log(idCell.textContent);
+
+            return idCell.textContent;
+        })
+        .then(attachmentID => { 
+            // Now get the attachment we want
+            const attachmentURL = `${attachmentsBaseURL}/${attachmentID}?token=${apiToken}`;
+            this.setFactoryImage(attachmentURL);
+            return;
+        })
+        .catch(error => { 
+            console.error(error);
+        });
+    }
+
+    
+    async setFactoryImage(url) { 
+        console.log(`Setting attachment for ${this.Factory_ID} (${this.English_Name})`)
         try { 
-            const attachmentURL = `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/${this.OBJECTID}/attachments/1?token=${apiToken}`;
-        
+            
             // Get the ID of the element to display the image, which is identified by the factory ID
             const elm = document.getElementById(this.Factory_ID);
-    
+            
+            console.log("Elm");
+            console.log(elm);
+
             const img = document.createElement('img');  // Create img element 
-            img.src = attachmentURL;                    // Set img src 
+            img.src = url;                              // Set img src 
             img.className = "factory-image";
             elm.appendChild(img);                       // Append img to the elm 
+
+            console.log(`Got attachment for ${this.English_Name}`)
 
         } catch(error) { 
             // Handle any errors that occur during the request

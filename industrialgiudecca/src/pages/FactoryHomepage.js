@@ -26,12 +26,9 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
 
         // Process the response and convert features into factories
         const factories = response.features.map(feature => {
-
-            console.log(feature);
-
             let factory = new Factory(feature.attributes, feature.geometry);
-            console.log(factory.Factory_ID);
             factory.getFactoryImage(apiToken);
+
             return factory;
         });
         
@@ -49,11 +46,13 @@ function FactoryHomepage() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [factories, setFactories] = useState([]);
 
+    const apiKey = '3NKHt6i2urmWtqOuugvr9blOnLZpJqiBTYW9VbjM6BHxkj7XzuhWyLJOFgKwQNc_I5S-1B9QAaoYVpDvmPR61SJYpymgi3BIKoFbOnMBNf0BZRLehUgokLF7RYxcaNsq';
+
     useEffect(() => {
         // Fetch factories when component mounts
         fetchFactoriesFL(
             'https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0',
-            '3NKHt6i2urmWtqOuugvr9aeK3n6iJw1W9RNI7-pibFhi8p0vzacDDnDLshWdIeWNErZtkkhC5m1WQZ2iZ0nwyk51ZX5gyW5bkiL-d7jHrGLGdoUTzvnKYk6GckbPZITI'
+            apiKey
         )
         .then(factories => {
             setFactories(factories);
