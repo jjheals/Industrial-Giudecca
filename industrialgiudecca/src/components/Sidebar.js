@@ -26,8 +26,12 @@ const Sidebar = () => {
                         <li className="sidebar-element">
                             <Link class="sidebar-link" to="/factory" onClick={toggleSidebar}>Factories</Link>
                         </li>
+
                         <li className="sidebar-element">Ports</li>
-                        <li className="sidebar-element">Photo Gallery</li>
+
+                        <li className="sidebar-element">
+                            <Link class={"sidebar-link"} to="/photos" onClick={toggleSidebar}>Photos</Link>
+                        </li>
                         <li className="sidebar-element">Data Sheets</li>
                     </ul>
                 </nav>
