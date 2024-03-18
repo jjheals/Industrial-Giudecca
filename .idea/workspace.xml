@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="stucky paralax scroll fixed">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed header size">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Photos.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/StuckyFactory.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/StuckyFactory.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/StuckyFactory.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/StuckyFactory.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -72,7 +74,7 @@
       <updated>1710335489029</updated>
       <workItem from="1710335490217" duration="4554000" />
       <workItem from="1710403808707" duration="9834000" />
-      <workItem from="1710490748477" duration="5334000" />
+      <workItem from="1710490748477" duration="8740000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -162,7 +164,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710503938833</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="paralax text header needs to be fixed">
+      <option name="closed" value="true" />
+      <created>1710511864285</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710511864285</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fixed header size">
+      <option name="closed" value="true" />
+      <created>1710511971386</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1710511971387</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +207,8 @@
     <MESSAGE value="header is gone" />
     <MESSAGE value="paralaxing text scroll" />
     <MESSAGE value="stucky paralax scroll fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="stucky paralax scroll fixed" />
+    <MESSAGE value="paralax text header needs to be fixed" />
+    <MESSAGE value="fixed header size" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed header size" />
   </component>
 </project>

@@ -12,7 +12,7 @@ function StuckyFactory() {
             const imageContainer = document.querySelector('.factory-image-container');
 
             // Adjust parallax effect for the image
-            const translateYImage = currentScrollY * 0.7;
+            const translateYImage = currentScrollY * 0.3;
             imageContainer.style.transform = `translateY(${translateYImage}px)`;
 
             // Determine scroll direction to show/hide header
