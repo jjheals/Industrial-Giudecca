@@ -12,9 +12,9 @@ function Photos() {
             <header className={headerVisible ? '' : 'hidden'}>
                 <h1>Photos</h1>
                 <div
-                    className="photo-container"
+                    className="factory-image-container"
                     style={{
-                        backgroundImage: `url(https://www.industrialgiudecca.com/static/images/industrial-giudecca-1.jpg)`
+                        backgroundImage: `url(${process.env.PUBLIC_URL}/Junghas.jpg)`,
                     }}
                 ></div>
             </header>
