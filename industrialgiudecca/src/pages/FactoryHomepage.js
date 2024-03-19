@@ -44,7 +44,7 @@ function FactoryHomepage() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [factories, setFactories] = useState([]);
 
-    const apiKey = '3NKHt6i2urmWtqOuugvr9XXpmJaJ2RIkDkWhTqUtRJ5eb3vxJXVbeDs_5N6Iquttxd2prsMurr8vzphx--41FWENCL5fNhJUY-J3o968IgTa_jWTuws4jC5SFVrwVC-A';
+    const apiKey = '3NKHt6i2urmWtqOuugvr9cb9GkPiQ1WCsUyTbksT21Rzw-bIiXNn6GU8CgAuSR2Q7L8GLOJGkFPiAI73QPID2Lk3sidPRJFACtxyCRF3Eb63SucyUUS01XX4jC7fUbTv';
 
     useEffect(() => {
         // Fetch factories FL when component mounts
