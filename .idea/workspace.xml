@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="Updated accordion stuff">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Accordion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Accordion.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Accordion.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +72,7 @@
       <workItem from="1710335490217" duration="4554000" />
       <workItem from="1710403808707" duration="9834000" />
       <workItem from="1710490748477" duration="15346000" />
-      <workItem from="1710835470668" duration="14250000" />
+      <workItem from="1710835470668" duration="15091000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -207,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710772095528</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Updated accordion stuff">
+      <option name="closed" value="true" />
+      <created>1710874638925</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1710874638925</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

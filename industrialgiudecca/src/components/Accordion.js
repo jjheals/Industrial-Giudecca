@@ -5,25 +5,34 @@ import '../css/Accordion.css';
 const Accordion = () => {
     const [activeTab, setActiveTab] = useState(null);
 
+    // Define an array of factory objects, each with a name and id
+    const factories = [
+        { id: 1, name: "Stucky" },
+        { id: 2, name: "Fortuny" },
+        { id: 3, name: "Junghans" },
+        { id: 4, name: "Factory 4" },
+        { id: 5, name: "Factory 5" },
+    ];
+
     const toggleTab = (index) => {
         setActiveTab(activeTab === index ? null : index);
     };
 
     return (
         <div className="accordion">
-            {[1, 2, 3, 4, 5].map((tabNumber) => (
+            {factories.map((factory) => (
                 <div
-                    key={tabNumber}
-                    className={`accordion-tab ${activeTab === tabNumber ? 'active' : ''}`}
-                    onClick={() => toggleTab(tabNumber)}
+                    key={factory.id}
+                    className={`accordion-tab ${activeTab === factory.id ? 'active' : ''}`}
+                    onClick={() => toggleTab(factory.id)}
                 >
-                    <div className="accordion-title">Factory {tabNumber}</div>
+                    <div className="accordion-title">{factory.name}</div>
                     <div className="accordion-content">
                         <Link
-                            to={tabNumber === 1 ? '/factory' : `#tab${tabNumber}`}
+                            to={factory.id === 1 ? '/factory' : `#tab${factory.id}`}
                             className="content-link"
                         >
-                            {tabNumber === 1 ? (
+                            {factory.id === 1 ? (
                                 <img
                                     id="frontImage"
                                     src={`${process.env.PUBLIC_URL}/Stucky.jpeg`}
@@ -33,7 +42,7 @@ const Accordion = () => {
                                 <div className="placeholder-box"></div>
                             )}
 
-                            {tabNumber === 2 ? (
+                            {factory.id === 2 ? (
                                 <img
                                     id="frontImage"
                                     src={`${process.env.PUBLIC_URL}/Fortuny.jpeg`}
@@ -43,7 +52,7 @@ const Accordion = () => {
                                 <div className="placeholder-box"></div>
                             )}
 
-                            {tabNumber === 3 ? (
+                            {factory.id === 3 ? (
                                 <img
                                     id="frontImage"
                                     src={`${process.env.PUBLIC_URL}/Junghas.jpg`}
@@ -53,7 +62,7 @@ const Accordion = () => {
                                 <div className="placeholder-box"></div>
                             )}
 
-                            {tabNumber === 4 ? (
+                            {factory.id === 4 ? (
                                 <img
                                     id="frontImage"
                                     src={`${process.env.PUBLIC_URL}/giudeccaHomePage.png`}
@@ -63,7 +72,7 @@ const Accordion = () => {
                                 <div className="placeholder-box"></div>
                             )}
 
-                            {tabNumber === 5 ? (
+                            {factory.id === 5 ? (
                                 <img
                                     id="frontImage"
                                     src={`${process.env.PUBLIC_URL}/giudeccaHomePage.png`}
