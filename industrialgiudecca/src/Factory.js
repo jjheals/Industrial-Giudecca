@@ -30,8 +30,7 @@ export default class Factory {
     }
 
     /** toString() 
-     * @abstract return the attributes of this factory instance as a coherent string, to be used 
-     *           primarily for debugging
+     * @abstract return the attributes of this factory instance as a coherent string, to be used primarily for debugging
      * @returns {string} a string representation of this factory
      */
     toString() { 
@@ -50,6 +49,11 @@ export default class Factory {
         return s;
     }
 
+    /** getAllFactoryImageURLs(apiToken)
+     * @abstract retrieves all attachment IDs for this Factory instance's OBJECTID
+     * @param {string} apiToken 
+     * @returns 
+     */
     async getAllFactoryImageURLs(apiToken) { 
         /* 
          * NOTE: ArcGIS API does not properly return the attachments for features, and there is not a "standard" (i.e. repeateable) pattern
@@ -102,17 +106,13 @@ export default class Factory {
      * @returns {null} calls this.setFactoryImage and sets the image on FactoryHomepage 
      */
     async getCoverImageURL(apiToken) { 
-        
         try { 
-            // Url to get ALL attachments for a factory (a feature)
+            // Get the URLs for all the attachments for this factory
             const allAttachmentURLs = await this.getAllFactoryImageURLs(apiToken);
 
-            if(allAttachmentURLs.length > 0) {
-                this.coverPicURL = allAttachmentURLs[0];
-                console.log(`Cover pic URL (${this.English_Name}): ${this.coverPicURL}`);
-            }
+            // Check if there are any attachments, set this.coverPicURL with the FIRST if there are
+            if(allAttachmentURLs.length > 0) this.coverPicURL = allAttachmentURLs[0];
 
-            
             // Check if the img placeholder exists and set the src if it does
             let img = document.getElementById(this.Factory_ID);
             if(img && this.coverPicURL) { 

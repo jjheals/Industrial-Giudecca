@@ -4,8 +4,9 @@ import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 
 /** fetchFactoriesFL(serviceURL) 
  * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
- * @param {string} serviceURL 
- * @returns {dict} dictionary of the { features, attributes }
+ * @param {string} serviceURL - ArcGIS service endpoint
+ * @param {string} apiToken - API acccess token 
+ * @returns {Array} array of Factory objects
  */
 async function fetchFactoriesFL(serviceURL, apiToken) { 
     try {
