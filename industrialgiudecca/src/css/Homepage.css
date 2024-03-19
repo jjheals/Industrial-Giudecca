@@ -176,3 +176,13 @@
         transform: rotate(45deg) translate(10px, 10px);
     }
 }
+
+
+
+.accordion-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 100px;
+}
