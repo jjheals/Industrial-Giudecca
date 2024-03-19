@@ -10,7 +10,7 @@ const Accordion = () => {
         { id: 1, name: "Stucky" },
         { id: 2, name: "Fortuny" },
         { id: 3, name: "Junghans" },
-        { id: 4, name: "Factory 4" },
+        { id: 4, name: "Hérion" },
         { id: 5, name: "Factory 5" },
     ];
 
@@ -65,7 +65,7 @@ const Accordion = () => {
                             {factory.id === 4 ? (
                                 <img
                                     id="frontImage"
-                                    src={`${process.env.PUBLIC_URL}/giudeccaHomePage.png`}
+                                    src={`${process.env.PUBLIC_URL}/Herion-advertisement.JPG`}
                                     alt="Description"
                                 />
                             ) : (
