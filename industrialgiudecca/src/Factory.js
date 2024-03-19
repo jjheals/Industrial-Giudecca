@@ -3,7 +3,7 @@ import { getAttachments } from '@esri/arcgis-rest-feature-service';
 export default class Factory { 
 
     /** Factory(attributes, geometry)
-     * @abstract 
+     * @abstract a Factory object containing the attributes for a "Factory" 
      * @param {dict} attributes 
      * @param {dict} geometry 
      */
@@ -30,6 +30,11 @@ export default class Factory {
         }
     }
 
+    /** toString() 
+     * @abstract return the attributes of this factory instance as a coherent string, to be used 
+     *           primarily for debugging
+     * @returns {string} a string representation of this factory
+     */
     toString() { 
         let s = `Factory: ${this.English_Name} (${this.Factory_ID})\n`;
         s += `\tOpening Date: ${this.Opening_Date}\n`;
@@ -47,7 +52,15 @@ export default class Factory {
     }
 
     async getFactoryImage(apiToken) { 
-        // Url to get ALL attachments for an image
+        /* 
+         * NOTE: ArcGIS API does not properly return the attachments for features, and there is not a "standard" (i.e. repeateable) pattern
+         *       for retrieving the attachments for a particular feature. Moreover, the PJSON API endpoint gives consistent CORS errors. To
+         *       get around this, we used the HTML endpoint for this Feature Layer (attachmentsBaseURL below) with the specific OBJECTID to
+         *       get the HTML page containing the IDs for each attachment for this feature (this OBJECTID). Then, we extracted the 
+         *       attachment IDs by parsing the HTML and relying on its' consistent structure across Features. 
+         */
+
+        // Url to get ALL attachments for a factory (a feature)
         const attachmentsBaseURL = `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/${this.OBJECTID}/attachments`;
 
         // Get info for all attachments and refine down to the FIRST (to be used as the cover on factories homepage)
@@ -57,22 +70,24 @@ export default class Factory {
             if(!response.ok) { 
                 throw new Error(`Error retrieving attachments for ${this.Factory_ID} (${this.English_Name})`);
             }
+            // Return the HTML as text
             return response.text() 
         })
         .then(html => {             
 
-            // Make API req and parse the HTML to extract a specific cell, since it will always be the same format
+            // Parse the HTML text to extract a specific element, since the page will always be the same format
+            // The element we want is the first attachment ID, which appears as the text content in the fifth (index 4) <td> tag 
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             const table = doc.getElementsByClassName('ftrTable');
 
             // Return if there are no results (i.e. no attachments)
-            if(table.length == 0) return;
+            if(table.length == 0) return -1;
             
             // Extract the cells
             const cells = doc.querySelectorAll('td');
 
-            // Extract the cell containing the ID
+            // Extract the cell containing the ID (number 5, index 4)
             const idCell = cells[4];
 
             console.log("ID");
@@ -81,7 +96,10 @@ export default class Factory {
             return idCell.textContent;
         })
         .then(attachmentID => { 
-            // Now get the attachment we want
+            // Check if there are any attachments for this factory - previous .then returns -1 if there are no attachments
+            if(attachmentID < 0) return; 
+
+            // Now create the URL to the specific attachment we want and use this as the "src" attribute when setting the img 
             const attachmentURL = `${attachmentsBaseURL}/${attachmentID}?token=${apiToken}`;
             this.setFactoryImage(attachmentURL);
             return;
@@ -93,24 +111,11 @@ export default class Factory {
 
     
     async setFactoryImage(url) { 
-        console.log(`Setting attachment for ${this.Factory_ID} (${this.English_Name})`)
         try { 
-            
             // Get the ID of the element to display the image, which is identified by the factory ID
-            const elm = document.getElementById(this.Factory_ID);
-            
-            console.log("Elm");
-            console.log(elm);
-
-            const img = document.createElement('img');  // Create img element 
-            img.src = url;                              // Set img src 
-            img.className = "factory-image";
-            elm.appendChild(img);                       // Append img to the elm 
-
-            console.log(`Got attachment for ${this.English_Name}`)
-
+            const img = document.getElementById(this.Factory_ID);   // Get the element we want (an <img>)
+            img.src = url;                                          // Set img src 
         } catch(error) { 
-            // Handle any errors that occur during the request
             console.error('Error fetching attachments:', error);
         }
         

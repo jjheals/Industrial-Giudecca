@@ -17,7 +17,7 @@ import { ApiKeyManager } from '@esri/arcgis-rest-request';
  */
 async function fetchFactoriesFL(serviceURL, apiToken) { 
     try {
-        
+        // Authentication for ArcGIS API
         const authentication = ApiKeyManager.fromKey(apiToken);
         const response = await queryFeatures({
             url: serviceURL,
@@ -28,7 +28,6 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
         const factories = response.features.map(feature => {
             let factory = new Factory(feature.attributes, feature.geometry);
             factory.getFactoryImage(apiToken);
-
             return factory;
         });
         
@@ -37,8 +36,7 @@ async function fetchFactoriesFL(serviceURL, apiToken) {
 
     } catch (error) {
         console.error('Error fetching factories:', error);
-        // Return an empty array in case of error
-        return [];
+        return [];  // Return an empty array in case of error
     }
 }
 
@@ -46,15 +44,16 @@ function FactoryHomepage() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [factories, setFactories] = useState([]);
 
-    const apiKey = '3NKHt6i2urmWtqOuugvr9blOnLZpJqiBTYW9VbjM6BHxkj7XzuhWyLJOFgKwQNc_I5S-1B9QAaoYVpDvmPR61SJYpymgi3BIKoFbOnMBNf0BZRLehUgokLF7RYxcaNsq';
+    const apiKey = '3NKHt6i2urmWtqOuugvr9XXpmJaJ2RIkDkWhTqUtRJ5eb3vxJXVbeDs_5N6Iquttxd2prsMurr8vzphx--41FWENCL5fNhJUY-J3o968IgTa_jWTuws4jC5SFVrwVC-A';
 
     useEffect(() => {
-        // Fetch factories when component mounts
+        // Fetch factories FL when component mounts
         fetchFactoriesFL(
             'https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0',
             apiKey
         )
         .then(factories => {
+            // Set the factories on the page
             setFactories(factories);
         })
         .catch(error => {
@@ -76,7 +75,7 @@ function FactoryHomepage() {
                     {factories.map(factory => (
                         <div className="landscape-item" key={factory.Factory_ID}>
                             <Link to={factory.link} className="landscape-link">
-                                <div id={factory.Factory_ID} className="landscape-placeholder"></div>
+                                <img id={factory.Factory_ID} class="landscape-placeholder factory-image"></img>
                             </Link>
                             <h2>{factory.English_Name}</h2>
                         </div>
