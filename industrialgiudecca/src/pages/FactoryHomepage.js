@@ -10,7 +10,7 @@ import fetchFactoriesFL from '../ArcGIS.js';
 function FactoryHomepage() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [factories, setFactories] = useState([]);
-    const apiKey = '3NKHt6i2urmWtqOuugvr9UORX5H_n9tw1Y1cFzHbykS1c3JjRavkrcTw_1Y2smEaR9EdgTsKLwWrViMjE-qkeBqxPD2k_nefsniHqeqIbfEcQOEMEav7Sj3_zeRGRFWa';
+    const apiKey = '3NKHt6i2urmWtqOuugvr9QHf5lEBdnOql-tXB9ckEk9cMpOIW659_I1DR9smHewTYA_GujcdxQFKXuHVvY_9TL8rUn-O82zVQT4BKzKAyhmHkFmUNG9gkIJBDb-aQK8E';
 
     useEffect(() => {
         // Fetch factories FL when component mounts
