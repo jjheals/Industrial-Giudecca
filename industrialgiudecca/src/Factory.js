@@ -7,7 +7,7 @@ export default class Factory {
      * @param {dict} attributes 
      * @param {dict} geometry 
      */
-    constructor(attributes, geometry, img_url) { 
+    constructor(attributes, geometry, apiToken) { 
         this.OBJECTID = attributes.OBJECTID;
         this.Opening_Date = attributes.Opening_Date;
         this.Closing_Date = attributes.Closing_Date;
@@ -19,9 +19,8 @@ export default class Factory {
         this.Factory_Active = attributes.Factory_Active;
         this.Building_ID = attributes.Building_ID;
         this.x_coord = geometry.x;
-        this.y_coord = geometry.y;
-        this.attachment = null;
-        
+        this.y_coord = geometry.y; 
+
         const name = attributes.English_Name;
         if(name == null) { 
             this.link = `/id-${attributes.Factory_ID}`;
@@ -51,7 +50,7 @@ export default class Factory {
         return s;
     }
 
-    async getFactoryImage(apiToken) { 
+    async getAllFactoryImageURLs(apiToken) { 
         /* 
          * NOTE: ArcGIS API does not properly return the attachments for features, and there is not a "standard" (i.e. repeateable) pattern
          *       for retrieving the attachments for a particular feature. Moreover, the PJSON API endpoint gives consistent CORS errors. To
@@ -64,61 +63,66 @@ export default class Factory {
         const attachmentsBaseURL = `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/${this.OBJECTID}/attachments`;
 
         // Get info for all attachments and refine down to the FIRST (to be used as the cover on factories homepage)
-        fetch(`${attachmentsBaseURL}?token=${apiToken}`)
-        .then(response => { 
+        try {
+            const response = await fetch(`${attachmentsBaseURL}?token=${apiToken}`);
+            
             // Make sure response was OK
-            if(!response.ok) { 
+            if (!response.ok) {
                 throw new Error(`Error retrieving attachments for ${this.Factory_ID} (${this.English_Name})`);
             }
-            // Return the HTML as text
-            return response.text() 
-        })
-        .then(html => {             
 
-            // Parse the HTML text to extract a specific element, since the page will always be the same format
-            // The element we want is the first attachment ID, which appears as the text content in the fifth (index 4) <td> tag 
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const table = doc.getElementsByClassName('ftrTable');
+            // Handle response 
+            const html = await response.text();                     // Extract the HTML response
+            const parser = new DOMParser();                         // Init HTML parser
+            const doc = parser.parseFromString(html, 'text/html');  // Parse the HTML
+            const ftrTables = doc.getElementsByClassName('ftrTable');     // Find all the ftrTable class objs
 
-            // Return if there are no results (i.e. no attachments)
-            if(table.length == 0) return -1;
-            
-            // Extract the cells
-            const cells = doc.querySelectorAll('td');
+            // Return if there are no attachments 
+            if(ftrTables.length == 0) return [];
 
-            // Extract the cell containing the ID (number 5, index 4)
-            const idCell = cells[4];
+            // Extract the ID from the second <td> tag (index 4)
+            let attachmentURLs = [];
 
-            console.log("ID");
-            console.log(idCell.textContent);
-
-            return idCell.textContent;
-        })
-        .then(attachmentID => { 
-            // Check if there are any attachments for this factory - previous .then returns -1 if there are no attachments
-            if(attachmentID < 0) return; 
-
-            // Now create the URL to the specific attachment we want and use this as the "src" attribute when setting the img 
-            const attachmentURL = `${attachmentsBaseURL}/${attachmentID}?token=${apiToken}`;
-            this.setFactoryImage(attachmentURL);
-            return;
-        })
-        .catch(error => { 
+            for(let table of ftrTables) { 
+                const firstRow = table.querySelector('tr');
+                const attachmentID = firstRow.querySelectorAll('td')[1].textContent.trim();
+                const attachmentURL = `${attachmentsBaseURL}/${attachmentID}?token=${apiToken}`;   
+                attachmentURLs.push(attachmentURL);
+            }
+            return attachmentURLs;
+        } catch (error) {
             console.error(error);
-        });
+            return "";
+        }
     }
 
-    
-    async setFactoryImage(url) { 
-        try { 
-            // Get the ID of the element to display the image, which is identified by the factory ID
-            const img = document.getElementById(this.Factory_ID);   // Get the element we want (an <img>)
-            img.src = url;                                          // Set img src 
-        } catch(error) { 
-            console.error('Error fetching attachments:', error);
-        }
+    /** getFactoryImage(apiToken)
+     * @abstract fetch the first image (i.e. the cover image) for this factory
+     * @param {string} apiToken 
+     * @returns {null} calls this.setFactoryImage and sets the image on FactoryHomepage 
+     */
+    async getCoverImageURL(apiToken) { 
         
+        try { 
+            // Url to get ALL attachments for a factory (a feature)
+            const allAttachmentURLs = await this.getAllFactoryImageURLs(apiToken);
+
+            if(allAttachmentURLs.length > 0) {
+                this.coverPicURL = allAttachmentURLs[0];
+                console.log(`Cover pic URL (${this.English_Name}): ${this.coverPicURL}`);
+            }
+
+            
+            // Check if the img placeholder exists and set the src if it does
+            let img = document.getElementById(this.Factory_ID);
+            if(img && this.coverPicURL) { 
+                // img exists, so set the src
+                console.log(`Setting src for ${this.English_Name}`)
+                img.src = this.coverPicURL;
+            }
+        } catch(error) { 
+            console.log(`Error retrieving cover image URL for ${this.Factory_ID} (${this.Factory_ID})`, error)
+        }
     }
 }
 

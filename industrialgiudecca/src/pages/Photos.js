@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import { Link } from 'react-router-dom';
+import Factory from '../Factory';
 
 function Photos() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [headerVisible, setHeaderVisible] = useState(true);
 
-
+    
     return (
         <div className="photos">
             <header className={headerVisible ? '' : 'hidden'}>

@@ -92,6 +92,7 @@ nav ul li a {
 
 .sidebar-link { 
     transition: font-size 0.3s ease;
+    color: #009dff;
 }
 
 .sidebar-link:visited { 
