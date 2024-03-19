@@ -11,7 +11,7 @@ const Accordion = () => {
         { id: 2, name: "Fortuny" },
         { id: 3, name: "Junghans" },
         { id: 4, name: "Hérion" },
-        { id: 5, name: "Factory 5" },
+        { id: 5, name: "Dreher" },
     ];
 
     const toggleTab = (index) => {
@@ -75,7 +75,7 @@ const Accordion = () => {
                             {factory.id === 5 ? (
                                 <img
                                     id="frontImage"
-                                    src={`${process.env.PUBLIC_URL}/giudeccaHomePage.png`}
+                                    src={`${process.env.PUBLIC_URL}/Dreher.jpeg`}
                                     alt="Description"
                                 />
                             ) : (
