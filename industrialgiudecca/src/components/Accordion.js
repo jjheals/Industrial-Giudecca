@@ -35,7 +35,7 @@ const Accordion = () => {
                         >
                             <img
                                 id="frontImage"
-                                src={`${process.env.PUBLIC_URL}/${factory.name}.jpeg`} // Make sure these images are named correecly
+                                src={`${process.env.PUBLIC_URL}/${factory.name}.jpeg`} // Make sure these images are named correctly
                                 alt={factory.name}
                             />
                         </Link>
