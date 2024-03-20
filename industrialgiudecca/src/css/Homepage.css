@@ -135,10 +135,8 @@
 }
 
 #blurbScroll {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,20 +144,19 @@
 
 #blurbScrollText {
     font-family: var(--title-font);
-    font-size: 1.0vw;
+    font-size: 0.75vw;
     margin-bottom: 10px;
     opacity: 0.8;
 }
 
 .scrollArrow {
-    width: 10px;
-    height: 10px;
+    width: 7.5px;
+    height: 7.5px;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     transform: rotate(45deg);
     animation: scrollAnimation 3s infinite;
     opacity: 0;
-
 }
 
 
