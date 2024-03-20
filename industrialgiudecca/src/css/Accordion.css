@@ -1,9 +1,9 @@
 .accordion {
     display: flex;
-    width: calc(100% - 40px); /* Adjust the width to account for the margin */
+    width: 100%;
     height: 66.67vh;
     overflow: hidden;
-    margin: 0 20px; /* Add a margin of 20px on the left and right */
+    margin: 10% 0;
 }
 
 .accordion-tab {
