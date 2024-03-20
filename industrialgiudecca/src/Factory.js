@@ -52,7 +52,7 @@ export default class Factory {
     /** getAllFactoryImageURLs(apiToken)
      * @abstract retrieves all attachment IDs for this Factory instance's OBJECTID
      * @param {string} apiToken 
-     * @returns 
+     * @returns {Array} an array of URLs for all of this Factory's attachments
      */
     async getAllFactoryImageURLs(apiToken) { 
         /* 
