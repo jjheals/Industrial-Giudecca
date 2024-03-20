@@ -24,7 +24,7 @@
     height: 100%;
 }
 
-.accordion-tab.active {
+.accordion-tab:hover {
     flex-basis: 60%;
     z-index: 1;
 }
@@ -57,7 +57,7 @@
     pointer-events: none;
 }
 
-.accordion-tab.active .content-link {
+.accordion-tab:hover .content-link {
     pointer-events: auto;
 }
 

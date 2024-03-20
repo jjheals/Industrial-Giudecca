@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="changed css a little for accordion">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="changed css a little for accordion no more overflow">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Accordion.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Accordion.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +74,7 @@
       <workItem from="1710403808707" duration="9834000" />
       <workItem from="1710490748477" duration="15346000" />
       <workItem from="1710835470668" duration="17906000" />
-      <workItem from="1710926755120" duration="1308000" />
+      <workItem from="1710926755120" duration="3360000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -226,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710927542169</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="changed css a little for accordion no more overflow">
+      <option name="closed" value="true" />
+      <created>1710928261170</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1710928261170</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +271,7 @@
     <MESSAGE value="Updated accordion stuff" />
     <MESSAGE value="Factory names" />
     <MESSAGE value="changed css a little for accordion" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed css a little for accordion" />
+    <MESSAGE value="changed css a little for accordion no more overflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed css a little for accordion no more overflow" />
   </component>
 </project>
