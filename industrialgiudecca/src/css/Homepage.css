@@ -64,7 +64,7 @@
     flex-direction: column;
     font-family: var(--title-font);
     font-size: var(--title-font-size);
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     padding: 15% 20%;
     padding-bottom: 10%;
@@ -180,6 +180,5 @@
     width: 100%;
     max-width: 1500px;
     margin: 0 auto;
-    padding: 20px;
     padding-bottom: 100px;
 }
