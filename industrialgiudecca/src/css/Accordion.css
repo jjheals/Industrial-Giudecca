@@ -11,22 +11,22 @@
     cursor: pointer;
     transition: flex-basis 0.3s ease;
     position: relative;
-    margin-right: -20px;
+}
+
+.accordion-content img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .accordion-tab.active {
     flex-basis: 60%;
     z-index: 1;
-}
-
-.accordion-tab:not(.active) .accordion-title {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.accordion-tab.active .accordion-title {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
 }
 
 .accordion-title {
@@ -49,6 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .content-link {
@@ -60,24 +61,22 @@
     pointer-events: auto;
 }
 
-
-/* Factory title box colors */
 .accordion-tab:nth-child(1) .accordion-title {
-    background-color: #f7cac9; /* Pastel Pink */
+    background-color: #f7cac9;
 }
 
 .accordion-tab:nth-child(2) .accordion-title {
-    background-color: #a7c7e7; /* Pastel Blue */
+    background-color: #a7c7e7;
 }
 
 .accordion-tab:nth-child(3) .accordion-title {
-    background-color: #f7e3b5; /* Pastel Yellow */
+    background-color: #f7e3b5;
 }
 
 .accordion-tab:nth-child(4) .accordion-title {
-    background-color: #c1e1c1; /* Pastel Green */
+    background-color: #c1e1c1;
 }
 
 .accordion-tab:nth-child(5) .accordion-title {
-    background-color: #d8bfd8; /* Pastel Purple */
+    background-color: #d8bfd8;
 }

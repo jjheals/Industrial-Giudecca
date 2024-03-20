@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="Factory names">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="changed css a little for accordion">
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Accordion.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Accordion.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +72,7 @@
       <workItem from="1710403808707" duration="9834000" />
       <workItem from="1710490748477" duration="15346000" />
       <workItem from="1710835470668" duration="17906000" />
-      <workItem from="1710926755120" duration="748000" />
+      <workItem from="1710926755120" duration="1308000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -219,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710875531154</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="changed css a little for accordion">
+      <option name="closed" value="true" />
+      <created>1710927542169</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1710927542169</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +260,7 @@
     <MESSAGE value="updated homepage for now" />
     <MESSAGE value="Updated accordion stuff" />
     <MESSAGE value="Factory names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Factory names" />
+    <MESSAGE value="changed css a little for accordion" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed css a little for accordion" />
   </component>
 </project>
