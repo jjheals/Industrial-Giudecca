@@ -24,7 +24,6 @@ function BasicFactoryTemplate() {
             // Since we used a primary key as the filter, there is only one result
             const factory = factories[0];
             
-
             // Get the factory english name 
             factoryName = factory.English_Name;
             document.getElementById('title').innerHTML = factoryName;
@@ -45,12 +44,12 @@ function BasicFactoryTemplate() {
         <div className="main-container">
             <div><Sidebar isOpen={showSidebar}/></div>
             <hr class="title-hr"></hr>
-                <h1 id="title">{ factoryName }</h1>
+                <h1 id="title"></h1>
                 <hr class="title-hr"></hr>
 
             <div id='grid-container'>
                 <div class='grid-item' id='image-panel'> 
-                    <img id='factory-image' src={ imgUrl } />
+                    <img id='factory-image' />
                 </div>
 
                 <div class='grid-item' id='table-panel'> 
