@@ -12,6 +12,21 @@
     cursor: pointer;
     transition: flex-basis 0.3s ease;
     position: relative;
+    border: 0.12vw solid #ffffff; /* Add a white border */
+}
+
+.accordion-content {
+    margin-top: 0;
+    height: calc(100% - 40px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-top: none; /* Remove the top border */
+    border-left: 0.015vw solid #ffffff; /* Add left border */
+    border-right: 0.015vw solid #ffffff; /* Add right border */
+    border-bottom: 0.12vw solid #ffffff; /* Add bottom border */
 }
 
 .accordion-content img {
@@ -41,16 +56,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.accordion-content {
-    margin-top: 0;
-    height: calc(100% - 40px);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
 .content-link {
