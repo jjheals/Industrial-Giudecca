@@ -5,13 +5,13 @@ import '../css/Accordion.css';
 const Accordion = () => {
     const [activeTab, setActiveTab] = useState(null);
 
-    // Define an array of factory objects, each with a name and id
+    // Define an array of factory objects, each with a name, id, and route
     const factories = [
-        { id: 1, name: "Stucky" },
-        { id: 2, name: "Fortuny" },
-        { id: 3, name: "Junghans" },
-        { id: 4, name: "Hérion" },
-        { id: 5, name: "Dreher" },
+        { id: 1, name: "Stucky", route: "/stucky" },
+        { id: 2, name: "Fortuny", route: "/fortuny" },
+        { id: 3, name: "Junghans", route: "/junghans" },
+        { id: 4, name: "Hérion", route: "/herion" },
+        { id: 5, name: "Dreher", route: "/dreher" },
     ];
 
     const toggleTab = (index) => {
@@ -23,64 +23,21 @@ const Accordion = () => {
             {factories.map((factory) => (
                 <div
                     key={factory.id}
-                    className={`accordion-tab ${activeTab === factory.id ? 'active' : ''}`}
-                    onClick={() => toggleTab(factory.id)}
+                    className={`accordion-tab ${activeTab === factory.id ? 'active' : ''} hoverable`}
+                    onMouseEnter={() => toggleTab(factory.id)}
+                    onMouseLeave={() => toggleTab(null)}
                 >
                     <div className="accordion-title">{factory.name}</div>
                     <div className="accordion-content">
                         <Link
-                            to={factory.id === 1 ? '/factory' : `#tab${factory.id}`}
+                            to={factory.route}
                             className="content-link"
                         >
-                            {factory.id === 1 ? (
-                                <img
-                                    id="frontImage"
-                                    src={`${process.env.PUBLIC_URL}/Stucky.jpeg`}
-                                    alt="Description"
-                                />
-                            ) : (
-                                <div className="placeholder-box"></div>
-                            )}
-
-                            {factory.id === 2 ? (
-                                <img
-                                    id="frontImage"
-                                    src={`${process.env.PUBLIC_URL}/Fortuny.jpeg`}
-                                    alt="Description"
-                                />
-                            ) : (
-                                <div className="placeholder-box"></div>
-                            )}
-
-                            {factory.id === 3 ? (
-                                <img
-                                    id="frontImage"
-                                    src={`${process.env.PUBLIC_URL}/Junghas.jpg`}
-                                    alt="Description"
-                                />
-                            ) : (
-                                <div className="placeholder-box"></div>
-                            )}
-
-                            {factory.id === 4 ? (
-                                <img
-                                    id="frontImage"
-                                    src={`${process.env.PUBLIC_URL}/Herion-advertisement.JPG`}
-                                    alt="Description"
-                                />
-                            ) : (
-                                <div className="placeholder-box"></div>
-                            )}
-
-                            {factory.id === 5 ? (
-                                <img
-                                    id="frontImage"
-                                    src={`${process.env.PUBLIC_URL}/Dreher.jpeg`}
-                                    alt="Description"
-                                />
-                            ) : (
-                                <div className="placeholder-box"></div>
-                            )}
+                            <img
+                                id="frontImage"
+                                src={`${process.env.PUBLIC_URL}/${factory.name}.jpeg`} // Make sure these images are named correecly
+                                alt={factory.name}
+                            />
                         </Link>
                     </div>
                 </div>
