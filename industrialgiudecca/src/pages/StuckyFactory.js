@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../css/StuckyFactory.css';
+import Sidebar from '../components/Sidebar.js';
 import { Link } from 'react-router-dom';
 
 function StuckyFactory() {
+    const [showSidebar, setShowSidebar] = useState(false);
     const [headerVisible, setHeaderVisible] = useState(true);
     const lastScrollYRef = useRef(window.pageYOffset);
 
@@ -51,14 +53,12 @@ function StuckyFactory() {
 
     return (
         <div className="stucky-factory">
+            <div>
+                <Sidebar isOpen={showSidebar} />
+            </div>
             <header className={headerVisible ? '' : 'hidden'}>
                 <h1>Welcome to the Stucky Factory</h1>
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/factory">Factory Homepage</Link></li>
-                    </ul>
-                </nav>
+
             </header>
 
             <main>
