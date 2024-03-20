@@ -5,6 +5,7 @@ import FactoryHomepage from './pages/FactoryHomepage';
 import StuckyFactory from './pages/StuckyFactory';
 import Homepage from './pages/Homepage';
 import Photos from './pages/Photos';
+import BasicFactoryTemplate from './pages/BasicFactoryTemplate';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/factory" element={<FactoryHomepage />} />
                 <Route path="/stucky" element={<StuckyFactory />} />
                 <Route path={"/photos"} element={<Photos />} />
+                <Route path={"/factory/:Factory_ID"} element={<BasicFactoryTemplate />} />
             </Routes>
         </Router>
     );

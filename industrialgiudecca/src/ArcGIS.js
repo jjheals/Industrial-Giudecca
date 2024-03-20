@@ -8,13 +8,14 @@ import { queryFeatures } from '@esri/arcgis-rest-feature-service';
  * @param {string} apiToken - API acccess token 
  * @returns {Array} array of Factory objects
  */
-async function fetchFactoriesFL(serviceURL, apiToken) { 
+async function fetchFactoriesFL(serviceURL, apiToken, filter='') { 
     try {
         // Authentication for ArcGIS API
         const authentication = ApiKeyManager.fromKey(apiToken);
         const response = await queryFeatures({
             url: serviceURL,
-            authentication
+            authentication,
+            where: filter
         });
 
         // Process the response and convert features into factories
@@ -78,6 +79,11 @@ function fetchAllFactoryImages(serviceURL, apiToken) {
 
     // Return final populated dict
     return attachmentsDict;
+}
+
+
+async function fetchFactoryByID(Factory_ID) { 
+
 }
 
 
