@@ -117,7 +117,6 @@ export default class Factory {
             let img = document.getElementById(this.Factory_ID);
             if(img && this.coverPicURL) { 
                 // img exists, so set the src
-                console.log(`Setting src for ${this.English_Name}`)
                 img.src = this.coverPicURL;
             }
         } catch(error) { 

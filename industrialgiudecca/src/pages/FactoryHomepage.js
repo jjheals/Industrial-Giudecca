@@ -1,7 +1,6 @@
 // src/pages/FactoryHomepage.js
 import { React, useState, useEffect } from 'react';
 import '../css/FactoryHomepage.css';
-import Factory from '../Factory.js';
 import Sidebar from '../components/Sidebar';
 import { Link } from 'react-router-dom';
 
