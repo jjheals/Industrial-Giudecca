@@ -22,11 +22,7 @@ export default class Factory {
         this.y_coord = geometry.y; 
 
         const name = attributes.English_Name;
-        if(name == null) { 
-            this.link = `/id-${attributes.Factory_ID}`;
-        } else { 
-            this.link = `/${name.toLowerCase().replace(/ /g, '-')}`;
-        }
+        this.link = `/factory/${this.Factory_ID}`;
     }
 
     /** toString() 

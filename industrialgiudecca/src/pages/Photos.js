@@ -1,24 +1,50 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom';
-import Factory from '../Factory';
+import '../css/Photos.css';
+import Sidebar from '../components/Sidebar.js';
+import { apiKey, factoriesServiceURL } from '../GlobalConstants.js';
+import Gallery from '../components/Gallery.js';
+import { fetchFactoriesFL } from '../ArcGIS';
 
 function Photos() {
     const [showSidebar, setShowSidebar] = useState(false);
-    const [headerVisible, setHeaderVisible] = useState(true);
+    const [factories, setFactories] = useState([]);
 
+    // Get all the factory IDs from ArcGIS
+    useState(() => { 
+        // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
+        fetchFactoriesFL(
+            factoriesServiceURL,
+            apiKey
+        )
+        .then(factories => {
+            setFactories(factories);
+        })
+        .catch(error => {
+            console.error('Error fetching details for factory:', error);
+        });
+    }, []);
     
     return (
-        <div className="photos">
-            <header className={headerVisible ? '' : 'hidden'}>
-                <h1>Photos</h1>
-                <div
-                    className="factory-image-container"
-                    style={{
-                        backgroundImage: `url(${process.env.PUBLIC_URL}/Junghas.jpg)`,
-                    }}
-                ></div>
-            </header>
+        <div className='main'>
+            <div><Sidebar isOpen={showSidebar}/></div>
+
+            <hr class="title-hr"></hr>
+            <h1 id="title">Photo Gallery</h1>
+            <hr class="title-hr"></hr>
+            <div class='spacer'></div>
+
+            <div id='galleries-container'>
+            {factories.map(factory => (
+                <Gallery
+                    key={factory.Factory_ID}
+                    Factory_ID={factory.Factory_ID}
+                    Factory_Name={factory.English_Name}
+                    allImgURLsPromise={factory.getAllFactoryImageURLs(apiKey)}
+                />
+            ))}
+            </div>
+
         </div>
     );
 }
