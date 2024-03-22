@@ -1,27 +1,37 @@
 // Gallery.js
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react';
 import '../css/Photos.css';
 
 const Gallery = ({ Factory_ID, Factory_Name, allImgURLsPromise }) => {
     const [allImgURLs, setAllImgURLs] = useState([]);
-    console.log(`Gallery for ${Factory_Name}`);
-    console.log(allImgURLsPromise);
-    
+
     // Get this factory's info
     useState(() => { 
 
         if (allImgURLsPromise) { 
-
-            console.log(allImgURLsPromise);
             // Load image URLs when the component mounts
             allImgURLsPromise.then(urls => {
-                console.log(urls);
                 setAllImgURLs(urls);
             });
         }
+
     }, [allImgURLsPromise]);
+
+    // When the DOM is loaded, set the background colors for the galleries
+    useEffect(() => {
+        const allGalleryDivs = Array.from(document.querySelectorAll('.gallery-container'));  // Array of all gallery divs
+        const colors = ['#f7cac9', '#a7c7e7', '#f7e3b5', '#c1e1c1', '#d8bfd8'];              // Array of color codes 
+
+        const p = colors.length;            // Number of colors in colors array (modulus)
+        const n = allGalleryDivs.length;    // Number of divs to iterate through
+        let i = 0;                          // Counter for index of allGalleryDivs
+
+        for(i; i < n; i++) { 
+            const thisDiv = allGalleryDivs[i];
+            const thisColor = colors[i % p];
+            thisDiv.style.backgroundColor = thisColor;
+        }
+    });
 
     return (
         <div class='gallery-container'> 
@@ -37,6 +47,7 @@ const Gallery = ({ Factory_ID, Factory_Name, allImgURLsPromise }) => {
                                 key={index}
                                 src={url}
                                 alt={`Image ${index + 1}`}
+                                style={{}}
                             />
                         ))}
                     </div>
