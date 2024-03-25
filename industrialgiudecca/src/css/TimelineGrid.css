@@ -1,0 +1,74 @@
+:root { 
+
+}
+
+.page-container { 
+    display: flex;
+    flex-direction: row;
+}
+
+/* Styles for info container on left */
+.info-container { 
+    width: 40%;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-family: 'Judson', serif;
+    background-color: red;
+}
+
+.i { 
+    width: 100%;
+    margin: 1vw auto 1vw auto;
+}
+
+/* Side panel larger text */
+h1 { 
+    font-size: 5vw;
+}
+
+/* Side panel smaller text */
+h3 { 
+    font-size: 2vw;
+}
+
+#i1 { 
+    text-align: left;
+    margin-top: 10vh;
+}
+
+#i2 { 
+    text-align: center;
+    
+}
+
+#i3 { 
+    text-align: left;
+    margin-top: 15vh;
+}
+
+#i4 { 
+    text-align: center;
+}
+
+#i5 { 
+    text-align: right;
+}
+
+/* Styles for grid container on right */
+.grid-container {
+    display: grid;
+    background-color: green;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, 8vw);
+    gap: 0.4vw;
+    margin: auto;
+    padding: 0;
+}
+
+.factory-img { 
+    width: 8vw;
+    height: 8vw;
+    margin: 0;
+    padding: 0;
+    background-color: blue;
+}
