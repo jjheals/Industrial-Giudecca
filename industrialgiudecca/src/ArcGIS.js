@@ -1,6 +1,8 @@
 import Factory from './Factory.js';
 import { ApiKeyManager } from '@esri/arcgis-rest-request';
-import { queryFeatures } from '@esri/arcgis-rest-feature-service';
+import { queryFeatures, fetchAttachments } from '@esri/arcgis-rest-feature-service';
+import { mapFactoryIDToObjectIDURL } from './GlobalConstants.js';
+
 
 /** fetchFactoriesFL(serviceURL) 
  * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
@@ -21,7 +23,7 @@ async function fetchFactoriesFL(serviceURL, apiToken, filter='') {
         // Process the response and convert features into factories
         const factories = response.features.map(feature => {
             let factory = new Factory(feature.attributes, feature.geometry);
-            factory.getCoverImageURL(apiToken);
+            factory.getCoverImageURL();
             return factory;
         });
         
@@ -49,7 +51,7 @@ async function fetchFactoriesFL(serviceURL, apiToken, filter='') {
  *    console.log(imgsDict);
  * });
  */
-function fetchAllFactoryImages(serviceURL, apiToken) { 
+function fetchAllFactoryImages(serviceURL) { 
 
     // Init empty return dict to contain { key : val } => { Factory_ID : attachmentURLs_Array }
     let attachmentsDict = {};
@@ -57,7 +59,6 @@ function fetchAllFactoryImages(serviceURL, apiToken) {
     // Get the FactoriesFL first to get all the factories
     fetchFactoriesFL(
         serviceURL,
-        apiToken
     )
     .then(factories => { 
 
@@ -69,7 +70,7 @@ function fetchAllFactoryImages(serviceURL, apiToken) {
 
         // For each factory, fetch all the images
         factories.forEach(factory => {
-            factory.getAllFactoryImageURLs(apiToken)
+            factory.getAllFactoryImageURLs()
             .then(attachmentURLs => {
                 // Add these URLs to attachmentsDict at the key [Factory_ID]
                 attachmentsDict[factory.Factory_ID] = attachmentURLs;
@@ -81,10 +82,48 @@ function fetchAllFactoryImages(serviceURL, apiToken) {
     return attachmentsDict;
 }
 
+/** fetchFactoriesFL(serviceURL) 
+ * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
+ * @param {string} serviceURL - ArcGIS service endpoint
+ * @returns {Array} array of Factory objects
+ */
+async function sDPTFetchFactoriesFL(serviceURL, filter='') { 
+    try {
+        // Query the FL to get the factory attributes 
+        const response = await queryFeatures({
+            url: serviceURL,
+            where: filter
+        });
 
-async function fetchFactoryByID(Factory_ID) { 
+        // Wait for the response, then iterate over the factories 
+        const factories = await Promise.all(response.features.map(async feature => {
+            const factory = new Factory(feature.attributes, {'x':0, 'y':0});
 
+            // Get the OBJECTID for this factory
+            const resp = await queryFeatures({
+                url: `${mapFactoryIDToObjectIDURL}`,
+                where: `Factory_ID = ${factory.Factory_ID}`
+            });
+
+            // Iterate over the features of the response, i.e. the first element since there is only one,
+            // and set the factory's OBJECTID if it exists; if it does not exist, then this factory does 
+            // not have any associated images
+            resp.features.forEach(f => {
+                try { factory.OBJECTID = f.attributes.OBJECTID; } 
+                catch { factory.OBJECTID = -1; }
+            });
+
+            return factory;
+        }));
+
+        // Return the populated array 
+        return factories;
+
+    } catch (error) {
+        // Return an empty array in case of error
+        console.error('Error fetching factories:', error);
+        return [];  
+    }
 }
 
-
-export { fetchFactoriesFL, fetchAllFactoryImages };
+export { fetchFactoriesFL, fetchAllFactoryImages, sDPTFetchFactoriesFL };

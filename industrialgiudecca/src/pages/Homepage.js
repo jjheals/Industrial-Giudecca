@@ -4,6 +4,7 @@ import '../css/Homepage.css';
 import Sidebar from '../components/Sidebar';
 import { Link } from 'react-router-dom';
 import Accordion from '../components/Accordion';
+import TimelineGrid from '../components/TimelineGrid';
 
 function Homepage() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -82,16 +83,13 @@ function Homepage() {
                 <div className="blurbRow" id="blurbTop">
                     <hr className="blurbDivider"></hr>
                     <p className="blurbElm" id="blurbTitle">Industrial Giudecca</p>
-                    <p className="blurbElm" id="blurbSubtitle">"History without memory."</p>
-                    <p className="blurbElm" id="blurbCredits">Mario Marinoni</p>
+                    <p className="blurbElm" id="blurbSubtitle">"A history without memory."</p>
+                    <p className="blurbElm" id="blurbCredits">- Mario Marinoni</p>
                     <hr className="blurbDivider"></hr>
                 </div>
                 <div className="blurbRow" id="blurbBottom">
                     <p className="blurbElm" id="blurbText">
-                        Giudecca was once the home to over 45 different factories. Despite having an amazing story,
-                        the industrial history of Giudecca is not widely known. With the help of Dr. Pietro Lando,
-                        Fabio Carrera, and SerenDPT, this website intends to enrich the story of the industrial
-                        Giudecca.
+                        This website tells the story of industry on Giudecca.
                     </p>
                 </div>
                 <div className="blurbRow" id="blurbScroll">
@@ -101,7 +99,9 @@ function Homepage() {
             </div>
 
 
-
+            <div class="timeline-container">
+                <TimelineGrid/>
+            </div>
 
             <div className="accordion-container">
                 <Accordion/>

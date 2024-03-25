@@ -1,4 +1,6 @@
-import { getAttachments } from '@esri/arcgis-rest-feature-service';
+import { getAttachments, queryFeatures } from '@esri/arcgis-rest-feature-service';
+import { mapFactoryIDToObjectIDURL, sDPTImagesURL, sDPT_API_KEY, attachmentsBaseURL } from './GlobalConstants';
+import axios from 'axios';
 
 export default class Factory { 
 
@@ -8,9 +10,8 @@ export default class Factory {
      * @param {dict} geometry 
      */
     constructor(attributes, geometry, apiToken) { 
-        this.OBJECTID = attributes.OBJECTID;
-        this.Opening_Date = attributes.Opening_Date;
-        this.Closing_Date = attributes.Closing_Date;
+        this.Opening_Year = attributes.Opening_Year;
+        this.Closing_Year = attributes.Closing_Year;
         this.English_Name = attributes.English_Name;
         this.Italian_Name = attributes.Italian_Name;
         this.Factory_Description = attributes.Factory_Description;
@@ -20,8 +21,6 @@ export default class Factory {
         this.Building_ID = attributes.Building_ID;
         this.x_coord = geometry.x;
         this.y_coord = geometry.y; 
-
-        const name = attributes.English_Name;
         this.link = `/factory/${this.Factory_ID}`;
     }
 
@@ -50,46 +49,26 @@ export default class Factory {
      * @param {string} apiToken 
      * @returns {Array} an array of URLs for all of this Factory's attachments
      */
-    async getAllFactoryImageURLs(apiToken) { 
-        /* 
-         * NOTE: ArcGIS API does not properly return the attachments for features, and there is not a "standard" (i.e. repeateable) pattern
-         *       for retrieving the attachments for a particular feature. Moreover, the PJSON API endpoint gives consistent CORS errors. To
-         *       get around this, we used the HTML endpoint for this Feature Layer (attachmentsBaseURL below) with the specific OBJECTID to
-         *       get the HTML page containing the IDs for each attachment for this feature (this OBJECTID). Then, we extracted the 
-         *       attachment IDs by parsing the HTML and relying on its' consistent structure across Features. 
-         */
+    async getAllFactoryImageURLs() { 
 
-        // Url to get ALL attachments for a factory (a feature)
-        const attachmentsBaseURL = `https://services7.arcgis.com/EXxkqxLvye8SbupH/arcgis/rest/services/Factories_FL_2/FeatureServer/0/${this.OBJECTID}/attachments`;
-
-        // Get info for all attachments and refine down to the FIRST (to be used as the cover on factories homepage)
         try {
-            const response = await fetch(`${attachmentsBaseURL}?token=${apiToken}`);
-            
-            // Make sure response was OK
-            if (!response.ok) {
-                throw new Error(`Error retrieving attachments for ${this.Factory_ID} (${this.English_Name})`);
-            }
+            const queryURL = `${attachmentsBaseURL}/queryAttachments?objectids=${this.OBJECTID}&f=pjson`;
+            const thisAttachmentsBaseURL = `${attachmentsBaseURL}/${this.OBJECTID}/attachments`;
+
+            const response = await axios.get(
+                queryURL,
+            );
 
             // Handle response 
-            const html = await response.text();                     // Extract the HTML response
-            const parser = new DOMParser();                         // Init HTML parser
-            const doc = parser.parseFromString(html, 'text/html');  // Parse the HTML
-            const ftrTables = doc.getElementsByClassName('ftrTable');     // Find all the ftrTable class objs
+            const attachmentsData = response.data.attachmentGroups[0].attachmentInfos;
 
-            // Return if there are no attachments 
-            if(ftrTables.length == 0) return [];
-
-            // Extract the ID from the second <td> tag (index 4)
             let attachmentURLs = [];
-
-            for(let table of ftrTables) { 
-                const firstRow = table.querySelector('tr');
-                const attachmentID = firstRow.querySelectorAll('td')[1].textContent.trim();
-                const attachmentURL = `${attachmentsBaseURL}/${attachmentID}?token=${apiToken}`;   
-                attachmentURLs.push(attachmentURL);
-            }
+            attachmentsData.forEach(d => { 
+                attachmentURLs.push(`${thisAttachmentsBaseURL}/${d.id}/`);
+            })
+            
             return attachmentURLs;
+
         } catch (error) {
             console.error(error);
             return "";
@@ -101,10 +80,15 @@ export default class Factory {
      * @param {string} apiToken 
      * @returns {null} calls this.setFactoryImage and sets the image on FactoryHomepage 
      */
-    async getCoverImageURL(apiToken) { 
+    async getCoverImageURL() { 
         try { 
+            // Check that this factory has an associated OBJECTID (i.e. that there are associated images)
+            if(this.OBJECTID < 0 || isNaN(this.OBJECTID)) { 
+                return;
+            }
+
             // Get the URLs for all the attachments for this factory
-            const allAttachmentURLs = await this.getAllFactoryImageURLs(apiToken);
+            const allAttachmentURLs = await this.getAllFactoryImageURLs();
 
             // Check if there are any attachments, set this.coverPicURL with the FIRST if there are
             if(allAttachmentURLs.length > 0) this.coverPicURL = allAttachmentURLs[0];
