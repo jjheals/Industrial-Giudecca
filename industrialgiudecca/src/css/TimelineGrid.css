@@ -1,11 +1,11 @@
 :root { 
-
+    --grid-max-height: 110vh;
 }
 
 .page-container { 
     display: flex;
     flex-direction: row;
-    max-height: 100vh;
+    max-height: var(--grid-max-height);
 }
 
 /* Styles for info container on left */
@@ -38,7 +38,6 @@ h3 {
 
 #i2 { 
     text-align: center;
-    
 }
 
 #i3 { 
@@ -58,15 +57,17 @@ h3 {
 .grid-container {
     display: grid;
     width: 100%;
+    max-height: var(--grid-max-height);
     grid-template-columns: repeat(auto-fit, 8vw);
     gap: 0.4vw;
     margin: auto;
     padding: 0;
+    overflow-y: hidden;
 }
 
 .factory-img { 
-    width: 8vw;
-    height: 8vw;
+    width: 7vw;
+    height: 7vw;
     margin: 0;
     padding: 0;
     background-color: grey;
