@@ -4,8 +4,8 @@ import '../css/FactoryHomepage.css';
 import Sidebar from '../components/Sidebar';
 import { Link } from 'react-router-dom';
 
-import { fetchFactoriesFL } from '../ArcGIS.js';
-import { apiKey, factoriesServiceURL } from '../GlobalConstants.js';
+import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
 function FactoryHomepage() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -14,15 +14,17 @@ function FactoryHomepage() {
     // Main
     useEffect(() => {
 
-        // Fetch factories FL when component mounts
-        fetchFactoriesFL(
-            factoriesServiceURL,
-            apiKey
-        )
+        // Fetch factories FL 
+        sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
         .then(factories => {
+             // For each factory, get the cover image URL 
+            factories.forEach(factory => { 
+                factory.getCoverImageURL(); 
+            }); 
             // Set the factories on the page
             setFactories(factories);
         })
+        // Handle errors
         .catch(error => {
             console.error('Error fetching factories:', error);
         });

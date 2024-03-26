@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import '../css/Photos.css';
 import Sidebar from '../components/Sidebar.js';
-import { apiKey, factoriesServiceURL } from '../GlobalConstants.js';
+import { factoriesServiceURL, sDPTFactoriesTableURL, sDPTImagesURL } from '../GlobalConstants.js';
 import Gallery from '../components/Gallery.js';
-import { fetchFactoriesFL } from '../ArcGIS';
+import { sDPTFetchFactoriesFL } from '../ArcGIS';
 
 function Photos() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -13,10 +13,7 @@ function Photos() {
     // Get all the factory IDs from ArcGIS
     useState(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
-        fetchFactoriesFL(
-            factoriesServiceURL,
-            apiKey
-        )
+        sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
         .then(factories => {
             setFactories(factories);
         })
@@ -40,7 +37,7 @@ function Photos() {
                     key={factory.Factory_ID}
                     Factory_ID={factory.Factory_ID}
                     Factory_Name={factory.English_Name}
-                    allImgURLsPromise={factory.getAllFactoryImageURLs(apiKey)}
+                    allImgURLsPromise={factory.getAllFactoryImageURLs()}
                 />
             ))}
             </div>

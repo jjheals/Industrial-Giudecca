@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../css/StuckyFactory.css';
 import Sidebar from '../components/Sidebar.js';
-import { Link } from 'react-router-dom';
 
 function StuckyFactory() {
     const [showSidebar, setShowSidebar] = useState(false);

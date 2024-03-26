@@ -1,39 +1,47 @@
-// Sidebar.js
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// TimelineGrid.js
+import React, { useState } from 'react';
 import '../css/TimelineGrid.css';
-import FeatureLayer from "@arcgis/core/layers/FeatureLayer.js";
 
-import { fetchFactoriesFL, sDPTFetchFactoriesFL } from '../ArcGIS.js';
-import { apiKey, factoriesServiceURL, sDPTFactoriesTable, sDPTImagesURL } from '../GlobalConstants.js';
+import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
+/**  { Component } TimelineGrid 
+ * 
+ * @abstract 
+ * TimelineGrid component covers the viewable screen with an information box and a grid of factory images. The info box 
+ * displays a year and number of factories that existed on Giudecca in/since that year. The grid of factory images shows
+ * the images of factories that existed in/since that year. 
+ *              
+ * The page is locked at this view. As the user scrolls down, the year will increase and the number of factories will 
+ * decrease. At the same time, the factory images will disappear to reflect the factories that were active in/since 
+ * the year currently displayed. 
+ */
 const TimelineGrid = () => {
-
     const [factories, setFactories] = useState([]);
     const [year, setYear] = useState([]);
     
-    // Main
     useState(() => {
         
         // Fetch factories FL when component mounts
-        sDPTFetchFactoriesFL(
-            sDPTFactoriesTable,
-        )
+        sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
         .then(factories => {
-            console.log(`Factories length: ${factories.length}`);
 
-            // Set the factories on the page
+            // Iterate over the factories and get the cover image for each, while also finding the earliest year
+            // that at least one factory was active
             let year = 9999;
             factories.forEach(factory => { 
+                // Get the cover image
                 factory.getCoverImageURL();
 
+                // Check if this opening year is BEFORE the currently stored year and update year if necessary
                 if(factory.Opening_Year && Number(factory.Opening_Year) < year) {
                     year = Number(factory.Opening_Year);
                 }
             })
-            setYear(year);
-            setFactories(factories);
+            setYear(year);              // Set the initial year on the page
+            setFactories(factories);    // Set the initial factories on the page
         })
+        // Handle errors
         .catch(error => {
             console.error('Error fetching factories:', error);
         });

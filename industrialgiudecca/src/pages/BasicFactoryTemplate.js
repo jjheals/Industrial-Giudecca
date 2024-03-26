@@ -3,8 +3,8 @@ import Sidebar from '../components/Sidebar.js';
 import '../css/BasicFactoryTemplate.css';
 
 import { useParams } from 'react-router-dom';
-import { apiKey, factoriesServiceURL } from '../GlobalConstants.js';
-import { fetchFactoriesFL } from '../ArcGIS.js';
+import { factoriesServiceURL, sDPTFactoriesTableURL } from '../GlobalConstants.js';
+import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 
 function BasicFactoryTemplate() {
 
@@ -15,9 +15,8 @@ function BasicFactoryTemplate() {
 
     useState(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
-        fetchFactoriesFL(
-            factoriesServiceURL,
-            apiKey,
+        sDPTFetchFactoriesFL(
+            sDPTFactoriesTableURL,
             `Factory_ID = ${Factory_ID}`
         )
         .then(factories => {
@@ -29,7 +28,7 @@ function BasicFactoryTemplate() {
             document.getElementById('title').innerHTML = factoryName;
 
             // Get all the images for this factory and then use the cover img (index 0) as the image on the page
-            factory.getAllFactoryImageURLs(apiKey)
+            factory.getAllFactoryImageURLs()
             .then(allImgURLs => { 
                 imgUrl = allImgURLs[0];
                 document.getElementById('factory-image').src = imgUrl;
