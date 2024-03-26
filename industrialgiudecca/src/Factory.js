@@ -27,7 +27,6 @@ export default class Factory {
         this.Factory_Description = attributes.Factory_Description;
         this.Max_Employment = attributes.Max_Employment;
         this.Factory_ID = attributes.Factory_ID;
-        this.Factory_Active = attributes.Factory_Active;
         this.Building_ID = attributes.Building_ID;
         this.x_coord = geometry.x;
         this.y_coord = geometry.y; 
@@ -47,7 +46,6 @@ export default class Factory {
         s += `\tFactory Description: ${this.Factory_Description}\n`;
         s += `\tMax Employment: ${this.Max_Employment}\n`;
         s += `\tFactory ID: ${this.Factory_ID}\n`;
-        s += `\tFactory Active: ${this.Factory_Active}\n`;
         s += `\tBuilding ID: ${this.Building_ID}\n`;
         s += `\tX Coord: ${this.x_coord}\n`;
         s += `\tY Coord: ${this.y_coord}\n`;
@@ -66,6 +64,8 @@ export default class Factory {
             });
     
             this.OBJECTID = resp.features[0].attributes.OBJECTID;
+            console.log(this.toString());
+
             return;
         } catch(error) { 
             if (error instanceof TypeError) {

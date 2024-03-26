@@ -38,6 +38,14 @@ const TimelineGrid = () => {
         // Fetch factories FL when component mounts
         sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
             .then(factories => {
+                factories.forEach(factory => { 
+                    // Set random opening years and random closing years if they are NULL
+                    if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
+                    if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
+
+                    // Get the cover image for this factory
+                    factory.getCoverImageURL(); 
+                });
                 setFactories(factories);
             })
             // Handle errors
