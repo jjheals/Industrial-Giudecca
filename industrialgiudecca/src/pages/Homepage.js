@@ -11,7 +11,6 @@ function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
     const [showScrollArrow, setShowScrollArrow] = useState(false);
 
-
     const toggleSidebar = () => {
         setShowSidebar(!showSidebar);
     };
@@ -79,6 +78,13 @@ function Homepage() {
             <div>
                 <Sidebar isOpen={showSidebar}/>
             </div>
+
+            <div id='logos-container'>
+                <img id='main-logo' class='logo' src='logo.png' />
+                <img id='wpi-logo' class='logo' src='wpi-logo.png' />
+                <img id='sdpt-logo' class='logo' src='sdpt-logo.png' />
+            </div>
+            
             <div id="blurb" style={{opacity: blurbOpacity}} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
                 <div className="blurbRow" id="blurbTop">
                     <hr className="blurbDivider"></hr>
