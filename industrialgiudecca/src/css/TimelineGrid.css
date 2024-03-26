@@ -66,9 +66,9 @@ h3 {
 }
 
 .factory-img { 
-    width: 7vw;
-    height: 7vw;
-    margin: 0;
+    width: 8vw;
+    height: 8vw;
+    margin: 1%;
     padding: 0;
     background-color: grey;
 }
