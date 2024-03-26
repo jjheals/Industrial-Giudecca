@@ -1,15 +1,17 @@
 // src/pages/Homepage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../css/Homepage.css';
 import Sidebar from '../components/Sidebar';
 import { Link } from 'react-router-dom';
 import Accordion from '../components/Accordion';
 import TimelineGrid from '../components/TimelineGrid';
 
+
 function Homepage() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [blurbOpacity, setBlurbOpacity] = useState(1);
     const [showScrollArrow, setShowScrollArrow] = useState(false);
+    const timelineRef = useRef(null);
 
     const toggleSidebar = () => {
         setShowSidebar(!showSidebar);
@@ -105,8 +107,8 @@ function Homepage() {
             </div>
 
 
-            <div class="timeline-container">
-                <TimelineGrid/>
+            <div ref={timelineRef} className="timeline-container">
+                <TimelineGrid timelineRef={timelineRef}/>
             </div>
 
             <div className="accordion-container">
