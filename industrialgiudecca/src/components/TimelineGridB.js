@@ -23,7 +23,7 @@ const TimelineGrid = () => {
     const [year, setYear] = useState(1730);
     const pageRef = useRef(null);
 
-    useLockScroll(pageRef, 1730, new Date().getFullYear(), setYear);
+    useLockScroll(pageRef, 1730, new Date().getFullYear(), setYear, year);
 
     useEffect(() => {
         const filterFactories = (year) => {
