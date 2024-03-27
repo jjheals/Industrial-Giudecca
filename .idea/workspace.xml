@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="Locking thingy">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/SearchBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Searchbar.css" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="SEARCH BAR ON FACTORY PAGE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +74,7 @@
       <workItem from="1710835470668" duration="17906000" />
       <workItem from="1710926755120" duration="17002000" />
       <workItem from="1711382802660" duration="684000" />
-      <workItem from="1711447637050" duration="16316000" />
+      <workItem from="1711447637050" duration="17203000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -289,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711461207746</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="SEARCH BAR ON FACTORY PAGE">
+      <option name="closed" value="true" />
+      <created>1711530701559</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1711530701559</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +334,7 @@
     <MESSAGE value="test margins" />
     <MESSAGE value="margins white box etc" />
     <MESSAGE value="Locking thingy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Locking thingy" />
+    <MESSAGE value="SEARCH BAR ON FACTORY PAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="SEARCH BAR ON FACTORY PAGE" />
   </component>
 </project>
