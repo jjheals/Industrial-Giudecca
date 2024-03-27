@@ -64,7 +64,6 @@ export default class Factory {
             });
     
             this.OBJECTID = resp.features[0].attributes.OBJECTID;
-            console.log(this.toString());
 
             return;
         } catch(error) { 
