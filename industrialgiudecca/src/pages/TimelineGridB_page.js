@@ -1,14 +1,16 @@
-// src/pages/Homepage.js
+// src/pages/TimelineGridB.js
 import React, { useState, useEffect, useRef } from 'react';
+
 import '../css/Homepage.css';
+import '../css/TimelineGridB.css';
 
 import Sidebar from '../components/Sidebar';
-import { Link } from 'react-router-dom';
 import Accordion from '../components/Accordion';
-import TimelineGridA from '../components/TimelineGridA';
+
+import TimelineGrid from '../components/TimelineGridB';
 
 
-function Homepage() {
+function TimelineGridA_page() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [blurbOpacity, setBlurbOpacity] = useState(1);
     const [showScrollArrow, setShowScrollArrow] = useState(false);
@@ -109,7 +111,7 @@ function Homepage() {
 
 
             <div ref={timelineRef} className="timeline-container">
-                <TimelineGridA timelineRef={timelineRef}/>
+                <TimelineGrid timelineRef={timelineRef}/>
             </div>
 
             <div className="accordion-container">
@@ -147,4 +149,4 @@ function Homepage() {
     );
 }
 
-export default Homepage;
+export default TimelineGridA_page;

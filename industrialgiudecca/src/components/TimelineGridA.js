@@ -1,4 +1,5 @@
-// TimelineGrid.js
+// TimelineGridA.js
+
 /**  { Component } TimelineGrid
  *
  * @abstract
@@ -10,24 +11,47 @@
  * decrease. At the same time, the factory images will disappear to reflect the factories that were active in/since
  * the year currently displayed.
  */
-// TimelineGrid.js
 import React, { useState, useEffect, useRef } from 'react';
-import { useLockScroll } from './ScrollHandler'; // Make sure to adjust the path based on your file structure
-import '../css/TimelineGrid.css';
+import { useLockScroll } from './ScrollHandler'; 
+
+import '../css/TimelineGridA.css';
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
-const TimelineGrid = () => {
+const TimelineGridA = () => {
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
     const [year, setYear] = useState(1730);
     const pageRef = useRef(null);
 
-    useLockScroll(pageRef, 1730, new Date().getFullYear(), setYear);
+
+    
+
+    // Iterate over the factories and find the minmum/maximum year, and get the cover image for each
+    let minYear = 9999;
+    let maxYear = 0;
+    factories.forEach(factory => { 
+
+        // Get the cover image for this factory
+        factory.getCoverImageURL(); 
+
+        // Set random opening years and random closing years if they are NULL
+        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
+        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
+
+        if(factory.Opening_Year < minYear) minYear = factory.Opening_Year;  // Check for min year
+        if(factory.Closing_Year > maxYear) maxYear = factory.Closing_Year;  // Check for max year
+    });
+
+    useLockScroll(pageRef, minYear, new Date().getFullYear(), setYear);
 
     useEffect(() => {
         const filterFactories = (year) => {
-            const filtered = factories.filter(factory => factory && factory.Opening_Year <= year && (!factory.Closing_Year || factory.Closing_Year >= year));
+            const filtered = factories.filter(
+                factory => factory && 
+                factory.Opening_Year <= year && 
+                (!factory.Closing_Year || factory.Closing_Year >= year)
+            );
             setFilteredFactories(filtered);
         };
 
@@ -37,21 +61,13 @@ const TimelineGrid = () => {
     useEffect(() => {
         // Fetch factories FL when component mounts
         sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
-            .then(factories => {
-                factories.forEach(factory => { 
-                    // Set random opening years and random closing years if they are NULL
-                    if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
-                    if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
-
-                    // Get the cover image for this factory
-                    factory.getCoverImageURL(); 
-                });
-                setFactories(factories);
-            })
-            // Handle errors
-            .catch(error => {
-                console.error('Error fetching factories:', error);
-            });
+        .then(factories => {       
+            setFactories(factories);
+        })
+        // Handle errors
+        .catch(error => {
+            console.error('Error fetching factories:', error);
+        });
     }, []); // Empty dependency array
 
     return (
@@ -65,10 +81,9 @@ const TimelineGrid = () => {
             </div>
 
             <div className='grid-container'>
-                {filteredFactories.map(factory => (
+                {factories.map(factory => (
                     <div className="grid-item" key={factory.Factory_ID}>
-                        <img id={factory.Factory_ID} src={factory.coverPicURL} alt={factory.Factory_ID}
-                             className="factory-img"/>
+                        <img id={factory.Factory_ID} src={factory.coverPicURL} alt={factory.Factory_ID} className="factory-img"/>
                     </div>
                 ))}
             </div>
@@ -76,4 +91,4 @@ const TimelineGrid = () => {
     );
 };
 
-export default TimelineGrid;
+export default TimelineGridA;
