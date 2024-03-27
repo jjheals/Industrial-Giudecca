@@ -7,6 +7,9 @@ import Homepage from './pages/Homepage';
 import Photos from './pages/Photos';
 import BasicFactoryTemplate from './pages/BasicFactoryTemplate';
 
+import TimelineGridA_page from './pages/TimelineGridA_page';
+import TimelineGridB_page from './pages/TimelineGridB_page';
+
 function App() {
     return (
         <Router>
@@ -16,6 +19,8 @@ function App() {
                 <Route path="/stucky" element={<StuckyFactory />} />
                 <Route path={"/photos"} element={<Photos />} />
                 <Route path={"/factory/:Factory_ID"} element={<BasicFactoryTemplate />} />
+                <Route path={"timelinegridA"} element={<TimelineGridA_page />} />
+                <Route path={"timelinegridB"} element={<TimelineGridB_page />} />
             </Routes>
         </Router>
     );

@@ -1,10 +1,11 @@
 // src/pages/Homepage.js
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/Homepage.css';
+
 import Sidebar from '../components/Sidebar';
 import { Link } from 'react-router-dom';
 import Accordion from '../components/Accordion';
-import TimelineGrid from '../components/TimelineGrid';
+import TimelineGridA from '../components/TimelineGridA';
 
 
 function Homepage() {
@@ -108,7 +109,7 @@ function Homepage() {
 
 
             <div ref={timelineRef} className="timeline-container">
-                <TimelineGrid timelineRef={timelineRef}/>
+                <TimelineGridA timelineRef={timelineRef}/>
             </div>
 
             <div className="accordion-container">

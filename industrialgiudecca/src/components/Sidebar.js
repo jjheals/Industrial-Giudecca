@@ -30,6 +30,15 @@ const Sidebar = () => {
                         <li className="sidebar-element">
                             <Link class="sidebar-link" to="/photos" onClick={toggleSidebar}>Photos</Link>
                         </li>
+
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" to="/timelinegridA" onClick={toggleSidebar}>TimelineGridA</Link>
+                        </li>
+
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" to="/timelinegridB" onClick={toggleSidebar}>TimelineGridB</Link>
+                        </li>
+
                         <li className="sidebar-element">Data Sheets</li>
                     </ul>
                 </nav>
