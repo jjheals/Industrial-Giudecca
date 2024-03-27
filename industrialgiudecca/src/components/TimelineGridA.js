@@ -83,7 +83,7 @@ const TimelineGridA = () => {
         <div ref={pageRef} className='page-container'>
             <div className='info-container'>
                 <div className='i' id='i1'><h3>In the year</h3></div>
-                <div className='i' id='i2'><h1>{year}</h1></div>
+                <div className='i' id='i2'><h1>{Math.round(year)}</h1></div>
                 <div className='i' id='i3'><h3>There were</h3></div>
                 <div className='i' id='i4'><h1>{numActive} factories</h1></div>
                 <div className='i' id='i5'><h3>on Giudecca.</h3></div>

@@ -8,13 +8,18 @@ export const useLockScroll = (ref, startYear, endYear, setYear) => {
                 const isInView = top >= 0 && bottom <= window.innerHeight;
                 if (isInView) {
                     e.preventDefault();
-                    const direction = e.deltaY > 0 ? 1 : -1;
+
+                    // Control the scroll speed in both directions
+                    const scrollFactor = 0.4;                                       // DECREASE => SLOWER
+                    const direction = e.deltaY > 0 ? scrollFactor : -scrollFactor;  // Set the scroll speed 
+
+                    // Calculate the year
                     setYear((prevYear) => {
-                        const newYear = prevYear + direction;
-                        if (newYear >= startYear && newYear <= endYear) {
-                            return newYear;
-                        }
-                        return prevYear;
+                        const newYear = prevYear + direction;                              // Calculate the new year 
+
+                        // Check if the scroll is up or down
+                        if (newYear >= startYear && newYear <= endYear) return newYear;  // Scroll is "down" (increase year)  
+                        else return prevYear;                                            // Scroll is "up" (decrease year)
                     });
                 }
             }
