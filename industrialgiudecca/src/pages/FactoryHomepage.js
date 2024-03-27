@@ -10,7 +10,6 @@ import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
 function FactoryHomepage() {
-    const [showSidebar, setShowSidebar] = useState(false);
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
 
@@ -34,33 +33,25 @@ function FactoryHomepage() {
     }, []); // Empty dependency array
 
     const handleSearch = (searchTerm) => {
-        if (searchTerm.trim() === '') {
-            // If the search term is empty, show all factories
-            setFilteredFactories(factories);
-        } else {
+
+        // If the search term is empty, show all factories
+        if (searchTerm.trim() === '') setFilteredFactories(factories);
+        
+        // Else conduct the search
+        else {
             // Setup Fuse.js options
             const options = {
                 includeScore: true,
-                // Specify the keys to search in
-                keys: ['English_Name'],
-                // Set a higher threshold for more specific matches
-                threshold: 0.3,
-                // Require all words in the search term to be present
-                matchAllTokens: true,
-                // Set a lower distance for more specific matches
-                distance: 100,
-                // Set a higher minimum match character length
-                minMatchCharLength: 3,
+                keys: ['English_Name'], // Specify the keys to search in
+                threshold: 0.3,         // Set a higher threshold for more specific matches
+                matchAllTokens: true,   // Require all words in the search term to be present
+                distance: 100,          // Set a lower distance for more specific matches
+                minMatchCharLength: 3,  // Set a higher minimum match character length
             };
 
-            // Create a new instance of Fuse.js with the factories data and options
-            const fuse = new Fuse(factories, options);
-
-            // Perform the search
-            const result = fuse.search(searchTerm);
-
-            // Map the search result back to the factories array
-            const filtered = result.map(item => item.item);
+            const fuse = new Fuse(factories, options);      // Create a new instance of Fuse.js with the factories data and options
+            const result = fuse.search(searchTerm);         // Perform the search
+            const filtered = result.map(item => item.item); // Map the search result back to the factories array
             setFilteredFactories(filtered);
         }
     };
@@ -68,14 +59,14 @@ function FactoryHomepage() {
 
     return (
         <div className="factory-homepage">
-            <div>
-                <Sidebar isOpen={showSidebar} />
-            </div>
+            <div><Sidebar /></div>
             <main>
                 <hr className="title-hr"></hr>
                 <h1 id="title">Giudecca Factories</h1>
                 <hr className="title-hr"></hr>
+
                 <SearchBar onSearch={handleSearch} />
+                
                 <section className="landscape-grid">
                     {filteredFactories.map(factory => (
                         <div className="landscape-item" key={factory.Factory_ID}>

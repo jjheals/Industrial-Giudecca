@@ -15,6 +15,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLockScroll } from './ScrollHandler'; 
 
 import '../css/TimelineGridA.css';
+
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
@@ -23,9 +24,6 @@ const TimelineGridA = () => {
     const [filteredFactories, setFilteredFactories] = useState([]);
     const [year, setYear] = useState(1730);
     const pageRef = useRef(null);
-
-
-    
 
     // Iterate over the factories and find the minmum/maximum year, and get the cover image for each
     let minYear = 9999;
@@ -46,6 +44,7 @@ const TimelineGridA = () => {
     useLockScroll(pageRef, minYear, new Date().getFullYear(), setYear);
 
     useEffect(() => {
+        // Filter the factories based on the scroll position
         const filterFactories = (year) => {
             const filtered = factories.filter(
                 factory => factory && 
@@ -80,10 +79,10 @@ const TimelineGridA = () => {
                 <div className='i' id='i5'><h3>on Giudecca.</h3></div>
             </div>
 
-            <div className='grid-container'>
-                {factories.map(factory => (
-                    <div className="grid-item" key={factory.Factory_ID}>
-                        <img id={factory.Factory_ID} src={factory.coverPicURL} alt={factory.Factory_ID} className="factory-img"/>
+            <div class='grid-container'>
+                {filteredFactories.map(factory => (
+                    <div class="grid-item" key={factory.Factory_ID}>
+                        <img id={factory.Factory_ID} src={factory.coverPicURL} alt={factory.English_Name} class="factory-img"/>
                     </div>
                 ))}
             </div>

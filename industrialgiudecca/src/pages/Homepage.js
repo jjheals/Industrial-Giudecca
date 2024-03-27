@@ -1,31 +1,28 @@
 // src/pages/Homepage.js
+
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/Homepage.css';
 
 import Sidebar from '../components/Sidebar';
-import { Link } from 'react-router-dom';
 import Accordion from '../components/Accordion';
 import TimelineGridA from '../components/TimelineGridA';
 
-
 function Homepage() {
-    const [showSidebar, setShowSidebar] = useState(false);
     const [blurbOpacity, setBlurbOpacity] = useState(1);
-    const [showScrollArrow, setShowScrollArrow] = useState(false);
+    const [showScrollArrow] = useState(false);
     const timelineRef = useRef(null);
-
-    const toggleSidebar = () => {
-        setShowSidebar(!showSidebar);
-    };
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
+
+            // Blurb fade in/out logic
             const blurbElement = document.getElementById('blurb');
             if (blurbElement) {
-                const blurbHeight = blurbElement.offsetHeight;
-                const scrollThreshold = blurbHeight * 0.7;
+                const blurbHeight = blurbElement.offsetHeight;  // Get the blurb height offset
+                const scrollThreshold = blurbHeight * 0.7;      // Threshold to start fade
 
+                // Check the scroll position and update opacity as necessary
                 if (scrollPosition < scrollThreshold) {
                     const opacity = 1 - scrollPosition / scrollThreshold;
                     setBlurbOpacity(opacity);
@@ -33,22 +30,9 @@ function Homepage() {
                     setBlurbOpacity(0);
                 }
             }
-
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
-            const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
-
-            const fibonacciSequence = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-            const fibonacciIndex = Math.floor(scrollPercentage * fibonacciSequence.length);
-            const fibonacciNumber = fibonacciSequence[fibonacciIndex];
-            const imageWidth = 100 - (fibonacciNumber / 89) * 50;
-
-            const frontImage = document.getElementById('frontImage');
-            if (frontImage) {
-                frontImage.style.width = `${imageWidth}%`;
-            }
         };
 
+        // Add an event handler to control the blur in/out  
         window.addEventListener('scroll', handleScroll);
 
         return () => {
@@ -62,14 +46,13 @@ function Homepage() {
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Judson"/>
-
                 <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css"/>
+                <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css"/>
+                <link rel="stylesheet" href="../static/index.css"/>
+
                 <script src="https://js.arcgis.com/4.28/"></script>
                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                 <script type="module" src="https://js.arcgis.com/calcite-components/1.9.2/calcite.esm.js"></script>
-                <link rel="stylesheet" type="text/css"
-                      href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css"/>
-                <link rel="stylesheet" href="../static/index.css"/>
             </header>
 
             <head>
@@ -78,9 +61,7 @@ function Homepage() {
                 <title>Industrial Giudecca</title>
             </head>
 
-            <div>
-                <Sidebar isOpen={showSidebar}/>
-            </div>
+            <div><Sidebar /></div>
 
             <div id='logos-container'>
                 <img id='main-logo' class='logo' src='logo.png' />
@@ -107,16 +88,9 @@ function Homepage() {
                 </div>
             </div>
 
+            <div ref={timelineRef} className="timeline-container"><TimelineGridA timelineRef={timelineRef}/></div>
+            <div className="accordion-container"><Accordion/></div>
 
-            <div ref={timelineRef} className="timeline-container">
-                <TimelineGridA timelineRef={timelineRef}/>
-            </div>
-
-            <div className="accordion-container">
-                <Accordion/>
-            </div>
-
-            <body>
             <div className="container">
                 <div className="mapContainer">
                     <iframe
@@ -142,7 +116,6 @@ function Homepage() {
                     </iframe>
                 </div>
             </div>
-            </body>
         </div>
     );
 }

@@ -1,14 +1,16 @@
 :root { 
     --img-height: 30vh; /* Height of the images for each factory */
-}
+    --img-width: 20vw;  /* Width for factory images */
 
+    background-color: #f8f8f8;
+    
+}
 
 /* src/css/FactoryHomepage.css */
 .factory-homepage {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
 }
 
 #title { 
@@ -22,8 +24,7 @@
 
 main {
     margin: 0 auto;
-    background-color: #f8f8f8;
-    padding: 7vh 2%;
+    padding: 7vh 2% 5vh;
 }
 
 .title-hr { 
@@ -32,20 +33,21 @@ main {
 
 .landscape-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--img-width), 1fr));
     gap: 2vw;
     padding-top: 2%;
     margin-top: 4%;
-    background-color: #f8f8f8;
 }
 
 .landscape-item {
     font-family: "Lato";
+    width: calc(var(--img-width) + 4vw);
     font-size: 1vw;
     text-align: center;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0.75vw 1vw rgba(0, 0, 0, 0.1);
+    padding: 0;
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -55,28 +57,17 @@ main {
 }
 
 .landscape-placeholder {
-    width: 100%;
+    width: var(--img-width);
     height: var(--img-height);
     background-color: #eeeeee;
     margin-bottom: 1vh;
+    padding: 0;
     background-color: rgb(110, 110, 110);
 }
 
 .factory-image { 
-    width: 100%;
+    width: var(--img-width);
     height: var(--img-height);
-}
-
-
-footer {
-    background-color: #ffffff;
-    padding: 1.5vw;
-    text-align: center;
-    font-size: 2vw;
-    color: #666666;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-}
-
-footer p {
     margin: 0;
+    margin-top: 5%;
 }

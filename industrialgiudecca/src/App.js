@@ -1,4 +1,5 @@
 // src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FactoryHomepage from './pages/FactoryHomepage';
@@ -19,8 +20,8 @@ function App() {
                 <Route path="/stucky" element={<StuckyFactory />} />
                 <Route path={"/photos"} element={<Photos />} />
                 <Route path={"/factory/:Factory_ID"} element={<BasicFactoryTemplate />} />
-                <Route path={"timelinegridA"} element={<TimelineGridA_page />} />
-                <Route path={"timelinegridB"} element={<TimelineGridB_page />} />
+                <Route path={"/timelinegridA"} element={<TimelineGridA_page />} />
+                <Route path={"/timelinegridB"} element={<TimelineGridB_page />} />
             </Routes>
         </Router>
     );

@@ -1,6 +1,6 @@
 :root { 
-    --grid-max-height: 110vh;
-    --grid-img-size: 2vw;
+    --grid-max-height: 5vh;
+    --grid-img-size: 5%;
 }
 
 .page-container { 
@@ -64,6 +64,7 @@ h3 {
     margin: auto;
     padding: 0;
     overflow-y: hidden;
+    background-color: red;
 }
 
 .factory-img { 

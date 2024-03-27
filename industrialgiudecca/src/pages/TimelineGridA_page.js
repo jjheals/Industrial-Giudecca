@@ -4,43 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../css/TimelineGridA.css';
 
 import Sidebar from '../components/Sidebar';
-import TimelineGrid from '../components/TimelineGridA';
-
+import TimelineGridA from '../components/TimelineGridA.js';
 
 function TimelineGridA_page() {
-    const [showSidebar, setShowSidebar] = useState(false);
-    const [blurbOpacity, setBlurbOpacity] = useState(1);
-    const timelineRef = useRef(null);
-
-    const toggleSidebar = () => {
-        setShowSidebar(!showSidebar);
-    };
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
-            const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
-
-            const fibonacciSequence = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-            const fibonacciIndex = Math.floor(scrollPercentage * fibonacciSequence.length);
-            const fibonacciNumber = fibonacciSequence[fibonacciIndex];
-            const imageWidth = 100 - (fibonacciNumber / 89) * 50;
-
-            const frontImage = document.getElementById('frontImage');
-            if (frontImage) {
-                frontImage.style.width = `${imageWidth}%`;
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     return (
         <div className="homepage">
@@ -64,13 +30,8 @@ function TimelineGridA_page() {
                 <title>Industrial Giudecca</title>
             </head>
 
-            <div>
-                <Sidebar isOpen={showSidebar}/>
-            </div>
-            
-            <div ref={timelineRef} className="timeline-container">
-                <TimelineGrid timelineRef={timelineRef}/>
-            </div>
+            <div><Sidebar /></div>
+            <div className="timeline-container"><TimelineGridA /></div>
 
         </div>
     );
