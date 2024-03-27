@@ -22,6 +22,7 @@ import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 const TimelineGridA = () => {
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
+    let [numActive, setNumActive] = useState(0);
     const [year, setYear] = useState(1730);
     const pageRef = useRef(null);
 
@@ -32,6 +33,7 @@ const TimelineGridA = () => {
 
         // Get the cover image for this factory
         factory.getCoverImageURL(); 
+        factory.show = 'show';
 
         // Set random opening years and random closing years if they are NULL
         if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
@@ -44,13 +46,21 @@ const TimelineGridA = () => {
     useLockScroll(pageRef, minYear, new Date().getFullYear(), setYear);
 
     useEffect(() => {
+
         // Filter the factories based on the scroll position
         const filterFactories = (year) => {
-            const filtered = factories.filter(
-                factory => factory && 
-                factory.Opening_Year <= year && 
-                (!factory.Closing_Year || factory.Closing_Year >= year)
-            );
+            numActive = 0;
+            const filtered = factories.map(factory => { 
+                const isVisible = factory && 
+                                 factory.Opening_Year <= year && 
+                                 (!factory.Closing_Year || factory.Closing_Year >= year);
+                
+                if(isVisible) numActive += 1;
+
+                // Return factory object with updated opacity
+                return { ...factory, isVisible };
+            });
+            setNumActive(numActive);
             setFilteredFactories(filtered);
         };
 
@@ -75,14 +85,20 @@ const TimelineGridA = () => {
                 <div className='i' id='i1'><h3>In the year</h3></div>
                 <div className='i' id='i2'><h1>{year}</h1></div>
                 <div className='i' id='i3'><h3>There were</h3></div>
-                <div className='i' id='i4'><h1>{filteredFactories.length} factories</h1></div>
+                <div className='i' id='i4'><h1>{numActive} factories</h1></div>
                 <div className='i' id='i5'><h3>on Giudecca.</h3></div>
             </div>
 
             <div class='grid-container'>
                 {filteredFactories.map(factory => (
-                    <div class="grid-item" key={factory.Factory_ID}>
-                        <img id={factory.Factory_ID} src={factory.coverPicURL} alt={factory.English_Name} class="factory-img"/>
+                    <div className='grid-item' key={factory.Factory_ID}>
+                        <img
+                            style={{ opacity: factory.isVisible ? 1 : 0 }}
+                            id={factory.Factory_ID}
+                            src={factory.coverPicURL}
+                            alt={factory.English_Name}
+                            className="factory-img"
+                        />
                     </div>
                 ))}
             </div>

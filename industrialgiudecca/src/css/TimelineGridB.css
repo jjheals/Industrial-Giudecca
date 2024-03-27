@@ -1,3 +1,4 @@
+/*
 :root { 
     --grid-max-height: 110vh;
     --grid-img-size: 10vw;
@@ -9,7 +10,6 @@
     max-height: var(--grid-max-height);
 }
 
-/* Styles for info container on left */
 .info-container { 
     width: 40%;
     padding-left: 3%;
@@ -22,12 +22,10 @@
     margin: 1vw auto 1vw auto;
 }
 
-/* Side panel larger text */
 h1 { 
     font-size: 5vw;
 }
 
-/* Side panel smaller text */
 h3 { 
     font-size: 2vw;
 }
@@ -54,7 +52,6 @@ h3 {
     text-align: right;
 }
 
-/* Styles for grid container on right */
 .grid-container {
     display: grid;
     width: 100%;
@@ -73,4 +70,4 @@ h3 {
     padding: 0;
     background-color: grey;
 }
-
+*/

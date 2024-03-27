@@ -1,6 +1,6 @@
 :root { 
-    --grid-max-height: 5vh;
-    --grid-img-size: 5%;
+    --grid-height: 100vh;
+    --grid-img-size: 7vw;
 }
 
 .page-container { 
@@ -13,7 +13,7 @@
 .info-container { 
     width: 40%;
     padding-left: 3%;
-    padding-right: 3%;
+    padding-right: 6%;
     font-family: 'Judson', serif;
 }
 
@@ -58,20 +58,25 @@ h3 {
 .grid-container {
     display: grid;
     width: 100%;
-    max-height: var(--grid-max-height);
+    height: var(--grid-height);
     grid-template-columns: repeat(auto-fit, var(--grid-img-size));
     gap: 0.4vw;
     margin: auto;
-    padding: 0;
+    padding: auto;
     overflow-y: hidden;
-    background-color: red;
 }
 
-.factory-img { 
+.factory-img {
     width: var(--grid-img-size);
     height: var(--grid-img-size);
     margin: 1%;
     padding: 0;
+    opacity: 1; 
+    transition: opacity 0.5s ease; 
     background-color: grey;
 }
 
+.factory-img.visible {
+    transition: opacity 0.5s ease;
+    opacity: 0; /* Set opacity to 1 for visible factories */
+}
