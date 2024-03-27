@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="SEARCH BAR ON FACTORY PAGE">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="search bar luh photo page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +74,7 @@
       <workItem from="1710835470668" duration="17906000" />
       <workItem from="1710926755120" duration="17002000" />
       <workItem from="1711382802660" duration="684000" />
-      <workItem from="1711447637050" duration="17203000" />
+      <workItem from="1711447637050" duration="17817000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -292,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711530701559</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="search bar luh photo page">
+      <option name="closed" value="true" />
+      <created>1711531684476</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1711531684476</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +318,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added the fade in / out" />
     <MESSAGE value="fixed the z index on the factory image" />
     <MESSAGE value="fixed blurb elemet if shouldnt work" />
     <MESSAGE value="changes app.js to be router only" />
@@ -335,6 +342,7 @@
     <MESSAGE value="margins white box etc" />
     <MESSAGE value="Locking thingy" />
     <MESSAGE value="SEARCH BAR ON FACTORY PAGE" />
-    <option name="LAST_COMMIT_MESSAGE" value="SEARCH BAR ON FACTORY PAGE" />
+    <MESSAGE value="search bar luh photo page" />
+    <option name="LAST_COMMIT_MESSAGE" value="search bar luh photo page" />
   </component>
 </project>

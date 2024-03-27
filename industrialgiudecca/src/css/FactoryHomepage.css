@@ -32,11 +32,12 @@ main {
 
 .landscape-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 25vw));
     gap: 2vw;
     padding-top: 2%;
     margin-top: 4%;
     background-color: #f8f8f8;
+    justify-content: center;
 }
 
 .landscape-item {
