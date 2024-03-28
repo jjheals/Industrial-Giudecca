@@ -52,7 +52,7 @@ const DataExplorerSearchBar = () => {
                     </div>
                     <div className='input-container'>
                         <select className='de-search-input'>
-                            <option className='de-select-option' value=''>Select New Purpose</option>
+                            <option className='de-select-option' value=''>Select Current Purpose</option>
                             {
                                 purposes.map(purpose => { 
                                     return <option className='de-select-option' value={ purpose }>{ purpose }</option> 
