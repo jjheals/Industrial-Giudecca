@@ -10,10 +10,14 @@ import '../../css/DataExplorer.css';
 
 const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState([]);
+    const [ purposes, setPurposes ] = useState([]);
 
     useEffect(() => { 
-        // DO TO: dynamically pull all possible products from the DB to populate the options on the sheet
+        // DO TO: dynamically pull all possible products AND purposes from the DB to populate the options on the sheet
         const productsFromDB = ['Silk', 'Pasta', 'Watches', 'Fuzes', 'Radios', 'Shipyard'];
+        const purposesFromDB = ['Residential', 'Abandoned', 'Municipality', 'Business'];
+
+        setPurposes(purposesFromDB);
         setProducts(productsFromDB);
     }, []);
     
@@ -37,17 +41,24 @@ const DataExplorerSearchBar = () => {
 
                 <div className='de-search-bar-row'>
                     <div className='input-container'>
-                        <select className='de-search-input' placeholder='Product'>
-                            <option className='de-select-option' value=''>Product</option>
+                        <select className='de-search-input'>
+                            <option className='de-select-option' value=''>Select Product</option>
                             {
                                 products.map(product => { 
-                                    return <option className='de-select-option' value='product'>{ product }</option> 
+                                    return <option className='de-select-option' value={ product }>{ product }</option> 
                                 })
                             }
                         </select>
                     </div>
                     <div className='input-container'>
-                        <input type='text' className='de-search-input' placeholder='Current Purpose'></input>
+                        <select className='de-search-input'>
+                            <option className='de-select-option' value=''>Select New Purpose</option>
+                            {
+                                purposes.map(purpose => { 
+                                    return <option className='de-select-option' value={ purpose }>{ purpose }</option> 
+                                })
+                            }
+                        </select>
                     </div>
                     <div className='input-container'>
                         <input type='number' className='de-search-input' placeholder='Maximum Employment'></input>

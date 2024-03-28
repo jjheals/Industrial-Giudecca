@@ -14,7 +14,6 @@
     /* Dynamically calculates the height of the search bar using the above variables so that the submit 
      * button hover animation does not change the height of the search bar. */
     --search-bar-row-height: calc(var(--search-input-font-size) + 2vh);
-    
 }
 
 .main-container { 
@@ -66,6 +65,10 @@
     border: 1px solid black;
 }
 
+select { 
+    cursor: pointer;
+}
+
 .de-search-submit { 
     margin: auto;
     margin-top: var(--submit-button-margin);
@@ -82,7 +85,7 @@
 }
 
 .de-search-submit:hover {
-    background-color: blue;
+    background-color: rgb(105, 105, 255);
     color: white;
     transition: ease 0.5s;
     width: calc(var(--submit-button-width) + 0.5vw);
