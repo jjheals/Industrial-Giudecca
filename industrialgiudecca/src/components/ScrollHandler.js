@@ -7,7 +7,7 @@ export const useLockScroll = (ref, startYear, endYear, setYear) => {
 
             if (ref.current) {
                 const { top, bottom } = ref.current.getBoundingClientRect();
-                const margin = 15;
+                const margin = 50;
 
                 if(top + margin >= 0 && bottom - margin <= window.innerHeight) {
                     e.preventDefault();
@@ -22,6 +22,10 @@ export const useLockScroll = (ref, startYear, endYear, setYear) => {
 
                         // Check if the scroll is up or down
                         if (newYear >= startYear && newYear <= endYear) return newYear;  // Scroll is "down" (increase year)  
+                        else if (newYear >= endYear) {
+                            window.removeEventListener('wheel', handleWheel);
+                            return newYear;
+                        }
                         else return prevYear;                                            // Scroll is "up" (decrease year)
                     });
                 }

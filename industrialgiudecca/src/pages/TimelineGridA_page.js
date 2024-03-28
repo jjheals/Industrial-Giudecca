@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar';
 import TimelineGridA from '../components/TimelineGridA.js';
 
 function TimelineGridA_page() {
+    const [showScrollArrow] = useState(false);
 
     return (
         <div className="homepage">
@@ -32,7 +33,6 @@ function TimelineGridA_page() {
 
             <div><Sidebar /></div>
             <div className="timeline-container"><TimelineGridA /></div>
-
         </div>
     );
 }
