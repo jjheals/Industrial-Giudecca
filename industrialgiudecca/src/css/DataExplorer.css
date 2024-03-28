@@ -1,0 +1,14 @@
+:root { 
+
+}
+
+.main-container { 
+
+}
+
+.data-explorer { 
+    width: 90vw;
+    height: 70vh;
+    background-color: red;
+    margin: auto;
+}

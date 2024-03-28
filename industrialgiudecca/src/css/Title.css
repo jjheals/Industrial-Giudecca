@@ -1,0 +1,17 @@
+.title-container {
+    width: 50%;
+    margin: 5vh auto;
+}
+
+.title { 
+    margin: 0;
+    color: #333333;
+    text-align: center;
+    padding: 1% 0;
+    font-family: "Judson";
+    font-size: 3vw;
+}
+
+.title-hr {
+    width: 100%;
+}
