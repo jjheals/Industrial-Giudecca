@@ -20,13 +20,19 @@ export const useLockScroll = (ref, startYear, endYear, setYear) => {
                     setYear((prevYear) => {
                         const newYear = prevYear + direction; 
 
-                        // Check if the scroll is up or down
-                        if (newYear >= startYear && newYear <= endYear) return newYear;  // Scroll is "down" (increase year)  
+                        // Scroll is "down" (increase year)  
+                        if (newYear >= startYear && newYear <= endYear) return newYear; 
+                        
+                        // We are at the end, so remove the event listener to unlock scroll
                         else if (newYear >= endYear) {
                             window.removeEventListener('wheel', handleWheel);
+
+                            // Return the newYear as the last year to show on the screen
                             return newYear;
                         }
-                        else return prevYear;                                            // Scroll is "up" (decrease year)
+
+                        // Scroll is "up" (decrease year)
+                        else return prevYear;                                            
                     });
                 }
             }

@@ -6,7 +6,8 @@ import { factoriesServiceURL, sDPTFactoriesTableURL, sDPTImagesURL } from '../Gl
 import Gallery from '../components/Gallery.js';
 import { sDPTFetchFactoriesFL } from '../ArcGIS';
 import Fuse from "fuse.js";
-import SearchBar from "../components/SearchBar";
+import SearchBar from '../components/SearchBar';
+import Title from '../components/Title.js';
 
 function Photos() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -61,11 +62,9 @@ function Photos() {
     return (
         <div className='main'>
             <div><Sidebar isOpen={showSidebar}/></div>
-
-            <hr class="title-hr"></hr>
-            <h1 id="title">Photo Gallery</h1>
-            <hr class="title-hr"></hr>
+            <div><Title title='Photo Gallery' /></div>
             <SearchBar onSearch={handleSearch} />
+            
             <div class='spacer'></div>
 
             <div id='galleries-container'>

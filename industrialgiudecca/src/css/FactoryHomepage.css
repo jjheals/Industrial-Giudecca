@@ -41,7 +41,7 @@ main {
 
 .landscape-item {
     font-family: "Lato";
-    width: calc(var(--img-width) + 4vw);
+    width: calc(var(--img-width) + 2vw);
     font-size: 1vw;
     text-align: center;
     background-color: #ffffff;

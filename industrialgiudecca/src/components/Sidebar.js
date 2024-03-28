@@ -39,7 +39,9 @@ const Sidebar = () => {
                             <Link class="sidebar-link" to="/timelinegridB" onClick={toggleSidebar}>TimelineGridB</Link>
                         </li>
 
-                        <li className="sidebar-element">Data Sheets</li>
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" to="/data-explorer" onClick={toggleSidebar}>Data Explorer</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

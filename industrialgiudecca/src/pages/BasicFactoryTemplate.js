@@ -3,8 +3,9 @@ import Sidebar from '../components/Sidebar.js';
 import '../css/BasicFactoryTemplate.css';
 
 import { useParams } from 'react-router-dom';
-import { factoriesServiceURL, sDPTFactoriesTableURL } from '../GlobalConstants.js';
+import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import Title from '../components/Title.js';
 
 function BasicFactoryTemplate() {
 
@@ -42,9 +43,7 @@ function BasicFactoryTemplate() {
     return (
         <div className="main-container">
             <div><Sidebar isOpen={showSidebar}/></div>
-            <hr class="title-hr"></hr>
-                <h1 id="title"></h1>
-                <hr class="title-hr"></hr>
+            <div><Title title={ factoryName }/></div>
 
             <div id='grid-container'>
                 <div class='grid-item' id='image-panel'> 

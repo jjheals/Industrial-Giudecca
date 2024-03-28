@@ -60,7 +60,6 @@ h3 {
     width: 100%;
     height: var(--grid-height);
     grid-template-columns: repeat(auto-fit, var(--grid-img-size));
-    gap: 0.4vw;
     margin: auto;
     padding: auto;
     overflow-y: hidden;

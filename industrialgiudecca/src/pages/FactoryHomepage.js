@@ -5,6 +5,7 @@ import Sidebar from '../components/Sidebar';
 import SearchBar from '../components/SearchBar';
 import { Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
+import Title from '../components/Title.js';
 
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
@@ -61,9 +62,7 @@ function FactoryHomepage() {
         <div className="factory-homepage">
             <div><Sidebar /></div>
             <main>
-                <hr className="title-hr"></hr>
-                <h1 id="title">Giudecca Factories</h1>
-                <hr className="title-hr"></hr>
+                <div><Title title='Factories' /></div>
 
                 <SearchBar onSearch={handleSearch} />
                 
