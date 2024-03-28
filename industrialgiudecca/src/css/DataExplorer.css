@@ -1,14 +1,20 @@
 
 :root { 
-    
-    --submit-button-width: 10vw;
-    --submit-button-height: 5vh;
-    --submit-button-margin: 1vh;
+    --main-font-family: 'Judson', serif; /* Primary font style for the page */
 
-    --search-bar-row-margin: 1vh;
-    --search-input-font-size: 1vw;
+    /* Submit button styles */
+    --submit-button-width: 10vw;         /* Width for submit button for calculating space */
+    --submit-button-height: 5vh;         /* Height for submit button for calculating space */
+    --submit-button-margin: 1vh;         /* Margin for submit button for calculating space */
+
+    /* Search bar styles */
+    --search-bar-row-margin: 1vh;   /* Margin for the rows of the search bar for calculating space */
+    --search-input-font-size: 1vw;  /* Font size for the input fields of the search bar */
+
+    /* Dynamically calculates the height of the search bar using the above variables so that the submit 
+     * button hover animation does not change the height of the search bar. */
     --search-bar-row-height: calc(var(--search-input-font-size) + 2vh);
-    --main-font-family: 'Judson', serif;
+    
 }
 
 .main-container { 
