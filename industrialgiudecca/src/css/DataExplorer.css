@@ -1,14 +1,84 @@
-:root { 
 
+:root { 
+    
+    --submit-button-width: 10vw;
+    --submit-button-height: 5vh;
+    --submit-button-margin: 1vh;
+
+    --search-bar-row-margin: 1vh;
+    --search-input-font-size: 1vw;
+    --search-bar-row-height: calc(var(--search-input-font-size) + 2vh);
+    --main-font-family: 'Judson', serif;
 }
 
 .main-container { 
-
+    margin: 0;
+    padding: 0;
 }
 
 .data-explorer { 
     width: 90vw;
     height: 70vh;
-    background-color: red;
+    margin: 0 auto 10vh auto;
+    font-family: var(--main-font-family);
+}
+
+/* Search bar styles */
+#search-bar-container { 
+    width: 100%;
+    background-color: rgb(209, 209, 209);
+}
+
+.de-search-bar { 
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding-top: 2vh;
+    padding-bottom: 0;
+    overflow-y: visible;
+    height: calc(4*(var(--search-bar-row-height) + var(--search-bar-row-margin)));
+}
+
+.de-search-bar-row { 
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     margin: auto;
+    margin-top: var(--search-bar-row-margin);
+}
+
+.input-container { 
+    width: 15%;
+    margin: auto;
+}
+
+.de-search-input { 
+    width: 90%;
+    padding: 2% 4%;
+    font-size: var(--search-input-font-size);
+    font-family: var(--main-font-family);
+    border: 1px solid black;
+}
+
+.de-search-submit { 
+    margin: auto;
+    margin-top: var(--submit-button-margin);
+    height: var(--submit-button-height);
+    width: var(--submit-button-width);
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: ease 0.5s;
+    font-family: var(--main-font-family);
+    font-size: 1.2vw;
+}
+
+.de-search-submit:hover {
+    background-color: blue;
+    color: white;
+    transition: ease 0.5s;
+    width: calc(var(--submit-button-width) + 0.5vw);
+    height: calc(var(--submit-button-height) + 0.5vh);
 }

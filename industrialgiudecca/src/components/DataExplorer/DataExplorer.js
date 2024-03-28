@@ -7,6 +7,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import '../../css/DataExplorer.css';
+import DataExplorerSearchBar from './DataExplorerSearchBar';
 
 const DataExplorer = () => {
 
@@ -16,7 +17,7 @@ const DataExplorer = () => {
 
     return (
         <div className='main-container'>
-            
+            <div id='search-bar-container'><DataExplorerSearchBar /></div>
         </div>
     );
 };
