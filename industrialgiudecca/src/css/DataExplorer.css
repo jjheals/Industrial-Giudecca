@@ -2,6 +2,7 @@
 :root { 
     --main-font-family: 'Judson', serif; /* Primary font style for the page */
     --de-width: 90vw;
+    --de-primary-color: rgb(209, 209, 209);
 
     /* Submit button styles */
     --submit-button-width: 10vw;         /* Width for submit button for calculating space */
@@ -15,6 +16,10 @@
     /* Dynamically calculates the height of the search bar using the above variables so that the submit 
      * button hover animation does not change the height of the search bar. */
     --search-bar-row-height: calc(var(--search-input-font-size) + 2vh);
+
+    /* DE Table styles */
+    --de-results-table-width: 90vw;
+    --de-results-table-height: 50vh;
 }
 
 .main-container { 
@@ -32,7 +37,7 @@
 /* Search bar styles */
 #search-bar-container { 
     width: var(--de-width);
-    background-color: rgb(209, 209, 209);
+    background-color: var(--de-primary-color);
 }
 
 .de-search-bar { 
@@ -95,3 +100,48 @@ select {
     width: calc(var(--submit-button-width) + 0.5vw);
     height: calc(var(--submit-button-height) + 0.5vh);
 }
+
+/* Results table styles */
+.de-results-table-container { 
+    height: var(--de-results-table-height);
+    width: auto;
+    margin: 5vh auto;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+.de-results-table { 
+    display: table;
+    width: var(--de-results-table-width);
+    height: var(--de-results-table-height);
+    font-size: 1vw;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.de-results-table thead, .de-results-table tbody { 
+    width: var(--de-results-table-width);
+    margin: 0;
+    background-color: var(--de-secondary-color);
+}
+
+.de-results-table thead th { 
+    position: sticky;
+    top: 0;
+    border-top: 1.5px solid black;
+    border-bottom: 1.5px solid black;
+}
+
+.de-results-table th, .de-results-table td { 
+    margin: 0;
+    width: 5vw;
+    padding: 1vh 2vw;
+    background-color: white;
+}
+
+.de-results-table th { 
+    background-color: var(--de-primary-color);
+}
+
+

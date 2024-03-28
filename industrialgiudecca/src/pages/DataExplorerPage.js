@@ -18,7 +18,7 @@ function DataExplorerPage() {
             <div><Sidebar /></div>
             <div><Title title='Data Explorer'/></div>
             <div className='data-explorer'><DataExplorer /></div>
-
+            
         </div>
     );
 }
