@@ -1,0 +1,63 @@
+,Factory_ID,Building_ID,English_Name,Italian_Name,Factory_Description,Opening_Year,Closing_Year,O_Date_Source,C_Date_Source
+0,3,3.0,Stucky,Molino Di Grani (Ditta G. Stucky),"52 employees and 197 workers when it closed
+Considered one of the largest mills in Europe, with its production of 500 quintals of wheat and 250 quitals of pasta per day” (page 70)
+- Week long strike during 29 April 1919
+Salary improvements and limited working hours to 8 hours a day (page 57)",1884.0,1957.0,"Lando, 2023, p. 11","Lando, 2023, p. 40"
+1,4,4.0,Trevisan,Ditta Trevisan,Large sawmill; constructed the beams for Academia bridge in 1961.,1930.0,1970.0,"Lando, 2023, p. 13","Lando, 2023, p. 14"
+2,401,4.0,SA Plant Casale Monferrato,,Lime and cement factory that produced 500 thousand quintals of  Portland cement per year.,1902.0,1914.0,"Lando, 2023, p. 13","Lando, 2023, p. 13"
+3,5,5.0,Fortuny,Ditta Fortuny,"A long two-story building built in 1909, expanded in 1927-28. The only currently active factory on Giudecca.",1922.0,,,
+4,501,5.0,Pila Pilla,Pila Pilla,An ad  hoc company known as Pila Pilla which had to move to Florence where it remained even 84 after WWI.,1919.0,1922.0,"Lando, 2023, p. 13","Lando, 2023, p. 13"
+5,6,6.0,Società Distilleria Veneziana,Società Distilleria Veneziana,"Built in 1902. After closing to install safety works, the company changed its name to Societa Birra San Marco in 1908. In the early 20th century, Societa Birra San Marco financed the prizes for rowing regattas (Lando, 2023, p. 3). The first Giudecchino factory in the style of the Stucky (Lando, 2023, p. 12).",1902.0,1930.0,https://www.birravenezia.it/storia,"Pietro Lando. Interview, 2024."
+6,601,6.0,Dreher,Ditta Dreher,Brewery purchased from Veneziana Beer in the 1930s.,1930.0,1967.0,"Pietro Lando. Interview, 2024.","Lando, 2023, p. 46"
+7,7,7.0,Pizzolotto,Ditta Pizzolotto,"Complex of multi-story buildings founded by S. Biagio; built in 1902, expanded 1908-1921.",1902.0,1972.0,,"Lando, 2023, p. 47"
+8,8,8.0,Mazzega Moro,,Farm.,1855.0,,"Lando, 2023, p. 14",
+9,9,9.0,Scalera Film,Scalera Film,Italian film production and distribution company.,1938.0,1950.0,https://en.wikipedia.org/wiki/Scalera_Film,https://en.wikipedia.org/wiki/Scalera_Film
+10,11,11.0,Scarpa,Ditta Scarpa,,1900.0,,,
+11,12,12.0,,,"Previously used as a construction site, today (1981) used by a cooperative for piling, mooring boats, etc.",,,,
+12,13,13.0,Pivato,Ditta Pivato,A Tannery that was used to shelter evicted people and known by the name of baracon or capanon in the 1920s.,1800.0,1920.0,,
+13,14,14.0,Herion,Ditta Hérion,"Knitwear factory that is currently the location of SerenDPT, a startup incubator.",1886.0,1985.0,"Lando, 2023, p. 47","Lando, 2023, p. 47"
+14,15,15.0,Lucchese,Ditta Lucchese,"Giudecca shipyard, responsible for building boats of different sizes for the lagoon.",1926.0,1989.0,"Lando, 2023, p. 30","Lando, 2023, p. 46"
+15,16,16.0,Toffolo,Ditta Toffolo,"Giudecca shipyard responsible for rearmament works, building dredgers, tugboats, and barges.",1909.0,1991.0,"Stampa: Tipografia Commerciale/Venezia, 1981","Lando, 2023, p.46"
+16,17,17.0,Inio,Ditta Inio,"Originally called Sola Francesco, it arrived at Giudecca in 1846 from Cannaregi to produce natural fiber ropes, copper and iron cables.",1846.0,1989.0,"Lando, 2023, p. 15","Lando, 2023, p.15"
+17,18,18.0,Bussolin,Ditta Bussolin,"Founded in 1878 by Bussolin; it was one of  the companies victimized by the consequences of Caporetto but was reborn on the island with another name, Cossulich and C. In 1922, it the building was sold to Casimiro Gaggio, who renovated and enlarged the space.",1878.0,1915.0,"Lando, 2023, p. 15","Lando, 2023, p. 31"
+18,181,18.0,Gaggio,Ditta Gaggio,"Carpet from coconut fibers, created from the Bussolin, named after the first founder's son-in-law. The building burned down in 1961 and the area was repurposed for residential use.",1922.0,1961.0,"Lando, 2023, p. 31","Lando, 2023, p. 31"
+19,19,19.0,Junghans,Ditta Junghans,Junghans was one of the largest watch factories in the world at its peak. They produced fuzes during World War 2 and closed their doors in 1993.,1878.0,1993.0,"Lando, 2023, p. 16","Lando, 2023, p. 16"
+20,20,20.0,Trevisan,Ditta Trevisan,A wheelbarrow factory that was transformed into a large sawmill.,1930.0,1970.0,"Lando, 2023, pg. 14","Lando, 2023, p. 14"
+21,21,21.0,Junghans,Ditta Junghans,"One of the two main industrial factories active from 1940-45. Junghans attempted to have a completely Venetian workforce (majority from Giudecca) with a close community; the company had a basketball team that dominated minor league tournaments in the 1950s, but it was literally the after-work team and the ""purchase"" of the players took place by offering them  jobs in the factory (Lando, 2023, 70). The complex was placed under surveillance during WWII by 25 german guards and two machine guns.",1879.0,1992.0,,
+22,22,22.0,Junghans,Ditta Junghans,,,,,
+23,23,23.0,Junghans,Ditta Junghans,,,,,
+24,24,24.0,Narduzzi,Ditta V. Narduzzi,Brick and Lime Factory that was modelled after the medieval Nordic architectural motifs of the Stucky.,1915.0,1930.0,"Lando, 2023, p. 17","Lando, 2023, p. 17"
+25,25,25.0,Omassini and Pascon,Ditta Omassini e Pascon,Established in 1922 in the premises of a small metal parts factory of the G. Zanchi e C company.,1922.0,1980.0,"Stampa: Tipografia Commerciale/Venezia, 1981",
+26,26,26.0,,,Used as a kiln to make bricks,1808.0,1890.0,,
+27,261,26.0,,,Repair and construction of boats,1890.0,1905.0,,
+28,262,26.0,Acnil,Acnil,A building on the river used since 1890 as a workshop for the repair and construction of boats that served as Acnil shipyard from 1905 to 1942.,1905.0,1942.0,"Stampa: Tipografia Commerciale/Venezia, 1981","Lando, 2023, p. 35"
+29,27,27.0,Cnomv,Cnomv,"Complex of several buildings and slipways built in 1906, One of the two particularly active industrial companies suring 1940-45
+Constructed and maintained boats (page 64)
+26 April 1945 fight for liberation occurred, where german soldiers (25) and fascists (7) were captured",1906.0,,"Stampa: Tipografia Commerciale/Venezia, 1981",
+30,28,28.0,Gianolla Company,Gianolla Company,"Founded in 1930 on an area already used as a bead factory (1860) famous for Elixir di china, came after Pivato Tannery",1936.0,1969.0,"Lando, 2023, p. 31","Lando, 2023, p. 47"
+31,281,28.0,,,Bead factory,1860.0,1936.0,"Stampa: Tipografia Commerciale/Venezia, 1981",
+32,29,29.0,,,Grain storage Redeemer built in 1846.,1846.0,,"Stampa: Tipografia Commerciale/Venezia, 1981",
+33,30,30.0,Cucco,Ditta Cucco,In business since the early 1900s it employs around 6 people,,,,
+34,31,31.0,Pianaro,Ditta Pianaro,"Founded in 1924, it was previously used as a rag factory and later as a liquor factory.",1924.0,,"Stampa: Tipografia Commerciale/Venezia, 1981",
+35,32,32.0,,,In business as of 1981.,,,,
+36,33,33.0,Tobacco Factory,,"Multi-storey building used as a tobacco warehouse since 1846, repurposed for the State Archives.",1846.0,,"Stampa: Tipografia Commerciale/Venezia, 1981",
+37,34,34.0,,,Multi-storey building used as grain wearhouse since 1846. Used as a youth hostel in the 1970s-80s.,1846.0,,"Stampa: Tipografia Commerciale/Venezia, 1981",
+38,35,35.0,Silos Society Venice,Società Silos Venezia,"Multi-storey building on the Giudecca canal used as a warehouse for the grandees from 1846 to 1930, later transformed and used as a finance barracks.",1846.0,1930.0,"Stampa: Tipografia Commerciale/Venezia, 1981","Stampa: Tipografia Commerciale/Venezia, 1981"
+39,36,36.0,,,Shed on the Giudecca canal used as a furnace in 1846 and subsequently as a coal warehouse.,1846.0,1981.0,"Stampa: Tipografia Commerciale/Venezia, 1981",
+40,37,37.0,Tanner,Ditta V. Tanner,"Two story ice factory built in 1906 and enlarged and renovated in 1924. After a readaptation to house a pasta factory, the property is currently abandoned.",1906.0,1934.0,"Lando, 2023, p. 20","Lando, 2023, p. 21"
+41,38,38.0,Par Cazzagon,Ditta Da Par Cazzagon,"Set of low buildings, built in the early 1900s. Later used as a foundry by the Toffolo company.",,1981.0,,
+42,39,39.0,Tramontin,Ditta Tramontin,In business as of 1981.,,,,
+43,391,39.0,Toffolo,Ditta Toffolo,"Foundry, and shipyard",1980.0,1991.0,"Lando, 2023, p. 46","Lando, 2023, p. 46"
+44,40,40.0,Magnanini,Ditta M. Magnanini,"Shipyard that opened in the early 1900s, and was in business as of 1981.",,,,
+45,41,41.0,,,"A Gothic building used as warehouses in 1846. The garden behind it was occupied by two tanks, but the building has been restored and houses some homes",1905.0,,,
+46,42,42.0,,,"Three sheds perpendicular to the Giudecca canal, used since 1846 as grain warehouses; abandoned as of 1981.",1846.0,,"Stampa: Tipografia Commerciale/Venezia, 1981",
+47,43,43.0,Venetian Navigation Company in Vapore Lagoon,Società Veneta di Navigazione a Vaporé Lagunare,"Established in 1882 on a state-owned area already used as a squero and expanded and renovated in 1922. The construction site, consisting of a large warehouse, a slipway and some warehouses, was active as of 1981.",1882.0,,"Stampa: Tipografia Commerciale/Venezia, 1981",
+48,44,44.0,,,"Located on the northern shore of the Island of S. Giorgio, equipped with warehouses for the storage of national goods, emporiums, administrative and surveillance offices during the 18th century. Subsequently, a 250 meter special basin was created, outlined by a specially built pier, ending in two 8 meter high lighthouse towers. Lost their function in 1880 with the establishment of the Maritime Station when the area was adapted to host scholastic, cultural and sporting facilities.",,1880.0,,"Stampa: Tipografia Commerciale/Venezia, 1981"
+49,45,,Cadorin Marco and Lodovico,Cadorin Marco and Lodovico,Artifical Fertilizer company.,1880.0,1885.0,,"Lando, 2023, p. 8"
+50,46,,Rothschild's Factory,Imperial Regio Stabilimento Adriatico dei Cementi Idraulici ed Asfalti,Bitumen and asphalt factory founded by Salomon Mayer von Rothschild and located a few tens of  meters from the Redentore church in San Giacomo.,1852.0,1866.0,,
+51,47,,Savinem Pressing,,,,,,
+52,48,,Calcagno Gustavino (Pagan),Calcagno Gustavino (Pagan),"Mechanical Plant, production of small tonnage boats and dredgers.",1925.0,1950.0,"Lando, 2023, p. 11","Lando, 2023, p. 11"
+53,50,,Dalla Pieta,Dalla Pieta,Construction and maintenance of hulls and engines.,1959.0,1990.0,,
+54,51,,SA Commercial Italian Rice Mill,SA Commercial Italian Rice Mill,"Prepared and marketed rice, sourced raw materials from Polesine, Romagna and Piedmont, and primarily exported to the Far East (and Argentina after WWI). During the conflict of 1915-18 it was requisitioned for the supply of the army.",1896.0,1928.0,"Lando, 2023, p. 14","Lando, 2023, p. 14"
+55,52,,Urban Waste Management Station,,Turned urban waste into fertilizer.,1970.0,1984.0,"Lando, 2023, p. 11","Lando, 2023, p. 11"
+56,53,,Venetian Cotton Mill,,"""right in front of the enormous mill and next to the  Maritime Station, stood the large building of the Venetian Cotton Mill erected in 1883""",1883.0,,"Lando, 2023, p. 12",
