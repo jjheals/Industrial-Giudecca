@@ -22,7 +22,7 @@ nav ul li a {
     left: calc(var(--sidebar-width) * -1);
     width: var(--sidebar-width);
     height: 100vh;
-    background-color: #f1f1f1;
+    background-color: #ffffffed;
     transition: left 0.3s ease;
     padding-top: 10%;
     overflow-y: auto;

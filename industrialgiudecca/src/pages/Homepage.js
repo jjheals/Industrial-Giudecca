@@ -79,7 +79,7 @@ function Homepage() {
                 </div>
                 <div className="blurbRow" id="blurbBottom">
                     <p className="blurbElm" id="blurbText">
-                        This website tells the story of industry on Giudecca.
+                        This platform tells the story of industry on Giudecca.
                     </p>
                 </div>
                 <div className="blurbRow" id="blurbScroll">
