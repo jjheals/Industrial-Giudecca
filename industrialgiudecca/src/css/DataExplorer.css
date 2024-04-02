@@ -12,6 +12,7 @@
     /* Search bar styles */
     --search-bar-row-margin: 1vh;   /* Margin for the rows of the search bar for calculating space */
     --search-input-font-size: 1vw;  /* Font size for the input fields of the search bar */
+    --de-download-button-width: 2vw;
 
     /* Dynamically calculates the height of the search bar using the above variables so that the submit 
      * button hover animation does not change the height of the search bar. */
@@ -74,7 +75,7 @@
     border: 1px solid black;
 }
 
-select { 
+select, .de-search-bar button { 
     cursor: pointer;
 }
 
@@ -99,6 +100,16 @@ select {
     transition: ease 0.5s;
     width: calc(var(--submit-button-width) + 0.5vw);
     height: calc(var(--submit-button-height) + 0.5vh);
+}
+
+.de-search-bar img{ 
+    bottom: 1vh;
+    width: 1.5vw; 
+    height: 3vh;
+}
+
+.de-search-bar .de-download-results { 
+    margin: 2vh 2vw 0 0;
 }
 
 /* Results table styles */
@@ -143,5 +154,4 @@ select {
 .de-results-table th { 
     background-color: var(--de-primary-color);
 }
-
 
