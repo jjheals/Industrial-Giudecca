@@ -73,7 +73,6 @@ const DataExplorerSearchBar = () => {
 
                 <div className='de-search-bar-row'>
                     <button type='submit' className='de-search-submit'>Search</button>
-                    <button type='download' className='de-download-results'><img id='download-icon' src='download-icon.png' /></button>
                 </div>
             </form>
         </div>

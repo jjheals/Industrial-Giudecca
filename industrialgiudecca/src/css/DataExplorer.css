@@ -3,6 +3,7 @@
     --main-font-family: 'Judson', serif; /* Primary font style for the page */
     --de-width: 90vw;
     --de-primary-color: rgb(209, 209, 209);
+    --hover-color: rgb(105, 105, 255);
 
     /* Submit button styles */
     --submit-button-width: 10vw;         /* Width for submit button for calculating space */
@@ -95,28 +96,42 @@ select, .de-search-bar button {
 }
 
 .de-search-submit:hover {
-    background-color: rgb(105, 105, 255);
+    background-color: var(--hover-color);
     color: white;
     transition: ease 0.5s;
     width: calc(var(--submit-button-width) + 0.5vw);
     height: calc(var(--submit-button-height) + 0.5vh);
 }
 
-.de-search-bar img{ 
+.de-download-results { 
+    margin: 2vh 2vw 2vh 0;
+    width: 4vw;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.de-download-results:hover { 
+    background-color: var(--hover-color);
+    margin: 2vh 2vw 2vh 0;
+}
+
+.main-container img { 
     bottom: 1vh;
     width: 1.5vw; 
     height: 3vh;
+    transition: 0.5s ease;
 }
 
-.de-search-bar .de-download-results { 
-    margin: 2vh 2vw 0 0;
+.main-container img:hover { 
+    transition: 0.5s ease;
+    cursor: pointer;
 }
 
 /* Results table styles */
 .de-results-table-container { 
     height: var(--de-results-table-height);
     width: auto;
-    margin: 5vh auto;
+    margin: 2vh auto;
     padding: 0;
     overflow-y: scroll;
 }
