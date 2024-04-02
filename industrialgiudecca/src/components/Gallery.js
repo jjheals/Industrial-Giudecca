@@ -1,4 +1,15 @@
-// Gallery.js
+// src/components/Gallery.js
+
+/** { Component } Gallery 
+ * 
+ * @abstract The Gallery provides a scrollable gallery for a particular given factory. 
+ * @param { int } Factory_ID - The factory ID to make API calls with and define the IDs for the images 
+ * @param { str } Factory_Name - The factory name to display at the top of the gallery
+ * @param { Promise } allImgsURLsPromise - A promise for the URLs for the images for this factory
+ * 
+ */
+
+
 import React, { useEffect, useState } from 'react';
 import '../css/Photos.css';
 

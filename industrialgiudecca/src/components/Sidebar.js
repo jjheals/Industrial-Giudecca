@@ -1,4 +1,11 @@
-// Sidebar.js
+// src/components/Sidebar.js
+
+/** { Component } Sidebar
+ * 
+ * @abstract The SideBar is the primary sidebar menu that appears on every page in the top left corner. It can be toggled and contains links 
+ * to the other pages. 
+ * 
+ */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Sidebar.css';

@@ -1,3 +1,15 @@
+// src/components/ScrollHandler.js
+
+/** { Component } ScrollHandler
+ * 
+ * @abstract ScrollHandler handles the locking/unlocking of the scroll for the picture timeline on the homepage/landing page.
+ * @param { Ref } ref - PageRef
+ * @param { int } startYear - The minimum year on the timeline
+ * @param { int } endYear - The maximum (final) year on the timeline
+ * @param { int } setYear - Current year on the timeline 
+ * 
+ */
+
 import { useEffect } from 'react';
 
 export const useLockScroll = (ref, startYear, endYear, setYear) => {

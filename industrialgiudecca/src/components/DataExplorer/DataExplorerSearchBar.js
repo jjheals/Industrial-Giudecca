@@ -2,7 +2,8 @@
 
 /**  { Component } DataExplorerSearchBar
  *
- * @abstract
+ * @abstract The DataExplorerSearchBar is a component that is displayed on the DataExplorer Page. The search bar provides the filters and 
+ * search functions for the DataExplorer. The fields correspond to the Entities and Relationships in the ArcGIS database.  
  * 
  */
 import React, { useState, useEffect } from 'react';
@@ -14,6 +15,8 @@ const DataExplorerSearchBar = () => {
 
     useEffect(() => { 
         // DO TO: dynamically pull all possible products AND purposes from the DB to populate the options on the sheet
+        // DO SOMETHING ...
+        // ...
         const productsFromDB = ['Silk', 'Pasta', 'Watches', 'Fuzes', 'Radios', 'Shipyard'];
         const purposesFromDB = ['Residential', 'Abandoned', 'Municipality', 'Business'];
 

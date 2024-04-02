@@ -2,7 +2,9 @@
 
 /**  { Component } DataExplorer
  *
- * @abstract
+ * @abstract The DataExplorer is designed to be a comprehensive database search machine. It consists of components defined in 
+ * src/components/DataExplorer. The DataExplorer handles a query based on the conditions in DataExplorerSearchBar and displays the results
+ * in a DataExplorerResultsTable. 
  * 
  */
 import React, { useState, useEffect } from 'react';
@@ -34,7 +36,7 @@ const DataExplorer = () => {
             ['R6 C1', 'R6 C2', 'R6 C3', 'R6 C4', 'R6 C5', 'R6 C6', 'R6 C7'],
             ['R6 C1', 'R6 C2', 'R6 C3', 'R6 C4', 'R6 C5', 'R6 C6', 'R6 C7'],
             ['R6 C1', 'R6 C2', 'R6 C3', 'R6 C4', 'R6 C5', 'R6 C6', 'R6 C7'],
-            
+
         ]
     }
     useEffect(() => {

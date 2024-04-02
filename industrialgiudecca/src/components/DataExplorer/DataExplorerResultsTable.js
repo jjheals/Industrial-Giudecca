@@ -2,7 +2,9 @@
 
 /**  { Component } DataExplorerResultsTable
  *
- * @abstract
+ * @abstract The DataExplorerResultsTable is the return table containing the results of a search using the DataExplorer. DataResultsTable handles 
+ * the creation and formatting of the final tables as returned by the DB. It creates entity or relationship tables based on the query and returned
+ * results. 
  * 
  */
 import React, { useState, useEffect } from 'react';

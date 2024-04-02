@@ -1,3 +1,12 @@
+// src/components/Accordion.js
+
+/** { Component } Accordion
+ * 
+ * @abstract The Accordion displays the most prominant factories (i.e. those with full stories). The links in the accordion lead to the dedicated
+ * page for that factory. 
+ * 
+ */
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Accordion.css';

@@ -2,7 +2,8 @@
 
 /**  { Component } Title
  *
- * @abstract
+ * @abstract Title is a component to standardize the titles as they display on each page. 
+ * @param {str} title - the title to display (verbatim)
  * 
  */
 import React, { useState, useEffect } from 'react';

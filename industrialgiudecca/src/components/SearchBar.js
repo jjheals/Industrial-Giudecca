@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
-import '../css/Searchbar.css'; // Assuming you have a separate CSS file for styling
+// src/components/SearchBar.js
 
-const SearchBar = ({ onSearch }) => {
+/** { Component } SearchBar 
+ * 
+ * @abstract The SearchBar searches the content on the page and filters the results on the page to match the search. It appears on FactoryHomepage 
+ * and the Photo Gallery.
+ * 
+ */
+
+import React, { useState } from 'react';
+import '../css/Searchbar.css'; 
+
+const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleInputChange = (e) => {
