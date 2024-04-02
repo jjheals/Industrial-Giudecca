@@ -89,33 +89,6 @@ function Homepage() {
             </div>
 
             <div ref={timelineRef} className="timeline-container"><TimelineGridA timelineRef={timelineRef}/></div>
-            <div className="accordion-container"><Accordion/></div>
-
-            <div className="container">
-                <div className="mapContainer">
-                    <iframe
-                        id="webMap"
-                        className="arcgis-app"
-                        src="https://w-p-i.maps.arcgis.com/apps/instant/sidebar/index.html?appid=50cfe053ec2c4890b3f44f5cef7dc327"
-                        frameBorder="0"
-                        style={{border: "0"}}
-                    >
-                        iFrames are not supported on this page.
-                    </iframe>
-                </div>
-
-                <div className="appsContainer">
-                    <iframe
-                        id="employmentTimeline"
-                        className="arcgis-app"
-                        src="https://w-p-i.maps.arcgis.com/apps/instant/slider/index.html?appid=38a761e7a47c4d67ae22ce2976531b4c"
-                        frameBorder="0"
-                        style={{border: "0"}}
-                    >
-                        iFrames are not supported on this page.
-                    </iframe>
-                </div>
-            </div>
         </div>
     );
 }
