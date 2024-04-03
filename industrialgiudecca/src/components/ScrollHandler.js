@@ -25,7 +25,7 @@ export const useLockScroll = (ref, startYear, endYear, setYear) => {
                     e.preventDefault();
                                         
                     // Control the scroll speed in both directions
-                    const scrollFactor = 0.4;                                       // DECREASE => SLOWER
+                    const scrollFactor = 0.7;                                       // DECREASE => SLOWER
                     const direction = e.deltaY > 0 ? scrollFactor : -scrollFactor;  // Set the scroll speed 
 
                     // Calculate the year
