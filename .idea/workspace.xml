@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="search bar luh photo page">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed stretching for factory homepage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +78,8 @@
       <workItem from="1710835470668" duration="17906000" />
       <workItem from="1710926755120" duration="17002000" />
       <workItem from="1711382802660" duration="684000" />
-      <workItem from="1711447637050" duration="17817000" />
+      <workItem from="1711447637050" duration="29077000" />
+      <workItem from="1712045691519" duration="13766000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -300,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711531684476</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fixed stretching for factory homepage">
+      <option name="closed" value="true" />
+      <created>1711532233877</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1711532233877</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +331,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed the z index on the factory image" />
     <MESSAGE value="fixed blurb elemet if shouldnt work" />
     <MESSAGE value="changes app.js to be router only" />
     <MESSAGE value="sidebar factory reroutes" />
@@ -343,6 +355,7 @@
     <MESSAGE value="Locking thingy" />
     <MESSAGE value="SEARCH BAR ON FACTORY PAGE" />
     <MESSAGE value="search bar luh photo page" />
-    <option name="LAST_COMMIT_MESSAGE" value="search bar luh photo page" />
+    <MESSAGE value="fixed stretching for factory homepage" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed stretching for factory homepage" />
   </component>
 </project>
