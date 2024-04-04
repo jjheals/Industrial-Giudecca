@@ -12,9 +12,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLockScroll } from './ScrollHandler'; 
 
 import '../css/MapTimeline.css';
+import { act } from 'react-dom/test-utils';
 
 const MapTimeline = ({ factories }) => {
-    let [numActive, setNumActive] = useState(0);
+    const [activeAdv, setActiveAdv] = useState('');
+    const [activeLabel, setActiveLabel] = useState('');
     const [year, setYear] = useState(1730);
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
@@ -84,7 +86,17 @@ const MapTimeline = ({ factories }) => {
             });
 
             // Set the number active on the screen 
-            setNumActive(activeCount);
+            if(activeCount == 1) { 
+                if(year >= new Date().getFullYear()) setActiveAdv('is');
+                else setActiveAdv('was');
+                setActiveLabel(`${activeCount} factory`);
+            }
+            else {
+                setActiveAdv('were');
+                setActiveLabel(`${activeCount} factories`);
+            }
+
+
         };
 
         // Call filterFactories function 
@@ -116,8 +128,8 @@ const MapTimeline = ({ factories }) => {
             <div className='info-containerb'>
                     <div className='ib' id='ib1'><h3>In the year</h3></div>
                     <div className='ib' id='ib2'><h1>{ Math.round(year) }</h1></div>
-                    <div className='ib' id='ib3'><h3>There were</h3></div>
-                    <div className='ib' id='ib4'><h1>{ numActive } factories</h1></div>
+                    <div className='ib' id='ib3'><h3>There { activeAdv }</h3></div>
+                    <div className='ib' id='ib4'><h1>{ activeLabel }</h1></div>
                     <div className='ib' id='ib5'><h3>on Giudecca.</h3></div>
             </div>
 
