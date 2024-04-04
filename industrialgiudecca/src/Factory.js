@@ -1,5 +1,5 @@
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
-import { attachmentsBaseURL, sDPTImagesURL } from './GlobalConstants';
+import { attachmentsBaseURL, sDPTImagesURL, sDPTFactoryCoordsURL } from './GlobalConstants';
 import axios from 'axios';
 
 /* NOTE : 
@@ -28,9 +28,10 @@ export default class Factory {
         this.Max_Employment = attributes.Max_Employment;
         this.Factory_ID = attributes.Factory_ID;
         this.Building_ID = attributes.Building_ID;
-        this.x_coord = geometry.x;
-        this.y_coord = geometry.y; 
+        this.long = geometry.x;
+        this.lat = geometry.y; 
         this.link = `/factory/${this.Factory_ID}`;
+        this.isVisible = null;
     }
 
     /** toString() 
@@ -47,9 +48,10 @@ export default class Factory {
         s += `\tMax Employment: ${this.Max_Employment}\n`;
         s += `\tFactory ID: ${this.Factory_ID}\n`;
         s += `\tBuilding ID: ${this.Building_ID}\n`;
-        s += `\tX Coord: ${this.x_coord}\n`;
-        s += `\tY Coord: ${this.y_coord}\n`;
+        s += `\tLongitude: ${this.long}\n`;
+        s += `\tLatitude: ${this.lat}\n`;
         s += `\tOBJECTID: ${this.OBJECTID}`;
+        s += `\tisVisible: ${this.isVisible}`;
         return s;
     }
 
@@ -134,6 +136,29 @@ export default class Factory {
             }
         } catch(error) { 
             console.log(`Error retrieving cover image URL for ${this.Factory_ID} (${this.Factory_ID})`, error)
+        }
+    }
+
+    async getFactoryCoords() { 
+        try { 
+            // Query the FL with the necessary filters
+            const resp = await queryFeatures({
+                url: sDPTFactoryCoordsURL,
+                where: `Factory_ID = ${this.Factory_ID}`
+            });
+
+            // Set the x and y coords for this factory
+            this.long = resp.features[0].attributes.Longitude_;
+            this.lat = resp.features[0].attributes.Latitude_;
+                        
+            return;
+        } catch(error) { 
+            if (error instanceof TypeError) {
+                //console.log(`No Coords found for ${this.English_Name} (${this.Factory_ID}) during the timeframe ${startYear} - ${endYear}`);
+                this.OBJECTID = -1;
+            } else { 
+                //console.error(`Error occured getting OBJECTID for ${this.English_Name} (${this.Factory_ID}) during the timeframe ${startYear} - ${endYear}:`, error);
+            }
         }
     }
 }

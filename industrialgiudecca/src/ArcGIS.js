@@ -114,6 +114,11 @@ async function sDPTFetchFactoriesFL(serviceURL) {
     }
 }
 
+async function sDPTFetchBuildingsFL(serviceURL) { 
+
+}
+
+
 export { 
     /*fetchFactoriesFL,*/ 
     fetchAllFactoryImages, 

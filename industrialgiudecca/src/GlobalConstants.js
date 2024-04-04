@@ -5,6 +5,9 @@ export const factoriesServiceURL = 'https://services7.arcgis.com/EXxkqxLvye8Sbup
 // URL endpoint to the factories_table hosted in SerenDPT ArcGIS
 export const sDPTFactoriesTableURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_table/FeatureServer/0';
 
+// URL endpoint to the Factories_Coords_FL hosted in SerenDPT ArcGIS
+export const sDPTFactoryCoordsURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_Coords_FL/FeatureServer/0';
+
 // URL endpoint to the factories_images FL in SerenDPT ArcGIS
 export const sDPTImagesURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_images_view/FeatureServer/0';
 
@@ -23,6 +26,7 @@ export const agisCSVDownloadEndpoints = {
     'Factory_At_Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/308d4753d6e14d58beeb1e1e7fa481b0/data',
     'Employment_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/f37a539fede14206822399b15db510a6/data',
     'Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/d800fd25bbdc4676bba9ca95092ef996/data',
-    'Building_Current_Purpose': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/e47de270114b473eaef75ca1b909b331/data'
+    'Building_Current_Purpose': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/e47de270114b473eaef75ca1b909b331/data',
+    
 
 }

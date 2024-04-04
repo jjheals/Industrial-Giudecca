@@ -153,6 +153,11 @@
     opacity: 0;
 }
 
+#homepage-timeline { 
+    position: absolute;
+    top: 1500;
+    left: 0;
+}
 
 @keyframes scrollAnimation {
     0% {

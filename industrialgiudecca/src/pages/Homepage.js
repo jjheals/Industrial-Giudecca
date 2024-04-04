@@ -2,15 +2,32 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/Homepage.css';
+import '../css/MapTimeline.css';
+
+import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
 import Sidebar from '../components/Sidebar';
-import Accordion from '../components/Accordion';
-import TimelineGridA from '../components/TimelineGridA';
+import MapTimeline from '../components/MapTimeline';
 
 function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
     const [showScrollArrow] = useState(false);
-    const timelineRef = useRef(null);
+    const [factories, setFactories] = useState([]);
+
+    // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
+    useEffect(() => {
+        // Fetch factories FL when component mounts
+        sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
+        .then(factories => {       
+            setFactories(factories);
+        })
+        // Handle errors
+        .catch(error => {
+            console.error('Error fetching factories:', error);
+        });
+    }, []); // Empty dependency array
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -88,7 +105,7 @@ function Homepage() {
                 </div>
             </div>
 
-            <div ref={timelineRef} className="timeline-container"><TimelineGridA timelineRef={timelineRef}/></div>
+            <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
         </div>
     );
 }

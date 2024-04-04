@@ -1,0 +1,61 @@
+
+.timeline-container { 
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+}
+
+.info-containerb { 
+    display: flex;
+    flex-direction: row;
+    font-family: 'Judson', serif;
+    padding: 7vh 10vw;
+    max-height: 100vh;
+}
+
+.ib { 
+    padding: auto;
+    margin: auto;
+}
+
+.ib h1 { 
+    font-size: 10vh;
+}
+
+.ib h3 { 
+    font-size: 2vw;
+}
+
+.giudecca-map-img { 
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+.giudecca-map-timeline {
+    padding: 0;
+    z-index: -1;
+    background-color: transparent;
+}
+
+.factory-container { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+.factory-pin { 
+    position: absolute;
+    z-index: 100;
+}
+
+.factory-pin:hover { 
+    cursor: pointer;
+    background-color: blue;
+}
+
+.popup { 
+    width: 50px;
+    height: auto;
+}
