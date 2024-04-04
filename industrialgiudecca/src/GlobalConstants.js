@@ -27,6 +27,13 @@ export const agisCSVDownloadEndpoints = {
     'Employment_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/f37a539fede14206822399b15db510a6/data',
     'Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/d800fd25bbdc4676bba9ca95092ef996/data',
     'Building_Current_Purpose': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/e47de270114b473eaef75ca1b909b331/data',
-    
-
 }
+
+export const minLat = 45.421492;                   // Bottom map limit
+export const maxLat = 45.432036;                   // Top map limit
+export const minLong = 12.305949;                  // Left map limit
+export const maxLong = 12.349153;                  // Right map limit
+export const deltaLong = maxLong - minLong;        // Map X axis distance (horiz) in DEGREES
+export const deltaLat = maxLat - minLat;           // Map Y axis distance (vert) in DEGREES
+export const mapWidth = window.innerWidth;         // Map width == screen width
+export const mapHeight = window.innerHeight * .6;  // Map height is 60% of the screen 

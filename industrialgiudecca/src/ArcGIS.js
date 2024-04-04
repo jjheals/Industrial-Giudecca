@@ -1,41 +1,20 @@
 import Factory from './Factory.js';
-import { ApiKeyManager } from '@esri/arcgis-rest-request';
 import { queryFeatures, fetchAttachments } from '@esri/arcgis-rest-feature-service';
 import { sDPTFactoriesTableURL } from './GlobalConstants.js';
+import { mapHeight, mapWidth, minLong, minLat, deltaLat, deltaLong } from './GlobalConstants.js';
 
+// Function to convert latitude and longitude to pixel coordinates
+function latLongToPixel(lat, long) {    
+    
+    const thisLongOffset = long - minLong;  // Offset from the left of the map in DEGREES
+    const thisLatOffset = lat - minLat;     // Offset from the top of the map in DEGREES
+    
+    // Convert the long/lat offsets (degreees) into pixels 
+    const pixelX = (thisLongOffset / deltaLong) * mapWidth;
+    const pixelY = mapHeight - (thisLatOffset / deltaLat) * mapHeight;
 
-/** fetchFactoriesFL(serviceURL) 
- * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
- * @param {string} serviceURL - ArcGIS service endpoint
- * @returns {Array} array of Factory objects
- */
-/*
-async function fetchFactoriesFL(serviceURL, apiToken, filter='') { 
-    try {
-        // Authentication for ArcGIS API
-        const authentication = ApiKeyManager.fromKey(apiToken);
-        const response = await queryFeatures({
-            url: serviceURL,
-            authentication,
-            where: filter
-        });
-
-        // Process the response and convert features into factories
-        const factories = response.features.map(feature => {
-            let factory = new Factory(feature.attributes, feature.geometry);
-            factory.getCoverImageURL();
-            return factory;
-        });
-        
-        // Return the list of factories
-        return factories;
-
-    } catch (error) {
-        console.error('Error fetching factories:', error);
-        return [];  // Return an empty array in case of error
-    }
+    return { x: pixelX, y: pixelY };
 }
-*/
 
 /** fetchAllFactoryImagse(serviceURL, apiToken)
  * @abstract fetch all the images for all factories in the FL at the given serviceURL
@@ -100,7 +79,8 @@ async function sDPTFetchFactoriesFL(serviceURL) {
             // Create a new factory object using the OBJECTID
             const factory = new Factory(feature.attributes, {'x':0, 'y':0});
             await factory.getOBJECTID();
-
+            await factory.getFactoryCoords();
+            
             return factory;
         }));
 
@@ -114,13 +94,8 @@ async function sDPTFetchFactoriesFL(serviceURL) {
     }
 }
 
-async function sDPTFetchBuildingsFL(serviceURL) { 
-
-}
-
-
 export { 
-    /*fetchFactoriesFL,*/ 
+    latLongToPixel,
     fetchAllFactoryImages, 
     sDPTFetchFactoriesFL 
 };

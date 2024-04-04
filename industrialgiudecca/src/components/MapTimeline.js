@@ -19,48 +19,15 @@ const MapTimeline = ({ factories }) => {
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
 
-    const element = document.getElementById('homepage-timeline');
-    console.log(element);
-
     // Calculate the top margin of the timeline in pixels
     // NOTE: vh in the below formula is the margin in VH
     const marginVH = 5;  // Margin in VH
     const marginPx = (marginVH * window.innerHeight) / 50; 
 
-    const mapWidth = window.innerWidth;         // Map width == screen width
-    const mapHeight = window.innerHeight * .6;  // Map height is 60% of the screen 
-    
-    const minLat = 45.421492;                   // Bottom map limit
-    const maxLat = 45.432036;                   // Top map limit
-    const minLong = 12.305949;                  // Left map limit
-    const maxLong = 12.349153;                  // Right map limit
-    const deltaLong = maxLong - minLong;        // Map X axis distance (horiz) in DEGREES
-    const deltaLat = maxLat - minLat;           // Map Y axis distance (vert) in DEGREES
-
-    // Function to convert latitude and longitude to pixel coordinates
-    function latLongToPixel(lat, long) {    
-        const thisLongOffset = long - minLong;  // Offset from the left of the map in DEGREES
-        const thisLatOffset = lat - minLat;     // Offset from the top of the map in DEGREES
-        
-        // Convert the long/lat offsets (degreees) into pixels 
-        const pixelX = (thisLongOffset / deltaLong) * mapWidth;
-        const pixelY = mapHeight - (thisLatOffset / deltaLat) * mapHeight;
-
-        return { x: pixelX, y: pixelY };
-    }
-
     // Iterate over the factories and find the minmum/maximum year, and get the cover image & coords for each
     let minYear = 9999;
     let maxYear = 0;
     factories.forEach(factory => { 
-
-        // Get the lat/long coords for this factory
-        factory.getFactoryCoords();
-
-        // Convert the lat/long to pixel coordinates on the map
-        const factoryMapPos = latLongToPixel(factory.lat, factory.long);
-        factory.x = factoryMapPos.x;
-        factory.y = factoryMapPos.y;
 
         // Set random opening years and random closing years if they are NULL
         if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
@@ -94,21 +61,29 @@ const MapTimeline = ({ factories }) => {
                     // Increment the active count to appear on the screen
                     activeCount++;                                  
 
-                    // Create the marker to appear on the screen & set its attributes accordingly
-                    const markerWidthPx = 20;
-                    const markerHeightPx = 30;
+                    // If this factory does not have a location, hide it from the map
+                    if(!factory.x || !factory.y) return;
+                    else { 
+                        // Create the marker to appear on the screen & set its attributes accordingly
+                        const markerWidthPx = 20;
+                        const markerHeightPx = 30;
+                        const marker = document.createElement('img');  
 
-                    const marker = document.createElement('img');   
-                    marker.className = 'factory-pin';      
-                    marker.id = `${factory.Factory_ID}-marker`;         
-                    marker.style.left = `${factory.x - (markerWidthPx)}px`;
-                    marker.style.top = `${factory.y + marginPx - (markerHeightPx * 2.5)}px`;
-                    marker.src = 'pin-icon-2.png';
-                    marker.width = markerWidthPx;
-                    marker.height = markerHeightPx;
+                        marker.className = 'factory-pin';      
+                        marker.id = `${factory.Factory_ID}-marker`; 
+                        marker.src = 'pin-icon-2.png';
+                        marker.width = markerWidthPx;
+                        marker.height = markerHeightPx;
+                        marker.style.left = `${factory.x - (markerWidthPx)}px`;
+                        marker.style.top = `${factory.y + marginPx - (markerHeightPx * 2.5)}px`;
 
-                    // Add the marker to the map overlay
-                    mapContainerRef.current.appendChild(marker);
+                        // Add the marker to the map overlay
+                        mapContainerRef.current.appendChild(marker);
+
+                        
+                    }
+
+                    
                 }
             });
 

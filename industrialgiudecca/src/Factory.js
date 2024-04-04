@@ -1,5 +1,6 @@
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 import { attachmentsBaseURL, sDPTImagesURL, sDPTFactoryCoordsURL } from './GlobalConstants';
+import { latLongToPixel } from './ArcGIS';
 import axios from 'axios';
 
 /* NOTE : 
@@ -51,7 +52,6 @@ export default class Factory {
         s += `\tLongitude: ${this.long}\n`;
         s += `\tLatitude: ${this.lat}\n`;
         s += `\tOBJECTID: ${this.OBJECTID}`;
-        s += `\tisVisible: ${this.isVisible}`;
         return s;
     }
 
@@ -151,6 +151,11 @@ export default class Factory {
             this.long = resp.features[0].attributes.Longitude_;
             this.lat = resp.features[0].attributes.Latitude_;
                         
+            // Convert the lat/long to pixel coordinates on the map
+            const factoryMapPos = latLongToPixel(this.lat, this.long);
+            this.x = factoryMapPos.x;
+            this.y = factoryMapPos.y;
+
             return;
         } catch(error) { 
             if (error instanceof TypeError) {
