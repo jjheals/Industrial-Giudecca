@@ -79,11 +79,7 @@ const MapTimeline = ({ factories }) => {
 
                         // Add the marker to the map overlay
                         mapContainerRef.current.appendChild(marker);
-
-                        
                     }
-
-                    
                 }
             });
 

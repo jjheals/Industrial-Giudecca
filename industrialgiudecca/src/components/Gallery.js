@@ -8,8 +8,6 @@
  * @param { Promise } allImgsURLsPromise - A promise for the URLs for the images for this factory
  * 
  */
-
-
 import React, { useEffect, useState } from 'react';
 import '../css/Photos.css';
 

@@ -11,7 +11,7 @@ nav ul li a {
 
 .sidebar-container {
     position: fixed;
-    top: 3vh;
+    top: 0.7vh;
     left: 1.5vw;
     z-index: var(--sidebar-z);
 }
