@@ -106,7 +106,11 @@ function Homepage() {
             </div>
 
             <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
+            <div className='spacer'></div>
 
+            <hr className='section-hr'></hr>
+            <div className='sb-divider'><p className='section-header'>Let's take a deeper dive into the history of Giudecca ...</p></div>
+            <hr className='section-hr'></hr>
             <iframe className="storyboard-iframe" src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258" width="100%" height="500px" frameborder="0" allowfullscreen allow="geolocation"></iframe>
         </div>
     );
