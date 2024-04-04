@@ -88,20 +88,23 @@ function FactoryHomepage() {
     };
 
     return (
-        <div className={`factory-homepage ${resizerClicked ? 'resizer-clicked' : ''}`}>
+        <div className="factory-homepage">
+            <div className="title-container">
+                <Title title='Factories'/>
+            </div>
             <div><Sidebar/></div>
-            <div><Title title='Factories'/></div>
-            <div><SearchBar onSearch={handleSearch}/></div>
-
-            <SplitPane
-                split="vertical"
-                minSize={0}
-                defaultSize={1000}
-                resizerClassName="custom-resizer"
-                onResizerMouseDown={handleResizerMouseDown}
-                onResizerMouseUp={handleResizerMouseUp}
-            >
-                <Pane>
+            <div className="search-bar-container">
+                <SearchBar onSearch={handleSearch}/>
+            </div>
+            <div className="content-container">
+                <SplitPane
+                    split="vertical"
+                    minSize={0}
+                    defaultSize="50%"
+                    resizerClassName="custom-resizer"
+                    onResizerMouseDown={handleResizerMouseDown}
+                    onResizerMouseUp={handleResizerMouseUp}
+                >
                     <div className="map-container">
                         <iframe
                             ref={iframeRef}
@@ -110,29 +113,28 @@ function FactoryHomepage() {
                             className={`arcgis-app ${mapClicked ? '' : 'no-pointer-events'}`}
                             src="https://w-p-i.maps.arcgis.com/apps/instant/sidebar/index.html?appid=50cfe053ec2c4890b3f44f5cef7dc327"
                             frameBorder="0"
-                            style={{ border: "0" }}
+                            style={{border: "0"}}
                             onMouseDown={handleMapClick}
                         >
                             iFrames are not supported on this page.
                         </iframe>
                     </div>
-                </Pane>
-                <Pane>
                     <div className="factory-list-container">
                         <div className="factory-list">
                             {filteredFactories.map(factory => (
                                 <div className="landscape-item" key={factory.Factory_ID}>
                                     <Link to={factory.link} className="landscape-link">
                                         <img id={factory.Factory_ID} src={factory.coverPicURL}
-                                             alt={factory.English_Name} className="landscape-placeholder factory-image"/>
+                                             alt={factory.English_Name}
+                                             className="landscape-placeholder factory-image"/>
                                     </Link>
                                     <h2>{factory.English_Name}</h2>
                                 </div>
                             ))}
                         </div>
                     </div>
-                </Pane>
-            </SplitPane>
+                </SplitPane>
+            </div>
         </div>
     );
 }

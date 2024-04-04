@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed stretching for factory homepage">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="factory homepage psuedo working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
     </list>
@@ -80,6 +78,7 @@
       <workItem from="1711382802660" duration="684000" />
       <workItem from="1711447637050" duration="29077000" />
       <workItem from="1712045691519" duration="13766000" />
+      <workItem from="1712139713533" duration="13336000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -313,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711532233877</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="factory homepage psuedo working">
+      <option name="closed" value="true" />
+      <created>1712139795833</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1712139795833</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +338,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed blurb elemet if shouldnt work" />
     <MESSAGE value="changes app.js to be router only" />
     <MESSAGE value="sidebar factory reroutes" />
     <MESSAGE value="added scroll down thingy" />
@@ -356,6 +362,7 @@
     <MESSAGE value="SEARCH BAR ON FACTORY PAGE" />
     <MESSAGE value="search bar luh photo page" />
     <MESSAGE value="fixed stretching for factory homepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed stretching for factory homepage" />
+    <MESSAGE value="factory homepage psuedo working" />
+    <option name="LAST_COMMIT_MESSAGE" value="factory homepage psuedo working" />
   </component>
 </project>
