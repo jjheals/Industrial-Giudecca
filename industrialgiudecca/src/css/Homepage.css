@@ -159,6 +159,12 @@
     left: 0;
 }
 
+.storyboard-iframe { 
+    margin-top: 120vh; 
+    width: 100%;
+    height: 100vh;
+}
+
 @keyframes scrollAnimation {
     0% {
         opacity: 0;

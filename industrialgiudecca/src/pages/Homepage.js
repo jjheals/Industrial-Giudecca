@@ -106,6 +106,8 @@ function Homepage() {
             </div>
 
             <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
+
+            <iframe className="storyboard-iframe" src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258" width="100%" height="500px" frameborder="0" allowfullscreen allow="geolocation"></iframe>
         </div>
     );
 }
