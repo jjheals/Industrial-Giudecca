@@ -1,19 +1,28 @@
-:root { 
-    --img-height: 30vh; /* Height of the images for each factory */
-    --img-width: 20vw;  /* Width for factory images */
-
+:root {
+    --img-height: 30vh;
+    --img-width: 20vw;
     background-color: #f8f8f8;
-    
 }
 
-/* src/css/FactoryHomepage.css */
+
+
 .factory-homepage {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
+    height: auto;
 }
 
-#title { 
+.search-bar-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #f8f8f8;
+    padding: 10px 0;
+}
+
+
+#title {
     margin: 0;
     color: #333333;
     text-align: center;
@@ -22,26 +31,23 @@
     font-size: 3vw;
 }
 
-main {
-    margin: 0 auto;
-    padding: 7vh 2% 5vh;
+.factory-list-container {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+
 }
 
-.title-hr { 
-    width: 50%;
-}
+.factory-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
 
-.landscape-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--img-width), 1fr));
-    gap: 2vw;
-    padding-top: 2%;
-    margin-top: 4%;
 }
 
 .landscape-item {
     font-family: "Lato";
-    width: calc(var(--img-width) + 2vw);
+    width: var(--img-width);
     font-size: 1vw;
     text-align: center;
     background-color: #ffffff;
@@ -50,6 +56,9 @@ main {
     padding: 0;
     overflow: hidden;
     transition: transform 0.3s ease;
+    margin-bottom: 2%;
+    margin-right: 1vw;
+
 }
 
 .landscape-item:hover {
@@ -65,9 +74,57 @@ main {
     background-color: rgb(110, 110, 110);
 }
 
-.factory-image { 
+.factory-image {
     width: var(--img-width);
     height: var(--img-height);
     margin: 0;
     margin-top: 5%;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.arcgis-app {
+    width: 100%;
+    height: 100%;
+
+}
+
+arcgis-app.no-pointer-events {
+    pointer-events: none;
+}
+
+
+.custom-resizer {
+    width: 20px;
+    background: #ccc;
+    z-index: 1;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    height : 86%;
+    margin-bottom: 0;
+}
+
+.custom-resizer:hover {
+    transition: all 0.3s ease;
+}
+
+.custom-resizer.vertical {
+    width: 20px;
+    margin: 0 -10px;
+    border-left: 5px solid rgba(255, 255, 255, 0);
+    border-right: 5px solid rgba(255, 255, 255, 0);
+    cursor: col-resize;
+    margin-left: 3vw;
+    margin-right: 2vw;
+}
+
+.custom-resizer.vertical:hover,
+.custom-resizer.vertical:active {
+    border-left: 5px solid rgba(0, 0, 0, 0.5);
+    border-right: 5px solid rgba(0, 0, 0, 0.5);
+
 }
