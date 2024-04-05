@@ -16,17 +16,15 @@ export const attachmentsBaseURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx
 
 // URL endpoints to download the raw CSVs containing the data for every factory 
 export const agisCSVDownloadEndpoints = { 
-    'Timeperiods': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/a3ad1e7c0f1b4fe6b1a26cec1fe89b40/data',
-    'Product_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/824192f67c8145458c4ba3c55f876d16/data',
-    'Owner_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/b8eec9aad7d14b71b04363655a18e9bf/data', 
-    'Giudecca_Population_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/67eaa85f416149129c3d19783003e218/data',
-    'Factory': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/775374bb534b4425a1b74076ff39419b/data',
-    'Factory_Stories': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/f5894ad351a74a21ab83c02244b60fce/data',
-    'Factory_Closing_Reason': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/6cc67375010e415e951e7d018b7a2957/data',
-    'Factory_At_Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/308d4753d6e14d58beeb1e1e7fa481b0/data',
-    'Employment_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/f37a539fede14206822399b15db510a6/data',
-    'Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/d800fd25bbdc4676bba9ca95092ef996/data',
-    'Building_Current_Purpose': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/e47de270114b473eaef75ca1b909b331/data',
+    'Timeperiod': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/5b051ec299174fcdb8a4863ae6dc0205/data',
+    'Product_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/6ef0e812ac674664ae6fc9d6c37153cd/data',
+    'Owner_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/257f41864841429ab60178e5773748dd/data', 
+    'Giudecca_Pop_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/d2aee2cf151d4380ba6d7bc241791f28/data',
+    'Factory': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/07632bd41fcd486493cc91bbe78ea22e/data',
+    'Factory_Stories': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/addbd92e518b458f96255cd9e27b0abc/data',
+    'Factory_At_Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/fe71b47ef6cc418e833aee1ad1798a43/dataa',
+    'Employment_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/26a5247f3ada4220a6536f6ab4f9a9fc/data',
+    'Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/4b59a8250ad0463db2771754d7d3f33a/data',
 }
 
 export const minLat = 45.421492;                   // Bottom map limit

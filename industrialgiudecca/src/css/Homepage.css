@@ -2,7 +2,18 @@
     --container-side-padding: 10%;
     --container-top-padding: 5%;
     --title-font: "Judson", Serif;
-    --title-font-size: 5vw;
+    --title-font-size: 6vw;
+    --title-font-color: rgb(255, 255, 255);
+    --scroll-text-color: rgb(232, 202, 162);
+    --bg-overlay: rgba(0, 0, 0, 0.324); /* Adjust the opacity by changing the last value (0.5 in this case) */
+    --text-align: left;
+
+    --scroll-top: 45vh;
+    --subtitle-bottom: -45vh;
+    --subtitle-left: 1vw;
+    --title-top: 50vh;
+    --title-left: 1vw;
+
 }
 
 .App {
@@ -45,12 +56,12 @@
 
 /* Styles for page design */
 .homepage { 
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(226, 201, 167);
     z-index: -10;
 }
 
 #logos-container { 
-    position: relative;
+    position: absolute;
     top: 1.5vh;
     left: 78vw;
     display: flex;
@@ -65,38 +76,66 @@
     margin: auto;
 }
 
-.blurbRow {
-    width: 100%;
-}
-
-.blurbElm {
-    margin: auto;
-    margin-top: 0;
-}
-
-.blurbDivider {
-    color: grey;
-    width: 100%;
-}
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-overlay);
+    z-index: 500;
+  }
 
 #blurb {
     display: flex;
     flex-direction: column;
     font-family: var(--title-font);
     font-size: var(--title-font-size);
-    width: 100%;
+    color: var(--title-font-color);
     box-sizing: border-box;
-    padding: 10% 20%;
-    height: 100vh;
+    padding: 20vh 20%;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    opacity: 1;
+    height: 100vh;
+    z-index: 4;
     transition: opacity 0s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
+}
+
+.blurbElm { 
+    margin: 0;
+}
+
+#blurbTop { 
+    position: relative;
+    text-align: var(--text-align);
+    color: var(--title-font-color);
+    top: calc(var(--title-top));
+    left: var(--title-left);
+}
+
+#blurbBottom { 
+    position: relative;
+    text-align: var(--text-align);
+    bottom: var(--subtitle-bottom);
+    left: var(--subtitle-left);
+}
+
+#blurbSubtitle {
+    font-size: 2vw;
+    margin: 0;
+}
+
+.blurbRow {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2%;
+}
+
+.blurbDivider {
+    color: black;
 }
 
 #blurb.fade-out {
@@ -105,13 +144,6 @@
     pointer-events: none;
 }
 
-#blurbSubtitle {
-    font-size: 2vw;
-}
-
-#blurbText {
-    font-size: 1.4vw;
-}
 
 #blurbCredits {
     margin-top: 1%;
@@ -125,26 +157,27 @@
     margin-top: 0; /* Adjusted margin-top to remove the white space */
 }
 
+
+#scrollText { 
+    color: var(--scroll-text-color);    
+    font-size: 1.4vw;
+    margin: 0;
+}
+
 #blurbScroll {
     position: relative;
-    margin-top: 150px;
+    top: var(--scroll-top);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#blurbScrollText {
-    font-family: var(--title-font);
-    font-size: 0.75vw;
-    margin-bottom: 10px;
-    opacity: 0.8;
-}
-
 .scrollArrow {
+    margin-top: 1.5vh;
     width: 7.5px;
     height: 7.5px;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    border-right: 2px solid var(--scroll-text-color);
+    border-bottom: 2px solid var(--scroll-text-color);
     transform: rotate(45deg);
     animation: scrollAnimation 3s infinite;
     opacity: 0;

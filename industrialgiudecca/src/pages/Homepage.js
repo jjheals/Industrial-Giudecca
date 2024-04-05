@@ -79,32 +79,36 @@ function Homepage() {
                 <title>Industrial Giudecca</title>
             </head>
 
-            <div><Sidebar /></div>
+            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '100% 100vh'}} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
+                <div id='logos-container'>
+                    <img id='main-logo' class='logo' src='logo.png' />
+                    <img id='wpi-logo' class='logo' src='wpi-logo.png' />
+                    <img id='sdpt-logo' class='logo' src='sdpt-logo.png' />
+                </div>
 
-            <div id='logos-container'>
-                <img id='main-logo' class='logo' src='logo.png' />
-                <img id='wpi-logo' class='logo' src='wpi-logo.png' />
-                <img id='sdpt-logo' class='logo' src='sdpt-logo.png' />
+                <div className='bg-overlay'>    
+                    <div className="blurbRow" id="blurbTop">
+                        <p className="blurbElm" id="blurbTitle">Industrial Giudecca</p>
+                        
+                    </div>
+                    
+                    <div className="blurbRow" id="blurbBottom">
+                        <p className="blurbElm" id="blurbSubtitle">"A history without memory."</p>
+                        <p className="blurbElm" id="blurbCredits">- Mario Marinoni</p>
+                    </div>
+
+                    <div className="blurbRow" id="blurbScroll">
+                    <p className="blurbElm" id="scrollText">This platform tells the story of industry on Giudecca.</p>
+                        <div className={`scrollArrow ${showScrollArrow ? 'show' : ''}`}></div>
+                    </div>
+                </div>
             </div>
             
-            <div id="blurb" style={{opacity: blurbOpacity}} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
-                <div className="blurbRow" id="blurbTop">
-                    <hr className="blurbDivider"></hr>
-                    <p className="blurbElm" id="blurbTitle">Industrial Giudecca</p>
-                    <p className="blurbElm" id="blurbSubtitle">"A history without memory."</p>
-                    <p className="blurbElm" id="blurbCredits">- Mario Marinoni</p>
-                    <hr className="blurbDivider"></hr>
-                </div>
-                <div className="blurbRow" id="blurbBottom">
-                    <p className="blurbElm" id="blurbText">
-                        This platform tells the story of industry on Giudecca.
-                    </p>
-                </div>
-                <div className="blurbRow" id="blurbScroll">
-                    <p className="blurbElm" id="blurbScrollText">Scroll to Learn More</p>
-                    <div className={`scrollArrow ${showScrollArrow ? 'show' : ''}`}></div>
-                </div>
-            </div>
+            <div><Sidebar /></div>
+
+            
+            
+            
 
             <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
             <div className='spacer'></div>

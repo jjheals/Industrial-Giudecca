@@ -94,6 +94,16 @@ async function sDPTFetchFactoriesFL(serviceURL) {
     }
 }
 
+
+async function fetchFL(serviceURL, filters) { 
+    
+    // Query the factories FL to get the factory attributes 
+    const response = await queryFeatures({
+        url: serviceURL,
+    });
+}
+
+
 export { 
     latLongToPixel,
     fetchAllFactoryImages, 
