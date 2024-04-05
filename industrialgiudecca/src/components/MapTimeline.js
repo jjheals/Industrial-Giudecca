@@ -12,7 +12,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLockScroll } from './ScrollHandler'; 
 
 import '../css/MapTimeline.css';
-import { act } from 'react-dom/test-utils';
 
 const MapTimeline = ({ factories }) => {
     const [activeAdv, setActiveAdv] = useState('');
@@ -20,6 +19,7 @@ const MapTimeline = ({ factories }) => {
     const [year, setYear] = useState(1730);
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
+    const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
 
     // Calculate the top margin of the timeline in pixels
     // NOTE: vh in the below formula is the margin in VH
@@ -74,10 +74,8 @@ const MapTimeline = ({ factories }) => {
                         marker.className = 'factory-pin';      
                         marker.id = `${factory.Factory_ID}-marker`; 
                         marker.src = 'pin-icon-2.png';
-                        marker.width = markerWidthPx;
-                        marker.height = markerHeightPx;
-                        marker.style.left = `${factory.x - (markerWidthPx)}px`;
-                        marker.style.top = `${factory.y + marginPx - (markerHeightPx * 2.5)}px`;
+                        marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
+                        marker.style.top = `${factory.y + marginPx - (markerHeightPx * 3)}px`;
 
                         // Add the marker to the map overlay
                         mapContainerRef.current.appendChild(marker);
@@ -95,16 +93,12 @@ const MapTimeline = ({ factories }) => {
                 setActiveAdv('were');
                 setActiveLabel(`${activeCount} factories`);
             }
-
-
         };
 
         // Call filterFactories function 
         filterFactories(year);
 
     }, [year, factories]);
-
-
 
     return (
         
@@ -123,6 +117,7 @@ const MapTimeline = ({ factories }) => {
                      className='factory-container' 
                      style={{ height: window.innerHeight * .6 }}>
                 </div>
+
             </div>
 
             <div className='info-containerb'>

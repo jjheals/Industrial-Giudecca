@@ -44,6 +44,11 @@
 }
 
 /* Styles for page design */
+.homepage { 
+    background-color: rgb(230, 230, 230);
+    z-index: -10;
+}
+
 #logos-container { 
     position: relative;
     top: 1.5vh;
@@ -63,6 +68,7 @@
 .blurbRow {
     width: 100%;
 }
+
 .blurbElm {
     margin: auto;
     margin-top: 0;
@@ -112,7 +118,6 @@
     font-size: 1vw;
 }
 
-
 .container {
     display: flex;
     flex-direction: column;
@@ -150,10 +155,11 @@
     top: 1500;
     left: 0;
     width: 100%;
+    z-index: 10;
 }
 
 .spacer { 
-    margin-top: 90vh; 
+    margin-top: 107vh; 
 }
 
 .sb-divider { 
