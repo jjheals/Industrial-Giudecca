@@ -59,7 +59,7 @@ function Homepage() {
     }, []);
 
     return (
-        <div className="homepage">
+        <div className="homepage" style={{ backgroundImage: 'stone1.jpg' }}>
             <header>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
