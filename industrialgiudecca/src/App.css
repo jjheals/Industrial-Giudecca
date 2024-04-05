@@ -1,7 +1,6 @@
 :root {
   --container-side-padding: 15%;
   --container-top-padding: 5%;
-  --arcgis-app-height: 40vw;
   --title-font: "Judson", Serif;
   --title-font-size: 5vw;
 }
@@ -46,19 +45,6 @@
 }
 
 /* Styles for page design */
-
-.appsContainer {
-  width: 50%;
-  margin: auto;
-  padding: 2%;
-}
-
-.mapsContainer {
-  width: 100%;
-  margin: auto;
-  padding: 2%;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -67,13 +53,4 @@
   padding-top: var(--container-top-padding);
   padding-bottom: var(--container-top-padding);
   margin-top: 0; /* Adjusted margin-top to remove the white space */
-}
-
-.arcgis-app {
-  width: 100%;
-  height: var(--arcgis-app-height);
-}
-
-.frontImage {
-  width: 100%;
 }

@@ -89,7 +89,6 @@ function Homepage() {
                 <div className='bg-overlay'>    
                     <div className="blurbRow" id="blurbTop">
                         <p className="blurbElm" id="blurbTitle">Industrial Giudecca</p>
-                        
                     </div>
                     
                     <div className="blurbRow" id="blurbBottom">
@@ -105,10 +104,6 @@ function Homepage() {
             </div>
             
             <div><Sidebar /></div>
-
-            
-            
-            
 
             <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
             <div className='spacer'></div>

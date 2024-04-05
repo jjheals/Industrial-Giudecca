@@ -12,21 +12,22 @@
 .info-containerb { 
     display: flex;
     flex-direction: row;
+    color: white;
     font-family: 'Judson', serif;
-    padding: 7vh 10vw 25vh 10vw;
+    padding: 7vh 5vw 25vh 5vw;
 }
 
 .ib { 
     padding: auto;
-    margin: auto;
+    margin: 1%;
 }
 
 .ib h1 { 
-    font-size: 10vh;
+    font-size: 11vh;
 }
 
 .ib h3 { 
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 .giudecca-map-img { 
