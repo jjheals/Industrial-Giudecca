@@ -40,6 +40,7 @@
     width: 100%;
     height: calc(100vh - 200px); /* Adjust the height as needed */
     padding-top: 15vh;
+    padding-left: 2vw;
 }
 
 .arcgis-app {

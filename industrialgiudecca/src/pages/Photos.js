@@ -65,8 +65,6 @@ function Photos() {
             <div><Title title='Photo Gallery' /></div>
             <SearchBar onSearch={handleSearch} />
             
-            <div class='spacer'></div>
-
             <div id='galleries-container'>
                 {filteredFactories.map(factory => (
                     <Gallery
