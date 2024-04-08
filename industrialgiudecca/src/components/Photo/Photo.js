@@ -1,20 +1,37 @@
-// src/components/Photo.js
+import React, { useState } from 'react';
+import '../../css/components/Photo.css';
 
-/** { Component } Photo 
- * 
- * @abstract 
- * 
- */
-import React, { useEffect, useState, useParams } from 'react';
+const Photo = ({ photoClass, photoID, photoAlt, photoKey, photoSrc, photoCitation }) => {
+    const [isPopupVisible, setPopupVisible] = useState(false);
 
-const Photo = ({ photoID, photoSrc, photoStyles }) => {
+    const togglePopup = () => {
+        setPopupVisible(!isPopupVisible);
+    };
 
     return (
-        <div class='photo-container'> 
-            <img class='info-icon' src='info-icon.png'></img>
-            <img class='photo-component' photoID={{ photoID }} src={{ photoSrc }}></img>
+        <div className='photo-container'> 
+            <img 
+                className={photoClass}
+                id={`photo-${photoID}`}
+                key={photoKey}
+                alt={photoAlt}
+                src={photoSrc}
+            />
+            <div className='info-container' id={ `info-container-${photoID}` } >
+                <img
+                    className='info-icon'
+                    id={`info-${photoID}`}
+                    src='i-icon.png'
+                    onClick={() => togglePopup(photoID)}
+                />
+                <div className={`popup ${isPopupVisible ? 'show' : 'hide'}`} id={ `popup-${photoID}` }>
+                    <p className='popup-content'>{ photoCitation }</p>
+                </div>
+            </div>
+            
         </div>
     );
 };
 
-export default Gallery;
+export default Photo;
+

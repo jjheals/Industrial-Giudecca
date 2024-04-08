@@ -3,16 +3,16 @@ import Fuse from "fuse.js";
 
 
 import Sidebar from '../components/Sidebar.js';
-import { factoriesServiceURL, sDPTFactoriesTableURL, sDPTImagesURL } from '../GlobalConstants.js';
+import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import SearchBar from '../components/SearchBar.js';
 import Gallery from '../components/Photo/Gallery.js';
 import Title from '../components/Title.js';
 
-import '../css/Photos.css';
+import '../css/components/Gallery.css';
 
-function Photos() {
+function GalleryPage() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
@@ -85,4 +85,4 @@ function Photos() {
     );
 }
 
-export default Photos;
+export default GalleryPage;

@@ -81,7 +81,7 @@ const MapTimeline = ({ factories }) => {
                         marker.id = `${factory.Factory_ID}-marker`; 
                         marker.src = 'pin-icon-2.png';
                         marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                        marker.style.top = `${factory.y + marginPx - (markerHeightPx * 3)}px`;
+                        marker.style.top = `${factory.y + marginPx - (markerHeightPx * 4)}px`;
 
                         // Add the marker to the map overlay
                         mapContainerRef.current.appendChild(marker);

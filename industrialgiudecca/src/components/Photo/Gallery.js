@@ -9,6 +9,7 @@
  * 
  */
 import React, { useEffect, useState } from 'react';
+import Photo from './Photo.js';
 
 const Gallery = ({ Factory_ID, Factory_Name, allImgURLsPromise }) => {
     const [allImgURLs, setAllImgURLs] = useState([]);
@@ -25,7 +26,7 @@ const Gallery = ({ Factory_ID, Factory_Name, allImgURLsPromise }) => {
 
     }, [allImgURLsPromise]);
 
-    // When the DOM is loaded, set the background colors for the galleries
+    // useEffect ==> set the background colors for the galleries
     useEffect(() => {
         const allGalleryDivs = Array.from(document.querySelectorAll('.gallery-container'));  // Array of all gallery divs
         const colors = ['#f7cac9', '#a7c7e7', '#f7e3b5', '#c1e1c1', '#d8bfd8'];              // Array of color codes 
@@ -50,12 +51,14 @@ const Gallery = ({ Factory_ID, Factory_Name, allImgURLsPromise }) => {
                 <div class='gallery-inner'>
                     <div class='gallery' id={`gallery-${Factory_ID}`}> 
                         {allImgURLs.map((url, index) => (
-                            <img
-                                class='gallery-image'
-                                key={index}
-                                src={url}
-                                alt={`Image ${index + 1}`}
-                                style={{}}
+                            <Photo
+                                photoClass='gallery-image'
+                                photoID={ `${Factory_ID}-${index}` }
+                                photoKey={index}
+                                photoSrc={url}
+                                photoAlt={`Image ${index + 1}`}
+                                photoStyles={{}}
+                                photoCitation='ARCHIVE CITATION'
                             />
                         ))}
                     </div>

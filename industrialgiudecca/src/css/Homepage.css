@@ -141,19 +141,10 @@
     pointer-events: none;
 }
 
-
 #blurbCredits {
     margin-top: 1%;
     font-size: 1vw;
 }
-
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: var(--container-top-padding) var(--container-side-padding);
-    margin-top: 0; /* Adjusted margin-top to remove the white space */
-}
-
 
 #scrollText { 
     color: var(--scroll-text-color);    
@@ -181,19 +172,19 @@
 }
 
 #homepage-timeline { 
-    position: absolute;
-    top: 1500;
+    position: relative;
+    top: 1700;
     left: 0;
+    margin-top: 5vh;
     width: 100%;
     z-index: 10;
 }
 
 .hp-spacer { 
-    margin-top: 107vh; 
+    margin-top: 0vh; 
 }
 
 .sb-divider { 
-    /* background-color: rgb(141, 0, 0); */
     padding: 3vh;
 }
 

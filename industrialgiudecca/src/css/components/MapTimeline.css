@@ -1,14 +1,14 @@
 :root { 
     --pin-width: 2.2vw;
     --pin-height: 5vh;
-    --info-text-color: rgb(94, 79, 60);
+    --info-text-color: rgb(111, 93, 71);
+    --bg-color: rgb(208, 208, 208);
 }
 
 .timeline-container { 
     display: flex;
     flex-direction: column;
-    margin-top: 5vh;
-    background-color: white;
+    background-color: var(--bg-color);
     border-top: 1vh solid white;
 }
 
@@ -18,7 +18,7 @@
     color: var(--info-text-color);
     font-family: 'Judson', serif;
     padding: 7vh 5vw 25vh 5vw;
-    background-color: white;
+    background-color: var(--bg-color);
 }
 
 .ib { 

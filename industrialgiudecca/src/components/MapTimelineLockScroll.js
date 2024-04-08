@@ -19,9 +19,7 @@ export const MapTimelineLockScroll = (ref, thresh, startYear, endYear, setYear, 
             if (ref.current) {
                 const top = ref.current.getBoundingClientRect().top;
                 const margin = 50;
-
-                console.log(`top = ${top} thresh = ${thresh} timelineTop = ${timelineTop}`);
-
+                
                 if(top - margin <= thresh) {
                     window.scrollTo(0, timelineTop);
                     e.preventDefault();
