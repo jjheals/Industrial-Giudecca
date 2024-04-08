@@ -8,7 +8,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import '../css/Title.css';
+import '../css/components/Title.css';
 
 const Title = (title) => {
     return (

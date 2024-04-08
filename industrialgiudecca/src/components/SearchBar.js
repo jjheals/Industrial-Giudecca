@@ -9,7 +9,7 @@
  */
 
 import React, { useState } from 'react';
-import '../css/Searchbar.css'; 
+import '../css/components/Searchbar.css'; 
 
 const SearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');

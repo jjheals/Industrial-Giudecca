@@ -9,7 +9,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/Accordion.css';
+import '../css/components/Accordion.css';
 
 const Accordion = () => {
     const [activeTab, setActiveTab] = useState(null);

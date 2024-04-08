@@ -1,6 +1,6 @@
-// src/components/ScrollHandler.js
+// src/components/MapTimelineLockScroll.js
 
-/** { Component } ScrollHandler
+/** { Component } MapTimelineLockScroll
  * 
  * @abstract ScrollHandler handles the locking/unlocking of the scroll for the picture timeline on the homepage/landing page.
  * @param { Ref } ref - PageRef
@@ -12,18 +12,20 @@
 
 import { useEffect } from 'react';
 
-export const useLockScroll = (ref, startYear, endYear, setYear) => {
+export const MapTimelineLockScroll = (ref, thresh, startYear, endYear, setYear, timelineTop) => {
 
     useEffect(() => {
         const handleWheel = (e) => {
-
             if (ref.current) {
-                const { top, bottom } = ref.current.getBoundingClientRect();
+                const top = ref.current.getBoundingClientRect().top;
                 const margin = 50;
 
-                if(top + margin >= 0 && bottom - margin <= window.innerHeight) {
+                console.log(`top = ${top} thresh = ${thresh} timelineTop = ${timelineTop}`);
+
+                if(top - margin <= thresh) {
+                    window.scrollTo(0, timelineTop);
                     e.preventDefault();
-                                        
+
                     // Control the scroll speed in both directions
                     const scrollFactor = 0.7;                                       // DECREASE => SLOWER
                     const direction = e.deltaY > 0 ? scrollFactor : -scrollFactor;  // Set the scroll speed 

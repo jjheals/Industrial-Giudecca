@@ -9,7 +9,6 @@
  * 
  */
 import React, { useEffect, useState } from 'react';
-import '../css/Photos.css';
 
 const Gallery = ({ Factory_ID, Factory_Name, allImgURLsPromise }) => {
     const [allImgURLs, setAllImgURLs] = useState([]);

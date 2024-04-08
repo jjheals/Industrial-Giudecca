@@ -1,8 +1,8 @@
 // src/pages/Homepage.js
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Homepage.css';
-import '../css/MapTimeline.css';
+import '../css/components/MapTimeline.css';
 
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
@@ -27,7 +27,6 @@ function Homepage() {
             console.error('Error fetching factories:', error);
         });
     }, []); // Empty dependency array
-
 
     useEffect(() => {
         

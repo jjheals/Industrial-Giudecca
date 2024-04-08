@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import Fuse from "fuse.js";
 
-import '../css/Photos.css';
+
 import Sidebar from '../components/Sidebar.js';
 import { factoriesServiceURL, sDPTFactoriesTableURL, sDPTImagesURL } from '../GlobalConstants.js';
-import Gallery from '../components/Gallery.js';
-import { sDPTFetchFactoriesFL } from '../ArcGIS';
-import Fuse from "fuse.js";
-import SearchBar from '../components/SearchBar';
+
+import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import SearchBar from '../components/SearchBar.js';
+import Gallery from '../components/Photo/Gallery.js';
 import Title from '../components/Title.js';
+
+import '../css/Photos.css';
 
 function Photos() {
     const [showSidebar, setShowSidebar] = useState(false);

@@ -1,20 +1,24 @@
 :root { 
     --pin-width: 2.2vw;
     --pin-height: 5vh;
+    --info-text-color: rgb(94, 79, 60);
 }
 
 .timeline-container { 
     display: flex;
     flex-direction: column;
     margin-top: 5vh;
+    background-color: white;
+    border-top: 1vh solid white;
 }
 
 .info-containerb { 
     display: flex;
     flex-direction: row;
-    color: white;
+    color: var(--info-text-color);
     font-family: 'Judson', serif;
     padding: 7vh 5vw 25vh 5vw;
+    background-color: white;
 }
 
 .ib { 
@@ -23,11 +27,11 @@
 }
 
 .ib h1 { 
-    font-size: 11vh;
+    font-size: 10vh;
 }
 
 .ib h3 { 
-    font-size: 3vw;
+    font-size: 2.7vw;
 }
 
 .giudecca-map-img { 

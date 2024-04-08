@@ -9,9 +9,9 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useLockScroll } from './ScrollHandler'; 
+import { MapTimelineLockScroll } from './MapTimelineLockScroll'; 
 
-import '../css/MapTimeline.css';
+import '../css/components/MapTimeline.css';
 
 const MapTimeline = ({ factories }) => {
     const [activeAdv, setActiveAdv] = useState('');
@@ -39,11 +39,17 @@ const MapTimeline = ({ factories }) => {
         if(factory.Closing_Year > maxYear) maxYear = factory.Closing_Year;  // Check for max year
     });
 
+    const thresh = 0; 
+
     // Lock the scroll 
-    useLockScroll(pageRef, minYear, new Date().getFullYear(), setYear);
+    MapTimelineLockScroll(pageRef, thresh, minYear, new Date().getFullYear(), setYear, 1210);
+
+    
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
     useEffect(() => {
+        
+        
 
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
