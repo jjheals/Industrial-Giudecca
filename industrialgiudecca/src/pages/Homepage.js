@@ -8,7 +8,7 @@ import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 
 import Sidebar from '../components/Sidebar';
-import MapTimeline from '../components/MapTimeline';
+import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 
 function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
@@ -58,7 +58,7 @@ function Homepage() {
     }, []);
 
     return (
-        <div className="homepage" style={{ backgroundImage: 'url("stone1.jpg")', backgroundSize: '100% 100%' }}>
+        <div className="homepage" style={{ backgroundImage: 'url("water-bg.png")', backgroundSize: '100% 100%' }}>
             <header>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
@@ -78,7 +78,7 @@ function Homepage() {
                 <title>Industrial Giudecca</title>
             </head>
 
-            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '100% 100vh'}} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
+            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '70vw 100vh' }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
                 <div id='logos-container'>
                     <img id='main-logo' class='logo' src='logo.png' />
                     <img id='wpi-logo' class='logo' src='wpi-logo.png' />
@@ -105,11 +105,13 @@ function Homepage() {
             <div><Sidebar /></div>
 
             <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
-            <div className='spacer'></div>
 
-            <hr className='section-hr'></hr>
-            <div className='sb-divider'><p className='section-header'>Let's take a deeper dive into the history of Giudecca ...</p></div>
-            <hr className='section-hr'></hr>
+            <div className='section-header-container'>
+                <hr className='section-hr'></hr>
+                <div className='sb-divider'><p className='section-header'>Let's take a deeper dive into the history of Giudecca ...</p></div>
+                <hr className='section-hr'></hr>
+            </div>
+            
             <iframe className="storyboard-iframe" src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258" width="100%" height="500px" frameborder="0" allowfullscreen allow="geolocation"></iframe>
         </div>
     );

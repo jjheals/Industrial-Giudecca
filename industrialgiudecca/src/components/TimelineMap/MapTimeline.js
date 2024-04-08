@@ -11,7 +11,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapTimelineLockScroll } from './MapTimelineLockScroll'; 
 
-import '../css/components/MapTimeline.css';
+import '../../css/components/MapTimeline.css';
 
 const MapTimeline = ({ factories }) => {
     const [activeAdv, setActiveAdv] = useState('');
@@ -42,15 +42,12 @@ const MapTimeline = ({ factories }) => {
     const thresh = 0; 
 
     // Lock the scroll 
-    MapTimelineLockScroll(pageRef, thresh, minYear, new Date().getFullYear(), setYear, 1210);
-
-    
+    const timelineTop = window.innerHeight + 40;
+    MapTimelineLockScroll(pageRef, thresh, minYear, new Date().getFullYear(), setYear, timelineTop);
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
     useEffect(() => {
-        
-        
-
+    
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
 
@@ -112,27 +109,28 @@ const MapTimeline = ({ factories }) => {
 
             <div class='giudecca-map-timeline' style={{ width: '100%', height: '100%' }}>
                 {/* Container for map image */}
-                <img src="giudecca_map.png" 
+                <img src="giudecca-map.png" 
                      className='giudecca-map-img' 
                      alt="Map" 
-                     style={{ height: window.innerHeight * .6 }} 
+                     style={{ height: window.innerHeight }} 
                 />
 
                 {/* Overlayed container for factory pins */}
                 <div ref={ mapContainerRef } 
                      className='factory-container' 
-                     style={{ height: window.innerHeight * .6 }}>
+                     style={{ height: window.innerHeight }}>
                 </div>
 
-            </div>
-
-            <div className='info-containerb'>
+                <div className='info-containerb' style={{ height: window.innerHeight * 0.3 }}>
                     <div className='ib' id='ib1'><h3>In the year</h3></div>
                     <div className='ib' id='ib2'><h1>{ Math.round(year) }</h1></div>
                     <div className='ib' id='ib3'><h3>There { activeAdv }</h3></div>
                     <div className='ib' id='ib4'><h1>{ activeLabel }</h1></div>
                     <div className='ib' id='ib5'><h3>on Giudecca.</h3></div>
+                </div>
             </div>
+
+            
 
             
         </div>

@@ -13,6 +13,9 @@
     --subtitle-left: 1vw;
     --title-top: 50vh;
     --title-left: 1vw;
+
+    --dividing-borders: 3px solid white;
+    --w: 80%;
 }
 
 .App {
@@ -68,7 +71,6 @@
     flex-direction: row;
     width: 20vw;
     margin: 0;
-    background-color: red;
 }
 
 .logo { 
@@ -81,8 +83,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    margin: 0;
     height: 100vh;
+    width: 100vw;
     background-color: var(--bg-overlay);
     z-index: 500;
   }
@@ -93,15 +95,16 @@
     font-family: var(--title-font);
     font-size: var(--title-font-size);
     color: var(--title-font-color);
-    padding: 20vh 20%;
+    padding: 20vh;
     text-align: center;
-    height: 100vh;
+    height: 60vh;
     z-index: 4;
     transition: opacity 0s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
 }
 
 .blurbElm { 
     margin: 0;
+    width: 70%;
 }
 
 #blurbTop { 
@@ -110,6 +113,7 @@
     color: var(--title-font-color);
     top: calc(var(--title-top));
     left: var(--title-left);
+    width: var(--w);
 }
 
 #blurbBottom { 
@@ -117,6 +121,7 @@
     text-align: var(--text-align);
     bottom: var(--subtitle-bottom);
     left: var(--subtitle-left);
+    width: var(--w);
 }
 
 #blurbSubtitle {
@@ -127,8 +132,11 @@
 .blurbRow {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 2%;
+    width: auto;
+    padding: 0;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
 }
 
 .blurbDivider {
@@ -150,6 +158,7 @@
     color: var(--scroll-text-color);    
     font-size: 1.4vw;
     margin: 0;
+    width: var(--w);
 }
 
 #blurbScroll {
@@ -158,6 +167,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: var(--w);
+    margin: auto;
 }
 
 .scrollArrow {
@@ -177,20 +188,24 @@
     left: 0;
     margin-top: 5vh;
     width: 100%;
+    height: 100vh;
     z-index: 10;
 }
 
-.hp-spacer { 
-    margin-top: 0vh; 
+.section-header-container { 
+    background-color: rgba(255, 255, 255, 0.619);
+    border-top: var(--dividing-borders);
+    border-bottom: var(--dividing-borders);
+    padding: 2%;
 }
 
 .sb-divider { 
-    padding: 3vh;
+    margin: 3vh;
 }
 
 .section-hr { 
     width: 60%;
-    margin: 2vh auto;
+    padding: 2vh auto;
 }
 
 .section-header { 
@@ -205,6 +220,7 @@
     height: 200vh;
     margin: auto;
     margin-top: 5vh;
+    border-top: var(--dividing-borders);
 }
 
 
