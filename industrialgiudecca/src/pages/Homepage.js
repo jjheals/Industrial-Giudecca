@@ -12,6 +12,7 @@ import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 
 function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
+    const [headerOpacity, setHeaderOpacity] = useState(1);
     const [showScrollArrow] = useState(false);
     const [factories, setFactories] = useState([]);
 
@@ -28,6 +29,7 @@ function Homepage() {
         });
     }, []); // Empty dependency array
 
+    // useEffect ==> blurb/title fade in and out logic
     useEffect(() => {
         
         const handleScroll = () => {
@@ -57,34 +59,57 @@ function Homepage() {
         };
     }, []);
 
+    // useEffect ==> section header fade in and out logic
+    useEffect(() => {
+        
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+
+            // Section header fade in/out logic
+            const headerElement = document.getElementById('section-header-container');
+            if (headerElement) {
+                const headerHeight = headerElement.offsetHeight;  // Get the blurb height offset
+                const scrollThreshold = headerHeight * 4;         // Threshold to start fade
+
+                // Check the scroll position and update opacity as necessary
+                if (scrollPosition < scrollThreshold) {
+                    const opacity = 1 - scrollPosition / scrollThreshold;
+                    setHeaderOpacity(opacity);
+                } else {
+                    setHeaderOpacity(0);
+                }
+            }
+        };
+
+        // Add an event handler to control the blur in/out  
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <div className="homepage" style={{ backgroundImage: 'url("water-bg.png")', backgroundSize: '100% 100%' }}>
-            <header>
-                <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Judson"/>
-                <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css"/>
-                <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css"/>
-                <link rel="stylesheet" href="../static/index.css"/>
-
-                <script src="https://js.arcgis.com/4.28/"></script>
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                <script type="module" src="https://js.arcgis.com/calcite-components/1.9.2/calcite.esm.js"></script>
-            </header>
 
             <head>
                 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
                 <meta charSet="utf-8"/>
                 <title>Industrial Giudecca</title>
             </head>
+            {/* Sidebar div */}
+            <div><Sidebar /></div>
 
+            {/* Title div ('blurb') */}
             <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '100vw 100vh' }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
+                {/* Contains the logos on the top of the screen */}
                 <div id='logos-container'>
                     <img id='main-logo' class='logo' src='logo.png' />
                     <img id='wpi-logo' class='logo' src='wpi-logo.png' />
                     <img id='sdpt-logo' class='logo' src='sdpt-logo.png' />
                 </div>
 
+                {/* Overlay to darken the homepage front image; also contains the text for the landing screen */}
                 <div className='bg-overlay'>    
                     <div className="blurbRow" id="blurbTop">
                         <p className="blurbElm" id="blurbTitle">Industrial Giudecca</p>
@@ -102,15 +127,19 @@ function Homepage() {
                 </div>
             </div>
             
-            <div><Sidebar /></div>
+            {/* Timeline container */}
+            <div id="homepage-timeline" ><MapTimeline factories={ factories }/></div>
 
-            <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
-
-            <div className='section-header-container' style={{ backgroundImage: 'url("header-image.jpeg"', backgroundSize: '100% 100%' }}>
+            {/* Container for the section header container */}
+            <div id='section-header-container' className={headerOpacity <= 0 ? 'fade-out' : ''} style={{ opacity: headerOpacity, backgroundImage: 'url("header-bg-image.jpg"', backgroundSize: '100% 100%' }}>
                 <div className='section-header-overlay' />
-                <div className='sb-divider' ><p className='section-header'>Let's take a deeper dive into the industrial history of Giudecca ...</p></div>
+                <div className='sb-divider' >
+                    <p className='section-header'>Let's take a deeper dive</p>
+                    <p className='section-header'>into the industrial history of Giudecca ...</p>
+                </div>
             </div>
             
+            {/* Storyboard iframe from ArcGIS */}
             <iframe 
                 className="storyboard-iframe" 
                 src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258" 
