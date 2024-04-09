@@ -42,7 +42,7 @@ const MapTimeline = ({ factories }) => {
     const thresh = 0; 
 
     // Lock the scroll 
-    const timelineTop = window.innerHeight + 40;
+    const timelineTop = window.innerHeight;
     MapTimelineLockScroll(pageRef, thresh, minYear, new Date().getFullYear(), setYear, timelineTop);
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
@@ -121,12 +121,17 @@ const MapTimeline = ({ factories }) => {
                      style={{ height: window.innerHeight }}>
                 </div>
 
-                <div className='info-containerb' style={{ height: window.innerHeight * 0.3 }}>
-                    <div className='ib' id='ib1'><h3>In the year</h3></div>
-                    <div className='ib' id='ib2'><h1>{ Math.round(year) }</h1></div>
-                    <div className='ib' id='ib3'><h3>There { activeAdv }</h3></div>
-                    <div className='ib' id='ib4'><h1>{ activeLabel }</h1></div>
-                    <div className='ib' id='ib5'><h3>on Giudecca.</h3></div>
+                <div className='info-containerb' style={{ height: window.innerHeight * 0.38 }}>
+                    <div class='map-row'> 
+                        <div className='ib' id='ib1'><h3>In the year</h3></div>
+                        <div className='ib' id='ib2'><h1>{ Math.round(year) }</h1></div>
+                    </div>
+                    <div class='map-row'>
+                        <div className='ib' id='ib3'><h3>There { activeAdv }</h3></div>
+                        <div className='ib' id='ib4'><h1>{ activeLabel }</h1></div>
+                        <div className='ib' id='ib5'><h3>on Giudecca.</h3></div>
+                    </div>
+                    
                 </div>
             </div>
 

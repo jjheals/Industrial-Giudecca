@@ -9,7 +9,6 @@
  * @param { int } setYear - Current year on the timeline 
  * 
  */
-
 import { useEffect } from 'react';
 
 export const MapTimelineLockScroll = (ref, thresh, startYear, endYear, setYear, timelineTop) => {

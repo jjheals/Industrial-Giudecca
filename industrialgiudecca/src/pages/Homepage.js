@@ -78,7 +78,7 @@ function Homepage() {
                 <title>Industrial Giudecca</title>
             </head>
 
-            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '70vw 100vh' }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
+            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '100vw 100vh' }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
                 <div id='logos-container'>
                     <img id='main-logo' class='logo' src='logo.png' />
                     <img id='wpi-logo' class='logo' src='wpi-logo.png' />
@@ -106,13 +106,17 @@ function Homepage() {
 
             <div id="homepage-timeline"><MapTimeline factories={ factories }/></div>
 
-            <div className='section-header-container'>
-                <hr className='section-hr'></hr>
-                <div className='sb-divider'><p className='section-header'>Let's take a deeper dive into the history of Giudecca ...</p></div>
-                <hr className='section-hr'></hr>
+            <div className='section-header-container' style={{ backgroundImage: 'url("header-image.jpeg"', backgroundSize: '100% 100%' }}>
+                <div className='section-header-overlay' />
+                <div className='sb-divider' ><p className='section-header'>Let's take a deeper dive into the industrial history of Giudecca ...</p></div>
             </div>
             
-            <iframe className="storyboard-iframe" src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258" width="100%" height="500px" frameborder="0" allowfullscreen allow="geolocation"></iframe>
+            <iframe 
+                className="storyboard-iframe" 
+                src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258" 
+                width="100%" 
+                frameborder="0" 
+            />
         </div>
     );
 }

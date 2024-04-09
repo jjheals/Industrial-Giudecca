@@ -1,6 +1,6 @@
 // src/App.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FactoryHomepage from './pages/FactoryHomepage';
 import StuckyFactory from './pages/StuckyFactory';
@@ -10,6 +10,7 @@ import BasicFactoryTemplate from './pages/BasicFactoryTemplate';
 import DataExplorerPage from './pages/DataExplorerPage';
 
 function App() {
+
     return (
         <Router>
             <Routes>

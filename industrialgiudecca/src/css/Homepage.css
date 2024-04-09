@@ -1,21 +1,27 @@
 :root {
     --container-side-padding: 10%;
     --container-top-padding: 5%;
-    --title-font: "Judson", Serif;
+    --title-font: "Playfair Display", Serif, monospace;
     --title-font-size: 6vw;
     --title-font-color: rgb(255, 255, 255);
     --scroll-text-color: rgb(232, 202, 162);
     --bg-overlay: rgba(0, 0, 0, 0.324); /* Adjust the opacity by changing the last value (0.5 in this case) */
     --text-align: left;
 
+    /* Title/landing page styles */
     --scroll-top: 45vh;
     --subtitle-bottom: -45vh;
-    --subtitle-left: 1vw;
+    --subtitle-left: 3vw;
     --title-top: 50vh;
-    --title-left: 1vw;
-
-    --dividing-borders: 3px solid white;
+    --title-left: 3vw;
     --w: 80%;
+
+    /* Section header styles */
+    --dividing-borders: 1px solid rgb(255, 255, 255);
+    --section-header-bg: rgba(180, 180, 180, 0);
+    --section-header-font-color: rgb(255, 255, 255);
+    --section-header-overlay: rgba(0, 0, 0, 0.441);
+    --section-header-font-bg: rgba(255, 255, 255, 0.384);
 }
 
 .App {
@@ -59,7 +65,7 @@
 /* Styles for page design */
 .homepage { 
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     z-index: -10;
 }
 
@@ -84,10 +90,10 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background-color: var(--bg-overlay);
     z-index: 500;
-  }
+}
 
 #blurb {
     display: flex;
@@ -186,40 +192,52 @@
     position: relative;
     top: 1700;
     left: 0;
-    margin-top: 5vh;
     width: 100%;
     height: 100vh;
     z-index: 10;
+    border-bottom: var(--dividing-borders);
+    border-top: var(--dividing-borders);
 }
 
 .section-header-container { 
-    background-color: rgba(255, 255, 255, 0.619);
+    background-color: var(--section-header-bg);
     border-top: var(--dividing-borders);
     border-bottom: var(--dividing-borders);
-    padding: 2%;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    z-index: -1;
 }
 
-.sb-divider { 
-    margin: 3vh;
-}
-
-.section-hr { 
-    width: 60%;
-    padding: 2vh auto;
+.section-header-overlay { 
+    z-index: 1000;
+    position: absolute;
+    background-color: var(--section-header-overlay);
+    height: 100vh;
+    width: 100%;
 }
 
 .section-header { 
-    font-family: 'Judson', serif;
-    font-size: 3.5vw;
-    color: black;
+    position: relative;
+    top: 25vh;
+    font-family: 'Grandiflora One', monospace;
+    font-weight: 600;
+    font-size: 3.3vw;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+    color: var(--section-header-font-color);
     text-align: center;
-    margin: auto;
+    background-color: var(--section-header-font-bg);
+    z-index: 1000;
+
 }
 
 .storyboard-iframe { 
-    height: 200vh;
+    display: block;
+    width: 100%;
+    height: 100vh;
     margin: auto;
-    margin-top: 5vh;
     border-top: var(--dividing-borders);
 }
 

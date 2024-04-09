@@ -3,6 +3,8 @@
     --pin-height: 5vh;
     --info-text-color: rgb(255, 255, 255);
     --bg-color: rgba(93, 93, 93, 0.565);
+    --info-container-font-family: 'Judson', serif;
+    --info-font-weight: 400;
 }
 
 .timeline-container { 
@@ -16,24 +18,35 @@
     margin-top: 60vh;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: var(--info-text-color);
-    font-family: 'Judson', serif;
-    padding: 10vh 2vw;
+    font-family: var(--info-container-font-family);
+    font-weight: var(--info-font-weight);
+    padding: 1vh 2vw;
     background-color: var(--bg-color);
 }
 
+.map-row { 
+    display: flex;
+    flex-direction: row;
+    margin: 1vh auto 0 auto;
+    padding: auto;
+    width: 100%;
+}
 .ib { 
     padding: auto;
-    margin: 1%;
+    margin: auto 1%;
+    font-weight: var(--info-font-weight);
 }
 
 .ib h1 { 
     font-size: 10vh;
+    font-weight: var(--info-font-weight);
 }
 
 .ib h3 { 
     font-size: 2.7vw;
+    font-weight: var(--info-font-weight);
 }
 
 .giudecca-map-img { 
