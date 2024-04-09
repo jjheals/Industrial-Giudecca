@@ -7,7 +7,6 @@ import DataExplorer from '../components/DataExplorer/DataExplorer.js';
 import Title from '../components/Title.js';
 
 function DataExplorerPage() {
-
     
     useState(() => { 
         
@@ -16,7 +15,7 @@ function DataExplorerPage() {
     return (
         <div className="main-container">
             <div><Sidebar /></div>
-            <div><Title title='Data Explorer'/></div>
+            <div><Title title='Data Explorer' imgSrc='data-explorer-title.jpeg'/></div>
             <div className='data-explorer'><DataExplorer /></div>
             
         </div>

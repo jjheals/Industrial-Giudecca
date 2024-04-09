@@ -32,7 +32,7 @@
 .data-explorer { 
     width: var(--de-width);
     height: 70vh;
-    margin: 0 auto 10vh auto;
+    margin: 5vh auto 10vh auto;
     font-family: var(--main-font-family);
 }
 

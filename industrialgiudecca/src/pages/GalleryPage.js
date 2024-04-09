@@ -65,7 +65,7 @@ function GalleryPage() {
     return (
         <div className='main'>
             <div><Sidebar isOpen={showSidebar}/></div>
-            <div><Title title='Photo Gallery' /></div>
+            <div><Title title='Photo Gallery' imgSrc='stucky12.jpg'/></div>
             <SearchBar onSearch={handleSearch} />
             
             <div className='pspacer'></div>
