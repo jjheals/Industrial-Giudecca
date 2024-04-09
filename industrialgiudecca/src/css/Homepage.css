@@ -18,10 +18,8 @@
 
     /* Section header styles */
     --dividing-borders: 2px solid rgb(255, 255, 255);
-    --section-header-bg: rgba(180, 180, 180, 0);
     --section-header-font-color: rgb(255, 255, 255);
-    --section-header-overlay: rgba(0, 0, 0, 0.585);
-    --section-header-font-bg: rgba(255, 255, 255, 0.384);
+    --section-header-overlay: rgba(0, 0, 0, 0.612);
 }
 
 .App {
@@ -77,6 +75,7 @@
     flex-direction: row;
     width: 20vw;
     margin: 0;
+    z-index: 1001;
 }
 
 .logo { 
@@ -201,17 +200,15 @@
 }
 
 #section-header-container { 
-    background-color: var(--section-header-bg);
     border-top: var(--dividing-borders);
     border-bottom: var(--dividing-borders);
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    z-index: -1;
+    opacity: 1;
 }
 
 .section-header-overlay { 
-    z-index: 1000;
     position: absolute;
     background-color: var(--section-header-overlay);
     height: 100vh;
@@ -228,9 +225,8 @@
     font-size: 5vw;
     width: 100%;
     color: var(--section-header-font-color);
+    z-index: 1000;
     text-align: left;
-    z-index: 1001;
-
 }
 
 .storyboard-iframe { 

@@ -30,6 +30,11 @@ const Sidebar = () => {
                         <li className="sidebar-element">
                             <Link class="sidebar-link" to="/" onClick={toggleSidebar}>Home</Link>
                         </li>
+
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>About</Link>
+                        </li>
+
                         <li className="sidebar-element">
                             <Link class="sidebar-link" to="/factory" onClick={toggleSidebar}>Factories</Link>
                         </li>

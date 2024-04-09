@@ -4,29 +4,8 @@
     --gallery-img-height: 25vh;
 }
 
-.main { 
-    padding-top: 7vh;
-}
-
 .pspacer { 
     height: 10vh;
-}
-
-#title { 
-    margin: 0;
-    color: #333333;
-    text-align: center;
-    padding: 1% 0;
-    font-family: "Judson";
-    font-size: 3vw;
-}
-
-.title-hr { 
-    width: 50%;
-}
-
-.spacer { 
-    height: 7vh;
 }
 
 .gallery-title { 

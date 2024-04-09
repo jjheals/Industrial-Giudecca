@@ -1,7 +1,7 @@
 :root { 
     --sidebar-z: 1001;
     --sidebar-width: 18vw;
-    --hamburger-pos: 1.2vw;
+    --hamburger-pos: 20px;
 }
 
 /* Sidebar.css */
@@ -22,7 +22,7 @@ nav ul li a {
     left: calc(var(--sidebar-width) * -1);
     width: var(--sidebar-width);
     height: 100vh;
-    background-color: #ffffffed;
+    background-color: #adadadc6;
     transition: left 0.3s ease;
     padding-top: 10%;
     overflow-y: auto;
@@ -65,6 +65,7 @@ nav ul li a {
 }
 
 .hamburger.open span:nth-child(1) {
+    z-index: 1000;
     transform: translateY(6px) rotate(45deg);
 }
 
@@ -73,6 +74,7 @@ nav ul li a {
 }
 
 .hamburger.open span:nth-child(3) {
+    z-index: 1000;
     transform: translateY(-6px) rotate(-45deg);
 }
 
@@ -80,8 +82,7 @@ nav ul li a {
     font-size: 1.5vw;
     margin: 10px 0;
     padding: 10px;
-    
-    color: #009dff;
+    color: #ffffff;
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -92,12 +93,12 @@ nav ul li a {
 
 .sidebar-link { 
     transition: font-size 0.3s ease;
-    color: #009dff;
+    color: #ffffff;
 }
 
 .sidebar-link:visited { 
     transition: font-size 0.3s ease;
-    color: #009dff;
+    color: #ffffff;
 }
 
 .sidebar-link:visited:hover { 

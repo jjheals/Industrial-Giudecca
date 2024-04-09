@@ -1,0 +1,11 @@
+
+.fhp-giudecca-map-img { 
+    width: 100%;
+}
+
+.fhp-factory-pin { 
+    position: absolute;
+    width: var(--pin-width);
+    height: var(--pin-height);
+    transition: 0.2s ease;
+}

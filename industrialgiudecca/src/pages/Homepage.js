@@ -12,7 +12,6 @@ import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 
 function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
-    const [headerOpacity, setHeaderOpacity] = useState(1);
     const [showScrollArrow] = useState(false);
     const [factories, setFactories] = useState([]);
 
@@ -39,7 +38,7 @@ function Homepage() {
             const blurbElement = document.getElementById('blurb');
             if (blurbElement) {
                 const blurbHeight = blurbElement.offsetHeight;  // Get the blurb height offset
-                const scrollThreshold = blurbHeight * 0.7;      // Threshold to start fade
+                const scrollThreshold = blurbHeight * 3;      // Threshold to start fade
 
                 // Check the scroll position and update opacity as necessary
                 if (scrollPosition < scrollThreshold) {
@@ -59,38 +58,8 @@ function Homepage() {
         };
     }, []);
 
-    // useEffect ==> section header fade in and out logic
-    useEffect(() => {
-        
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-
-            // Section header fade in/out logic
-            const headerElement = document.getElementById('section-header-container');
-            if (headerElement) {
-                const headerHeight = headerElement.offsetHeight;  // Get the blurb height offset
-                const scrollThreshold = headerHeight * 4;         // Threshold to start fade
-
-                // Check the scroll position and update opacity as necessary
-                if (scrollPosition < scrollThreshold) {
-                    const opacity = 1 - scrollPosition / scrollThreshold;
-                    setHeaderOpacity(opacity);
-                } else {
-                    setHeaderOpacity(0);
-                }
-            }
-        };
-
-        // Add an event handler to control the blur in/out  
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     return (
-        <div className="homepage" style={{ backgroundImage: 'url("water-bg.png")', backgroundSize: '100% 100%' }}>
+        <div className="homepage">
 
             <head>
                 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
@@ -101,7 +70,7 @@ function Homepage() {
             <div><Sidebar /></div>
 
             {/* Title div ('blurb') */}
-            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '100vw 100vh' }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
+            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '100vw 100vh', backgroundAttachment: 'fixed' }} className={blurbOpacity <= 0 ? 'fade-out' : '' }>
                 {/* Contains the logos on the top of the screen */}
                 <div id='logos-container'>
                     <img id='main-logo' class='logo' src='logo.png' />
@@ -117,7 +86,7 @@ function Homepage() {
                     
                     <div className="blurbRow" id="blurbBottom">
                         <p className="blurbElm" id="blurbSubtitle">"A history without memory."</p>
-                        <p className="blurbElm" id="blurbCredits">- Mario Marinoni</p>
+                        <p className="blurbElm" id="blurbCredits">- Mario Isnenghi</p>
                     </div>
 
                     <div className="blurbRow" id="blurbScroll">
@@ -131,8 +100,8 @@ function Homepage() {
             <div id="homepage-timeline" ><MapTimeline factories={ factories }/></div>
 
             {/* Container for the section header container */}
-            <div id='section-header-container' className={headerOpacity <= 0 ? 'fade-out' : ''} style={{ opacity: headerOpacity, backgroundImage: 'url("header-bg-image.jpg"', backgroundSize: '100% 100%' }}>
-                <div className='section-header-overlay' />
+            <div id='section-header-container' style={{ backgroundImage: 'url("header-bg-image.jpg"', backgroundSize: '100% 100%', backgroundAttachment: 'fixed' }}>
+                <div className='section-header-overlay' id='section-header-overlay'/>
                 <div className='sb-divider' >
                     <p className='section-header'>Let's take a deeper dive</p>
                     <p className='section-header'>into the industrial history of Giudecca ...</p>

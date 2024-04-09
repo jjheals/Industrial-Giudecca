@@ -9,50 +9,28 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 
 .search-bar-container {
     position: sticky;
-    top: 0;
+    top: 0vh;
     z-index: 10;
     background-color: #f8f8f8;
-    padding: 10px 0;
+    padding: 1vh 0;
     width: 100%;
-    left: 0;
 }
 
-.title {
-    margin: 0;
-    color: #333333;
-    text-align: center;
-    padding: 1% 0;
-    font-family: "Judson";
-    font-size: 3vw;
-}
-
-.split-pane {
-    display: flex;
-    flex: 1;
-}
-
-.map-container {
+.fhp-map-container { 
     width: 100%;
-    height: calc(100vh - 200px); /* Adjust the height as needed */
-    padding-top: 15vh;
-    padding-left: 2vw;
-}
-
-.arcgis-app {
-    width: 100%;
-    height: 100%;
+    height: 60vh;
 }
 
 .factory-list-container {
-    overflow-y: auto;
-    padding: 2vh 0;
-    height: calc(100vh - 200px); /* Adjust the height as needed */
-    padding-top: 15vh;
+    overflow-y: visible;
+    padding: 0;
+    height: 100vh; 
+    padding-top: 4vh;
+    background-color: white;
 }
 
 .factory-list {
@@ -94,33 +72,4 @@
     height: var(--img-height);
     margin: 0;
     margin-top: 5%;
-}
-
-.custom-resizer {
-    width: 20px;
-    background: #ccc;
-    z-index: 1;
-    box-sizing: border-box;
-    background-clip: padding-box;
-}
-
-.custom-resizer:hover {
-    transition: all 0.3s ease;
-}
-
-.custom-resizer.vertical {
-    width: 20px;
-    border-left: 5px solid rgba(255, 255, 255, 0);
-    border-right: 5px solid rgba(255, 255, 255, 0);
-    cursor: col-resize;
-    margin-left: 3vw;
-    margin-right: 2vw;
-    height: calc(100vh - 200px); /* Adjust the height as needed */
-    margin-top: 15vh; /* Add margin-top to align with other containers */
-}
-
-.custom-resizer.vertical:hover,
-.custom-resizer.vertical:active {
-    border-left: 5px solid rgba(0, 0, 0, 0.5);
-    border-right: 5px solid rgba(0, 0, 0, 0.5);
 }
