@@ -100,3 +100,14 @@
 .skip-button:hover {
     background-color: #e0e0e0;
 }
+
+.factory-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 1000;
+}
