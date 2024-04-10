@@ -1,9 +1,9 @@
 
 :root { 
-    --main-font-family: 'Judson', serif; /* Primary font style for the page */
+    --main-font-family: 'Garamond',serif; /* Primary font style for the page */
     --de-width: 90vw;
-    --de-primary-color: rgb(209, 209, 209);
-    --hover-color: rgb(105, 105, 255);
+    --de-primary-color: rgb(181, 171, 171);
+    --hover-color: rgb(50, 85, 210);
 
     /* Submit button styles */
     --submit-button-width: 10vw;         /* Width for submit button for calculating space */
@@ -27,12 +27,13 @@
 .main-container { 
     margin: 0;
     padding: 0;
+    background-color: none;
 }
 
 .data-explorer { 
     width: var(--de-width);
     height: 70vh;
-    margin: 5vh auto 10vh auto;
+    margin: 0 auto 10vh auto;
     font-family: var(--main-font-family);
 }
 
@@ -143,7 +144,7 @@ select, .de-search-bar button {
     font-size: 1vw;
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 
 .de-results-table thead, .de-results-table tbody { 

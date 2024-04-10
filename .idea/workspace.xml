@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="factory homepage psuedo working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/components/FactoriesMap.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/components/FactoriesMap.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

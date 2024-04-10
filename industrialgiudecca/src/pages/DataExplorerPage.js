@@ -15,7 +15,7 @@ function DataExplorerPage() {
     return (
         <div className="main-container">
             <div><Sidebar /></div>
-            <div><Title title='Data Explorer' imgSrc='data-explorer-title.jpeg'/></div>
+            <div><Title title='Data Explorer' titleColor='' imgSrc='F-1_S35_yyyy.png'/></div>
             <div className='data-explorer'><DataExplorer /></div>
             
         </div>
