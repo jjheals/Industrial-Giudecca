@@ -17,7 +17,6 @@
     position: relative;
     top: 20vh;
     margin: auto;
-    background-color: rgba(103, 103, 103, 0.72);
 }
 
 .title { 
@@ -25,7 +24,7 @@
     color: #ffffff;
     text-align: center;
     padding: 1% 0;
-    font-family: "Judson";
+    font-family: 'Garamond', serif;
     font-size: 4vw;
     font-weight: 100;
 }
