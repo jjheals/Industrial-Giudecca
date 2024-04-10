@@ -66,11 +66,12 @@ function fetchAllFactoryImages() {
  * @param {string} serviceURL - ArcGIS service endpoint
  * @returns {Array} array of Factory objects
  */
-async function sDPTFetchFactoriesFL(serviceURL) { 
+async function sDPTFetchFactoriesFL(serviceURL, filters) { 
     try {
         // Query the factories FL to get the factory attributes 
         const response = await queryFeatures({
             url: serviceURL,
+            where: filters
         });
 
         // Wait for the response, then iterate over the factories 

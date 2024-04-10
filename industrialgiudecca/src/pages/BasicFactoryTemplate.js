@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
@@ -10,11 +10,14 @@ import '../css/components/Gallery.css';
 import '../css/components/Photo.css';
 import '../css/BasicFactoryTemplate.css';
 
-function BasicFactoryTemplate({ Factory_ID }) {
+function BasicFactoryTemplate() {
+    const { Factory_ID } = useParams();
     const [coverPicURL, setCoverPicURL] = useState('');
     const [imgURLs, setAllImgURLs] = useState([]);
     const [showSidebar, setShowSidebar] = useState(false);
     const [title, setTitle] = useState('');
+
+    console.log(`Factory_ID: ${Factory_ID}`);
 
     useState(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
@@ -23,6 +26,8 @@ function BasicFactoryTemplate({ Factory_ID }) {
             `Factory_ID = ${Factory_ID}`
         )
         .then(factories => {
+            console.log(factories);
+            
             // Since we used a primary key as the filter, there is only one result
             const factory = factories[0];
             factory.getAllFactoryImageURLs()

@@ -104,26 +104,24 @@ select, .de-search-bar button {
     height: calc(var(--submit-button-height) + 0.5vh);
 }
 
-.de-download-results { 
-    margin: 2vh 2vw 2vh 0;
-    width: 4vw;
+#download-icon { 
+    width: 2vw;
+    margin: auto;
     transition: 0.5s ease;
     cursor: pointer;
 }
 
-.de-download-results:hover { 
-    background-color: var(--hover-color);
-    margin: 2vh 2vw 2vh 0;
-}
-
-.main-container img { 
-    bottom: 1vh;
-    width: 1.5vw; 
-    height: 3vh;
+.de-download-results { 
+    margin-top: 2vh;
+    width: 3vw; 
+    height: 3vw;
+    border: 1px solid black;
+    border-radius: 20%;
     transition: 0.5s ease;
 }
 
-.main-container img:hover { 
+.de-download-results:hover { 
+    background-color: var(--hover-color);
     transition: 0.5s ease;
     cursor: pointer;
 }

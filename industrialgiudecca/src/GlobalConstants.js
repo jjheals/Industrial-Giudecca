@@ -27,6 +27,13 @@ export const agisCSVDownloadEndpoints = {
     'Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/4b59a8250ad0463db2771754d7d3f33a/data',
 }
 
+// URL endpoints to the storymaps for factories that they exist for
+// [ key : val ] => [ Factory_ID : StoryMapURL ]
+export const factoryStoryMapURLs = {
+    3: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0'
+}
+
+
 export const minLat = 45.4135653;                   // Bottom map limit
 export const maxLat = 45.4317564;                   // Top map limit
 export const minLong = 12.3046033;                  // Left map limit

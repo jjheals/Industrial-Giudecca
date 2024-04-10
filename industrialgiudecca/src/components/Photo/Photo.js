@@ -17,16 +17,19 @@ const Photo = ({ photoClass, photoID, photoAlt, photoKey, photoSrc, photoCitatio
                 alt={photoAlt}
                 src={photoSrc}
             />
-            <div className='info-container' id={ `info-container-${photoID}` } >
-                <img
+            <img
                     className='info-icon'
                     id={`info-${photoID}`}
                     src='i-icon.png'
                     onClick={() => togglePopup(photoID)}
-                />
-                <div className={`popup ${isPopupVisible ? 'show' : 'hide'}`} id={ `popup-${photoID}` }>
-                    <p className='popup-content'>{ photoCitation }</p>
-                </div>
+                    style={{ 
+                        left: '1vw',
+                        top: '1vh'
+                    }}
+            />
+            
+            <div className={`popup ${isPopupVisible ? 'show' : 'hide'}`} id={ `popup-${photoID}` } style={{  }}>
+                <p className='popup-content'>{ photoCitation }</p>
             </div>
             
         </div>
