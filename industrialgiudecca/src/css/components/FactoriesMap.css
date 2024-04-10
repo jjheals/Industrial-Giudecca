@@ -9,3 +9,10 @@
     height: var(--pin-height);
     transition: 0.2s ease;
 }
+
+.fhp-factory-pin.highlighted {
+    /* Add your desired styles for the highlighted marker */
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
