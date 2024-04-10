@@ -69,6 +69,8 @@ function fetchAllFactoryImages() {
 async function sDPTFetchFactoriesFL(serviceURL, filters) { 
     try {
         // Query the factories FL to get the factory attributes 
+        console.log(`filters: ${filters}`);
+        
         const response = await queryFeatures({
             url: serviceURL,
             where: filters

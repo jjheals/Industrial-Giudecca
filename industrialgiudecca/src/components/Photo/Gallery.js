@@ -14,10 +14,6 @@ import Photo from './Photo.js';
 const Gallery = ({ Factory_ID, allImgURLsPromise }) => {
     const [allImgURLs, setAllImgURLs] = useState([]);
 
-    console.log("creating gallery");
-    console.log('allImgURLsPromise');
-    console.log(allImgURLsPromise);
-
     useEffect(() => { 
         setAllImgURLs(allImgURLsPromise);
     });

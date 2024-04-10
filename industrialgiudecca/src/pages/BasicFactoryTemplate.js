@@ -5,6 +5,7 @@ import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
+import { factoryStoryMapURLs } from '../GlobalConstants.js';
 
 import '../css/components/Gallery.css';
 import '../css/components/Photo.css';
@@ -14,10 +15,12 @@ function BasicFactoryTemplate() {
     const { Factory_ID } = useParams();
     const [coverPicURL, setCoverPicURL] = useState('');
     const [imgURLs, setAllImgURLs] = useState([]);
+    const [storymapURL, setStorymapURL] = useState('');
     const [showSidebar, setShowSidebar] = useState(false);
     const [title, setTitle] = useState('');
 
-    console.log(`Factory_ID: ${Factory_ID}`);
+    console.log(`Factory_ID:`);
+    console.log(Factory_ID);
 
     useState(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
@@ -26,7 +29,6 @@ function BasicFactoryTemplate() {
             `Factory_ID = ${Factory_ID}`
         )
         .then(factories => {
-            console.log(factories);
             
             // Since we used a primary key as the filter, there is only one result
             const factory = factories[0];
@@ -42,6 +44,11 @@ function BasicFactoryTemplate() {
         .catch(error => {
             console.error('Error fetching details for factory:', error);
         });
+
+        // Set the storymap on the page, if it exists 
+        const thisStorymapURL = factoryStoryMapURLs[Factory_ID];
+        if(thisStorymapURL) setStorymapURL(thisStorymapURL);
+
     }, []);
 
     return (
@@ -67,10 +74,15 @@ function BasicFactoryTemplate() {
                 </div>
 
                 <div class='grid-item' id='description-panel'> 
-                    
                 </div>
-
             </div>
+
+            <iframe 
+                className="storyboard-iframe" 
+                src={ storymapURL }
+                width="100%" 
+                frameborder="0" 
+            />
         </div>
     );
 }
