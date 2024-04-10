@@ -26,7 +26,7 @@ const DataExplorerSearchBar = () => {
     
     return (
         <div className='de-search-bar'>
-            <form id='de-search-form'>
+            <form id='de-search-form' action=''>
                 <div className='de-search-bar-row'>
                     <div className='input-container'>
                         <input type='text' className='de-search-input' placeholder='Factory Name (English)'></input>
