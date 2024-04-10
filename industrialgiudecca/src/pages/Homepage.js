@@ -67,54 +67,60 @@ function Homepage() {
                 <title>Industrial Giudecca</title>
             </head>
             {/* Sidebar div */}
-            <div><Sidebar /></div>
+            <div><Sidebar/></div>
 
             {/* Title div ('blurb') */}
-            <div id="blurb" style={{ opacity: blurbOpacity, backgroundImage: 'url("front-image.jpeg")', backgroundSize: '100vw 100vh', backgroundAttachment: 'fixed' }} className={blurbOpacity <= 0 ? 'fade-out' : '' }>
+            <div id="blurb" style={{
+                opacity: blurbOpacity,
+                backgroundImage: 'url("front-image.jpeg")',
+                backgroundSize: '100vw 100vh',
+                backgroundAttachment: 'fixed'
+            }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
                 {/* Contains the logos on the top of the screen */}
                 <div id='logos-container'>
-                    <img id='main-logo' class='logo' src='logo.png' />
-                    <img id='wpi-logo' class='logo' src='wpi-logo.png' />
-                    <img id='sdpt-logo' class='logo' src='sdpt-logo.png' />
+                    <img id='main-logo' class='logo' src='logo.png'/>
+                    <img id='wpi-logo' class='logo' src='wpi-logo.png'/>
+                    <img id='sdpt-logo' class='logo' src='sdpt-logo.png'/>
                 </div>
 
                 {/* Overlay to darken the homepage front image; also contains the text for the landing screen */}
-                <div className='bg-overlay'>    
+                <div className='bg-overlay'>
                     <div className="blurbRow" id="blurbTop">
                         <p className="blurbElm" id="blurbTitle">Industrial Giudecca</p>
                     </div>
-                    
+
                     <div className="blurbRow" id="blurbBottom">
                         <p className="blurbElm" id="blurbSubtitle">"A history without memory."</p>
                         <p className="blurbElm" id="blurbCredits">- Mario Isnenghi</p>
                     </div>
 
                     <div className="blurbRow" id="blurbScroll">
-                    <p className="blurbElm" id="scrollText">This platform tells the story of industry on Giudecca.</p>
+                        <p className="blurbElm" id="scrollText">This platform tells the story of industry on
+                            Giudecca.</p>
                         <div className={`scrollArrow ${showScrollArrow ? 'show' : ''}`}></div>
                     </div>
                 </div>
             </div>
-            
+
             {/* Timeline container */}
-            <div id="homepage-timeline" ><MapTimeline factories={ factories }/></div>
+            <div id="homepage-timeline"><MapTimeline factories={factories}/></div>
 
             {/* Container for the section header container */}
-            <div id='section-header-container' style={{ backgroundImage: 'url("header-bg-image.jpg"', backgroundSize: '100% 100%', backgroundAttachment: 'fixed' }}>
+            <div id='section-header-container' style={{
+                backgroundImage: 'url("header-bg-image.jpg"',
+                backgroundSize: '100% 100%',
+                backgroundAttachment: 'fixed'
+            }}>
                 <div className='section-header-overlay' id='section-header-overlay'/>
-                <div className='sb-divider' >
+                <div className='sb-divider'>
                     <p className='section-header'>Let's take a deeper dive</p>
                     <p className='section-header'>into the industrial history of Giudecca ...</p>
                 </div>
             </div>
-            
+
             {/* Storyboard iframe from ArcGIS */}
-            <iframe 
-                className="storyboard-iframe" 
-                src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258" 
-                width="100%" 
-                frameborder="0" 
-            />
+            <iframe src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258?cover=false" width="100%"
+                    height="1050v" frameBorder="0" allowFullScreen allow="geolocation"></iframe>
         </div>
     );
 }
