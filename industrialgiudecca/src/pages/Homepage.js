@@ -1,19 +1,20 @@
 // src/pages/Homepage.js
 
 import React, { useState, useEffect } from 'react';
+
 import '../css/Homepage.css';
 import '../css/components/MapTimeline.css';
 
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
-import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
-
-import Sidebar from '../components/Sidebar';
+import { sDPTFactoriesTableURL, factoryStoryMapURLs } from '../GlobalConstants.js';
+import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 
 function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
     const [showScrollArrow] = useState(false);
     const [factories, setFactories] = useState([]);
+    const [storymapURL, setStorymapURL] = useState('');
 
     // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
     useEffect(() => {
@@ -21,6 +22,7 @@ function Homepage() {
         sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
         .then(factories => {       
             setFactories(factories);
+            setStorymapURL(factoryStoryMapURLs.g);
         })
         // Handle errors
         .catch(error => {
@@ -38,7 +40,7 @@ function Homepage() {
             const blurbElement = document.getElementById('blurb');
             if (blurbElement) {
                 const blurbHeight = blurbElement.offsetHeight;  // Get the blurb height offset
-                const scrollThreshold = blurbHeight * 3;      // Threshold to start fade
+                const scrollThreshold = blurbHeight * 3;        // Threshold to start fade
 
                 // Check the scroll position and update opacity as necessary
                 if (scrollPosition < scrollThreshold) {

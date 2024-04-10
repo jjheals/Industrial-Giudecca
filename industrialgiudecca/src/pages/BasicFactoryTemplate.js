@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+/** src/pages/BasicFactoryTemplate.js
+ * 
+ * @abstract
+ * 
+ */
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import Sidebar from '../components/Sidebar.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
@@ -19,10 +25,11 @@ function BasicFactoryTemplate() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [title, setTitle] = useState('');
 
-    console.log(`Factory_ID:`);
-    console.log(Factory_ID);
+    let removeGrid = false;
+    let factory = null;
 
-    useState(() => { 
+    // useEffect => get the details for this factory to init the page
+    useEffect(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
         sDPTFetchFactoriesFL(
             sDPTFactoriesTableURL,
@@ -31,14 +38,13 @@ function BasicFactoryTemplate() {
         .then(factories => {
             
             // Since we used a primary key as the filter, there is only one result
-            const factory = factories[0];
+            factory = factories[0];
             factory.getAllFactoryImageURLs()
             .then(allImgURLs => { 
-                // Set the title 
                 factory.coverPicURL = allImgURLs[0];  // Cover img is the first attachment
                 setCoverPicURL(factory.coverPicURL);  // Set the cover img on the title
                 setTitle(factory.English_Name);       // Set the title as the english name
-                setAllImgURLs(allImgURLs);
+                setAllImgURLs(allImgURLs);            // Set the gallery images
             })
         })
         .catch(error => {
@@ -47,7 +53,30 @@ function BasicFactoryTemplate() {
 
         // Set the storymap on the page, if it exists 
         const thisStorymapURL = factoryStoryMapURLs[Factory_ID];
-        if(thisStorymapURL) setStorymapURL(thisStorymapURL);
+        if(thisStorymapURL) { 
+            removeGrid = true;
+            setStorymapURL(thisStorymapURL);
+        }
+    }, []);
+
+    /* useEffect => Run after DOM loads - check if there's a storyboard for this factory
+          - if there is a storyboard, then remove the grid and do nothing else
+          - if there is not a storyboard, then keep the grid, populate it, and remove the storyboard element
+    */
+    useEffect(() => {
+        const gridContainer = document.getElementById('grid-container');    // Element for the grid 
+        const storyboardContainer = document.getElementById('storyboard');  // Element for the storyboard
+
+        // Conditional: if removeGrid and gridContainer exists, remove the grid and do nothing else 
+        if (gridContainer && removeGrid) gridContainer.remove();
+        else if (storyboardContainer && !removeGrid) { 
+            // There is no storyboard - keep the grid, remove the storyboard, and populate the grid
+            storyboardContainer.remove();
+
+            // Populate the grid 
+            // DO SOMETHING ... 
+            // ... 
+        }
 
     }, []);
 
@@ -55,6 +84,8 @@ function BasicFactoryTemplate() {
         <div className="main-container">
             <div><Sidebar isOpen={showSidebar}/></div>
             <div><Title title={ title } imgSrc={ coverPicURL }/></div>
+
+            {/* Gallery container under the title */}
             <div className='f-gallery-container'>
                     <Gallery
                         key={Factory_ID}
@@ -62,6 +93,8 @@ function BasicFactoryTemplate() {
                         allImgURLsPromise={imgURLs}
                     />
             </div>
+
+            {/* Grid container for basic factory details if applicable */}
             <div id='grid-container'>
                 <div class='grid-item' id='image-panel'> 
                     <img id='factory-image' />
@@ -69,7 +102,7 @@ function BasicFactoryTemplate() {
 
                 <div class='grid-item' id='table-panel'> 
                     <table id='factory-table'>
-                        
+
                     </table>
                 </div>
 
@@ -77,7 +110,9 @@ function BasicFactoryTemplate() {
                 </div>
             </div>
 
+            {/* ArcGIS storyboard for this factory if available */}
             <iframe 
+                id="storyboard"
                 className="storyboard-iframe" 
                 src={ storymapURL }
                 width="100%" 

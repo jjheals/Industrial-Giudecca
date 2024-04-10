@@ -30,7 +30,8 @@ export const agisCSVDownloadEndpoints = {
 // URL endpoints to the storymaps for factories that they exist for
 // [ key : val ] => [ Factory_ID : StoryMapURL ]
 export const factoryStoryMapURLs = {
-    3: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0'
+    g: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258',     // Storymap for Giudecca ("g")
+    3: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0'      // Stucky
 }
 
 
