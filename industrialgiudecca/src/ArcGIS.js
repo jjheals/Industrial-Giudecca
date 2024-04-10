@@ -3,7 +3,21 @@ import { queryFeatures, fetchAttachments } from '@esri/arcgis-rest-feature-servi
 import { sDPTFactoriesTableURL } from './GlobalConstants.js';
 import { mapHeight, mapWidth, minLong, minLat, deltaLat, deltaLong } from './GlobalConstants.js';
 
-// Function to convert latitude and longitude to pixel coordinates
+/** latLongToPixel(lat, long) 
+ * @abstract Converts latitude and longitude coordinates to pixels on a map using the min/max lat/long 
+ * defined in GlobalConstants.js
+ * 
+ * @param { float } lat 
+ * @param { float } long 
+ * @returns { dict } a dictionary containing the x and y coordinates on the map
+ * 
+ * @example 
+ * import latLongToPixel from 'path/to/ArcGIS.js' 
+ * 
+ * const result = latLongToPixel(23.23456, -12.45613);
+ * const x = result.x;
+ * const y = result.y; 
+ */
 function latLongToPixel(lat, long) {    
     
     const thisLongOffset = long - minLong;  // Offset from the left of the map in DEGREES
@@ -16,7 +30,7 @@ function latLongToPixel(lat, long) {
     return { x: pixelX, y: pixelY };
 }
 
-/** fetchAllFactoryImagse(serviceURL, apiToken)
+/** fetchAllFactoryImages(serviceURL, apiToken)
  * @abstract fetch all the images for all factories in the FL at the given serviceURL
  * @param {string} serviceURL - URL to the ArcGIS service hosting the FL
  * @param {string} apiToken - API token with access to the serivceURL
@@ -61,9 +75,10 @@ function fetchAllFactoryImages() {
     return attachmentsDict;
 }
 
-/** fetchFactoriesFL(serviceURL) 
+/** sDPTFetchFactoriesFL(serviceURL, filters) 
  * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
  * @param {string} serviceURL - ArcGIS service endpoint
+ * @param {string} filters - SQL style filters to filter the query 
  * @returns {Array} array of Factory objects
  */
 async function sDPTFetchFactoriesFL(serviceURL, filters) { 
@@ -95,18 +110,36 @@ async function sDPTFetchFactoriesFL(serviceURL, filters) {
     }
 }
 
-
+/** fetchFL(serviceURL, filters)
+ * @abstract
+ * @param {string} serviceURL 
+ * @param filters 
+ * @returns 
+ * 
+ */
 async function fetchFL(serviceURL, filters) { 
     
     // Query the factories FL to get the factory attributes 
     const response = await queryFeatures({
         url: serviceURL,
+        where: filters
     });
+
+    const results = await Promise.all(response.features.map(feature => { 
+        return feature;
+    }));
+
+    return results;
 }
 
+
+async function fetchService() { 
+    
+}
 
 export { 
     latLongToPixel,
     fetchAllFactoryImages, 
-    sDPTFetchFactoriesFL 
+    sDPTFetchFactoriesFL,
+    fetchFL
 };

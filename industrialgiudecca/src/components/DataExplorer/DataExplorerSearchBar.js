@@ -8,7 +8,9 @@
  */
 import React, { useState, useEffect } from 'react';
 import '../../css/DataExplorer.css';
-import HandleSearchSubmission from './HandleSearchSubmission';
+
+import { agisCSVDownloadEndpoints } from '../../GlobalConstants.js';
+import { RelationalFilters } from './DataExplorerConstants.js';
 
 const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState([]);
@@ -46,9 +48,50 @@ const DataExplorerSearchBar = () => {
      */
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Here you can perform any validation or submission logic
+
+        // Flag to determine whether the returned table will be relational or not (i.e. whether there are relational tables involved)
+        let isRelational = false;
+
         console.log('Form submitted with data:', formData);
+
+        // Array to keep track of the FLs we need to get at the end
+        // NOTE: init with FLs that must be retrieved with every query
+        let queryFLs = [
+            'Factory',              // Factory (entity table) containing Factory ID, Eng/IT names, O/C dates, Closing Reason, etc
+            'Factory_Coords'     // Many-to-one table that maps the factory ID to building cords over a period of time
+        ];
+
+        // Get the possible FL names (the keys) from the dict of possible service URLs
+        const featureLayerNames = Object.keys(agisCSVDownloadEndpoints);
+
+        // Get the filters we want to search by (any filter that is not null, 0, or empty)
+        const theseFilters = Object.keys(formData).filter(filter => formData[filter])
         
+        // Check if any of these are relational filters and add them to the queryFLs list
+        for(let i = 0; i < theseFilters.length; i++) { 
+            if(RelationalFilters.hasOwnProperty(theseFilters[i])) { 
+                queryFLs.push(RelationalFilters[theseFilters[i]]);
+                isRelational = true;
+            } 
+        }
+
+        // Remove duplicates (e.g. year or employment)
+        queryFLs = [...new Set(queryFLs)];
+
+        // Query the required feature layers (i.e. the FL names from queryFLs)
+        for(let i = 0; i < queryFLs.length; i++) { 
+            const thisFLName = queryFLs[i];
+            const thisServiceURL = agisCSVDownloadEndpoints[thisFLName];
+
+            // Hit the endpoint 
+            
+        }
+        console.log('queryFLs');
+        console.log(queryFLs);
+
+        console.log('featureLayerNames');
+        console.log(featureLayerNames);
+
     };
 
     useEffect(() => { 
@@ -77,8 +120,8 @@ const DataExplorerSearchBar = () => {
                 {/* Row 2 of inputs */}
                 <div className='de-search-bar-row'>
                     <div className='input-container'>
-                        <select className='de-search-input'>
-                            <option className='de-select-option' value=''>Select Product</option>
+                        <select className='de-search-input' name='Product' onChange={handleInputChange}>
+                            <option className='de-select-option' value='' onChange={handleInputChange}>Select Product</option>
                             {
                                 products.map(product => { 
                                     return <option className='de-select-option' name={ product } value={ product } onChange={handleInputChange}>{ product }</option> 
@@ -87,11 +130,11 @@ const DataExplorerSearchBar = () => {
                         </select>
                     </div>
                     <div className='input-container'>
-                        <select className='de-search-input'>
-                            <option className='de-select-option' value=''>Select Current Purpose</option>
+                        <select className='de-search-input' name='Current_Purpose' onChange={handleInputChange}>
+                            <option className='de-select-option' value='' onChange={handleInputChange}>Select Current Purpose</option>
                             {
                                 purposes.map(purpose => { 
-                                    return <option className='de-select-option' name={ purpose } value={ purpose } onChange={handleInputChange}>{ purpose }</option> 
+                                    return <option className='de-select-option' name={ 'Current_Purpose' } value={ purpose } onChange={handleInputChange}>{ purpose }</option> 
                                 })
                             }
                         </select>

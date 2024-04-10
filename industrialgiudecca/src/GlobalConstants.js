@@ -25,6 +25,7 @@ export const agisCSVDownloadEndpoints = {
     'Factory_At_Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/fe71b47ef6cc418e833aee1ad1798a43/dataa',
     'Employment_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/26a5247f3ada4220a6536f6ab4f9a9fc/data',
     'Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/4b59a8250ad0463db2771754d7d3f33a/data',
+    'Factory_Coords_FL': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_Coords_FL/FeatureServer'
 }
 
 // URL endpoints to the storymaps for factories that they exist for
