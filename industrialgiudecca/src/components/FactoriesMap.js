@@ -35,7 +35,7 @@ const FactoriesMap = ({ factories }) => {
                 marker.id = `${factory.Factory_ID}-marker`; 
                 marker.src = 'pin-icon-2.png';
                 marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                marker.style.top = `${factory.y + 620}px`;
+                marker.style.top = `calc(${factory.y}px + 65vh)`;
     
                 // Add the marker to the map overlay
                 mapContainerRef.current.appendChild(marker);
