@@ -13,7 +13,7 @@ import DataExplorerSearchBar from './DataExplorerSearchBar';
 import DataExplorerResultsTable from './DataExplorerResultsTable';
 
 const DataExplorer = () => {
-
+    
     const queryResults = { 
         'keys': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
         'rows': [

@@ -31,7 +31,7 @@ export const minLat = 45.4135653;                   // Bottom map limit
 export const maxLat = 45.4317564;                   // Top map limit
 export const minLong = 12.3046033;                  // Left map limit
 export const maxLong = 12.3485030;                  // Right map limit
-export const deltaLong = maxLong - minLong;        // Map X axis distance (horiz) in DEGREES
-export const deltaLat = maxLat - minLat;           // Map Y axis distance (vert) in DEGREES
-export const mapWidth = window.innerWidth;         // Map width == screen width
+export const deltaLong = maxLong - minLong;         // Map X axis distance (horiz) in DEGREES
+export const deltaLat = maxLat - minLat;            // Map Y axis distance (vert) in DEGREES
+export const mapWidth = window.innerWidth;          // Map width == screen width
 export const mapHeight = window.innerHeight * .95;  // Map height is 60% of the screen 
