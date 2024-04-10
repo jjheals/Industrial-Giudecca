@@ -4,7 +4,11 @@
 
 .photo-container { 
     position: relative;
+    margin: 0 1vw;
+    background-color: green;
 }
+
+
 
 .info-icon {
     position: absolute;

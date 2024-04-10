@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/Sidebar.js';
-import '../css/BasicFactoryTemplate.css';
 
-import { useParams } from 'react-router-dom';
+import Sidebar from '../components/Sidebar.js';
 import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import Title from '../components/Title.js';
+import Gallery from '../components/Photo/Gallery.js';
 
-function BasicFactoryTemplate() {
+import '../css/components/Gallery.css';
+import '../css/components/Photo.css';
+import '../css/BasicFactoryTemplate.css';
 
-    const { Factory_ID } = useParams();
+function BasicFactoryTemplate({ Factory_ID }) {
+    const [coverPicURL, setCoverPicURL] = useState('');
+    const [imgURLs, setAllImgURLs] = useState([]);
     const [showSidebar, setShowSidebar] = useState(false);
-    let imgUrl = '';
-    let factoryName = '';
+    const [title, setTitle] = useState('');
 
     useState(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
@@ -23,17 +25,14 @@ function BasicFactoryTemplate() {
         .then(factories => {
             // Since we used a primary key as the filter, there is only one result
             const factory = factories[0];
-            
-            // Get the factory english name 
-            factoryName = factory.English_Name;
-            document.getElementById('title').innerHTML = factoryName;
-
-            // Get all the images for this factory and then use the cover img (index 0) as the image on the page
             factory.getAllFactoryImageURLs()
             .then(allImgURLs => { 
-                imgUrl = allImgURLs[0];
-                document.getElementById('factory-image').src = imgUrl;
-            });
+                // Set the title 
+                factory.coverPicURL = allImgURLs[0];  // Cover img is the first attachment
+                setCoverPicURL(factory.coverPicURL);  // Set the cover img on the title
+                setTitle(factory.English_Name);       // Set the title as the english name
+                setAllImgURLs(allImgURLs);
+            })
         })
         .catch(error => {
             console.error('Error fetching details for factory:', error);
@@ -43,8 +42,14 @@ function BasicFactoryTemplate() {
     return (
         <div className="main-container">
             <div><Sidebar isOpen={showSidebar}/></div>
-            <div><Title title={ factoryName }/></div>
-
+            <div><Title title={ title } imgSrc={ coverPicURL }/></div>
+            <div className='f-gallery-container'>
+                    <Gallery
+                        key={Factory_ID}
+                        Factory_ID={Factory_ID}
+                        allImgURLsPromise={imgURLs}
+                    />
+            </div>
             <div id='grid-container'>
                 <div class='grid-item' id='image-panel'> 
                     <img id='factory-image' />

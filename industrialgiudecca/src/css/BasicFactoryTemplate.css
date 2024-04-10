@@ -7,16 +7,19 @@
     padding: 7vh 2%;    
 }
 
-.title-hr { 
-    width: 50%;
-}
-
 #grid-container { 
     display: grid;
     grid-gap: 1vw;
     grid-template-rows: 70vh 20vh;
     grid-template-columns: 2fr 3fr;
     margin: 4%;
+}
+
+.f-gallery-container { 
+    background-color: red;
+    margin-top: 10vh;
+    margin: auto;
+    width: 100%;
 }
 
 #image-panel { 
