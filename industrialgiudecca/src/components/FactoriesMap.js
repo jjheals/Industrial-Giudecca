@@ -8,8 +8,9 @@
  *
  * @returns {JSX.Element} - The rendered FactoriesMap component.
  */
-import { useRef, useEffect } from 'react';
 
+import React, { useRef, useEffect } from 'react';
+import '../css/components/FactoriesMap.css';
 const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
     // Refs for accessing DOM elements
     const pageRef = useRef(null);
