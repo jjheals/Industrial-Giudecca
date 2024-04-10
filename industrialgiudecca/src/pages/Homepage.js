@@ -20,7 +20,7 @@ function Homepage() {
     useEffect(() => {
         // Fetch factories FL when component mounts
         sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
-        .then(factories => {       
+        .then(factories => {     
             setFactories(factories);
             setStorymapURL(factoryStoryMapURLs.g);
         })

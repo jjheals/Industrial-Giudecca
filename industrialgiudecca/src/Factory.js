@@ -141,12 +141,14 @@ export default class Factory {
 
     async getFactoryCoords() { 
         try { 
+            console.log(`getting factory cords for ${this.English_Name}`);
+
             // Query the FL with the necessary filters
             const resp = await queryFeatures({
                 url: sDPTFactoryCoordsURL,
                 where: `Factory_ID = ${this.Factory_ID}`
             });
-
+            
             // Set the x and y coords for this factory
             this.long = resp.features[0].attributes.Longitude_;
             this.lat = resp.features[0].attributes.Latitude_;
@@ -156,6 +158,8 @@ export default class Factory {
             this.x = factoryMapPos.x;
             this.y = factoryMapPos.y;
 
+            console.log(this.toString());
+            
             return;
         } catch(error) { 
             if (error instanceof TypeError) {

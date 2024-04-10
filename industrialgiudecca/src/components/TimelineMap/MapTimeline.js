@@ -28,6 +28,9 @@ const MapTimeline = ({ factories }) => {
     let minYear = 9999;
     let maxYear = 0;
     factories.forEach(factory => {
+
+        console.log(factory.toString());
+        
         // Set random opening years and random closing years if they are NULL
         if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
         if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
