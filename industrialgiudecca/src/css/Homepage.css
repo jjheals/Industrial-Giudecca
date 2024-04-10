@@ -227,6 +227,7 @@
     color: var(--section-header-font-color);
     z-index: 1000;
     text-align: left;
+
 }
 
 .storyboard-iframe { 
