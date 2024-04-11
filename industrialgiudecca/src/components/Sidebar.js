@@ -48,7 +48,7 @@ const Sidebar = () => {
                         </li>
 
                         <li className="sidebar-sub-element">
-                            <Link class="sidebar-sub-link" to="/About" onClick={toggleSidebar}>Redentorre Festival</Link>
+                            <Link class="sidebar-sub-link" to="/historical-stories/1" onClick={toggleSidebar}>Redentorre Festival</Link>
                         </li>
                         <li className="sidebar-element">
                             <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>About</Link>
