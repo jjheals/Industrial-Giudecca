@@ -148,7 +148,7 @@ const MapTimeline = ({ factories }) => {
                         <div className='ib' id='ib4'><h1>{activeLabel}</h1></div>
                         <div className='ib' id='ib5'><h3>on Giudecca.</h3></div>
                     </div>
-                    <button onClick={handleSkipClick}>Skip</button>
+                    <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
                 </div>
             </div>
 

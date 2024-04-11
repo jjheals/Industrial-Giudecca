@@ -1,7 +1,11 @@
 :root { 
     --sidebar-z: 1001;
-    --sidebar-width: 18vw;
+    --sidebar-width: 25vw;
     --hamburger-pos: 20px;
+
+    --sidebar-link-color: rgb(94, 94, 94);
+    --sidebar-bg-color: #e0e0e0b4;
+    --sidebar-link-hover-transition: font-size 0.3s ease;
 }
 
 /* Sidebar.css */
@@ -22,7 +26,7 @@ nav ul li a {
     left: calc(var(--sidebar-width) * -1);
     width: var(--sidebar-width);
     height: 100vh;
-    background-color: #adadadc6;
+    background-color: var(--sidebar-bg-color);
     transition: left 0.3s ease;
     padding-top: 10%;
     overflow-y: auto;
@@ -82,7 +86,7 @@ nav ul li a {
     font-size: 1.5vw;
     margin: 10px 0;
     padding: 10px;
-    color: #ffffff;
+    color: var(--sidebar-link-color);
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -92,21 +96,45 @@ nav ul li a {
 }
 
 .sidebar-link { 
-    transition: font-size 0.3s ease;
-    color: #ffffff;
+    transition: var(--sidebar-link-hover-transition);
+    color: var(--sidebar-link-color);
 }
 
 .sidebar-link:visited { 
-    transition: font-size 0.3s ease;
-    color: #ffffff;
+    transition: var(--sidebar-link-hover-transition);
+    color: var(--sidebar-link-color);
 }
 
 .sidebar-link:visited:hover { 
-    transition: font-size 0.3s ease;
+    transition: var(--sidebar-link-hover-transition);
     font-size: 2vw;
 }
 
 .sidebar-link:hover {
-    transition: font-size 0.3s ease;
+    transition: var(--sidebar-link-hover-transition);
     font-size: 2vw;
+}
+
+.sidebar-sub-element { 
+    transition: var(--sidebar-link-hover-transition);
+    font-size: 1vw;
+    margin: 10px 2vw;
+    padding: 10px;
+    color: var(--sidebar-link-color);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.sidebar-sub-link { 
+    color: var(--sidebar-link-color);
+}
+.sidebar-sub-link:hover { 
+    transition: var(--sidebar-link-hover-transition);
+    color: var(--sidebar-link-color);
+    font-size: 1.2vw;
+}
+
+.sidebar-sub-link:visited { 
+    transition: var(--sidebar-link-hover-transition);
+    color: var(--sidebar-link-color);
 }

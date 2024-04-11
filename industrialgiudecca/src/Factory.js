@@ -141,8 +141,6 @@ export default class Factory {
 
     async getFactoryCoords() { 
         try { 
-            console.log(`getting factory cords for ${this.English_Name}`);
-
             // Query the FL with the necessary filters
             const resp = await queryFeatures({
                 url: sDPTFactoryCoordsURL,
@@ -156,10 +154,7 @@ export default class Factory {
             // Convert the lat/long to pixel coordinates on the map
             const factoryMapPos = latLongToPixel(this.lat, this.long);
             this.x = factoryMapPos.x;
-            this.y = factoryMapPos.y;
-
-            console.log(this.toString());
-            
+            this.y = factoryMapPos.y;            
             return;
         } catch(error) { 
             if (error instanceof TypeError) {

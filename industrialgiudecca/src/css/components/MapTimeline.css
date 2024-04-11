@@ -5,6 +5,7 @@
     --bg-color: rgba(93, 93, 93, 0.565);
     --info-container-font-family: 'Judson', serif;
     --info-font-weight: 400;
+    --skip-button-opacity: 0.35;
 }
 
 .timeline-container { 
@@ -89,16 +90,27 @@
 }
 
 .skip-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 4px;
+    position: relative;
+    top: 3vh;
+    width: 10%;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    font-family: var(--info-container-font-family);
+    color: rgb(44, 44, 44);
+    background-color: #d4d4d4;
+    opacity: var(--skip-button-opacity);
+    margin: auto;
+    border: 1px solid rgb(75, 75, 75);
+    border-radius: 2rem;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
 .skip-button:hover {
-    background-color: #e0e0e0;
+    transform: scale(1.1);
+    opacity: calc(var(--skip-button-opacity) * 1.5);
+    transition: 0.3s ease-in-out;
+    color: rgb(83, 83, 83);
 }
 
 .factory-tooltip {
