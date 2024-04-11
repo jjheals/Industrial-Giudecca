@@ -1,16 +1,6 @@
-/**
- * The FactoriesMap component is responsible for rendering a map with factory markers.
- * It receives an array of factories, a callback function for marker clicks, and a search term.
- *
- * @param {Object[]} factories - An array of factory objects containing factory data.
- * @param {Function} onMarkerClick - A callback function to handle marker click events.
- * @param {string} searchTerm - The current search term used for filtering factories.
- *
- * @returns {JSX.Element} - The rendered FactoriesMap component.
- */
-
 import React, { useRef, useEffect } from 'react';
 import '../css/components/FactoriesMap.css';
+
 const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
     // Refs for accessing DOM elements
     const pageRef = useRef(null);
@@ -65,6 +55,11 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
         if (factories.length > 0 && mapContainerRef.current) {
             mapContainerRef.current.innerHTML = ''; // Clear previous markers
 
+            // Create the tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'fhp-factory-tooltip';
+            mapContainerRef.current.appendChild(tooltip);
+
             factories.map(factory => {
                 // If this factory does not have a location, hide it from the map
                 if (!factory.x || !factory.y) return;
@@ -78,8 +73,6 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
                     marker.id = `${factory.Factory_ID}-marker`;
                     marker.src = 'pin-icon-2.png';
                     marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-
-                    /* NOTE: calculate the 105vh dynamically as the title height + search bar height */
                     marker.style.top = `calc(${factory.y}px + 105vh)`;
                     marker.style.zIndex = '0';
 
@@ -91,10 +84,17 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
 
                     marker.addEventListener('mouseover', () => {
                         highlightMarker(marker);
+                        // Show the factory name tooltip
+                        tooltip.textContent = factory.English_Name;
+                        tooltip.style.display = 'block';
+                        tooltip.style.left = `${factory.x + (markerWidthPx / 2)}px`;
+                        tooltip.style.top = `calc(${factory.y}px + 105vh - ${markerHeightPx}px)`;
                     });
 
                     marker.addEventListener('mouseout', () => {
                         unhighlightMarker(marker);
+                        // Hide the factory name tooltip
+                        tooltip.style.display = 'none';
                     });
 
                     // Add the marker to the map overlay

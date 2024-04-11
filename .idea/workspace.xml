@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="factory homepage psuedo working">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed hover">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/components/FactoriesMap.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/components/FactoriesMap.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
     </list>
@@ -80,6 +84,7 @@
       <workItem from="1711447637050" duration="29077000" />
       <workItem from="1712045691519" duration="13766000" />
       <workItem from="1712139713533" duration="13336000" />
+      <workItem from="1712821649992" duration="7954000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -321,7 +326,55 @@
       <option name="project" value="LOCAL" />
       <updated>1712139795833</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="throwing a bone (witterwy factorymap onclick added for search)">
+      <option name="closed" value="true" />
+      <created>1712739971568</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1712739971568</updated>
+    </task>
+    <task id="LOCAL-00032" summary="added documentation">
+      <option name="closed" value="true" />
+      <created>1712742513926</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1712742513926</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fixed factorymap">
+      <option name="closed" value="true" />
+      <created>1712744016739</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1712744016739</updated>
+    </task>
+    <task id="LOCAL-00034" summary="removed title from homepage of arcgis iframe">
+      <option name="closed" value="true" />
+      <created>1712749312010</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1712749312010</updated>
+    </task>
+    <task id="LOCAL-00035" summary="skip button added 1">
+      <option name="closed" value="true" />
+      <created>1712755149429</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1712755149429</updated>
+    </task>
+    <task id="LOCAL-00036" summary="hover working = w rizz">
+      <option name="closed" value="true" />
+      <created>1712756653671</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1712756653671</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,13 +392,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changes app.js to be router only" />
-    <MESSAGE value="sidebar factory reroutes" />
-    <MESSAGE value="added scroll down thingy" />
-    <MESSAGE value="header is gone" />
-    <MESSAGE value="paralaxing text scroll" />
-    <MESSAGE value="stucky paralax scroll fixed" />
-    <MESSAGE value="paralax text header needs to be fixed" />
     <MESSAGE value="fixed header size" />
     <MESSAGE value="added photos bar" />
     <MESSAGE value="photos tab" />
@@ -364,6 +410,13 @@
     <MESSAGE value="search bar luh photo page" />
     <MESSAGE value="fixed stretching for factory homepage" />
     <MESSAGE value="factory homepage psuedo working" />
-    <option name="LAST_COMMIT_MESSAGE" value="factory homepage psuedo working" />
+    <MESSAGE value="throwing a bone (witterwy factorymap onclick added for search)" />
+    <MESSAGE value="added documentation" />
+    <MESSAGE value="fixed factorymap" />
+    <MESSAGE value="removed title from homepage of arcgis iframe" />
+    <MESSAGE value="skip button added" />
+    <MESSAGE value="skip button added 1" />
+    <MESSAGE value="hover working = w rizz" />
+    <option name="LAST_COMMIT_MESSAGE" value="hover working = w rizz" />
   </component>
 </project>

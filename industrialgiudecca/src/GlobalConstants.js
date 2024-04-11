@@ -18,7 +18,7 @@ export const attachmentsBaseURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx
 // [ key : val ] => [ Factory_ID : StoryMapURL ]
 export const factoryStoryMapURLs = {
     g: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258',     // Storymap for Giudecca ("g")
-    3: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0'      // Stucky
+    3: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0?cover=false'      // Stucky
 }
 
 // URL endpoints for the feature layers that host the data needed for the Data Explorer and the Search Bar
