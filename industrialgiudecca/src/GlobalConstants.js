@@ -14,20 +14,6 @@ export const sDPTImagesURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcg
 // URL endpoint to the attachments FL containing images for each factory
 export const attachmentsBaseURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_images_view/FeatureServer/0/'
 
-// URL endpoints to download the raw CSVs containing the data for every factory 
-export const agisCSVDownloadEndpoints = { 
-    'Timeperiod': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/5b051ec299174fcdb8a4863ae6dc0205/data',
-    'Product_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/6ef0e812ac674664ae6fc9d6c37153cd/data',
-    'Owner_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/257f41864841429ab60178e5773748dd/data', 
-    'Giudecca_Pop_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/d2aee2cf151d4380ba6d7bc241791f28/data',
-    'Factory': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/07632bd41fcd486493cc91bbe78ea22e/data',
-    'Factory_Stories': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/addbd92e518b458f96255cd9e27b0abc/data',
-    'Factory_At_Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/fe71b47ef6cc418e833aee1ad1798a43/dataa',
-    'Employment_Over_Time': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/26a5247f3ada4220a6536f6ab4f9a9fc/data',
-    'Building': 'https://serendpt.maps.arcgis.com/sharing/rest/content/items/4b59a8250ad0463db2771754d7d3f33a/data',
-    'Factory_Coords_FL': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_Coords/FeatureServer'
-}
-
 // URL endpoints to the storymaps for factories that they exist for
 // [ key : val ] => [ Factory_ID : StoryMapURL ]
 export const factoryStoryMapURLs = {
@@ -41,7 +27,12 @@ export const featureLayerServiceURLs = {
     'Factory': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory/FeatureServer/0',
     'Employment_Over_Time': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Employment_Over_Time/FeatureServer/0',
     'Factory_Coords': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_Coords/FeatureServer/0',
-    'Product_Over_Time': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_Coords/FeatureServer/0'
+    'Product_Over_Time': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Product_Over_Time/FeatureServer/0'
+}
+
+// Function that takes the intersection of two lists, written to simplify code and improve readability
+export function intersection(list1, list2) {
+    return list1.filter(item => list2.includes(item));
 }
 
 export const minLat = 45.4135653;                   // Bottom map limit

@@ -120,6 +120,8 @@ async function sDPTFetchFactoriesFL(serviceURL, filters) {
 async function fetchFL(serviceURL, filters) { 
     
     // Query the factories FL to get the factory attributes 
+    console.log(`querying with filters: ${filters}`);
+
     const response = await queryFeatures({
         url: serviceURL,
         where: filters
@@ -133,13 +135,57 @@ async function fetchFL(serviceURL, filters) {
 }
 
 
-async function fetchService() { 
-    
+/** filterFeatureLayer(featureLayerDict, targetAttributeString, filterString)
+ * @abstract Function that will filter a given FeatureLayer for a target attribute STRING
+ * @param {Dictionary} featureLayerDict - feature layer as dict to filter, in the format as returned by fetchFL()
+ * @param {String} targetAttributeString - target attribute as a string
+ * @param {String} filterString - string to search for
+ * @returns {Array[int]}
+ */
+function filterFeatureLayer(featureLayerDict, targetAttributeString, filterString) { 
+    let matchedFactoryIDs = [];
+
+    const matchedFactories = featureLayerDict.filter(dict => 
+        (dict.attributes[targetAttributeString]) && 
+        dict.attributes[targetAttributeString].toLowerCase().includes(filterString.toLowerCase())
+    );
+
+    matchedFactories.map(factoryDict => { 
+        matchedFactoryIDs.push(factoryDict.attributes.Factory_ID);
+    });
+
+    return matchedFactoryIDs;
+}
+
+/** filterFeatureLayerTime(featureLayerDict, startYear, endYear, startYearCol, endYearCol)
+ * @abstract Function that filters a feature layer to rows between a specified start and end date
+ * @param {Dictionary} featureLayerDict - feature layer as dict to filter, in the format as returned by fetchFL()
+ * @param {int} startYear - the minimum year as an int
+ * @param {int} endYear - the maximum year as an int
+ * @param {String} startYearCol - column name of the start year in the FL
+ * @param {String} endYearCol - column name of the end year in the FL
+ * @returns {Array [int]}
+ */
+function filterFeatureLayerTime(featureLayerDict, startYear, endYear, startYearCol, endYearCol) { 
+    let matchedFactoryIDs = [];
+
+    const matchedFactories = featureLayerDict.filter(dict => 
+        (dict.attributes[startYearCol]) && (dict.attributes[endYearCol]) &&
+        (dict.attributes.startYearCol >= startYear && dict.attributes.endYearCol <= endYear)
+    );
+
+    matchedFactories.map(factoryDict => { 
+        matchedFactoryIDs.push(factoryDict.attributes.Factory_ID);
+    });
+
+    return matchedFactoryIDs;
 }
 
 export { 
     latLongToPixel,
     fetchAllFactoryImages, 
     sDPTFetchFactoriesFL,
-    fetchFL
+    fetchFL,
+    filterFeatureLayer,
+    filterFeatureLayerTime
 };

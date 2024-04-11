@@ -9,8 +9,9 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/DataExplorer.css';
 
-import { agisCSVDownloadEndpoints } from '../../GlobalConstants.js';
+import { featureLayerServiceURLs, intersection } from '../../GlobalConstants.js';
 import { RelationalFilters } from './DataExplorerConstants.js';
+import { fetchFL, filterFeatureLayer } from '../../ArcGIS.js';
 
 const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState([]);
@@ -46,7 +47,7 @@ const DataExplorerSearchBar = () => {
      * @abstract Event handler to handle the submission of a form, including making the necessary API calls
      * @param { Event } e 
      */
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Flag to determine whether the returned table will be relational or not (i.e. whether there are relational tables involved)
@@ -57,16 +58,31 @@ const DataExplorerSearchBar = () => {
         // Array to keep track of the FLs we need to get at the end
         // NOTE: init with FLs that must be retrieved with every query
         let queryFLs = [
-            'Factory',              // Factory (entity table) containing Factory ID, Eng/IT names, O/C dates, Closing Reason, etc
-            'Factory_Coords'     // Many-to-one table that maps the factory ID to building cords over a period of time
+            //'Factory_Coords'     // Many-to-one table that maps the factory ID to building cords over a period of time
         ];
 
+        // Query the Factory FL because this is needed for every query 
+        const factoryFL = await fetchFL(featureLayerServiceURLs['Factory']);
+
         // Get the possible FL names (the keys) from the dict of possible service URLs
-        const featureLayerNames = Object.keys(agisCSVDownloadEndpoints);
+        const featureLayerNames = Object.keys(featureLayerServiceURLs);
+
+        /* matchedFactoryIDs =: Dict containing [ key : val ] => [ filter_name : matched_factory_ids ]        
+         *  - Each filter will be a key containing a value that is an array of the matched factory IDs for that filter
+         *  - After each filter is applied, the INTERSECTION of all values in the dictionary will be taken to determine the
+         *    factory IDs that match every filter 
+         *  
+         * NOTE: throughout the filtering process, if a filter returns no results, then the filtering is immediately stopped and 
+         * "No Results Found" is returned to the user
+         */
 
         // Get the filters we want to search by (any filter that is not null, 0, or empty)
-        const theseFilters = Object.keys(formData).filter(filter => formData[filter])
-        
+        const theseFilters = Object.keys(formData).filter(filter => formData[filter]);
+        let matchedFactoryIDs = theseFilters.reduce((k,v) => { 
+            k[v] = [];
+            return k;
+        }, {})
+
         // Check if any of these are relational filters and add them to the queryFLs list
         for(let i = 0; i < theseFilters.length; i++) { 
             if(RelationalFilters.hasOwnProperty(theseFilters[i])) { 
@@ -78,19 +94,59 @@ const DataExplorerSearchBar = () => {
         // Remove duplicates (e.g. year or employment)
         queryFLs = [...new Set(queryFLs)];
 
+        // -- Filter 1: English and/or italian name -- // 
+        if(theseFilters.includes('English_Name')) { 
+            matchedFactoryIDs['English_Name'] = filterFeatureLayer(factoryFL, 'English_Name', formData.English_Name);
+        }
+
+        if(theseFilters.includes('Italian_Name')) { 
+            matchedFactoryIDs['Italian_Name'] = filterFeatureLayer(factoryFL, 'Italian_Name', formData.Italian_Name);
+        }
+
+        // -- Filter 2: Product over time -- //
+        if(theseFilters.includes('Product')) { 
+            const productOverTimeFL = await fetchFL(featureLayerServiceURLs['Product_Over_Time']);
+            matchedFactoryIDs['Product_Over_Time'] = filterFeatureLayer(productOverTimeFL, 'Product', formData.Product);
+
+            // Check if a time frame was also given 
+            if(theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')) { 
+                console.log('Filtering products by time');
+                
+                const matchProductMinYear = filterFeatureLayer(productOverTimeFL, 'Year_Started', formData.Min_Year);
+                const matchProductMaxYear = filterFeatureLayer(productOverTimeFL, 'Year_Ended', formData.Max_Year);
+
+                console.log('matchProductMinYear & matchProductMaxYear');
+                console.log(matchProductMinYear);
+                console.log(matchProductMaxYear);
+
+                const intersectYears = intersection(matchProductMinYear, matchProductMaxYear);
+
+                console.log('intersect(matchProductMinYear, matchProductMaxYear');
+                console.log(intersectYears);
+
+
+            } else { 
+                console.log('NOT filtering products by time');
+                console.log(matchedFactoryIDs['Product_Over_Time']);
+            }
+        }
+
+
         // Query the required feature layers (i.e. the FL names from queryFLs)
         for(let i = 0; i < queryFLs.length; i++) { 
             const thisFLName = queryFLs[i];
-            const thisServiceURL = agisCSVDownloadEndpoints[thisFLName];
+            const thisServiceURL = featureLayerServiceURLs[thisFLName];
 
-            // Hit the endpoint 
+            // Hit the endpoint
+            console.log(`Fetching ${thisFLName}`);
+            fetchFL(thisServiceURL)
+            .then(featureLayerResponse => { 
+                
+            })
+
             
         }
-        console.log('queryFLs');
-        console.log(queryFLs);
 
-        console.log('featureLayerNames');
-        console.log(featureLayerNames);
 
     };
 
