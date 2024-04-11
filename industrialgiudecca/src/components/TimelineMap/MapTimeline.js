@@ -9,7 +9,6 @@ const MapTimeline = ({ factories }) => {
     const [activeAdv, setActiveAdv] = useState('');
     const [activeLabel, setActiveLabel] = useState('');
     const [year, setYear] = useState(1730);
-    const [hoveredFactoryName, setHoveredFactoryName] = useState('');
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
     const markerRefs = useRef({});
@@ -30,7 +29,7 @@ const MapTimeline = ({ factories }) => {
     factories.forEach(factory => {
 
         console.log(factory.toString());
-        
+
         // Set random opening years and random closing years if they are NULL
         if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
         if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
@@ -49,6 +48,11 @@ const MapTimeline = ({ factories }) => {
     useEffect(() => {
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
+
+        // Create the tooltip element
+        const tooltip = document.createElement('div');
+        tooltip.className = 'factory-tooltip';
+        mapContainerRef.current.appendChild(tooltip);
 
         // Filter the factories based on the scroll position
         const filterFactories = (year) => {
@@ -74,15 +78,27 @@ const MapTimeline = ({ factories }) => {
                         marker.id = `${factory.Factory_ID}-marker`;
                         marker.src = 'pin-icon-2.png';
                         marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                        marker.style.top = `${factory.y + marginPx - (markerHeightPx * 4)}px`;
+                        marker.style.top = `calc(${factory.y}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
 
                         // Event listener to show/hide popups on hover
                         marker.addEventListener('mouseover', () => {
-                            setHoveredFactoryName(factory.Factory_ID);
+                            // Show the factory name tooltip
+                            tooltip.textContent = factory.English_Name;
+                            tooltip.style.display = 'block';
+
+                            // Calculate the tooltip position
+                            const tooltipWidth = tooltip.offsetWidth;
+                            const tooltipHeight = tooltip.offsetHeight;
+                            const tooltipLeft = factory.x - (tooltipWidth / 2) + (markerWidthPx / 2);
+                            const tooltipTop = factory.y - tooltipHeight - 10; // Adjust the vertical position as needed
+
+                            tooltip.style.left = `${tooltipLeft}px`;
+                            tooltip.style.top = `calc(${tooltipTop}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
                         });
 
                         marker.addEventListener('mouseout', () => {
-                            setHoveredFactoryName('');
+                            // Hide the factory name tooltip
+                            tooltip.style.display = 'none';
                         });
 
                         // Event listener to redirect to another page on marker click
@@ -115,18 +131,6 @@ const MapTimeline = ({ factories }) => {
         filterFactories(year);
     }, [year, factories]);
 
-    const getTooltipPosition = (factoryId) => {
-        const marker = markerRefs.current[factoryId];
-        if (marker) {
-            const markerRect = marker.getBoundingClientRect();
-            return {
-                left: markerRect.left + markerRect.width / 2,
-                top: markerRect.top - 20, // Adjust the top position to bring the tooltip closer to the pin
-            };
-        }
-        return { left: 0, top: 0 };
-    };
-
     return (
         <div ref={pageRef} className='timeline-container'>
             <div className='giudecca-map-timeline' style={{ width: '100%', height: '100%' }}>
@@ -147,25 +151,13 @@ const MapTimeline = ({ factories }) => {
                     <div className='map-row'>
                         <div className='ib' id='ib1'><h3>In {Math.round(year)}, there {activeAdv} {activeLabel} on Giudecca.</h3></div>
                     </div>
-                    <div className='map-row'> 
+                    <div className='map-row'>
                         <div className='context-blurb'>
                             <h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4>
                         </div>
                     </div>
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
                 </div>
-            </div>
-
-            {/* Factory name tooltip */}
-            <div
-                className='factory-tooltip'
-                style={{
-                    display: hoveredFactoryName ? 'block' : 'none',
-                    ...getTooltipPosition(hoveredFactoryName),
-                    transform: 'translate(-50%, -100%)',
-                }}
-            >
-                {factories.find(factory => factory.Factory_ID === hoveredFactoryName)?.English_Name}
             </div>
         </div>
     );
