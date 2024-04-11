@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Sidebar from '../components/Sidebar.js';
-import { sDPTFactoriesTableURL } from '../GlobalConstants.js';
+import { featureLayerServiceURLs } from '../GlobalConstants.js';
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
@@ -32,7 +32,7 @@ function BasicFactoryTemplate() {
     useEffect(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
         sDPTFetchFactoriesFL(
-            sDPTFactoriesTableURL,
+            featureLayerServiceURLs['Factory'],
             `Factory_ID = ${Factory_ID}`
         )
         .then(factories => {

@@ -1,6 +1,6 @@
 import Factory from './Factory.js';
 import { queryFeatures, fetchAttachments } from '@esri/arcgis-rest-feature-service';
-import { sDPTFactoriesTableURL } from './GlobalConstants.js';
+import { featureLayerServiceURLs } from './GlobalConstants.js';
 import { mapHeight, mapWidth, minLong, minLat, deltaLat, deltaLong } from './GlobalConstants.js';
 
 /** latLongToPixel(lat, long) 
@@ -49,7 +49,7 @@ function fetchAllFactoryImages() {
 
     // Init empty return dict to contain { key : val } => { Factory_ID : attachmentURLs_Array }
     let attachmentsDict = {};
-    const serviceURL = sDPTFactoriesTableURL;
+    const serviceURL = featureLayerServiceURLs['Factory'];
 
     // Get the FactoriesFL first to get all the factories
     sDPTFetchFactoriesFL(serviceURL)
@@ -97,6 +97,8 @@ async function sDPTFetchFactoriesFL(serviceURL, filters) {
             await factory.getOBJECTID();
             await factory.getFactoryCoords();
             
+            console.log(factory.toString());
+
             return factory;
         }));
 

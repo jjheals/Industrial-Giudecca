@@ -6,7 +6,6 @@ import './css/components/Title.css';
 
 import FactoryHomepage from './pages/FactoryHomepage';
 import Homepage from './pages/Homepage';
-import GalleryPage from './pages/GalleryPage';
 import BasicFactoryTemplate from './pages/BasicFactoryTemplate';
 import DataExplorerPage from './pages/DataExplorerPage';
 import AboutPage from './pages/AboutPage';
@@ -20,8 +19,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/industrial-sites" element={<FactoryHomepage />} />
-                <Route path={"/photos"} element={<GalleryPage />} />
-                <Route path={"/factory/:Factory_ID"} element={<BasicFactoryTemplate />} />
+                <Route path={"/industrial-sites/:Factory_ID"} element={<BasicFactoryTemplate />} />
                 <Route path={"/data-explorer"} element={<DataExplorerPage />} />
                 <Route path={"/historical-stories"} element={<HistoricalStoriesPage />} />
                 <Route path={"/historical-stories/:Story_ID"} element={<StoryPage />} />

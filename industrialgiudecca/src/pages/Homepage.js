@@ -6,7 +6,7 @@ import '../css/Homepage.css';
 import '../css/components/MapTimeline.css';
 
 import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
-import { sDPTFactoriesTableURL, factoryStoryMapURLs } from '../GlobalConstants.js';
+import { featureLayerServiceURLs, factoryStoryMapURLs } from '../GlobalConstants.js';
 import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 
@@ -19,7 +19,7 @@ function Homepage() {
     // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
     useEffect(() => {
         // Fetch factories FL when component mounts
-        sDPTFetchFactoriesFL(sDPTFactoriesTableURL)
+        sDPTFetchFactoriesFL(featureLayerServiceURLs['Factory'])
         .then(factories => {     
             setFactories(factories);
             setStorymapURL(factoryStoryMapURLs.g);

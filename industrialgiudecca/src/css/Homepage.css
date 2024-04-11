@@ -9,10 +9,10 @@
     --text-align: left;
 
     /* Title/landing page styles */
-    --scroll-top: 45vh;
-    --subtitle-bottom: -45vh;
+    --scroll-top: 42vh;
+    --subtitle-bottom: -37vh;
     --subtitle-left: 3vw;
-    --title-top: 50vh;
+    --title-top: 45vh;
     --title-left: 3vw;
     --w: 80%;
 
@@ -142,10 +142,6 @@
     padding-top: 2%;
     padding-bottom: 2%;
 
-}
-
-.blurbDivider {
-    color: black;
 }
 
 #blurb.fade-out, #section-header-container.fade-out {

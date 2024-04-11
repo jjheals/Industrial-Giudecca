@@ -2,9 +2,6 @@
 // URL endpoint to the service hosting the FactoriesFL
 export const factoriesServiceURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory/FeatureServer/0';
 
-// URL endpoint to the factories_table hosted in SerenDPT ArcGIS
-export const sDPTFactoriesTableURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_table/FeatureServer/0';
-
 // URL endpoint to the Factories_Coords_FL hosted in SerenDPT ArcGIS
 export const sDPTFactoryCoordsURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_Coords/FeatureServer/0';
 

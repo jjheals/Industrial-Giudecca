@@ -31,7 +31,7 @@ export default class Factory {
         this.Building_ID = attributes.Building_ID;
         this.long = geometry.x;
         this.lat = geometry.y; 
-        this.link = `/factory/${this.Factory_ID}`;
+        this.link = `/industrial-sites/${this.Factory_ID}`;
         this.isVisible = null;
     }
 
