@@ -41,6 +41,7 @@
 #search-bar-container { 
     width: var(--de-width);
     background-color: var(--de-primary-color);
+    margin-top: 5vh;
 }
 
 .de-search-bar { 
