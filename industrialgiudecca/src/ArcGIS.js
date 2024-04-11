@@ -96,9 +96,6 @@ async function sDPTFetchFactoriesFL(serviceURL, filters) {
             const factory = new Factory(feature.attributes, {'x':0, 'y':0});
             await factory.getOBJECTID();
             await factory.getFactoryCoords();
-            
-            console.log(factory.toString());
-
             return factory;
         }));
 
@@ -121,9 +118,6 @@ async function sDPTFetchFactoriesFL(serviceURL, filters) {
  */
 async function fetchFL(serviceURL, filters) { 
     
-    // Query the factories FL to get the factory attributes 
-    console.log(`querying with filters: ${filters}`);
-
     const response = await queryFeatures({
         url: serviceURL,
         where: filters
@@ -144,19 +138,19 @@ async function fetchFL(serviceURL, filters) {
  * @param {String} filterString - string to search for
  * @returns {Array[int]}
  */
-function filterFeatureLayer(featureLayerDict, targetAttributeString, filterString) { 
-    let matchedFactoryIDs = [];
+function filterFeatureLayer(featureLayerDict, targetAttributeString, filterString, returnAttribute) { 
+    let matchedIDs = [];
 
-    const matchedFactories = featureLayerDict.filter(dict => 
+    const matchedFeatures = featureLayerDict.filter(dict => 
         (dict.attributes[targetAttributeString]) && 
         dict.attributes[targetAttributeString].toLowerCase().includes(filterString.toLowerCase())
     );
 
-    matchedFactories.map(factoryDict => { 
-        matchedFactoryIDs.push(factoryDict.attributes.Factory_ID);
+    matchedFeatures.map(dict => { 
+        matchedIDs.push(dict.attributes[returnAttribute]);
     });
 
-    return matchedFactoryIDs;
+    return matchedIDs;
 }
 
 /** filterFeatureLayerTime(featureLayerDict, startYear, endYear, startYearCol, endYearCol)
@@ -168,22 +162,57 @@ function filterFeatureLayer(featureLayerDict, targetAttributeString, filterStrin
  * @param {String} endYearCol - column name of the end year in the FL
  * @returns {Array [int]}
  */
-function filterFeatureLayerTime(featureLayerDict, startYear, endYear, startYearCol, endYearCol) { 
+function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, targetAttributeString, returnAttribute) { 
     let matchedFactoryIDs = [];
 
     // Filter first by ones that have dates
     let matchedFactories = featureLayerDict.filter(dict => 
-        (dict.attributes[startYearCol]) && (dict.attributes[endYearCol])
+        (dict.attributes[startCol]) && (dict.attributes[endCol]) 
     );
 
-    // Now refine to be within the startYear and endYear
+    // Now refine to be within the minVal and maxVal and match the targetAttribute
     matchedFactories = matchedFactories.filter(dict => 
-        (dict.attributes[startYearCol] >= startYear) && (dict.attributes[endYearCol] <= endYear)
+        // Clause 1 & 2: checking whether the value range is completely contained within the target range (clause 1) 
+        //               OR that the target range is completely contained within the value range (clause 2)
+        (
+            // Clause 1: After minVal AND before maxVal
+            (dict.attributes[startCol] >= minVal) || (dict.attributes[endCol] <= maxVal) ||
+
+            // Clause 2: Before minVal AND after maxVal 
+            (dict.attribute[startCol] <= minVal) && (dict.attributes[endCol] >= maxVal)  
+        ) &&    
+
+        // Final clause: either not given a target attribute OR matches target attribute
+        (!targetAttribute || (dict.attributes[targetAttribute] == targetAttributeString)) 
     );
 
     // Map the matched factory dicts to the factory IDs
     matchedFactories.map(factoryDict => { 
-        matchedFactoryIDs.push(factoryDict.attributes.Factory_ID);
+        matchedFactoryIDs.push(factoryDict.attributes[returnAttribute]);
+    });
+
+    return matchedFactoryIDs;
+}
+
+function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, minTargetAttribute, maxTargetAttribute, returnAttribute) { 
+    let matchedFactoryIDs = [];
+
+    // Filter first by ones that have dates
+    let matchedFactories = featureLayerDict.filter(dict => 
+        (dict.attributes[startCol]) && (dict.attributes[endCol]) 
+    );
+
+    // Now refine to be within the minVal and maxVal and match the targetAttribute
+    matchedFactories = matchedFactories.filter(dict => 
+        (dict.attributes[startCol] >= minVal) &&                    // After minVal
+        (dict.attributes[endCol] <= maxVal) &&                      // Before maxVal
+        (dict.attributes[targetAttribute] >= minTargetAttribute) && // Greater than minTargetAttribute
+        (dict.attributes[targetAttribute] <= maxTargetAttribute)    // Less than maxTargetAttribute
+    );
+
+    // Map the matched factory dicts to the factory IDs
+    matchedFactories.map(factoryDict => { 
+        matchedFactoryIDs.push(factoryDict.attributes[returnAttribute]);
     });
 
     return matchedFactoryIDs;
@@ -195,5 +224,6 @@ export {
     sDPTFetchFactoriesFL,
     fetchFL,
     filterFeatureLayer,
-    filterFeatureLayerTime
+    filterFeatureLayerRange,
+    filterFeatureLayerDualRange
 };

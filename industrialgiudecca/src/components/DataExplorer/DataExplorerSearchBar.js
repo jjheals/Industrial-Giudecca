@@ -11,7 +11,8 @@ import '../../css/DataExplorer.css';
 
 import { featureLayerServiceURLs, intersection } from '../../GlobalConstants.js';
 import { RelationalFilters } from './DataExplorerConstants.js';
-import { fetchFL, filterFeatureLayer, filterFeatureLayerTime } from '../../ArcGIS.js';
+import { fetchFL, filterFeatureLayer, filterFeatureLayerRange, filterFeatureLayerDualRange } from '../../ArcGIS.js';
+import { setResultsTable } from './DataExplorerFunctions.js';
 
 const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState([]);
@@ -53,19 +54,21 @@ const DataExplorerSearchBar = () => {
         // Flag to determine whether the returned table will be relational or not (i.e. whether there are relational tables involved)
         let isRelational = false;
 
+        // Keep a dict of the feature layers we query so we can pass them to the resulting table at the end 
+        let queriedFLs = {};
+
         console.log('Form submitted with data:', formData);
 
-        // Array to keep track of the FLs we need to get at the end
-        // NOTE: init with FLs that must be retrieved with every query
-        let queryFLs = [
-            //'Factory_Coords'     // Many-to-one table that maps the factory ID to building cords over a period of time
-        ];
-
-        // Query the Factory FL because this is needed for every query 
+        // Query the FLs that are needed for every return table, i.e. Factory, Employment, Factory_At_Building, and Building 
         const factoryFL = await fetchFL(featureLayerServiceURLs['Factory']);
+        const buildingFL = await fetchFL(featureLayerServiceURLs['Building']);
+        const employmentOverTimeFL = await fetchFL(featureLayerServiceURLs['Employment_Over_Time']);
+        const factoryAtBuildingFL = await fetchFL(featureLayerServiceURLs['Factory_At_Building']);
 
-        // Get the possible FL names (the keys) from the dict of possible service URLs
-        const featureLayerNames = Object.keys(featureLayerServiceURLs);
+        queriedFLs['Factory'] = factoryFL;
+        queriedFLs['Building'] = buildingFL;
+        queriedFLs['Employment'] = employmentOverTimeFL;
+        queriedFLs['Factory_At_Building'] = factoryAtBuildingFL;
 
         /* matchedFactoryIDs =: Dict containing [ key : val ] => [ filter_name : matched_factory_ids ]        
          *  - Each filter will be a key containing a value that is an array of the matched factory IDs for that filter
@@ -75,38 +78,51 @@ const DataExplorerSearchBar = () => {
          * NOTE: throughout the filtering process, if a filter returns no results, then the filtering is immediately stopped and 
          * "No Results Found" is returned to the user
          */
-
-        // Get the filters we want to search by (any filter that is not null, 0, or empty)
+        let matchedFactoryIDs = {};
         const theseFilters = Object.keys(formData).filter(filter => formData[filter]);
-        let matchedFactoryIDs = theseFilters.reduce((k,v) => { 
-            k[v] = [];
-            return k;
-        }, {})
+
+        // Base case: If not given any filters, then we just want every factory
+        if(theseFilters.length == 0) { 
+            const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });
+            setResultsTable(allFactoryIDs, [], false, queriedFLs);
+        }
 
         // Check if any of these are relational filters and add them to the queryFLs list
         for(let i = 0; i < theseFilters.length; i++) { 
             if(RelationalFilters.hasOwnProperty(theseFilters[i])) { 
-                queryFLs.push(RelationalFilters[theseFilters[i]]);
                 isRelational = true;
             } 
         }
 
-        // Remove duplicates (e.g. year or employment)
-        queryFLs = [...new Set(queryFLs)];
-
         // -- Filter 1: English and/or italian name -- // 
         if(theseFilters.includes('English_Name')) { 
-            matchedFactoryIDs['English_Name'] = filterFeatureLayer(factoryFL, 'English_Name', formData.English_Name);
+            matchedFactoryIDs['English_Name'] = filterFeatureLayer(factoryFL, 'English_Name', formData.English_Name, 'Factory_ID');
+
+            // NOTE: already added factoryFL to queriedFLs
+            if(matchedFactoryIDs['English_Name'].length == 0) {
+                // Filter given but no matches found, so we can stop searching since this is an AND query
+                setResultsTable([], [], false);
+                return;
+            }
         }
 
         if(theseFilters.includes('Italian_Name')) { 
-            matchedFactoryIDs['Italian_Name'] = filterFeatureLayer(factoryFL, 'Italian_Name', formData.Italian_Name);
+            matchedFactoryIDs['Italian_Name'] = filterFeatureLayer(factoryFL, 'Italian_Name', formData.Italian_Name, 'Factory_ID');
+
+            // NOTE: already added factoryFL to queriedFLs
+            if(matchedFactoryIDs['Italian_Name'].length == 0) {
+                // Filter given but no matches found, so we can stop searching since this is an AND query
+                setResultsTable([], [], false);
+                return;
+            }
         }
 
         // -- Filter 2: Product over time -- //
         if(theseFilters.includes('Product')) { 
             const productOverTimeFL = await fetchFL(featureLayerServiceURLs['Product_Over_Time']);
-            const matchedProducts = filterFeatureLayer(productOverTimeFL, 'Product', formData.Product);
+
+            // Add Product FL to queriedFLs
+            queriedFLs['Product'] = productOverTimeFL;
 
             // Check if a time frame was also given 
             if(theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')) { 
@@ -118,31 +134,158 @@ const DataExplorerSearchBar = () => {
                 if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
                 if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
 
-                const matchProductTimes = filterFeatureLayerTime(productOverTimeFL, minYear, maxYear, 'Year_Started', 'Year_Stopped');
-                const intersectProductMatches = intersection(matchedProducts, matchProductTimes);
-                matchedFactoryIDs['Product_Over_Time'] = intersectProductMatches;
+                const matchProductTimes = filterFeatureLayerRange(
+                    productOverTimeFL, 
+                    minYear, 
+                    maxYear, 
+                    'Year_Started', 
+                    'Year_Stopped', 
+                    'Product', 
+                    formData.Product,
+                    'Factory_ID'
+                );
+
+                matchedFactoryIDs['Product'] = matchProductTimes;
 
             } else { 
-                matchedFactoryIDs['Product_Over_Time'] = matchedProducts;
+                const matchedProducts = filterFeatureLayer(productOverTimeFL, 'Product', formData.Product, 'Factory_ID');
+                matchedFactoryIDs['Product'] = matchedProducts;
+            }
+
+            if(matchedFactoryIDs['Product'].length == 0) {
+                // Filter given but no matches found, so we can stop searching since this is an AND query
+                setResultsTable([], [], false);
+                return;
             }
         }
 
         // -- Filter 3: Current Purpose -- // 
         if(theseFilters.includes('Current_Purpose')) { 
-            // Get the Buildings FL since that has the current purposes
-            const buildingsFL = await fetchFL(featureLayerServiceURLs['Building']);
-            const factoryAtBuildingFL = await fetchFL(featureLayerServiceURLs['Factory_At_Building']);
 
-            const matchBuildingCurrPurpose = filterFeatureLayer(buildingsFL, 'New_Purpose', formData.Current_Purpose);
+            // Filter for building current purpose
+            const matchBuildingCurrPurpose = filterFeatureLayer(buildingFL, 'Now_Used_For', formData.Current_Purpose, 'Building_ID');
 
-            console.log('matchBuildingCurrentPurpose');
-            console.log(matchBuildingCurrPurpose);
-            
-            matchedFactoryIDs['Current_Purpose'] = filterFeatureLayer(factoryFL, 'Current_Purpose', formData.Current_Purpose);
+            // Check for results 
+            if(matchBuildingCurrPurpose.length == 0) {
+                // Filter given but no matches found, so we can stop searching since this is an AND query
+                setResultsTable([], [], false);
+                return;
+            }
+
+            // Map the building IDs to the factories that operated at that building
+            // Get the factoryAtBuildingFL 
+            // Construct the "where" filter for each building IDs
+            let buildingIDFilter = '';
+            for(let i = 0; i < matchBuildingCurrPurpose.length; i++) {
+                buildingIDFilter += `Building_ID = ${matchBuildingCurrPurpose[i]} or `;
+            }
+
+            // Remove the trailing " or " 
+            buildingIDFilter = buildingIDFilter.slice(0, -4);
+            const factoryAtBuildingFL2 = await fetchFL(featureLayerServiceURLs['Factory_At_Building'], buildingIDFilter);
+
+            // Extract the factory IDs from factoryAtBuildingFL and add them to matchedFactoryIDs at the "Current_Purpose" key
+            const currPurposeMatchedFactoryIDs = factoryAtBuildingFL2.map(dict => { return dict.attributes.Factory_ID; })
+            matchedFactoryIDs['Current_Purpose'] = currPurposeMatchedFactoryIDs;
         } 
 
-        console.log('Matched current purpose');
-        console.log(matchedFactoryIDs['Current_Purpose']);
+        // -- Filter 4: Employment -- //
+        if(theseFilters.includes('Max_Employment') || theseFilters.includes('Min_Employment')) { 
+
+            // Check if a time frame was also given 
+            if(theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')) { 
+                // Init minYear as 0 and maxYear as 9999 to capture the entire timeframe desired
+                let minYear = 0;
+                let maxYear = 9999;
+
+                // Check if given a max and min year and set the values accordingly so the search captures the timeframe desired
+                if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
+                if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
+
+                // Init minEmployment as 0 and maxEmployment as 9999999 to capture the entire employment range desired
+                let minEmployment = 0;
+                let maxEmployment = 999999;
+
+                if(theseFilters.includes('Min_Employment')) minEmployment = formData.Min_Employment;
+                if(theseFilters.includes('Max_Employment')) maxEmployment = formData.Max_Employment;
+
+                const matchEmploymentTimes = filterFeatureLayerDualRange(
+                    employmentOverTimeFL, 
+                    minYear, 
+                    maxYear, 
+                    'Year', 
+                    'Year', 
+                    'Employment',
+                    minEmployment,
+                    maxEmployment,
+                    'Factory_ID'
+                );
+
+                matchedFactoryIDs['Employment_Over_Time'] = matchEmploymentTimes;
+
+            } else { 
+                const matchedEmployment = filterFeatureLayerRange(employmentOverTimeFL, formData.Min_Employment, formData.Max_Employment, 'Employment', 'Employment', 'Factory_ID');
+                matchedFactoryIDs['Employment_Over_Time'] = matchedEmployment;
+            }
+
+            if(matchedFactoryIDs['Employment_Over_Time'].length == 0) {
+                // Filter given but no matches found, so we can stop searching since this is an AND query
+                setResultsTable([], []);
+                return;
+            }
+            
+        }
+
+        // -- Filter 5: Min_Year & Max_Year -- //
+        /* NOTE: only to be ran if Product, Employment are not given, since those already include the min and max years
+         * - If ran, min and max years correspond to the factory's operating dates
+         * - If Product or Employment are given as filters, then do not run */
+        if( 
+            (theseFilters.includes('Min_Year') || theseFilters.includes['Max_Year']) &&     // Filters include Min_Year OR Max_Year
+            !(theseFilters.includes('Product') || theseFilters.includes('Employment'))      // Filters DO NOT include Product NOR Employment
+        ) { 
+            // Init minYear as 0 and maxYear as 9999 to capture the entire timeframe desired
+            let minYear = 0;
+            let maxYear = 9999;
+
+            // Check if given a max and min year and set the values accordingly so the search captures the timeframe desired
+            if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
+            if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
+
+            matchedFactoryIDs['Years'] = filterFeatureLayerRange(factoryFL, minYear, maxYear, 'Opening_Year', 'Closing_Year', '', '', 'Factory_ID');
+            if(matchedFactoryIDs['Years'].length == 0) {
+                // Filter given but no matches found, so we can stop searching since this is an AND query
+                setResultsTable([], [], false);
+                return;
+            }
+        }
+
+        // -- DONE WITH FILTERS -- // 
+        
+        // Now intersect all the arrays in matchedFactoryIDs to get the factory IDs that match every parameter
+        const allMatches = Object.values(matchedFactoryIDs);
+
+        // Base case: no matches were found (should never happen, but to prevent future errors)
+        if(allMatches.length == 0) setResultsTable([], [], false); 
+
+        // Edge case: only one filter was used
+        else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, false, queriedFLs);
+        
+        // Default case: more than one filter used, so intersect all of them to get the final AND result
+        else { 
+            // Init intersectMatches as the first array in allMatches, so that we can keep intersecting intersectMatches with itself
+            let intersectMatches = allMatches[0];
+
+            // Iterate over the remaining matches arrays and continually intersect them
+            for(let i = 1; i < allMatches.length; i++) intersectMatches = intersection(intersectMatches, allMatches[i]);
+
+            // DONE
+            console.log('queriedFLs');
+            console.log(queriedFLs);
+
+            setResultsTable(intersectMatches, theseFilters, isRelational, queriedFLs);
+            return;
+        }
     };
 
     useEffect(() => { 

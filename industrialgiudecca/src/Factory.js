@@ -21,8 +21,8 @@ export default class Factory {
      * @param {dict} geometry 
      */
     constructor(attributes, geometry) { 
-        this.Opening_Year = attributes.Opening_Year;
-        this.Closing_Year = attributes.Closing_Year;
+        this.Opening_Year = parseInt(attributes.Opening_Year);
+        this.Closing_Year = parseInt(attributes.Closing_Year);
         this.English_Name = attributes.English_Name;
         this.Italian_Name = attributes.Italian_Name;
         this.Factory_Description = attributes.Factory_Description;
@@ -41,8 +41,8 @@ export default class Factory {
      */
     toString() { 
         let s = `Factory: ${this.English_Name} (${this.Factory_ID})\n`;
-        s += `\tOpening Date: ${this.Opening_Date}\n`;
-        s += `\tClosing Date: ${this.Closing_Date}\n`;
+        s += `\tOpening Date: ${this.Opening_Year}\n`;
+        s += `\tClosing Date: ${this.Closing_Year}\n`;
         s += `\tEnglish Name: ${this.English_Name}\n`;
         s += `\tItalian Name: ${this.Italian_Name}\n`;
         s += `\tFactory Description: ${this.Factory_Description}\n`;

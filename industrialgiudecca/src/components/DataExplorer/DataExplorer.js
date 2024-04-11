@@ -14,6 +14,10 @@ import DataExplorerResultsTable from './DataExplorerResultsTable';
 
 const DataExplorer = () => {
     
+    const defaultResults = {
+        'keys': ['Factory_ID', 'English_Name', 'Italian_Name', 'Opening_Date', 'Closing_Date', 'Max_Employment', 'Min_Employment', 'Current_Purpose'],
+        'rows': [[]]
+    }
     const queryResults = { 
         'keys': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
         'rows': [
@@ -47,7 +51,7 @@ const DataExplorer = () => {
         <div className='main-container'>
             <div id='search-bar-container'><DataExplorerSearchBar /></div>
             <button type='download' className='de-download-results'><img id='download-icon' src='download-icon.png' /></button>
-            <div id='results-table-container'><DataExplorerResultsTable d ={ queryResults}/></div>
+            <div id='results-table-container'><DataExplorerResultsTable d ={ defaultResults }/></div>
         </div>
     );
 };

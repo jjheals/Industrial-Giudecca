@@ -8,11 +8,16 @@ import '../../css/components/MapTimeline.css';
 const MapTimeline = ({ factories }) => {
     const [activeAdv, setActiveAdv] = useState('');
     const [activeLabel, setActiveLabel] = useState('');
-    const [year, setYear] = useState(1730);
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
     const markerRefs = useRef({});
 
+    /* NOTE: do not hardcode "1800" for the year. Get the minimum year from the DB before loading the map, and then calculate the random
+     * opening and closing years based on that instead. Hardcoding the minimum year (1800) risks breaking the map if the minimum year is 
+     * raised in the DB */
+    const [year, setYear] = useState(1800);
+    
+    // Event handler for the skip timeline button
     const handleSkipClick = () => {
         setYear(new Date().getFullYear());
         pageRef.current.scrollTop = pageRef.current.scrollHeight;
@@ -28,11 +33,9 @@ const MapTimeline = ({ factories }) => {
     let maxYear = 0;
     factories.forEach(factory => {
 
-        console.log(factory.toString());
-
         // Set random opening years and random closing years if they are NULL
-        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
-        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (1900 - 1730 + 1)) + 1730; }
+        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - 1830 + 1)) + 1830; }
+        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - 1830 + 1)) + 1830; }
 
         if(factory.Opening_Year < minYear) minYear = factory.Opening_Year;  // Check for min year
         if(factory.Closing_Year > maxYear) maxYear = factory.Closing_Year;  // Check for max year
@@ -45,7 +48,7 @@ const MapTimeline = ({ factories }) => {
     MapTimelineLockScroll(pageRef, thresh, minYear, new Date().getFullYear(), setYear, timelineTop);
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
-    useEffect(() => {
+    useEffect(() => {                
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
 
@@ -61,6 +64,9 @@ const MapTimeline = ({ factories }) => {
 
             // Iterate over and filter the factories
             factories.map(factory => {
+
+                console.log(`(${factory.Factory_ID}) factory.Opening_Year: ${factory.Opening_Year} | factory.Closing_Year: ${factory.Closing_Year} | year: ${year}`);
+
                 // Check that this factory's opening/closing dates are within the current range
                 if(factory && factory.Opening_Year <= year && (!factory.Closing_Year || factory.Closing_Year >= year)) {
                     // Increment the active count to appear on the screen
@@ -80,7 +86,12 @@ const MapTimeline = ({ factories }) => {
                         marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
                         marker.style.top = `calc(${factory.y}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
 
-                        // Event listener to show/hide popups on hover
+                        // Event listener to redirect to another page on marker click
+                        marker.addEventListener('click', () => { 
+                            window.location.href = `/factory/${factory.Factory_ID}`;
+                        })
+
+                        // Event listeners to show/hide popups on hover
                         marker.addEventListener('mouseover', () => {
                             // Show the factory name tooltip
                             tooltip.textContent = factory.English_Name;
@@ -101,10 +112,8 @@ const MapTimeline = ({ factories }) => {
                             tooltip.style.display = 'none';
                         });
 
-                        // Event listener to redirect to another page on marker click
-                        marker.addEventListener('click', () => { 
-                            window.location.href = `/factory/${factory.Factory_ID}`;
-                        })
+                        // Hide tooltip by default 
+                        tooltip.style.display = 'none';
 
                         // Store the marker element in the markerRefs object
                         markerRefs.current[factory.Factory_ID] = marker;
@@ -113,6 +122,7 @@ const MapTimeline = ({ factories }) => {
                         mapContainerRef.current.appendChild(marker);
                     }
                 }
+                console.log(activeCount);
             });
 
             // Set the number active on the screen
@@ -153,7 +163,7 @@ const MapTimeline = ({ factories }) => {
                     </div>
                     <div className='map-row'>
                         <div className='context-blurb'>
-                            <h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4>
+                            {/*<h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4>*/}
                         </div>
                     </div>
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
