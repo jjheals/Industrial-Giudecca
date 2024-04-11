@@ -78,7 +78,9 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
                     marker.id = `${factory.Factory_ID}-marker`;
                     marker.src = 'pin-icon-2.png';
                     marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                    marker.style.top = `calc(${factory.y}px + 65vh)`;
+
+                    /* NOTE: calculate the 105vh dynamically as the title height + search bar height */
+                    marker.style.top = `calc(${factory.y}px + 105vh)`;
                     marker.style.zIndex = '0';
 
                     // Event listeners for marker interactions

@@ -220,8 +220,8 @@
     top: 35vh;
     left: 3vw;
     margin: 0;
-    font-family: 'Grandiflora One', monospace;
-    font-weight: 600;
+    font-family: var(--title-font);
+    font-weight: 200;
     font-size: 5vw;
     width: 100%;
     color: var(--section-header-font-color);

@@ -19,7 +19,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Homepage />} />
-                <Route path="/factory" element={<FactoryHomepage />} />
+                <Route path="/industrial-sites" element={<FactoryHomepage />} />
                 <Route path={"/photos"} element={<GalleryPage />} />
                 <Route path={"/factory/:Factory_ID"} element={<BasicFactoryTemplate />} />
                 <Route path={"/data-explorer"} element={<DataExplorerPage />} />

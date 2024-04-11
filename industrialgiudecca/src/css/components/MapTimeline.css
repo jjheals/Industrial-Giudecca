@@ -3,7 +3,7 @@
     --pin-height: 5vh;
     --info-text-color: rgb(255, 255, 255);
     --bg-color: rgba(93, 93, 93, 0.565);
-    --info-container-font-family: 'Judson', serif;
+    --info-container-font-family: 'Playfair Display', serif;
     --info-font-weight: 400;
     --skip-button-opacity: 0.35;
 }
@@ -29,29 +29,18 @@
     display: flex;
     flex-direction: row;
     width: 90%;
-    height: 20vh;
-    padding-left: 2vw;
+    height: 10vh;
+    padding-left: 3vw;
+    margin-bottom: 2vh;
 }
 
 .ib { 
-    margin: auto 1vw;
-    padding: 0;
-}
-.ib h1 { 
-    font-size: 8vh;
-    margin: 0;
-    font-weight: var(--info-font-weight);
-}
-
-.ib h3 { 
-    margin: auto;
-    font-size: 3vw;
-    font-weight: var(--info-font-weight);
+    font-size: 2.5vw;
 }
 
 .context-blurb { 
     font-size: 1.5vw;
-    font-style: italic;
+    color: rgb(185, 185, 185);
 }
 
 .giudecca-map-img { 
@@ -96,7 +85,7 @@
 
 .skip-button {
     position: relative;
-    top: 3vh;
+    top: 7vh;
     width: 10%;
     padding: 1vh 1vw;
     font-size: 1vw;

@@ -32,11 +32,7 @@ const Sidebar = () => {
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/factory" onClick={toggleSidebar}>Factories</Link>
-                        </li>
-
-                        <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/photos" onClick={toggleSidebar}>Photo Gallery</Link>
+                            <Link class="sidebar-link" to="/industrial-sites" onClick={toggleSidebar}>Industrial Sites</Link>
                         </li>
 
                         <li className="sidebar-element">
@@ -47,9 +43,6 @@ const Sidebar = () => {
                             <Link class="sidebar-link" to="/historical-stories" onClick={toggleSidebar}>Historical Stories</Link>
                         </li>
 
-                        <li className="sidebar-sub-element">
-                            <Link class="sidebar-sub-link" to="/historical-stories/1" onClick={toggleSidebar}>Redentorre Festival</Link>
-                        </li>
                         <li className="sidebar-element">
                             <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>About</Link>
                         </li>

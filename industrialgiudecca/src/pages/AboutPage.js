@@ -13,15 +13,17 @@ function AboutPage() {
     return (
         <div className="about-page">
             <div><Sidebar /></div>
-            <div><Title title={ 'About' } imgSrc={ 'Fortuny.jpeg' } /></div>
+            <div><Title title={ 'About' } imgSrc={ 'about-title-img.png' } /></div>
 
             <div class='about-container'> 
 
                 {/* Row 1 (right align) */}
                 <div class='about-row r'>
-                    <img src='Stucky.jpeg' />
+                    <div className='content-img-container'>
+                    <img src='lando-1.png' />
+                    </div>
                     <div class='row-content-container'>
-                        <h1 class='row-title'>Row 1 title ...</h1>
+                        <h1 class='row-title'>Dr. Pietro Lando</h1>
                         <p class='content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
@@ -48,7 +50,7 @@ function AboutPage() {
                 {/* Row 2 (left align) */}
                 <div class='about-row l'>
                     <div class='row-content-container'>
-                        <h1 class='row-title'>Row 2 title ...</h1>
+                        <h1 class='row-title'>SerenDPT & Fabio Carrera</h1>
                         <p class='content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
@@ -70,14 +72,19 @@ function AboutPage() {
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                     </div>
-                    <img src='Stucky.jpeg' />
+                    <div className='content-img-container'>
+                        <img className='content-img' src='fabio_carrera.jpeg' />
+                        <img className='content-img' src='sdpt-logo.png' />
+                    </div>
                 </div>
 
                 {/* Row 3 (right align) */}
-                <div class='about-row r'>
-                    <img src='Stucky.jpeg' />
+                <div className='about-row r'>
+                    <div className='content-img-container'>
+                        <img src='wpi-logo.png' />
+                    </div>
                     <div class='row-content-container'>
-                        <h1 class='row-title'>Row 3 title ...</h1>
+                        <h1 class='row-title'>WPI & The Industrial Giudecca Team</h1>
                         <p class='content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 

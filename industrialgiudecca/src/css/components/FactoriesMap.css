@@ -10,6 +10,10 @@
     transition: 0.2s ease;
 }
 
+.fhp-factory-pin:hover { 
+    cursor: pointer;
+}
+
 .fhp-factory-pin.highlighted {
     /* Add your desired styles for the highlighted marker */
     transform: scale(1.2);

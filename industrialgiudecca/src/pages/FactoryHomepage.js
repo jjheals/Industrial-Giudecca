@@ -54,7 +54,7 @@ function FactoryHomepage() {
 
     return (
         <div className="factory-homepage">
-            <Title title='Factories' imgSrc='stuckyHome.jpg' />
+            <Title title='Industrial Sites' titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg' />
             <div>
                 <Sidebar />
             </div>

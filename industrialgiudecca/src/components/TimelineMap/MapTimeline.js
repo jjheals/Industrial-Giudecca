@@ -76,7 +76,7 @@ const MapTimeline = ({ factories }) => {
                         marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
                         marker.style.top = `${factory.y + marginPx - (markerHeightPx * 4)}px`;
 
-                        // Add event listeners for mouseover and mouseout events
+                        // Event listener to show/hide popups on hover
                         marker.addEventListener('mouseover', () => {
                             setHoveredFactoryName(factory.Factory_ID);
                         });
@@ -84,6 +84,11 @@ const MapTimeline = ({ factories }) => {
                         marker.addEventListener('mouseout', () => {
                             setHoveredFactoryName('');
                         });
+
+                        // Event listener to redirect to another page on marker click
+                        marker.addEventListener('click', () => { 
+                            window.location.href = `/factory/${factory.Factory_ID}`;
+                        })
 
                         // Store the marker element in the markerRefs object
                         markerRefs.current[factory.Factory_ID] = marker;
@@ -140,14 +145,12 @@ const MapTimeline = ({ factories }) => {
 
                 <div className='info-containerb' style={{ height: window.innerHeight * 0.38 }}>
                     <div className='map-row'>
-                        <div className='ib' id='ib1'><h3>In</h3></div>
-                        <div className='ib' id='ib2'><h1>{Math.round(year)},</h1></div>
-                        <div className='ib' id='ib3'><h3>there {activeAdv}</h3></div>
-                        <div className='ib' id='ib4'><h1>{activeLabel}</h1></div>
-                        <div className='ib' id='ib5'><h3>on Giudecca.</h3></div>
+                        <div className='ib' id='ib1'><h3>In {Math.round(year)}, there {activeAdv} {activeLabel} on Giudecca.</h3></div>
                     </div>
                     <div className='map-row'> 
-                        <div className='context-blurb'><h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4></div>
+                        <div className='context-blurb'>
+                            <h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4>
+                        </div>
                     </div>
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
                 </div>
