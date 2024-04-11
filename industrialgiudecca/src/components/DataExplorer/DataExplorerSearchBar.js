@@ -11,7 +11,7 @@ import '../../css/DataExplorer.css';
 
 import { featureLayerServiceURLs, intersection } from '../../GlobalConstants.js';
 import { RelationalFilters } from './DataExplorerConstants.js';
-import { fetchFL, filterFeatureLayer } from '../../ArcGIS.js';
+import { fetchFL, filterFeatureLayer, filterFeatureLayerTime } from '../../ArcGIS.js';
 
 const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState([]);
@@ -106,48 +106,43 @@ const DataExplorerSearchBar = () => {
         // -- Filter 2: Product over time -- //
         if(theseFilters.includes('Product')) { 
             const productOverTimeFL = await fetchFL(featureLayerServiceURLs['Product_Over_Time']);
-            matchedFactoryIDs['Product_Over_Time'] = filterFeatureLayer(productOverTimeFL, 'Product', formData.Product);
+            const matchedProducts = filterFeatureLayer(productOverTimeFL, 'Product', formData.Product);
 
             // Check if a time frame was also given 
             if(theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')) { 
-                console.log('Filtering products by time');
-                
-                const matchProductMinYear = filterFeatureLayer(productOverTimeFL, 'Year_Started', formData.Min_Year);
-                const matchProductMaxYear = filterFeatureLayer(productOverTimeFL, 'Year_Ended', formData.Max_Year);
+                // Init minYear as 0 and maxYear as 9999 to capture the entire timeframe desired
+                let minYear = 0;
+                let maxYear = 9999;
 
-                console.log('matchProductMinYear & matchProductMaxYear');
-                console.log(matchProductMinYear);
-                console.log(matchProductMaxYear);
+                // Check if given a max and min year and set the values accordingly so the search captures the timeframe desired
+                if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
+                if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
 
-                const intersectYears = intersection(matchProductMinYear, matchProductMaxYear);
-
-                console.log('intersect(matchProductMinYear, matchProductMaxYear');
-                console.log(intersectYears);
-
+                const matchProductTimes = filterFeatureLayerTime(productOverTimeFL, minYear, maxYear, 'Year_Started', 'Year_Stopped');
+                const intersectProductMatches = intersection(matchedProducts, matchProductTimes);
+                matchedFactoryIDs['Product_Over_Time'] = intersectProductMatches;
 
             } else { 
-                console.log('NOT filtering products by time');
-                console.log(matchedFactoryIDs['Product_Over_Time']);
+                matchedFactoryIDs['Product_Over_Time'] = matchedProducts;
             }
         }
 
+        // -- Filter 3: Current Purpose -- // 
+        if(theseFilters.includes('Current_Purpose')) { 
+            // Get the Buildings FL since that has the current purposes
+            const buildingsFL = await fetchFL(featureLayerServiceURLs['Building']);
+            const factoryAtBuildingFL = await fetchFL(featureLayerServiceURLs['Factory_At_Building']);
 
-        // Query the required feature layers (i.e. the FL names from queryFLs)
-        for(let i = 0; i < queryFLs.length; i++) { 
-            const thisFLName = queryFLs[i];
-            const thisServiceURL = featureLayerServiceURLs[thisFLName];
+            const matchBuildingCurrPurpose = filterFeatureLayer(buildingsFL, 'New_Purpose', formData.Current_Purpose);
 
-            // Hit the endpoint
-            console.log(`Fetching ${thisFLName}`);
-            fetchFL(thisServiceURL)
-            .then(featureLayerResponse => { 
-                
-            })
-
+            console.log('matchBuildingCurrentPurpose');
+            console.log(matchBuildingCurrPurpose);
             
-        }
+            matchedFactoryIDs['Current_Purpose'] = filterFeatureLayer(factoryFL, 'Current_Purpose', formData.Current_Purpose);
+        } 
 
-
+        console.log('Matched current purpose');
+        console.log(matchedFactoryIDs['Current_Purpose']);
     };
 
     useEffect(() => { 

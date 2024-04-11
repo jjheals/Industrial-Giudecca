@@ -169,11 +169,17 @@ function filterFeatureLayer(featureLayerDict, targetAttributeString, filterStrin
 function filterFeatureLayerTime(featureLayerDict, startYear, endYear, startYearCol, endYearCol) { 
     let matchedFactoryIDs = [];
 
-    const matchedFactories = featureLayerDict.filter(dict => 
-        (dict.attributes[startYearCol]) && (dict.attributes[endYearCol]) &&
-        (dict.attributes.startYearCol >= startYear && dict.attributes.endYearCol <= endYear)
+    // Filter first by ones that have dates
+    let matchedFactories = featureLayerDict.filter(dict => 
+        (dict.attributes[startYearCol]) && (dict.attributes[endYearCol])
     );
 
+    // Now refine to be within the startYear and endYear
+    matchedFactories = matchedFactories.filter(dict => 
+        (dict.attributes[startYearCol] >= startYear) && (dict.attributes[endYearCol] <= endYear)
+    );
+
+    // Map the matched factory dicts to the factory IDs
     matchedFactories.map(factoryDict => { 
         matchedFactoryIDs.push(factoryDict.attributes.Factory_ID);
     });

@@ -98,11 +98,11 @@ const MapTimeline = ({ factories }) => {
             if(activeCount === 1) {
                 if(year >= new Date().getFullYear()) setActiveAdv('is');
                 else setActiveAdv('was');
-                setActiveLabel(`${activeCount} factory`);
+                setActiveLabel(`${activeCount} industrial site`);
             }
             else {
                 setActiveAdv('were');
-                setActiveLabel(`${activeCount} factories`);
+                setActiveLabel(`${activeCount} industrial sites`);
             }
         };
 
@@ -140,13 +140,14 @@ const MapTimeline = ({ factories }) => {
 
                 <div className='info-containerb' style={{ height: window.innerHeight * 0.38 }}>
                     <div className='map-row'>
-                        <div className='ib' id='ib1'><h3>In the year</h3></div>
-                        <div className='ib' id='ib2'><h1>{Math.round(year)}</h1></div>
-                    </div>
-                    <div className='map-row'>
-                        <div className='ib' id='ib3'><h3>There {activeAdv}</h3></div>
+                        <div className='ib' id='ib1'><h3>In</h3></div>
+                        <div className='ib' id='ib2'><h1>{Math.round(year)},</h1></div>
+                        <div className='ib' id='ib3'><h3>there {activeAdv}</h3></div>
                         <div className='ib' id='ib4'><h1>{activeLabel}</h1></div>
                         <div className='ib' id='ib5'><h3>on Giudecca.</h3></div>
+                    </div>
+                    <div className='map-row'> 
+                        <div className='context-blurb'><h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4></div>
                     </div>
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
                 </div>

@@ -38,15 +38,20 @@
     padding: 0;
 }
 .ib h1 { 
-    font-size: 12vh;
+    font-size: 8vh;
     margin: 0;
     font-weight: var(--info-font-weight);
 }
 
 .ib h3 { 
-    margin: 0;
-    font-size: 4vw;
+    margin: auto;
+    font-size: 3vw;
     font-weight: var(--info-font-weight);
+}
+
+.context-blurb { 
+    font-size: 1.5vw;
+    font-style: italic;
 }
 
 .giudecca-map-img { 
