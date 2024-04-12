@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="Translation half implemented">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="button for changing language">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +82,7 @@
       <workItem from="1711447637050" duration="29077000" />
       <workItem from="1712045691519" duration="13766000" />
       <workItem from="1712139713533" duration="13336000" />
-      <workItem from="1712821649992" duration="24905000" />
+      <workItem from="1712821649992" duration="29854000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -395,7 +396,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712915092808</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="button for changing language">
+      <option name="closed" value="true" />
+      <created>1712923670328</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1712923670328</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +422,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated homepage for now" />
     <MESSAGE value="Updated accordion stuff" />
     <MESSAGE value="Factory names" />
     <MESSAGE value="changed css a little for accordion" />
@@ -438,6 +446,7 @@
     <MESSAGE value="hover on factory page" />
     <MESSAGE value="industrial sites title" />
     <MESSAGE value="Translation half implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Translation half implemented" />
+    <MESSAGE value="button for changing language" />
+    <option name="LAST_COMMIT_MESSAGE" value="button for changing language" />
   </component>
 </project>
