@@ -15,7 +15,7 @@ import DataExplorerResultsTable from './DataExplorerResultsTable';
 const DataExplorer = () => {
     
     const defaultResults = {
-        'keys': ['Factory_ID', 'English_Name', 'Italian_Name', 'Opening_Date', 'Closing_Date', 'Max_Employment', 'Min_Employment', 'Current_Purpose'],
+        'keys': ['English_Name', 'Italian_Name', 'Opening_Date', 'Closing_Date', 'Max_Employment', 'Min_Employment', 'Current_Purpose'],
         'rows': [[]]
     }
     const queryResults = { 

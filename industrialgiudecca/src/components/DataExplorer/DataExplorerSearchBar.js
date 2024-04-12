@@ -51,11 +51,8 @@ const DataExplorerSearchBar = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Flag to determine whether the returned table will be relational or not (i.e. whether there are relational tables involved)
-        let isRelational = false;
-
-        // Keep a dict of the feature layers we query so we can pass them to the resulting table at the end 
-        let queriedFLs = {};
+        let isRelational = false;   // Flag to determine whether the returned table will be relational or not 
+        let queriedFLs = {};         // Keep a dict of the feature layers we query so we can pass them to the resulting table at the end 
 
         console.log('Form submitted with data:', formData);
 
@@ -84,14 +81,8 @@ const DataExplorerSearchBar = () => {
         // Base case: If not given any filters, then we just want every factory
         if(theseFilters.length == 0) { 
             const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });
-            setResultsTable(allFactoryIDs, [], false, queriedFLs);
-        }
-
-        // Check if any of these are relational filters and add them to the queryFLs list
-        for(let i = 0; i < theseFilters.length; i++) { 
-            if(RelationalFilters.hasOwnProperty(theseFilters[i])) { 
-                isRelational = true;
-            } 
+            setResultsTable(allFactoryIDs, [], queriedFLs, formData);
+            return;
         }
 
         // -- Filter 1: English and/or italian name -- // 
@@ -101,7 +92,7 @@ const DataExplorerSearchBar = () => {
             // NOTE: already added factoryFL to queriedFLs
             if(matchedFactoryIDs['English_Name'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], false);
+                setResultsTable([], [], queriedFLs, formData);
                 return;
             }
         }
@@ -112,7 +103,7 @@ const DataExplorerSearchBar = () => {
             // NOTE: already added factoryFL to queriedFLs
             if(matchedFactoryIDs['Italian_Name'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], false);
+                setResultsTable([], [], queriedFLs, formData);
                 return;
             }
         }
@@ -120,6 +111,7 @@ const DataExplorerSearchBar = () => {
         // -- Filter 2: Product over time -- //
         if(theseFilters.includes('Product')) { 
             const productOverTimeFL = await fetchFL(featureLayerServiceURLs['Product_Over_Time']);
+            isRelational = true;
 
             // Add Product FL to queriedFLs
             queriedFLs['Product'] = productOverTimeFL;
@@ -154,7 +146,7 @@ const DataExplorerSearchBar = () => {
 
             if(matchedFactoryIDs['Product'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], false);
+                setResultsTable([], [], queriedFLs, formData);
                 return;
             }
         }
@@ -168,7 +160,7 @@ const DataExplorerSearchBar = () => {
             // Check for results 
             if(matchBuildingCurrPurpose.length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], false);
+                setResultsTable([], [], queriedFLs, formData);
                 return;
             }
 
@@ -230,7 +222,7 @@ const DataExplorerSearchBar = () => {
 
             if(matchedFactoryIDs['Employment_Over_Time'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], []);
+                setResultsTable([], [], queriedFLs, formData);
                 return;
             }
             
@@ -255,7 +247,7 @@ const DataExplorerSearchBar = () => {
             matchedFactoryIDs['Years'] = filterFeatureLayerRange(factoryFL, minYear, maxYear, 'Opening_Year', 'Closing_Year', '', '', 'Factory_ID');
             if(matchedFactoryIDs['Years'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], false);
+                setResultsTable([], [], queriedFLs, formData);
                 return;
             }
         }
@@ -266,10 +258,10 @@ const DataExplorerSearchBar = () => {
         const allMatches = Object.values(matchedFactoryIDs);
 
         // Base case: no matches were found (should never happen, but to prevent future errors)
-        if(allMatches.length == 0) setResultsTable([], [], false); 
+        if(allMatches.length == 0) setResultsTable([], [], queriedFLs, formData); 
 
         // Edge case: only one filter was used
-        else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, false, queriedFLs);
+        else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, queriedFLs, formData);
         
         // Default case: more than one filter used, so intersect all of them to get the final AND result
         else { 
@@ -280,10 +272,7 @@ const DataExplorerSearchBar = () => {
             for(let i = 1; i < allMatches.length; i++) intersectMatches = intersection(intersectMatches, allMatches[i]);
 
             // DONE
-            console.log('queriedFLs');
-            console.log(queriedFLs);
-
-            setResultsTable(intersectMatches, theseFilters, isRelational, queriedFLs);
+            setResultsTable(intersectMatches, theseFilters, queriedFLs, formData);
             return;
         }
     };

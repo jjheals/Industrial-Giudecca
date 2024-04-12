@@ -10,32 +10,41 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/DataExplorer.css';
 
-
 const DataExplorerResultsTable = ({ d }) => {
     const [queryResults, setQueryResults] = useState({'keys': [], 'rows': []});
+    const [noResultsMsgDisplay, setNoResultsMsg] = useState('none');
+    const [tableBodyHeight, displayTableBody] = useState(0);
 
-    useEffect(() => { 
-        setQueryResults(d);
+    console.log(d.rows);
+
+    useEffect(() => {
+        if(!d.rows[0] || d.rows[0].length == 0) { 
+            setNoResultsMsg('block');
+            displayTableBody('0');
+        }
+        else {
+            setQueryResults(d);
+        }
     }, {});
     
     return (
         <div className='de-results-table-container'>
             <table className='de-results-table'>
-                <thead>
+                <thead className='de-results-table-thead'>
                     {
                         queryResults.keys.map(k => { 
-                            return <th>{ k }</th>
+                            return <th key={ k }>{ k }</th>
                         })
                     }
                 </thead>
-                <tbody> 
+                <tbody style={{ height: tableBodyHeight }}> 
                     { 
-                        queryResults.rows.map(r => {
+                        queryResults.rows.map((r, index) => {
                             return (
-                                <tr>
+                                <tr key={ index } className='de-results-table-row'>
                                     {
-                                        r.map(c => { 
-                                            return <td>{ c }</td>
+                                        r.map((c, idx) => { 
+                                            return <td key={ idx }>{ c }</td>
                                         })
                                     }
                                 </tr>
@@ -44,6 +53,11 @@ const DataExplorerResultsTable = ({ d }) => {
                     }
                 </tbody>
             </table>
+
+            <div id='no-results-found-msg' style={{ display: noResultsMsgDisplay }}>
+                <p>No results found.</p>
+            </div>
+
         </div>
     );
 };

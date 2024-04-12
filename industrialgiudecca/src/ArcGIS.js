@@ -130,13 +130,12 @@ async function fetchFL(serviceURL, filters) {
     return results;
 }
 
-
 /** filterFeatureLayer(featureLayerDict, targetAttributeString, filterString)
  * @abstract Function that will filter a given FeatureLayer for a target attribute STRING
- * @param {Dictionary} featureLayerDict - feature layer as dict to filter, in the format as returned by fetchFL()
- * @param {String} targetAttributeString - target attribute as a string
- * @param {String} filterString - string to search for
- * @returns {Array[int]}
+ * @param { dict } featureLayerDict - feature layer as dict to filter, in the format as returned by fetchFL()
+ * @param { String } targetAttributeString - target attribute as a string
+ * @param { String } filterString - string to search for
+ * @returns { Array[int] }
  */
 function filterFeatureLayer(featureLayerDict, targetAttributeString, filterString, returnAttribute) { 
     let matchedIDs = [];
@@ -153,14 +152,14 @@ function filterFeatureLayer(featureLayerDict, targetAttributeString, filterStrin
     return matchedIDs;
 }
 
-/** filterFeatureLayerTime(featureLayerDict, startYear, endYear, startYearCol, endYearCol)
+/** filterFeatureLayerRange(featureLayerDict, startYear, endYear, startYearCol, endYearCol)
  * @abstract Function that filters a feature layer to rows between a specified start and end date
- * @param {Dictionary} featureLayerDict - feature layer as dict to filter, in the format as returned by fetchFL()
- * @param {int} startYear - the minimum year as an int
- * @param {int} endYear - the maximum year as an int
- * @param {String} startYearCol - column name of the start year in the FL
- * @param {String} endYearCol - column name of the end year in the FL
- * @returns {Array [int]}
+ * @param { dict } featureLayerDict - feature layer as dict to filter, in the format as returned by fetchFL()
+ * @param { int } startYear - the minimum year as an int
+ * @param { int } endYear - the maximum year as an int
+ * @param { String } startYearCol - column name of the start year in the FL
+ * @param { String } endYearCol - column name of the end year in the FL
+ * @returns { Array [int] }
  */
 function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, targetAttributeString, returnAttribute) { 
     let matchedFactoryIDs = [];
@@ -194,6 +193,28 @@ function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startCol, end
     return matchedFactoryIDs;
 }
 
+/** filterFeatureLayerDualRange( featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, minTargetAttribute, maxTargetAttribute, returnAttribute)
+ * @abstract Function that filters a feature layer across two ranges, where range (1) is specified by two columns (startCol & endCol) and range (2)
+ * is specified by a single column (targetAttribute) and the value of targetAttribute must fall between minTargetAttribute and maxTargetAttribute:
+ *  
+ *  1. [minVal, maxVal], determined by the parameters at startCol and endCol, respectively
+ * 
+ *  2. [minTargetAttribute, maxTargetAttribute], determined by the attribute targetAttribute, where the targetAttribute must fall within the range
+ *     specified by minTargetAttribute and maxTargetAttribute
+ * 
+ * Note that range (1), i.e. minVal/maxVal across startCol/endCol, functions the same as in the function filterFeatureLayerRange.
+ * 
+ * @param { dict } featureLayerDict - feature layer as dict to filter, in the formt as returned by fetchFL()
+ * @param { int } minVal - min value for range 1 
+ * @param { int } maxVal - max value for range 1
+ * @param { String } startCol - column containing minVal for range 1
+ * @param { String } endCol - column containing maxVal for range 1
+ * @param { String } targetAttribute - string identifying the column for range 2
+ * @param { int } minTargetAttribute - minimum for the target attribute for range 2
+ * @param { int } maxTargetAttribute - maximum for the target attribute for range 2
+ * @param { String } returnAttribute - string specifying which attribute to filter the final results on (e.g. "Factory_ID" or "Building_ID")
+ * @returns { Array [int] } 
+ */
 function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, minTargetAttribute, maxTargetAttribute, returnAttribute) { 
     let matchedFactoryIDs = [];
 
