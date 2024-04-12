@@ -15,21 +15,12 @@ import "../locals/en/Homepage.json";
 import "../locals/it/Homepage.json";
 import LanguageSelector from '../components/LanguageSelector.js'
 
-
-
-
 function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
     const [showScrollArrow] = useState(false);
     const [factories, setFactories] = useState([]);
     const [storymapURL, setStorymapURL] = useState('');
     const { t } = useTranslation();
-
-    // Set viewport to the top of the page since React is sus
-    window.scrollTo({ 
-        top: 0
-    });
-    
 
     // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
     useEffect(() => {
