@@ -3,7 +3,7 @@
     --main-font-family: 'Garamond',serif; /* Primary font style for the page */
     --de-width: 90vw;
     --de-primary-color: rgb(181, 171, 171);
-    --hover-color: rgb(50, 85, 210);
+    --hover-color: rgb(101, 128, 224);
 
     /* Submit button styles */
     --submit-button-width: 10vw;         /* Width for submit button for calculating space */
@@ -21,7 +21,7 @@
 
     /* DE Table styles */
     --de-results-table-width: 90vw;
-    --de-results-table-height: 50vh;
+    --de-results-table-height: 80vh;
 }
 
 .main-container { 
@@ -143,6 +143,8 @@ select, .de-search-bar button {
     white-space: nowrap;
     font-size: 1.2vw;
     font-family: var(--main-font-family);
+    text-align: left;
+    width: 100%;
 }
 
 .de-results-table-thead {
@@ -154,7 +156,6 @@ select, .de-search-bar button {
 .de-results-table th { 
     padding: 1vh 2vw;
     background-color: var(--de-primary-color);
-    width: 100%;
 }
 
 .de-results-table-row { 
@@ -166,10 +167,14 @@ select, .de-search-bar button {
 }
 
 .de-results-table-row td { 
-    padding-left: 1vw;
+    padding: 0.5vh 2vw;
 }
 #no-results-found-msg { 
-    background-color: red;
+    text-align: center;
     width: 100%;
     margin: auto;
+}
+
+.loading-message { 
+    background-color: red;
 }
