@@ -97,6 +97,10 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
                         tooltip.style.display = 'none';
                     });
 
+
+                    // Hide tooltip by default 
+                    tooltip.style.display = 'none';
+
                     // Add the marker to the map overlay
                     mapContainerRef.current.appendChild(marker);
                 }

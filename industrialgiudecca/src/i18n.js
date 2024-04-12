@@ -6,7 +6,7 @@ import itHP from './locals/it/Homepage.json';
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
     debug: true,
-    lng: "en",
+    lng: "it",
     resources: {
         en: {
             translation: enHP
