@@ -44,6 +44,10 @@ const Sidebar = () => {
                         </li>
 
                         <li className="sidebar-element">
+                            <Link class="sidebar-link" to="/map" onClick={toggleSidebar}>Interactive Map</Link>
+                        </li>
+
+                        <li className="sidebar-element">
                             <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>About</Link>
                         </li>
 

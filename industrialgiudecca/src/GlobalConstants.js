@@ -34,6 +34,8 @@ export function intersection(list1, list2) {
     return list1.filter(item => list2.includes(item));
 }
 
+export const mapInstantAppURL = "https://serendpt.maps.arcgis.com/apps/instant/sidebar/index.html?appid=01fcbf22fca04b278bd20a2e2cc0a675";
+
 export const minLat = 45.4135653;                   // Bottom map limit
 export const maxLat = 45.4317564;                   // Top map limit
 export const minLong = 12.3046033;                  // Left map limit

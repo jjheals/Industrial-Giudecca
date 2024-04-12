@@ -11,6 +11,8 @@ import DataExplorerPage from './pages/DataExplorerPage';
 import AboutPage from './pages/AboutPage';
 import HistoricalStoriesPage from './pages/HistoricalStoriesPage';
 import StoryPage from './pages/StoryPage';
+import MapPage from './pages/MapPage.js';
+
 import "./i18n.js";
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
                 <Route path={"/data-explorer"} element={<DataExplorerPage />} />
                 <Route path={"/historical-stories"} element={<HistoricalStoriesPage />} />
                 <Route path={"/historical-stories/:Story_ID"} element={<StoryPage />} />
+                <Route path={"/map"} element={<MapPage />} />
                 <Route path={"/about"} element={<AboutPage />} />
             </Routes>
         </Router>
