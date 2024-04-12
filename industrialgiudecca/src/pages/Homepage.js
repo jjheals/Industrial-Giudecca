@@ -13,6 +13,8 @@ import { useTranslation } from "react-i18next";
 import "../i18n.js";
 import "../locals/en/Homepage.json";
 import "../locals/it/Homepage.json";
+import LanguageSelector from '../components/LanguageSelector.js'
+
 
 
 
@@ -70,6 +72,8 @@ function Homepage() {
 
     return (
         <div className="homepage">
+            <LanguageSelector/>
+
 
             <head>
                 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
