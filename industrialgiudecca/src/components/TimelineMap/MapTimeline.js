@@ -26,6 +26,9 @@ const MapTimeline = ({ factories }) => {
     const handleSkipClick = () => {
         setYear(new Date().getFullYear());
         pageRef.current.scrollTop = pageRef.current.scrollHeight;
+        window.scrollTo({
+            top: window.innerHeight * 2  
+        });
     };
 
     // Calculate the top margin of the timeline in pixels
