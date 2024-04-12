@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed hover">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="Translation half implemented">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/components/FactoriesMap.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/components/FactoriesMap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -57,6 +53,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/industrialgiudecca/src" />
       <recent name="$PROJECT_DIR$/industrialgiudecca/public" />
     </key>
   </component>
@@ -84,7 +81,7 @@
       <workItem from="1711447637050" duration="29077000" />
       <workItem from="1712045691519" duration="13766000" />
       <workItem from="1712139713533" duration="13336000" />
-      <workItem from="1712821649992" duration="7954000" />
+      <workItem from="1712821649992" duration="24905000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -374,7 +371,31 @@
       <option name="project" value="LOCAL" />
       <updated>1712756653671</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="hover on factory page">
+      <option name="closed" value="true" />
+      <created>1712841249196</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1712841249196</updated>
+    </task>
+    <task id="LOCAL-00038" summary="industrial sites title">
+      <option name="closed" value="true" />
+      <created>1712841350149</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1712841350149</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Translation half implemented">
+      <option name="closed" value="true" />
+      <created>1712915092808</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1712915092808</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,9 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed header size" />
-    <MESSAGE value="added photos bar" />
-    <MESSAGE value="photos tab" />
     <MESSAGE value="updated homepage for now" />
     <MESSAGE value="Updated accordion stuff" />
     <MESSAGE value="Factory names" />
@@ -417,6 +435,9 @@
     <MESSAGE value="skip button added" />
     <MESSAGE value="skip button added 1" />
     <MESSAGE value="hover working = w rizz" />
-    <option name="LAST_COMMIT_MESSAGE" value="hover working = w rizz" />
+    <MESSAGE value="hover on factory page" />
+    <MESSAGE value="industrial sites title" />
+    <MESSAGE value="Translation half implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Translation half implemented" />
   </component>
 </project>

@@ -63,7 +63,7 @@
 
 .factory-pin { 
     position: absolute;
-    z-index: 1000;
+    z-index: 10;
     width: var(--pin-width);
     height: var(--pin-height);
     transition: 0.2s ease;
@@ -75,13 +75,7 @@
     transition: 1s ease;
 }
 
-.factory-popup {
-    position: absolute;
-    background-color: white;
-    border: 1px solid black;
-    padding: 5px;
-    z-index: 9999; /* Ensure it appears on top of other elements */
-}
+
 
 .skip-button {
     position: relative;
@@ -115,5 +109,5 @@
     border-radius: 4px;
     font-size: 20px;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 100;
 }
