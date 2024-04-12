@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
-
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const languages = [
     { code: "en", lang: "English" },
@@ -9,18 +9,22 @@ const languages = [
 const LanguageSelector = () => {
     const { i18n } = useTranslation();
 
-    const changeLanguage = (lng) => {
-        console.log('Changing language to:', lng);
+    const changeLng = (lng) => {
         i18n.changeLanguage(lng);
     };
 
+    useEffect(() => {
+        // Log the current language whenever it changes
+        console.log("Current language:", i18n.language);
+    }, [i18n.language]);
+
     return (
-        <div className="lanButton">
+        <div className="btn-container">
             {languages.map((lng) => (
                 <button
                     className={lng.code === i18n.language ? "selected" : ""}
                     key={lng.code}
-                    onClick={() => changeLanguage(lng.code)}
+                    onClick={() => changeLng(lng.code)}
                 >
                     {lng.lang}
                 </button>

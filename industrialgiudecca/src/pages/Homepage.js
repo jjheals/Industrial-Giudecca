@@ -11,8 +11,6 @@ import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 import { useTranslation } from "react-i18next";
 import "../i18n.js";
-import "../locals/en/Homepage.json";
-import "../locals/it/Homepage.json";
 import LanguageSelector from '../components/LanguageSelector.js'
 
 function Homepage() {
@@ -20,7 +18,7 @@ function Homepage() {
     const [showScrollArrow] = useState(false);
     const [factories, setFactories] = useState([]);
     const [storymapURL, setStorymapURL] = useState('');
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
     useEffect(() => {
