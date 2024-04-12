@@ -96,7 +96,7 @@ const MapTimeline = ({ factories }) => {
 
                         // Event listener to redirect to another page on marker click
                         marker.addEventListener('click', () => { 
-                            window.location.href = `/factory/${factory.Factory_ID}`;
+                            window.location.href = `/industrial-sites/${factory.Factory_ID}`;
                         })
 
                         // Event listeners to show/hide popups on hover
@@ -171,7 +171,7 @@ const MapTimeline = ({ factories }) => {
                     </div>
                     <div className='map-row'>
                         <div className='context-blurb'>
-                            {/*<h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4>*/}
+                            <h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4>
                         </div>
                     </div>
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
