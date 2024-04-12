@@ -25,6 +25,11 @@ function BasicFactoryTemplate() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [title, setTitle] = useState('');
 
+    // Set viewport to the top of the page since React is sus
+    window.scrollTo({ 
+        top: 0
+    });
+
     let removeGrid = false;
     let factory = null;
 

@@ -25,6 +25,11 @@ function Homepage() {
     const [storymapURL, setStorymapURL] = useState('');
     const { t } = useTranslation();
 
+    // Set viewport to the top of the page since React is sus
+    window.scrollTo({ 
+        top: 0
+    });
+    
 
     // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
     useEffect(() => {

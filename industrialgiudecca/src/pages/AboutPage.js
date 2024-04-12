@@ -10,6 +10,10 @@ import Title from '../components/Title.js';
 import '../css/AboutPage.css';
 
 function AboutPage() {
+    window.scrollTo({ 
+        top: 0
+    });
+    
     return (
         <div className="about-page">
             <div><Sidebar /></div>

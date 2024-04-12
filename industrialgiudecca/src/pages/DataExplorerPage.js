@@ -7,7 +7,11 @@ import DataExplorer from '../components/DataExplorer/DataExplorer.js';
 import Title from '../components/Title.js';
 
 function DataExplorerPage() {
-    
+    // Set viewport to the top of the page since React is sus
+    window.scrollTo({ 
+        top: 0
+    });
+
     useState(() => { 
         
     }, []);
