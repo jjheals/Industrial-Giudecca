@@ -11,6 +11,7 @@ import DataExplorerPage from './pages/DataExplorerPage';
 import AboutPage from './pages/AboutPage';
 import HistoricalStoriesPage from './pages/HistoricalStoriesPage';
 import StoryPage from './pages/StoryPage';
+import "./i18n.js";
 
 function App() {
 

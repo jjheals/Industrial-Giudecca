@@ -4,6 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapTimelineLockScroll } from './MapTimelineLockScroll';
 
 import '../../css/components/MapTimeline.css';
+import { useTranslation } from "react-i18next";
+import "../../i18n.js";
+import "../../locals/en/Homepage.json";
+import "../../locals/it/Homepage.json";
 
 const MapTimeline = ({ factories }) => {
     const [activeAdv, setActiveAdv] = useState('');
@@ -11,6 +15,7 @@ const MapTimeline = ({ factories }) => {
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
     const markerRefs = useRef({});
+    const { t } = useTranslation();
 
     /* NOTE: do not hardcode "1800" for the year. Get the minimum year from the DB before loading the map, and then calculate the random
      * opening and closing years based on that instead. Hardcoding the minimum year (1800) risks breaking the map if the minimum year is 
@@ -129,11 +134,11 @@ const MapTimeline = ({ factories }) => {
             if(activeCount === 1) {
                 if(year >= new Date().getFullYear()) setActiveAdv('is');
                 else setActiveAdv('was');
-                setActiveLabel(`${activeCount} industrial site`);
+                setActiveLabel(`${activeCount} ${t("activeLabel")}`);
             }
             else {
                 setActiveAdv('were');
-                setActiveLabel(`${activeCount} industrial sites`);
+                setActiveLabel(`${activeCount} ${t("activeLabelPlural")}`);
             }
         };
 
@@ -159,7 +164,7 @@ const MapTimeline = ({ factories }) => {
 
                 <div className='info-containerb' style={{ height: window.innerHeight * 0.38 }}>
                     <div className='map-row'>
-                        <div className='ib' id='ib1'><h3>In {Math.round(year)}, there {activeAdv} {activeLabel} on Giudecca.</h3></div>
+                        <div className='ib' id='ib1'><h3>In {Math.round(year)}, there {activeAdv} {activeLabel} {t("onGiudecca")}.</h3></div>
                     </div>
                     <div className='map-row'>
                         <div className='context-blurb'>

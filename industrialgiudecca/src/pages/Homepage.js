@@ -1,6 +1,6 @@
 // src/pages/Homepage.js
 
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useTransition} from 'react';
 
 import '../css/Homepage.css';
 import '../css/components/MapTimeline.css';
@@ -9,12 +9,20 @@ import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
 import { featureLayerServiceURLs, factoryStoryMapURLs } from '../GlobalConstants.js';
 import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
+import { useTranslation } from "react-i18next";
+import "../i18n.js";
+import "../locals/en/Homepage.json";
+import "../locals/it/Homepage.json";
+
+
 
 function Homepage() {
     const [blurbOpacity, setBlurbOpacity] = useState(1);
     const [showScrollArrow] = useState(false);
     const [factories, setFactories] = useState([]);
     const [storymapURL, setStorymapURL] = useState('');
+    const { t } = useTranslation();
+
 
     // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
     useEffect(() => {
@@ -88,17 +96,16 @@ function Homepage() {
                 {/* Overlay to darken the homepage front image; also contains the text for the landing screen */}
                 <div className='bg-overlay'>
                     <div className="blurbRow" id="blurbTop">
-                        <p className="blurbElm" id="blurbTitle">Industrial Giudecca</p>
+                        <p className="blurbElm" id="blurbTitle">{t('blurbElmBlurbTitle')}</p>
                     </div>
 
                     <div className="blurbRow" id="blurbBottom">
-                        <p className="blurbElm" id="blurbSubtitle">"A history without memory."</p>
+                        <p className="blurbElm" id="blurbSubtitle">{t('blurbElmBlurbSubTitle')}</p>
                         <p className="blurbElm" id="blurbCredits">- Mario Isnenghi</p>
                     </div>
 
                     <div className="blurbRow" id="blurbScroll">
-                        <p className="blurbElm" id="scrollText">This platform tells the story of industry on
-                            Giudecca.</p>
+                        <p className="blurbElm" id="scrollText">{t('blurbElmScrollText')}</p>
                         <div className={`scrollArrow ${showScrollArrow ? 'show' : ''}`}></div>
                     </div>
                 </div>
@@ -115,8 +122,8 @@ function Homepage() {
             }}>
                 <div className='section-header-overlay' id='section-header-overlay'/>
                 <div className='sb-divider'>
-                    <p className='section-header'>Let's take a deeper dive</p>
-                    <p className='section-header'>into the industrial history of Giudecca ...</p>
+                    <p className='section-header'>{t("deeperDive")}</p>
+                    <p className='section-header'>{t("intoIndustrialHistory")}</p>
                 </div>
             </div>
 
