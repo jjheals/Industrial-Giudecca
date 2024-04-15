@@ -1,7 +1,4 @@
 
-// URL endpoint to the factories_images FL in SerenDPT ArcGIS
-export const sDPTImagesURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_images_view/FeatureServer/0';
-
 // URL endpoint to the attachments FL containing images for each factory
 export const attachmentsBaseURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_images_view/FeatureServer/0/'
 

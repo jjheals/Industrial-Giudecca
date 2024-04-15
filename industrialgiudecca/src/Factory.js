@@ -1,5 +1,5 @@
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
-import { attachmentsBaseURL, sDPTImagesURL, featureLayerServiceURLs } from './GlobalConstants';
+import { attachmentsBaseURL, featureLayerServiceURLs } from './GlobalConstants';
 import { latLongToPixel } from './ArcGIS';
 import axios from 'axios';
 
@@ -31,6 +31,8 @@ export default class Factory {
         this.Building_ID = attributes.Building_ID;
         this.long = geometry.x;
         this.lat = geometry.y; 
+        this.x = null;
+        this.y = null;
         this.link = `/industrial-sites/${this.Factory_ID}`;
         this.isVisible = null;
     }
@@ -56,12 +58,16 @@ export default class Factory {
     }
 
     /** getOBJECTID() 
-     * 
+     * @abstract Function that gets the OBJECTID in the Images FL for this factory. This is required due to the way ArcGIS handles
+     * images in FLs and submitting queries. The queries for attachments is submitted as a raw API url, not using any ArcGIS primitive
+     * given in libraries; because of this, the filter must be using the unique ID for the Images FL, i.e. OBJECTID. Since the 
+     * Factory_ID is also a primary key, but ArcGIS just doesn't recognize it as such, we can query the images FL twice - once to 
+     * match the Factory_ID to the OBJECTID, then another time to get the attachments for this OBJECTID (and thus, for this Factory_ID).
      */
     async getOBJECTID() { 
         try { 
             const resp = await queryFeatures({
-                url: sDPTImagesURL,
+                url: attachmentsBaseURL,
                 where: `Factory_ID = ${this.Factory_ID}`
             });
     
@@ -113,7 +119,7 @@ export default class Factory {
 
     /** getFactoryImage(apiToken)
      * @abstract fetch the first image (i.e. the cover image) for this factory
-     * @returns {null} calls this.setFactoryImage and sets the image on FactoryHomepage 
+     * @returns {null} sets this.coverPicURL; calls this.setFactoryImage() and sets the image in the element with id of this.Factory_ID
      */
     async getCoverImageURL() { 
         try { 
@@ -139,6 +145,22 @@ export default class Factory {
         }
     }
 
+    /** getFactoryCoords()
+     * @abstract Function that uses the Factory_Coords FL to get the X,Y coordinates for this factory. 
+     * NOTE: this function uses the function latLongToPixel(), defined in src/ArcGIS.js, which assumes that the 
+     * map is in the dimensions defined by minLat, maxLat, minLong, maxLong , mapWidth, mapHeight, all defined 
+     * in src/GlobalConstants.js
+     * 
+     * If a different map is to be used, these values of minLat, maxLat, minLong, maxLong, mapHeight, mapWidth
+     * must be updated accordingly in src/GlobalConstants.js. Alternatively, this function and latLongToPixel() 
+     * (defined in src/ArcGIS.js) could be altered to take in a set of parameters, i.e. minLat, minLong, mapWidth, 
+     * and mapHeight, and this function could pass those parameters to latLongToPixel.
+     * 
+     * See the definition of latLongToPixel() in src/ArcGIS.js for more details on the math behind converting
+     * lat/long to pixels on a static map.
+     * 
+     * @returns { null } sets this.x and this.y
+     */
     async getFactoryCoords() { 
         try { 
             // Query the FL with the necessary filters
