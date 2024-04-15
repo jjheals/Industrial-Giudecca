@@ -151,6 +151,7 @@ const MapTimeline = ({ factories }) => {
 
     return (
         <div ref={pageRef} className='timeline-container'>
+            <div className='learn-more-container'><p className='timeline-learn-more'>Click on a pin to learn more</p></div>
             <div className='giudecca-map-timeline' style={{ width: '100%', height: '100%' }}>
                 {/* Container for map image */}
                 <img src="giudecca-map.png"

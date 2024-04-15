@@ -75,7 +75,26 @@
     transition: 1s ease;
 }
 
+.learn-more-container { 
+    position: absolute; 
+    width: 100%;
+    margin-top: 5vh;
+    font-size: 0.75vw;
+    font-family: var(--info-container-font-family);
+    text-align: center;
+    color: black;
 
+}
+
+.timeline-learn-more { 
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.641);
+    width: 12%;
+    margin: auto;
+    padding: 0.25%;
+    border: 1px solid grey;
+    border-radius: 2rem;
+}
 
 .skip-button {
     position: relative;
