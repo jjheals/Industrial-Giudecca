@@ -1,3 +1,5 @@
+// src/pages/FactoryHomepage.js
+
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
@@ -9,6 +11,11 @@ import { fetchFactoriesFL } from '../ArcGIS.js';
 import { featureLayerServiceURLs } from '../GlobalConstants.js';
 import FactoriesMap from '../components/FactoriesMap.js';
 
+/** FactoryHomepage
+ * @abstract Renders the page containing all industrial sites at the relative path "/industrial-sites". Takes no parameters, but uses 
+ * the FactoryMap component defined in src/components/FactoryMap.js alongside the SearchBar defined in src/components/SearchBar.js to
+ * dynamically display the content, i.e. [filteredFactories] constant, on the screen. 
+ */
 function FactoryHomepage() {
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
@@ -59,14 +66,17 @@ function FactoryHomepage() {
 
     return (
         <div className="factory-homepage">
+            {/* Title and sidebar */}
             <Title title='Industrial Sites' titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg' />
-            <div>
-                <Sidebar />
-            </div>
-            <div className="search-bar-container">
-                <SearchBar onSearch={handleSearch} />
-            </div>
+            <Sidebar />
+
+            {/* Search bar that sticks to the top of the page after scrolling past the title */}
+            <div className="search-bar-container"><SearchBar onSearch={handleSearch} /></div>
+
+            {/* FactoriesMap component containing the map with markers to click on */}
             <FactoriesMap factories={factories} onMarkerClick={handleMarkerClick} />
+
+            {/* Grid of factories after the map that changes when a search is conducted */}
             <div className="factory-list-container">
                 <div className="factory-list">
                     {filteredFactories.map(factory => (

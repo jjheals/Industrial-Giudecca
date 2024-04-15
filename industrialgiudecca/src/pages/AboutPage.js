@@ -1,14 +1,18 @@
-/** src/About.js
- * 
- * @abstract
- * 
- */
+// src/About.js
 import React from 'react';
 import Sidebar from '../components/Sidebar.js';
 
 import Title from '../components/Title.js';
 import '../css/AboutPage.css';
 
+/** AboutPage
+ * @abstract Renders the AboutPage and all its content at the relative route "/about". Takes no parameters. 
+ * 
+ * NOTE: all content for this page is hardcoded for simplicity. It should not need to change frequently, if ever, since it only
+ * contains factual information about the project sponsor (Dr. Lando), the sponsoring organization (SerenDPT), the project center
+ * director (Fabio Carerra), and the Industrial Giudecca team (Justin, Mary, Tim, Parker). This page does not contain any dynamic
+ * data that needs to be updated. 
+ */
 function AboutPage() {
     window.scrollTo({ 
         top: 0

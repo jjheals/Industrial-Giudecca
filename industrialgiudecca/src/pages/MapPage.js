@@ -1,23 +1,18 @@
-/** src/pages/BasicFactoryTemplate.js
- * 
- * @abstract
- * 
- */
+// src/pages/MapPage.js
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Sidebar from '../components/Sidebar.js';
 import { mapInstantAppURL } from '../GlobalConstants.js';
 
-
+/** MapPage
+ * @abstract Renders the fullscreen interactive ArcGIS map at the relative path "/map". Takes no parameters. Note that the map is 
+ * intentionally not ~completely~ fullscreen so that the sidebar has room at the top of the screen. The URL for the ArcGIS instant  
+ * app service is defined in src/GlobalConstants.js => mapInstantAppURL 
+ */
 function MapPage() {
-    const { Story_ID } = useParams();
-    const [coverPicURL, setCoverPicURL] = useState('');
-    const [imgURLs, setAllImgURLs] = useState([]);
-    const [storymapURL, setStorymapURL] = useState('');
     const [showSidebar, setShowSidebar] = useState(false);
-    const [title, setTitle] = useState('');
-
     return (
         <div className="map-page" style={{ width: '100vw', height: '100vh' }}>
             <div><Sidebar isOpen={showSidebar}/></div>

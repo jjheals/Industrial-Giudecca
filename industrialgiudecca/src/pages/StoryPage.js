@@ -1,8 +1,5 @@
-/** src/pages/BasicFactoryTemplate.js
- * 
- * @abstract
- * 
- */
+// src/pages/StoryPage.js
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -15,11 +12,7 @@ import '../css/BasicFactoryTemplate.css';
 
 function StoryPage() {
     const { Story_ID } = useParams();
-    const [coverPicURL, setCoverPicURL] = useState('');
-    const [imgURLs, setAllImgURLs] = useState([]);
-    const [storymapURL, setStorymapURL] = useState('');
     const [showSidebar, setShowSidebar] = useState(false);
-    const [title, setTitle] = useState('');
 
     return (
         <div className="story-page">

@@ -12,16 +12,23 @@ import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 import { useTranslation } from "react-i18next";
 import "../i18n.js";
 import LanguageSelector from '../components/LanguageSelector.js'
-
+ 
+/** Homepage 
+ * @abstract Renders the homepage at the relative route "/". Takes no parameters. Contains: 
+ * - The site title, i.e. "blurb", which includes the subtitle, background img, etc
+ * - A MapTimeline component that scrolls with the user's scroll. MapTimeline component is defined in src/components/MapTimeline/
+ * - Header to break up the space between the MapTimeline and the historical storymap
+ * - A storymap of the history of Giudecca. The URL for this storymap is defined in src/GlobalConstants.js => factoryStoryMapURLs[g]
+ */
 function Homepage() {
-    const [blurbOpacity, setBlurbOpacity] = useState(1);
-    const [showScrollArrow] = useState(false);
-    const [factories, setFactories] = useState([]);
-    const [storymapURL, setStorymapURL] = useState('');
-    const [timeperiodsFL, setTimeperiodsFL] = useState([]);
-    const { t, i18n } = useTranslation();
+    const [blurbOpacity, setBlurbOpacity] = useState(1);        // For title fade in/out
+    const [showScrollArrow] = useState(false);                  // "Scroll to learn more" title animation
+    const [factories, setFactories] = useState([]);             // Factories that appear on the MapTimeline 
+    const [storymapURL, setStorymapURL] = useState('');         // URL for the storymap at the bottom of the page
+    const [timeperiodsFL, setTimeperiodsFL] = useState([]);     // FL for timeperiods that appear on the MapTimeline
+    const { t, i18n } = useTranslation();                       // For translation 
 
-    // useEffect ==> init page and get all the factories and timeperiods to pass to TimelineGrid when page loads
+    // useEffect ==> init page and get all the factories and timeperiods to pass to MapTimeline when the page loads
     useEffect(() => {
         // Fetch factories FL when component mounts
         fetchFactoriesFL(featureLayerServiceURLs['Factory'])
@@ -52,16 +59,12 @@ function Homepage() {
                     return 0; // a and b are equal
                 }
             });
-            console.log('timeperiodsFL');
-            console.log(timeperiodsFL);
-
             setTimeperiodsFL(timeperiodsFL);
         }) 
         // Handle errors
         .catch(error => {
             console.error('Error fetching timeperiods:', error);
         });
-
     }, []); // Empty dependency array
 
     // useEffect ==> blurb/title fade in and out logic
@@ -97,7 +100,6 @@ function Homepage() {
     return (
         <div className="homepage">
             <LanguageSelector/>
-
 
             <head>
                 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
