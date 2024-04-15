@@ -1,5 +1,5 @@
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
-import { attachmentsBaseURL, sDPTImagesURL, sDPTFactoryCoordsURL } from './GlobalConstants';
+import { attachmentsBaseURL, sDPTImagesURL, featureLayerServiceURLs } from './GlobalConstants';
 import { latLongToPixel } from './ArcGIS';
 import axios from 'axios';
 
@@ -143,7 +143,7 @@ export default class Factory {
         try { 
             // Query the FL with the necessary filters
             const resp = await queryFeatures({
-                url: sDPTFactoryCoordsURL,
+                url: featureLayerServiceURLs['Factory_Coords'],
                 where: `Factory_ID = ${this.Factory_ID}`
             });
             

@@ -5,7 +5,7 @@ import React, {useState, useEffect, useTransition} from 'react';
 import '../css/Homepage.css';
 import '../css/components/MapTimeline.css';
 
-import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import { sDPTFetchFactoriesFL, fetchFL } from '../ArcGIS.js';
 import { featureLayerServiceURLs, factoryStoryMapURLs } from '../GlobalConstants.js';
 import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
@@ -18,9 +18,10 @@ function Homepage() {
     const [showScrollArrow] = useState(false);
     const [factories, setFactories] = useState([]);
     const [storymapURL, setStorymapURL] = useState('');
+    const [timeperiodsFL, setTimeperiodsFL] = useState([]);
     const { t, i18n } = useTranslation();
 
-    // useEffect ==> init page and get all the factories to pass to TimelineGrid when page loads
+    // useEffect ==> init page and get all the factories and timeperiods to pass to TimelineGrid when page loads
     useEffect(() => {
         // Fetch factories FL when component mounts
         sDPTFetchFactoriesFL(featureLayerServiceURLs['Factory'])
@@ -32,6 +33,35 @@ function Homepage() {
         .catch(error => {
             console.error('Error fetching factories:', error);
         });
+
+        // Fetch timeperiods FL when component mounts
+        fetchFL(featureLayerServiceURLs['Timeperiod'])
+        .then(timeperiods => { 
+            // Iterate over timeperiods and pass to mapTimeline
+            let timeperiodsFL = timeperiods.map(dict => { 
+                return dict.attributes;
+            })
+
+            // Sort the timeperiodsFL
+            timeperiodsFL = timeperiodsFL.sort((a,b) => {
+                if (a['Start_Date'] < b['Start_Date']) {
+                    return -1; // a should come before b
+                } else if (a['Start_Date'] > b['Start_Date']) {
+                    return 1; // b should come before a
+                } else {
+                    return 0; // a and b are equal
+                }
+            });
+            console.log('timeperiodsFL');
+            console.log(timeperiodsFL);
+            
+            setTimeperiodsFL(timeperiodsFL);
+        }) 
+        // Handle errors
+        .catch(error => {
+            console.error('Error fetching timeperiods:', error);
+        });
+
     }, []); // Empty dependency array
 
     // useEffect ==> blurb/title fade in and out logic
@@ -110,7 +140,7 @@ function Homepage() {
             </div>
 
             {/* Timeline container */}
-            <div id="homepage-timeline"><MapTimeline factories={factories}/></div>
+            <div id="homepage-timeline"><MapTimeline factories={factories} timeperiods={timeperiodsFL}/></div>
 
             {/* Container for the section header container */}
             <div id='section-header-container' style={{
@@ -126,7 +156,7 @@ function Homepage() {
             </div>
 
             {/* Storyboard iframe from ArcGIS */}
-            <iframe src="https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258?cover=false" width="100%"
+            <iframe src={ storymapURL } width="100%"
                     height="1050v" frameBorder="0" allowFullScreen allow="geolocation"></iframe>
         </div>
     );

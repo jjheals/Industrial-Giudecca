@@ -12,6 +12,7 @@
 import { useEffect } from 'react';
 
 export const MapTimelineLockScroll = (ref, thresh, startYear, endYear, setYear, timelineTop) => {
+    
     useEffect(() => {
         const handleWheel = (e) => {
             if (ref.current) {

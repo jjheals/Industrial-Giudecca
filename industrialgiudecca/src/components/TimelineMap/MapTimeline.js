@@ -9,9 +9,12 @@ import "../../i18n.js";
 import "../../locals/en/Homepage.json";
 import "../../locals/it/Homepage.json";
 
-const MapTimeline = ({ factories }) => {
+let currTimeperiodIndex = 0;
+
+const MapTimeline = ({ factories, timeperiods }) => {
     const [activeAdv, setActiveAdv] = useState('');
     const [activeLabel, setActiveLabel] = useState('');
+    const [currTimeperiodStr, setTimeperiod] = useState('');
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
     const markerRefs = useRef({});
@@ -30,6 +33,19 @@ const MapTimeline = ({ factories }) => {
             top: window.innerHeight * 2  
         });
     };
+
+    /** formatTimeperiodString(timeperiodDict)
+     * @abstract Formats a given timeperiod (as dict) into a string to appear on the screen with the start/end dates and the title
+     * @param { dict } timeperiodDict 
+     * @returns { String }
+     */
+    function formatTimeperiodString(timeperiodDict) { 
+        if(timeperiodDict['Start_Date'] == timeperiodDict['End_Date']) { 
+            return `(${timeperiodDict['Start_Date']}) ${timeperiodDict['Title']}`;
+        } else { 
+            return `(${timeperiodDict['Start_Date']}-${timeperiodDict['End_Date']}) ${timeperiodDict['Title']}`;
+        }
+    }
 
     // Calculate the top margin of the timeline in pixels
     // NOTE: vh in the below formula is the margin in VH
@@ -67,13 +83,45 @@ const MapTimeline = ({ factories }) => {
 
         // Filter the factories based on the scroll position
         const filterFactories = (year) => {
+            
+            // Set the time period according to the year
+            if(timeperiods.length > 0) { 
+                try { 
+                    // Track the previous end year to move the timeline backwards
+                    let prevTimeperiodEndYear = -1;
+                    try {  prevTimeperiodEndYear = timeperiods[currTimeperiodIndex - 1]['End_Date']; } catch { }
+
+                    let nextTimeperiodStartYear = -1;
+                    let currTimeperiodStartYear = -1;
+
+                    try { nextTimeperiodStartYear = timeperiods[currTimeperiodIndex + 1]['Start_Date']; } catch { }
+                    try { currTimeperiodStartYear = timeperiods[currTimeperiodIndex]['Start_Date']; } catch { }
+
+                    // Check if moving on to the next time period
+                    if(nextTimeperiodStartYear < year) {
+                        currTimeperiodIndex = currTimeperiodIndex + 1;
+                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex]));
+                    }
+                    // Check if moving back to the previous time period
+                    else if(prevTimeperiodEndYear > 0 && prevTimeperiodEndYear < year || currTimeperiodStartYear > year) {
+                        currTimeperiodIndex = currTimeperiodIndex - 1;
+                    }
+
+                    // Set the time period on the screen
+                    else if(currTimeperiodStartYear > year) {
+                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex]));
+                    }
+                } catch { 
+                    setTimeperiod('');
+                }
+            } 
+                 
+
             // Init the active count to 0
             let activeCount = 0;
 
             // Iterate over and filter the factories
             factories.map(factory => {
-
-                console.log(`(${factory.Factory_ID}) factory.Opening_Year: ${factory.Opening_Year} | factory.Closing_Year: ${factory.Closing_Year} | year: ${year}`);
 
                 // Check that this factory's opening/closing dates are within the current range
                 if(factory && factory.Opening_Year <= year && (!factory.Closing_Year || factory.Closing_Year >= year)) {
@@ -130,7 +178,6 @@ const MapTimeline = ({ factories }) => {
                         mapContainerRef.current.appendChild(marker);
                     }
                 }
-                console.log(activeCount);
             });
 
             // Set the number active on the screen
@@ -172,7 +219,7 @@ const MapTimeline = ({ factories }) => {
                     </div>
                     <div className='map-row'>
                         <div className='context-blurb'>
-                            <h4>Napoleon arrives in Italy, causing most factories to become Churches.</h4>
+                            <h4>{ currTimeperiodStr }</h4>
                         </div>
                     </div>
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
