@@ -5,7 +5,7 @@ import '../css/FactoryHomepage.css';
 import Title from '../components/Title.js';
 import Sidebar from '../components/Sidebar';
 import SearchBar from '../components/SearchBar';
-import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import { fetchFactoriesFL } from '../ArcGIS.js';
 import { featureLayerServiceURLs } from '../GlobalConstants.js';
 import FactoriesMap from '../components/FactoriesMap.js';
 
@@ -19,7 +19,7 @@ function FactoryHomepage() {
     });
 
     useEffect(() => {
-        sDPTFetchFactoriesFL(featureLayerServiceURLs['Factory'])
+        fetchFactoriesFL(featureLayerServiceURLs['Factory'])
             .then(factories => {
                 factories.forEach(factory => {
                     factory.getCoverImageURL();

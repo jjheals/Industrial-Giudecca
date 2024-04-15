@@ -1,25 +1,16 @@
+// src/Factory.js
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 import { attachmentsBaseURL, featureLayerServiceURLs } from './GlobalConstants';
 import { latLongToPixel } from './ArcGIS';
 import axios from 'axios';
 
-/* NOTE : 
- *
- * TO DO FOR TUESDAY:
- *  - Clean up code (comments, unneeded functions & imports)
- *  - Documentation
- *  - Find more images for the remaining factories in factories_images FL
- *  - Fix height of the grid container to be at MAX the height of the page
+/** Factory(attributes, geometry)
+ * @abstract A Factory object containing the attributes for a "Factory" 
+ * @argument { dict } attribtues 
+ * @argument { dict } geometry 
  */
-
-
 export default class Factory { 
 
-    /** Factory(attributes, geometry)
-     * @abstract a Factory object containing the attributes for a "Factory" 
-     * @param {dict} attributes 
-     * @param {dict} geometry 
-     */
     constructor(attributes, geometry) { 
         this.Opening_Year = parseInt(attributes.Opening_Year);
         this.Closing_Year = parseInt(attributes.Closing_Year);

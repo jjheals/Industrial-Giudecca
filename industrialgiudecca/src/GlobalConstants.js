@@ -1,3 +1,4 @@
+// src/GlobalConstants.js
 
 // URL endpoint to the attachments FL containing images for each factory
 export const attachmentsBaseURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_images_view/FeatureServer/0/'
@@ -26,8 +27,12 @@ export function intersection(list1, list2) {
     return list1.filter(item => list2.includes(item));
 }
 
+// URL for the instant app service that is shown fullscreen on the "/map" enpoint (src/pages/MapPage.js)
 export const mapInstantAppURL = "https://serendpt.maps.arcgis.com/apps/instant/sidebar/index.html?appid=01fcbf22fca04b278bd20a2e2cc0a675";
 
+// Constants needed for the MapTimeline and FactoryMap
+// NOTE: these are used in src/ArcGIS.js => latLongToPixel(). Only change if a different map image is used for the MapTimeline and FactoryMap.
+// If multiple different maps need to be used, see @abstract of src/Factory.js => getFactoryCoords() for guidance on a solution.
 export const minLat = 45.4135653;                   // Bottom map limit
 export const maxLat = 45.4317564;                   // Top map limit
 export const minLong = 12.3046033;                  // Left map limit
@@ -35,4 +40,4 @@ export const maxLong = 12.3485030;                  // Right map limit
 export const deltaLong = maxLong - minLong;         // Map X axis distance (horiz) in DEGREES
 export const deltaLat = maxLat - minLat;            // Map Y axis distance (vert) in DEGREES
 export const mapWidth = window.innerWidth;          // Map width == screen width
-export const mapHeight = window.innerHeight * .95;  // Map height is 60% of the screen 
+export const mapHeight = window.innerHeight * .95;  // Map height is 95% of the screen 

@@ -1,3 +1,4 @@
+// src/ArcGIS.js
 import Factory from './Factory.js';
 import { queryFeatures, fetchAttachments } from '@esri/arcgis-rest-feature-service';
 import { featureLayerServiceURLs } from './GlobalConstants.js';
@@ -5,7 +6,7 @@ import { mapHeight, mapWidth, minLong, minLat, deltaLat, deltaLong } from './Glo
 
 /** latLongToPixel(lat, long) 
  * @abstract Converts latitude and longitude coordinates to pixels on a map using the min/max lat/long 
- * defined in GlobalConstants.js
+ * mapWidth/mapHeight, all defined in src/GlobalConstants.js
  * 
  * @param { float } lat 
  * @param { float } long 
@@ -52,7 +53,7 @@ function fetchAllFactoryImages() {
     const serviceURL = featureLayerServiceURLs['Factory'];
 
     // Get the FactoriesFL first to get all the factories
-    sDPTFetchFactoriesFL(serviceURL)
+    fetchFactoriesFL(serviceURL)
     .then(factories => { 
 
         // Check if factories list is empty
@@ -75,13 +76,13 @@ function fetchAllFactoryImages() {
     return attachmentsDict;
 }
 
-/** sDPTFetchFactoriesFL(serviceURL, filters) 
+/** fetchFactoriesFL(serviceURL, filters) 
  * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
  * @param {string} serviceURL - ArcGIS service endpoint
  * @param {string} filters - SQL style filters to filter the query 
  * @returns {Array} array of Factory objects
  */
-async function sDPTFetchFactoriesFL(serviceURL, filters) { 
+async function fetchFactoriesFL(serviceURL, filters) { 
     try {
         // Query the factories FL to get the factory attributes         
         const response = await queryFeatures({
@@ -242,7 +243,7 @@ function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, startCol,
 export { 
     latLongToPixel,
     fetchAllFactoryImages, 
-    sDPTFetchFactoriesFL,
+    fetchFactoriesFL,
     fetchFL,
     filterFeatureLayer,
     filterFeatureLayerRange,

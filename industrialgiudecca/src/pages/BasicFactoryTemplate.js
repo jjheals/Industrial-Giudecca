@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 import Sidebar from '../components/Sidebar.js';
 import { featureLayerServiceURLs } from '../GlobalConstants.js';
-import { sDPTFetchFactoriesFL } from '../ArcGIS.js';
+import { fetchFactoriesFL } from '../ArcGIS.js';
 import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
 import { factoryStoryMapURLs } from '../GlobalConstants.js';
@@ -36,7 +36,7 @@ function BasicFactoryTemplate() {
     // useEffect => get the details for this factory to init the page
     useEffect(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
-        sDPTFetchFactoriesFL(
+        fetchFactoriesFL(
             featureLayerServiceURLs['Factory'],
             `Factory_ID = ${Factory_ID}`
         )
