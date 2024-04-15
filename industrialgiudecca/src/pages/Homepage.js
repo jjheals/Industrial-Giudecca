@@ -66,7 +66,7 @@ function Homepage() {
 
     return (
         <div className="homepage">
-            <LanguageSelector/>
+            
 
 
             <head>
@@ -76,6 +76,10 @@ function Homepage() {
             </head>
             {/* Sidebar div */}
             <div><Sidebar/></div>
+            
+            <div className='language-selector-container'>
+                <LanguageSelector/>
+            </div>
 
             {/* Title div ('blurb') */}
             <div id="blurb" style={{
