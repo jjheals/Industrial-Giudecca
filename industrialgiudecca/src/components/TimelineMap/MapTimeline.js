@@ -24,6 +24,7 @@ const MapTimeline = ({ factories, timeperiods }) => {
     const [minYear, setMinYear] = useState(9999);            // Min year for opening dates of factories
     const [maxYear, setMaxYear] = useState(0);               // Max year for closing dates of factories
     const timelineTop = window.innerHeight;                  // Position of the top of the MapTimeline on the page
+    const currentYear = new Date().getFullYear();            // Current year for scrolling timeline 
 
     /* NOTE: do not hardcode "1800" for the year. Get the minimum year from the DB before loading the map, and then calculate the random
      * opening and closing years based on that instead. Hardcoding the minimum year (1800) risks breaking the map if the minimum year is 
@@ -32,9 +33,11 @@ const MapTimeline = ({ factories, timeperiods }) => {
     
     // Event handler for the skip timeline button
     const handleSkipClick = () => {
-        setYear(new Date().getFullYear());
+        setYear(currentYear);
         pageRef.current.scrollTop = pageRef.current.scrollHeight;
         setSkipTimeline(true);
+        setTimeperiod(`(${currentYear}) Modern day.`);
+
         window.scrollTo({
             top: window.innerHeight * 2,
             behavior: 'smooth'
@@ -61,10 +64,11 @@ const MapTimeline = ({ factories, timeperiods }) => {
     useEffect(() => {
         const handleWheel = (e) => {
             if (pageRef.current && !skipTimeline) {
-                const top = pageRef.current.getBoundingClientRect().top;
-                const margin = 50;
-                const currentYear = new Date().getFullYear();
-
+                const top = pageRef.current.getBoundingClientRect().top; // Current top of the screen
+                const margin = 50;                                       // margin is +/- amount from the top of the timeline to lock scroll
+                
+                // Check if the position is within the margin for locking the screen
+                // NOTE: <= 0 assumes the timeline top is at pos y = 0
                 if(top - margin <= 0) {
                     if(!skipTimeline) window.scrollTo(0, timelineTop);
                     e.preventDefault();
@@ -83,6 +87,7 @@ const MapTimeline = ({ factories, timeperiods }) => {
                         // We are at the end (current year), so remove the event listener to unlock scroll
                         else if (newYear >= currentYear) {
                             window.removeEventListener('wheel', handleWheel);
+                            setTimeperiod(`(${currentYear}) Modern day.`);
                             return currentYear;
                         }
 
@@ -209,7 +214,10 @@ const MapTimeline = ({ factories, timeperiods }) => {
 
             // Set the number active on the screen
             if(activeCount === 1) {
-                if(year >= new Date().getFullYear()) setActiveAdv('is');
+                if(year >= currentYear) { 
+                    setActiveAdv('is');
+                    setTimeperiod(`(${currentYear}) Modern day.`);
+                }
                 else setActiveAdv('was');
                 setActiveLabel(`${activeCount} ${t("activeLabel")}`);
             }
