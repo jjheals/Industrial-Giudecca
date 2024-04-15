@@ -1,7 +1,7 @@
 // MapTimeline.js
 
 import React, { useState, useEffect, useRef } from 'react';
-import { MapTimelineLockScroll } from './MapTimelineLockScroll';
+import { formatTimeperiodString } from '../../ArcGIS.js';
 
 import '../../css/components/MapTimeline.css';
 import { useTranslation } from "react-i18next";
@@ -12,13 +12,18 @@ import "../../locals/it/Homepage.json";
 let currTimeperiodIndex = 0;
 
 const MapTimeline = ({ factories, timeperiods }) => {
-    const [activeAdv, setActiveAdv] = useState('');
-    const [activeLabel, setActiveLabel] = useState('');
-    const [currTimeperiodStr, setTimeperiod] = useState('');
-    const pageRef = useRef(null);
-    const mapContainerRef = useRef(null);
-    const markerRefs = useRef({});
-    const { t } = useTranslation();
+    const pageRef = useRef(null);           // Page ref 
+    const mapContainerRef = useRef(null);   // Ref for map container element
+    const markerRefs = useRef({});          // Refs for marker elements
+    const { t } = useTranslation();         // Translation component 
+
+    const [activeAdv, setActiveAdv] = useState('');          // Dependent on the num factories (e.g. "There was 1 factory" vs "There were 2 factories")
+    const [activeLabel, setActiveLabel] = useState('');      // Dependent on the num factories (e.g. "There is 2 factories" vs "There are 2 factories")
+    const [currTimeperiodStr, setTimeperiod] = useState(''); // String representing the current timeperiod that appears on screen
+    const [skipTimeline, setSkipTimeline] = useState(false); // State of whether the skipTimeline button is pressed 
+    const [minYear, setMinYear] = useState(9999);            // Min year for opening dates of factories
+    const [maxYear, setMaxYear] = useState(0);               // Max year for closing dates of factories
+    const timelineTop = window.innerHeight;                  // Position of the top of the MapTimeline on the page
 
     /* NOTE: do not hardcode "1800" for the year. Get the minimum year from the DB before loading the map, and then calculate the random
      * opening and closing years based on that instead. Hardcoding the minimum year (1800) risks breaking the map if the minimum year is 
@@ -29,23 +34,12 @@ const MapTimeline = ({ factories, timeperiods }) => {
     const handleSkipClick = () => {
         setYear(new Date().getFullYear());
         pageRef.current.scrollTop = pageRef.current.scrollHeight;
+        setSkipTimeline(true);
         window.scrollTo({
-            top: window.innerHeight * 2  
+            top: window.innerHeight * 2,
+            behavior: 'smooth'
         });
     };
-
-    /** formatTimeperiodString(timeperiodDict)
-     * @abstract Formats a given timeperiod (as dict) into a string to appear on the screen with the start/end dates and the title
-     * @param { dict } timeperiodDict 
-     * @returns { String }
-     */
-    function formatTimeperiodString(timeperiodDict) { 
-        if(timeperiodDict['Start_Date'] == timeperiodDict['End_Date']) { 
-            return `(${timeperiodDict['Start_Date']}) ${timeperiodDict['Title']}`;
-        } else { 
-            return `(${timeperiodDict['Start_Date']}-${timeperiodDict['End_Date']}) ${timeperiodDict['Title']}`;
-        }
-    }
 
     // Calculate the top margin of the timeline in pixels
     // NOTE: vh in the below formula is the margin in VH
@@ -53,23 +47,57 @@ const MapTimeline = ({ factories, timeperiods }) => {
     const marginPx = (marginVH * window.innerHeight) / 50;
 
     // Iterate over the factories and find the minimum/maximum year, and get the cover image & coords for each
-    let minYear = 9999;
-    let maxYear = 0;
     factories.forEach(factory => {
 
         // Set random opening years and random closing years if they are NULL
         if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - 1830 + 1)) + 1830; }
         if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - 1830 + 1)) + 1830; }
 
-        if(factory.Opening_Year < minYear) minYear = factory.Opening_Year;  // Check for min year
-        if(factory.Closing_Year > maxYear) maxYear = factory.Closing_Year;  // Check for max year
+        if(factory.Opening_Year < minYear) setMinYear(factory.Opening_Year);  // Check for min year
+        if(factory.Closing_Year > maxYear) setMaxYear(factory.Closing_Year);  // Check for max year
     });
+    
+    // useEffect => logic for an event handler to lock the scroll while the timeline is active
+    useEffect(() => {
+        const handleWheel = (e) => {
+            if (pageRef.current && !skipTimeline) {
+                const top = pageRef.current.getBoundingClientRect().top;
+                const margin = 50;
+                const currentYear = new Date().getFullYear();
 
-    const thresh = 0;
+                if(top - margin <= 0) {
+                    if(!skipTimeline) window.scrollTo(0, timelineTop);
+                    e.preventDefault();
 
-    // Lock the scroll
-    const timelineTop = window.innerHeight;
-    MapTimelineLockScroll(pageRef, thresh, minYear, new Date().getFullYear(), setYear, timelineTop);
+                    // Control the scroll speed in both directions
+                    const scrollFactor = 0.7;                                       // DECREASE => SLOWER
+                    const direction = e.deltaY > 0 ? scrollFactor : -scrollFactor;  // Set the scroll speed
+
+                    // Calculate the year
+                    setYear((prevYear) => {
+                        const newYear = prevYear + direction;
+
+                        // Scroll is "down" (increase year)
+                        if (newYear >= minYear && newYear <= currentYear) return newYear;
+
+                        // We are at the end (current year), so remove the event listener to unlock scroll
+                        else if (newYear >= currentYear) {
+                            window.removeEventListener('wheel', handleWheel);
+                            return currentYear;
+                        }
+
+                        // Scroll is "up" (decrease year)
+                        else return prevYear;
+                    });
+                }
+            }
+        };
+        window.addEventListener('wheel', handleWheel, { passive: false });  // Add event handler by default
+        return () => { 
+            window.removeEventListener('wheel', handleWheel);
+         }; // Remove event handler on end
+
+    }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline 
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
     useEffect(() => {                
@@ -116,7 +144,6 @@ const MapTimeline = ({ factories, timeperiods }) => {
                 }
             } 
                  
-
             // Init the active count to 0
             let activeCount = 0;
 

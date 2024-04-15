@@ -240,6 +240,19 @@ function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, startCol,
     return matchedFactoryIDs;
 }
 
+/** formatTimeperiodString(timeperiodDict)
+     * @abstract Formats a given timeperiod (as dict) into a string to appear on the screen with the start/end dates and the title
+     * @param { dict } timeperiodDict 
+     * @returns { String }
+     */
+function formatTimeperiodString(timeperiodDict) { 
+    if(timeperiodDict['Start_Date'] == timeperiodDict['End_Date']) { 
+        return `(${timeperiodDict['Start_Date']}) ${timeperiodDict['Title']}`;
+    } else { 
+        return `(${timeperiodDict['Start_Date']}-${timeperiodDict['End_Date']}) ${timeperiodDict['Title']}`;
+    }
+}
+
 export { 
     latLongToPixel,
     fetchAllFactoryImages, 
@@ -247,5 +260,6 @@ export {
     fetchFL,
     filterFeatureLayer,
     filterFeatureLayerRange,
-    filterFeatureLayerDualRange
+    filterFeatureLayerDualRange,
+    formatTimeperiodString
 };
