@@ -5,9 +5,11 @@ import enHP from "./locals/en/Homepage.json";
 import itHP from "./locals/it/Homepage.json";
 
 i18n
-    .use(LanguageDetector)
+
     .use(initReactI18next)
+    .use(LanguageDetector)
     .init({
+        lng: "en",
         fallbackLng: "en",
         resources: {
             en: {
@@ -20,5 +22,5 @@ i18n
         returnObjects: true,
         debug: true
     });
-
 export default i18n;
+

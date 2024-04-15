@@ -10,7 +10,10 @@ const LanguageSelector = () => {
     const { i18n } = useTranslation();
 
     const changeLng = (lng) => {
-        i18n.changeLanguage(lng);
+        i18n.changeLanguage(lng)
+            .catch((error) => {
+                console.error("Error changing language:", error);
+            });
     };
 
     useEffect(() => {
