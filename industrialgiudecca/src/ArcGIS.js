@@ -90,10 +90,12 @@ export async function fetchFactoriesFL() {
         // Wait for the response, then iterate over the factories 
         const factories = await Promise.all(response.map(async feature => {
             const factory = new Factory(feature.attributes, {'x':0, 'y':0});
+            await factory.getFactoryCoords();
+
             return factory;
         }));
 
-        // Return the populated array 
+        // Return the populated array         
         return factories;
 
     } catch (error) {

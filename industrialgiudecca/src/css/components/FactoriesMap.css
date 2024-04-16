@@ -5,6 +5,7 @@
 
 .fhp-factory-pin { 
     position: absolute;
+    display: block;
     width: var(--pin-width);
     height: var(--pin-height);
     transition: 0.2s ease;

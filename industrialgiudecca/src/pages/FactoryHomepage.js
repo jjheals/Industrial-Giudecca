@@ -8,7 +8,7 @@ import Title from '../components/Title.js';
 import Sidebar from '../components/Sidebar';
 import SearchBar from '../components/SearchBar';
 import { fetchFactoriesFL } from '../ArcGIS.js';
-import { featureLayerServiceURLs } from '../GlobalConstants.js';
+import { featureLayerServiceURLs, mapHeight } from '../GlobalConstants.js';
 import FactoriesMap from '../components/FactoriesMap.js';
 
 /** FactoryHomepage
@@ -20,18 +20,11 @@ function FactoryHomepage() {
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
 
-    // Set viewport to the top of the page since React is sus
-    window.scrollTo({ 
-        top: 0
-    });
-
+    // Scroll to the top when the page loads because React is sus
     useEffect(() => {
+        window.scrollTo({ top: 0 }); 
         fetchFactoriesFL() 
             .then(factories => {
-                
-                factories.forEach(factory => {
-                    factory.getFactoryCoords();
-                });
                 setFactories(factories);
                 setFilteredFactories(factories);
             })
@@ -39,9 +32,11 @@ function FactoryHomepage() {
                 console.error('Error fetching factories:', error);
             });
     }, []);
-
+    
     const handleSearch = (searchTerm) => {
+
         if (searchTerm.trim() === '') {
+            console.log('no search term');
             setFilteredFactories(factories);
         } else {
             const options = {
@@ -74,7 +69,7 @@ function FactoryHomepage() {
             <div className="search-bar-container"><SearchBar onSearch={handleSearch} /></div>
 
             {/* FactoriesMap component containing the map with markers to click on */}
-            <FactoriesMap factories={factories} onMarkerClick={handleMarkerClick} />
+            <FactoriesMap factories={filteredFactories} onMarkerClick={handleMarkerClick} />
 
             {/* Grid of factories after the map that changes when a search is conducted */}
             <div className="factory-list-container">

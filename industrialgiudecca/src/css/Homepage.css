@@ -3,7 +3,7 @@
     --container-top-padding: 5%;
     --title-font: "Playfair Display", Serif, monospace;
     --title-font-size: 6vw;
-    --title-font-color: rgb(0, 0, 0);
+    --title-font-color: rgb(255, 255, 255);
     --scroll-text-color: rgb(232, 202, 162);
     --bg-overlay: rgba(0, 0, 0, 0.324); /* Adjust the opacity by changing the last value (0.5 in this case) */
     --text-align: left;

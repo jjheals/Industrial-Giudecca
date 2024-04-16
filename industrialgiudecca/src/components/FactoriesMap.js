@@ -1,14 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import '../css/components/FactoriesMap.css';
+import { latLongToPixel } from '../ArcGIS';
 
 const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
     // Refs for accessing DOM elements
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
     const clickedMarkerRef = useRef(null);
-
-    console.log('given factories');
-    console.log(factories);
     
     // Calculate the top margin of the timeline in pixels based on a margin in VH
     const marginVH = 5;
@@ -63,9 +61,11 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
             tooltip.className = 'fhp-factory-tooltip';
             mapContainerRef.current.appendChild(tooltip);
 
-            factories.map(factory => {
+            factories.map(factory => {                
                 // If this factory does not have a location, hide it from the map
-                if (!factory.x || !factory.y) return;
+                if (!factory['x'] || !factory['y']) {
+                    return;
+                }
                 else {
                     // Create the marker element and set its attributes
                     const markerWidthPx = 20;
@@ -99,7 +99,6 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
                         // Hide the factory name tooltip
                         tooltip.style.display = 'none';
                     });
-
 
                     // Hide tooltip by default 
                     tooltip.style.display = 'none';

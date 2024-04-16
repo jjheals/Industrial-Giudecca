@@ -19,14 +19,12 @@ export default class Factory {
         this.Factory_Description = attributes.Factory_Description;
         this.Max_Employment = attributes.Max_Employment;
         this.Factory_ID = attributes.Factory_ID;
-        this.Building_ID = attributes.Building_ID;
         this.coverPicURL = attributes.Cover_Image_ArcGIS_URL;
         this.long = geometry.x;
         this.lat = geometry.y; 
         this.x = null;
         this.y = null;
         this.link = `/industrial-sites/${this.Factory_ID}`;
-        this.isVisible = null;
     }
 
     /** toString() 
@@ -45,7 +43,8 @@ export default class Factory {
         s += `\tBuilding ID: ${this.Building_ID}\n`;
         s += `\tLongitude: ${this.long}\n`;
         s += `\tLatitude: ${this.lat}\n`;
-        s += `\tOBJECTID: ${this.OBJECTID}`;
+        s += `\tX: ${this.x}\n`;
+        s += `\tY: ${this.y}\n`;
         return s;
     }
 
@@ -82,14 +81,11 @@ export default class Factory {
     async getFactoryCoords() { 
         try { 
             // Query the FL with the necessary filters
-            const resp = await queryFeatures({
-                url: featureLayerServiceURLs['Factory_Coords'],
-                where: `Factory_ID = ${this.Factory_ID}`
-            });
-            
+            const resp = await fetchFL(featureLayerServiceURLs['Factory_Coords'], `Factory_ID = ${this.Factory_ID}`);
+
             // Set the x and y coords for this factory
-            this.long = resp.features[0].attributes.Longitude_;
-            this.lat = resp.features[0].attributes.Latitude_;
+            this.long = resp[0].attributes.Longitude_;
+            this.lat = resp[0].attributes.Latitude_;
                         
             // Convert the lat/long to pixel coordinates on the map
             const factoryMapPos = latLongToPixel(this.lat, this.long);
@@ -99,7 +95,6 @@ export default class Factory {
         } catch(error) { 
             if (error instanceof TypeError) {
                 //console.log(`No Coords found for ${this.English_Name} (${this.Factory_ID}) during the timeframe ${startYear} - ${endYear}`);
-                this.OBJECTID = -1;
             } else { 
                 //console.error(`Error occured getting OBJECTID for ${this.English_Name} (${this.Factory_ID}) during the timeframe ${startYear} - ${endYear}:`, error);
             }
