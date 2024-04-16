@@ -1,20 +1,21 @@
 TID,Title,Start_Date,End_Date
-1,World War I occurs in Europe causing the militarization of civilian areas.,1914,1918
-2,Tourism begins to take over cities across Europe.,1920,1940
-3,The first railway bridge to Venice is constructed.,1848,1848
-4,The first modern factory in Venice is opened by Salomon von Rothchild to manufacture asphalt and bitumen.,1852,1852
-5,"The Suez Canal is constructed and improves shipping routes across Europe, Africa, and the Middle East.",1869,1869
-6,The telephone is invented.,1882,1882
-7,The major factory from Giudecca moves to the mainland.,1885,1885
-8,Industrial scale electricity is brought to Giudecca.,1905,1905
-10,"Political elections that marked the defeat of the traditional political class and the emergence of new parties, such as the socialist, fascist and liberal party.",1919,1919
-11,Housing designed by Ambrogio Narduzzi is built in San Giacomo and Campo di Marte for 300 people in decent conditions.,1920,1921
-12,"National worker strikes lead the workers' unions to occupy factories, surrounding the buildings with barbed wire to prohibit them from leaving or entering the building and from using telephones.",1920,1922
-13,"The liberalization of rents occured in 1923, which worsened the current housing situation",1923,1926
-14,"The last free election take took place, which saw the affirmation of the fascist party in Italy.",1924,1924
-15,"On April 26, 1945, the fight for liberation from German forces began in Venice. The partisans organized ""patrols"" to capture the Germans and fascists.",1945,1945
-16,"A bridge between Sacca Fisola and Giudecca was built, which connected the neighborhoods built on Sacca Fisola to the rest of the island.",1959,1959
-17,The Municipality decides to pause construction of the Zattere bridge due to difficult conditions of the municipal coffers.,1971,1971
-18,The famous Feast of the Redeemer coincided with a floating concert by the Pink Floyd band; two thousand people in boats or on the banks emphasized the fragility of the city and sparked controversy around the world.,1989,1989
-19,"Post WWI and pre WWII, there was incentive for a financial concentration and industrial development in Italy; some factories reopened, but some remained closed forever.",1918,1940
-20,"Italy surrenders to the Allies; shipyards were left without comission as Venice became demilitarized, social tensions grew, road transportation increased on the mainland as water transport became disadvantageous, and the lack of adequate space and lots of pressure for housing and tourist use.",1943,1980
+1,World War I,1914,1918.0
+2,Rise of Tourism,1917,1940.0
+3,Railway Bridge Constructed,1848,1848.0
+4,Modern Industry,1852,1852.0
+5,Suez Canal,1869,1869.0
+6,Telephone Invented,1882,1882.0
+7,First major factory moves to mainland,1885,1885.0
+8,Electricity,1905,1905.0
+9,Societal Conflicts,1919,1919.0
+10,Political Conflicts,1919,1919.0
+11,Societal Conflicts,1920,1921.0
+12,Political/Social Conflicts,1920,1922.0
+13,Political/Societal Conflicts,1923,1926.0
+14,Political Conflicts,1924,
+15,Political Conflicts,1945,1945.0
+16,,1959,1959.0
+17,Political Conflicts,1971,1971.0
+18,Societal Conflicts,1989,1989.0
+19,Between World War I and World War II,1918,1940.0
+20,"Post World War II, Years of Defeat for the Island's Factories",1943,1980.0

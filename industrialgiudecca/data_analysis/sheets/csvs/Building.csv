@@ -43,3 +43,4 @@ Building_ID,Latitude ,Longitude ,Now_Used_For,New_Purpose,Purpose_Source,Map_Sou
 44,45.429167,12.344444,,,,"Stampa: Tipografia Commerciale/Venezia, 1981"
 45,,,,,,
 48,,,Residential,Used for housing.,"Lando, 2023, p. 11",
+FACTORY_ID 50,,,Residential,,LANDO,
