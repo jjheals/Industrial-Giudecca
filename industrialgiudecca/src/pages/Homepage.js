@@ -28,15 +28,25 @@ function Homepage() {
     const [factories, setFactories] = useState([]);             // Factories that appear on the MapTimeline 
     const [storymapURL, setStorymapURL] = useState('');         // URL for the storymap at the bottom of the page
     const [timeperiodsFL, setTimeperiodsFL] = useState([]);     // FL for timeperiods that appear on the MapTimeline
+    const [minMaxYear, setMinMaxYear] = useState({});           // Min and max year to pass to MapTimeline
     const { t, i18n } = useTranslation();                       // For translation 
 
-    // useEffect ==> init page and get all the factories and timeperiods to pass to MapTimeline when the page loads
+    // useEffect ==> init page and get all the buildings, factories, and timeperiods to pass to MapTimeline when the page loads
     useEffect(() => {
         // Fetch factories FL when component mounts
         fetchFactoriesFL(featureLayerServiceURLs['Factory'])
         .then(factories => {     
+
+            // Get the min and max year from the factories and pass it to MapTimeline
+            let minYear = 9999;
+            let maxYear = 0;
+            factories.forEach(factory => {                 
+                if(factory.Opening_Year < minYear) minYear = factory.Opening_Year;  // Check for min year
+                if(factory.Closing_Year > maxYear) maxYear = factory.Closing_Year;  // Check for max year
+            });
             setFactories(factories);
             setStorymapURL(factoryStoryMapURLs.g);
+            setMinMaxYear({ 'minYear': minYear, 'maxYear': maxYear });
         })
         // Handle errors
         .catch(error => {
@@ -144,7 +154,7 @@ function Homepage() {
             </div>
 
             {/* Timeline container */}
-            <div id="homepage-timeline"><MapTimeline factories={factories} timeperiods={timeperiodsFL}/></div>
+            <div id="homepage-timeline"><MapTimeline factories={factories} timeperiods={timeperiodsFL} minMaxYear={minMaxYear}/></div>
 
             {/* Container for the section header container */}
             <div id='section-header-container' style={{

@@ -11,25 +11,30 @@ import "../../locals/it/Homepage.json";
 
 let currTimeperiodIndex = 0;
  
-const MapTimeline = ({ factories, timeperiods, mapMinYear }) => {
+const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
     const pageRef = useRef(null);           // Page ref
     const mapContainerRef = useRef(null);   // Ref for map container element
     const markerRefs = useRef({});          // Refs for marker elements
     const { t } = useTranslation();         // Translation component
+    const [year, setYear] = useState(0);    // The year that appears as the timeline scrolls
 
     const [activeAdv, setActiveAdv] = useState('');          // Dependent on the num factories (e.g. "There was 1 factory" vs "There were 2 factories")
     const [activeLabel, setActiveLabel] = useState('');      // Dependent on the num factories (e.g. "There is 2 factories" vs "There are 2 factories")
     const [currTimeperiodStr, setTimeperiod] = useState(''); // String representing the current timeperiod that appears on screen
     const [skipTimeline, setSkipTimeline] = useState(false); // State of whether the skipTimeline button is pressed
-    const [minYear, setMinYear] = useState(9999);            // Min year for opening dates of factories
-    const [maxYear, setMaxYear] = useState(0);               // Max year for closing dates of factories
-    const timelineTop = window.innerHeight;                  // Position of the top of the MapTimeline on the page
-    const currentYear = new Date().getFullYear();            // Current year for scrolling timeline
 
-    /* NOTE: do not hardcode "1800" for the year. Get the minimum year from the DB before loading the map, and then calculate the random
-     * opening and closing years based on that instead. Hardcoding the minimum year (1800) risks breaking the map if the minimum year is
-     * raised in the DB */
-    const [year, setYear] = useState(1800);
+    const timelineTop = window.innerHeight;         // Position of the top of the MapTimeline on the page
+    const currentYear = new Date().getFullYear();   // Current year for scrolling timeline
+    const minYear = minMaxYear.minYear;             // Min year as passed to MapTimeline
+    const maxYear = minMaxYear.maxYear;             // Max year as passed to MapTimeline
+    
+    // Calculate the top margin of the timeline in pixels
+    // NOTE: vh in the below formula is the margin in VH
+    const marginVH = 5;  // Margin in VH
+    const marginPx = (marginVH * window.innerHeight) / 50;
+    
+    // useEffect => Init the year as minYear
+    useEffect(() => { setYear(minYear); }, [minMaxYear]);
 
     // Event handler for the reset button
     const handleResetClick = () => {
@@ -56,22 +61,6 @@ const MapTimeline = ({ factories, timeperiods, mapMinYear }) => {
             behavior: 'smooth'
         });
     };
-
-    // Calculate the top margin of the timeline in pixels
-    // NOTE: vh in the below formula is the margin in VH
-    const marginVH = 5;  // Margin in VH
-    const marginPx = (marginVH * window.innerHeight) / 50;
-
-    // Iterate over the factories and find the minimum/maximum year, and get the cover image & coords for each
-    factories.forEach(factory => {
-
-        // Set random opening years and random closing years if they are NULL
-        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - 1830 + 1)) + 1830; }
-        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - 1830 + 1)) + 1830; }
-
-        if(factory.Opening_Year < minYear) setMinYear(factory.Opening_Year);  // Check for min year
-        if(factory.Closing_Year > maxYear) setMaxYear(factory.Closing_Year);  // Check for max year
-    });
 
     // useEffect => logic for an event handler to lock the scroll while the timeline is active
     useEffect(() => {
@@ -117,29 +106,40 @@ const MapTimeline = ({ factories, timeperiods, mapMinYear }) => {
 
     }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline
 
+    // Iterate over the factories and find the minimum/maximum year, and get the cover image & coords for each
+    factories.forEach(factory => {
+
+        // Set random opening years and random closing years if they are NULL
+        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
+        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
+    });
+
     // useEffect ==> on every scroll, check and update the factories that appear on the map
     useEffect(() => {
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
 
         // Create the tooltip element
-        const tooltip = document.createElement('div');
-        tooltip.className = 'factory-tooltip';
-        mapContainerRef.current.appendChild(tooltip);
+        const tooltip = document.createElement('div');  // Create element 
+        tooltip.className = 'factory-tooltip';          // Set class name
+        tooltip.style.display = 'none';                 // IMPORTANT: hide by default
+        mapContainerRef.current.appendChild(tooltip);   // Add as a child to the map container
 
         // Filter the factories based on the scroll position
         const filterFactories = (year) => {
+
+            // Init the active count to 0
+            let activeCount = 0;
 
             // Set the time period according to the year
             if(timeperiods.length > 0) {
                 try {
                     // Track the previous end year to move the timeline backwards
                     let prevTimeperiodEndYear = -1;
-                    try {  prevTimeperiodEndYear = timeperiods[currTimeperiodIndex - 1]['End_Date']; } catch { }
-
                     let nextTimeperiodStartYear = -1;
                     let currTimeperiodStartYear = -1;
 
+                    try { prevTimeperiodEndYear = timeperiods[currTimeperiodIndex - 1]['End_Date']; } catch { }
                     try { nextTimeperiodStartYear = timeperiods[currTimeperiodIndex + 1]['Start_Date']; } catch { }
                     try { currTimeperiodStartYear = timeperiods[currTimeperiodIndex]['Start_Date']; } catch { }
 
@@ -161,9 +161,6 @@ const MapTimeline = ({ factories, timeperiods, mapMinYear }) => {
                     setTimeperiod('');
                 }
             }
-
-            // Init the active count to 0
-            let activeCount = 0;
 
             // Iterate over and filter the factories
             factories.map(factory => {
@@ -193,8 +190,8 @@ const MapTimeline = ({ factories, timeperiods, mapMinYear }) => {
                         })
 
                         // Event listeners to show/hide popups on hover
+                        // Show the factory name tooltip on mouseover
                         marker.addEventListener('mouseover', () => {
-                            // Show the factory name tooltip
                             tooltip.textContent = factory.English_Name;
                             tooltip.style.display = 'block';
 
@@ -208,19 +205,11 @@ const MapTimeline = ({ factories, timeperiods, mapMinYear }) => {
                             tooltip.style.top = `calc(${tooltipTop}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
                         });
 
-                        marker.addEventListener('mouseout', () => {
-                            // Hide the factory name tooltip
-                            tooltip.style.display = 'none';
-                        });
+                        // Hide the factory name tooltip on mouseout
+                        marker.addEventListener('mouseout', () => { tooltip.style.display = 'none'; });
 
-                        // Hide tooltip by default
-                        tooltip.style.display = 'none';
-
-                        // Store the marker element in the markerRefs object
-                        markerRefs.current[factory.Factory_ID] = marker;
-
-                        // Add the marker to the map overlay
-                        mapContainerRef.current.appendChild(marker);
+                        markerRefs.current[factory.Factory_ID] = marker;    // Store the marker element in the markerRefs object
+                        mapContainerRef.current.appendChild(marker);        // Add the marker to the map overlay
                     }
                 }
             });
