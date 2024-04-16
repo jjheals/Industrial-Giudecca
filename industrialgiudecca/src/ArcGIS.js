@@ -86,16 +86,9 @@ export async function fetchFactoriesFL() {
     try {
         // Query the factories FL to get the factory attributes         
         const response = await fetchFL(featureLayerServiceURLs['Factory']);
-        console.log('response');
 
-        console.log(response);
         // Wait for the response, then iterate over the factories 
         const factories = await Promise.all(response.map(async feature => {
-
-            console.log('feature');
-            console.log(feature);
-            
-            // Create a new factory object using the OBJECTID
             const factory = new Factory(feature.attributes, {'x':0, 'y':0});
             return factory;
         }));

@@ -7,6 +7,9 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm }) => {
     const mapContainerRef = useRef(null);
     const clickedMarkerRef = useRef(null);
 
+    console.log('given factories');
+    console.log(factories);
+    
     // Calculate the top margin of the timeline in pixels based on a margin in VH
     const marginVH = 5;
     const marginPx = (marginVH * window.innerHeight) / 50;

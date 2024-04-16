@@ -28,10 +28,8 @@ function FactoryHomepage() {
     useEffect(() => {
         fetchFactoriesFL() 
             .then(factories => {
-                console.log(factories);
                 
                 factories.forEach(factory => {
-                    //factory.getCoverImageURL();
                     factory.getFactoryCoords();
                 });
                 setFactories(factories);

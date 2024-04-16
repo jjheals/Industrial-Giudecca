@@ -20,6 +20,7 @@ export default class Factory {
         this.Max_Employment = attributes.Max_Employment;
         this.Factory_ID = attributes.Factory_ID;
         this.Building_ID = attributes.Building_ID;
+        this.coverPicURL = attributes.Cover_Image_ArcGIS_URL;
         this.long = geometry.x;
         this.lat = geometry.y; 
         this.x = null;
@@ -48,33 +49,6 @@ export default class Factory {
         return s;
     }
 
-    /** getOBJECTID() 
-     * @abstract Function that gets the OBJECTID in the Images FL for this factory. This is required due to the way ArcGIS handles
-     * images in FLs and submitting queries. The queries for attachments is submitted as a raw API url, not using any ArcGIS primitive
-     * given in libraries; because of this, the filter must be using the unique ID for the Images FL, i.e. OBJECTID. Since the 
-     * Factory_ID is also a primary key, but ArcGIS just doesn't recognize it as such, we can query the images FL twice - once to 
-     * match the Factory_ID to the OBJECTID, then another time to get the attachments for this OBJECTID (and thus, for this Factory_ID).
-     */
-    async getOBJECTID() { 
-        try { 
-            const resp = await queryFeatures({
-                url: attachmentsBaseURL,
-                where: `Factory_ID = ${this.Factory_ID}`
-            });
-    
-            this.OBJECTID = resp.features[0].attributes.OBJECTID;
-
-            return;
-        } catch(error) { 
-            if (error instanceof TypeError) {
-                console.log(`No OBJECTID found for ${this.English_Name} (${this.Factory_ID})`);
-                this.OBJECTID = -1;
-            } else { 
-                console.error(`Error occured getting OBJECTID for ${this.English_Name} (${this.Factory_ID}):`, error);
-            }
-        }
-    }
-
     /** getAllFactoryImageURLs()
      * @abstract retrieves all attachment IDs for this Factory instance's OBJECTID
      * @returns {Array} an array of URLs for all of this Factory's attachments
@@ -87,34 +61,6 @@ export default class Factory {
         });
 
         return allAttachmentDicts;      
-    }
-
-    /** getFactoryImage(apiToken)
-     * @abstract fetch the first image (i.e. the cover image) for this factory
-     * @returns {null} sets this.coverPicURL; calls this.setFactoryImage() and sets the image in the element with id of this.Factory_ID
-     */
-    async getCoverImageURL() { 
-        try { 
-            // Check that this factory has an associated OBJECTID (i.e. that there are associated images)
-            if(this.OBJECTID < 0 || isNaN(this.OBJECTID)) { 
-                return;
-            }
-
-            // Get the URLs for all the attachments for this factory
-            const allAttachmentURLs = await this.getAllFactoryImageURLs();
-
-            // Check if there are any attachments, set this.coverPicURL with the FIRST if there are
-            if(allAttachmentURLs.length > 0) this.coverPicURL = allAttachmentURLs[0];
-
-            // Check if the img placeholder exists and set the src if it does
-            let img = document.getElementById(this.Factory_ID);
-            if(img && this.coverPicURL) { 
-                // img exists, so set the src
-                img.src = this.coverPicURL;
-            }
-        } catch(error) { 
-            console.log(`Error retrieving cover image URL for ${this.Factory_ID} (${this.Factory_ID})`, error)
-        }
     }
 
     /** getFactoryCoords()
