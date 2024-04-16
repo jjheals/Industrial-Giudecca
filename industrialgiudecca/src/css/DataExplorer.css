@@ -1,9 +1,9 @@
 
-:root { 
+:root {
     --main-font-family: 'Garamond',serif; /* Primary font style for the page */
     --de-width: 90vw;
     --de-primary-color: rgb(181, 171, 171);
-    --hover-color: rgb(101, 128, 224);
+    --hover-color: rgb(97, 98, 103);
 
     /* Submit button styles */
     --submit-button-width: 10vw;         /* Width for submit button for calculating space */
@@ -13,9 +13,9 @@
     /* Search bar styles */
     --search-bar-row-margin: 1vh;   /* Margin for the rows of the search bar for calculating space */
     --search-input-font-size: 1vw;  /* Font size for the input fields of the search bar */
-    --de-download-button-width: 2vw;
 
-    /* Dynamically calculates the height of the search bar using the above variables so that the submit 
+
+    /* Dynamically calculates the height of the search bar using the above variables so that the submit
      * button hover animation does not change the height of the search bar. */
     --search-bar-row-height: calc(var(--search-input-font-size) + 2vh);
 
@@ -24,13 +24,13 @@
     --de-results-table-height: 80vh;
 }
 
-.main-container { 
+.main-container {
     margin: 0;
     padding: 0;
     background-color: none;
 }
 
-.data-explorer { 
+.data-explorer {
     width: var(--de-width);
     height: 70vh;
     margin: 0 auto 10vh auto;
@@ -38,13 +38,13 @@
 }
 
 /* Search bar styles */
-#search-bar-container { 
+#search-bar-container {
     width: var(--de-width);
     background-color: var(--de-primary-color);
     margin-top: 5vh;
 }
 
-.de-search-bar { 
+.de-search-bar {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -55,7 +55,7 @@
     height: calc(4*(var(--search-bar-row-height) + var(--search-bar-row-margin)));
 }
 
-.de-search-bar-row { 
+.de-search-bar-row {
     display: flex;
     flex-direction: row;
     width: var(--de-width);
@@ -64,12 +64,12 @@
     margin-top: var(--search-bar-row-margin);
 }
 
-.input-container { 
+.input-container {
     width: 15vw;
     margin: auto;
 }
 
-.de-search-input { 
+.de-search-input {
     width: 13vw;
     padding: 2% 4%;
     margin: auto;
@@ -78,11 +78,11 @@
     border: 1px solid black;
 }
 
-select, .de-search-bar button { 
+select, .de-search-bar button {
     cursor: pointer;
 }
 
-.de-search-submit { 
+.de-search-submit {
     margin: auto;
     margin-top: var(--submit-button-margin);
     height: var(--submit-button-height);
@@ -105,30 +105,8 @@ select, .de-search-bar button {
     height: calc(var(--submit-button-height) + 0.5vh);
 }
 
-#download-icon { 
-    width: 2vw;
-    margin: auto;
-    transition: 0.5s ease;
-    cursor: pointer;
-}
-
-.de-download-results { 
-    margin-top: 2vh;
-    width: 3vw; 
-    height: 3vw;
-    border: 1px solid black;
-    border-radius: 20%;
-    transition: 0.5s ease;
-}
-
-.de-download-results:hover { 
-    background-color: var(--hover-color);
-    transition: 0.5s ease;
-    cursor: pointer;
-}
-
 /* Results table styles */
-.de-results-table-container { 
+.de-results-table-container {
     max-height: var(--de-results-table-height);
     width: var(--de-results-table-width);
     margin: 2vh auto;
@@ -136,7 +114,7 @@ select, .de-search-bar button {
     border: 1px solid black;
 }
 
-.de-results-table { 
+.de-results-table {
     display: table;
     border-collapse: collapse;
     border-spacing: 0;
@@ -153,12 +131,12 @@ select, .de-search-bar button {
     border-bottom: 1px solid black;
 }
 
-.de-results-table th { 
+.de-results-table th {
     padding: 1vh 2vw;
     background-color: var(--de-primary-color);
 }
 
-.de-results-table-row { 
+.de-results-table-row {
     border-bottom: 1px solid black;
 }
 
@@ -166,15 +144,40 @@ select, .de-search-bar button {
     border-bottom: none;
 }
 
-.de-results-table-row td { 
+.de-results-table-row td {
     padding: 0.5vh 2vw;
 }
-#no-results-found-msg { 
+#no-results-found-msg {
     text-align: center;
     width: 100%;
     margin: auto;
 }
 
-.loading-message { 
+.loading-message {
     background-color: red;
+}
+
+#download-icon {
+    width: 2vw;
+    margin: auto;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.de-download-results {
+    margin-top: 2vh;
+    width: 3vw;
+    height: 3vw;
+    border: 1px solid black;
+    border-radius: 20%;
+    transition: 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.de-download-results:hover {
+    background-color: var(--hover-color);
+    transition: 0.5s ease;
+    cursor: pointer;
 }

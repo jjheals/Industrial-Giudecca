@@ -2,23 +2,23 @@
 
 /**  { Component } DataExplorer
  *
- * @abstract The DataExplorer is designed to be a comprehensive database search machine. It consists of components defined in 
+ * @abstract The DataExplorer is designed to be a comprehensive database search machine. It consists of components defined in
  * src/components/DataExplorer. The DataExplorer handles a query based on the conditions in DataExplorerSearchBar and displays the results
- * in a DataExplorerResultsTable. 
- * 
+ * in a DataExplorerResultsTable.
+ *
  */
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import '../../css/DataExplorer.css';
 import DataExplorerSearchBar from './DataExplorerSearchBar';
 import DataExplorerResultsTable from './DataExplorerResultsTable';
 
 const DataExplorer = () => {
-    
+
     const defaultResults = {
         'keys': ['English_Name', 'Italian_Name', 'Opening_Date', 'Closing_Date', 'Max_Employment', 'Min_Employment', 'Current_Purpose'],
         'rows': [[]]
     }
-    const queryResults = { 
+    const queryResults = {
         'keys': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
         'rows': [
             ['R1 C1', 'R1 C2', 'R1 C3', 'R1 C4', 'R1 C5', 'R1 C6', 'R1 C7'],
@@ -49,11 +49,12 @@ const DataExplorer = () => {
 
     return (
         <div className='main-container'>
-            <div id='search-bar-container'><DataExplorerSearchBar /></div>
-            <button type='download' className='de-download-results'><img id='download-icon' src='download-icon.png' /></button>
-            <div id='results-table-container'><DataExplorerResultsTable d ={ defaultResults }/></div>
+            <div id='search-bar-container'><DataExplorerSearchBar/></div>
+
+            <div id='results-table-container'><DataExplorerResultsTable d={defaultResults}/></div>
         </div>
     );
 };
 
 export default DataExplorer;
+
