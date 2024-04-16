@@ -88,8 +88,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
 
                         // We are at the end (current year), so remove the event listener to unlock scroll
                         else if (newYear >= currentYear) {
-                            window.removeEventListener('wheel', handleWheel);
                             setTimeperiod(`(${currentYear}) Modern day.`);
+                            window.removeEventListener('wheel', handleWheel);
                             return currentYear;
                         }
 
@@ -99,6 +99,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
                 }
             }
         };
+        
         window.addEventListener('wheel', handleWheel, { passive: false });  // Add event handler by default
         return () => {
             window.removeEventListener('wheel', handleWheel);
@@ -143,8 +144,12 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
                     try { nextTimeperiodStartYear = timeperiods[currTimeperiodIndex + 1]['Start_Date']; } catch { }
                     try { currTimeperiodStartYear = timeperiods[currTimeperiodIndex]['Start_Date']; } catch { }
 
+                    // Check if we've reached modern day
+                    if(year == currentYear) {
+                        setTimeperiod(`(${currentYear}) Modern day.`);
+                    }
                     // Check if moving on to the next time period
-                    if(nextTimeperiodStartYear < year) {
+                    else if(nextTimeperiodStartYear < year) {
                         currTimeperiodIndex = currTimeperiodIndex + 1;
                         setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex]));
                     }

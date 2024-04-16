@@ -1,6 +1,5 @@
 // src/Factory.js
-import { queryFeatures } from '@esri/arcgis-rest-feature-service';
-import { attachmentsBaseURL, featureLayerServiceURLs } from './GlobalConstants';
+import { featureLayerServiceURLs } from './GlobalConstants';
 import { latLongToPixel, fetchFL } from './ArcGIS';
 import axios from 'axios';
 

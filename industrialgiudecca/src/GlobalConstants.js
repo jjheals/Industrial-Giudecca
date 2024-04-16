@@ -1,8 +1,5 @@
 // src/GlobalConstants.js
 
-// URL endpoint to the attachments FL containing images for each factory
-export const attachmentsBaseURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/factories_images_view/FeatureServer/0/'
-
 // URL endpoints to the storymaps for factories that they exist for
 // [ key : val ] => [ Factory_ID : StoryMapURL ]
 export const factoryStoryMapURLs = {
