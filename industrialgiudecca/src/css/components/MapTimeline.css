@@ -1,4 +1,4 @@
-:root { 
+:root {
     --pin-width: 2.2vw;
     --pin-height: 5vh;
     --info-text-color: rgb(255, 255, 255);
@@ -6,15 +6,16 @@
     --info-container-font-family: 'Playfair Display', serif;
     --info-font-weight: 400;
     --skip-button-opacity: 0.35;
+    --reset-button-opacity: 0.35;
 }
 
-.timeline-container { 
+.timeline-container {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-color);
 }
 
-.info-containerb { 
+.info-containerb {
     position: absolute;
     margin-top: 55vh;
     width: 100%;
@@ -25,7 +26,7 @@
     font-weight: var(--info-font-weight);
 }
 
-.map-row { 
+.map-row {
     display: flex;
     flex-direction: row;
     width: 90%;
@@ -34,16 +35,16 @@
     margin-bottom: 2vh;
 }
 
-.ib { 
+.ib {
     font-size: 2.5vw;
 }
 
-.context-blurb { 
+.context-blurb {
     font-size: 1.5vw;
     color: rgb(185, 185, 185);
 }
 
-.giudecca-map-img { 
+.giudecca-map-img {
     position: absolute;
     width: 100%;
     height: auto;
@@ -54,14 +55,14 @@
     padding: 0;
 }
 
-.factory-container { 
+.factory-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
 }
 
-.factory-pin { 
+.factory-pin {
     position: absolute;
     z-index: 10;
     width: var(--pin-width);
@@ -69,24 +70,23 @@
     transition: 0.2s ease;
 }
 
-.factory-pin:hover { 
+.factory-pin:hover {
     cursor: pointer;
     transform: scale(1.2);
     transition: 1s ease;
 }
 
-.learn-more-container { 
-    position: absolute; 
+.learn-more-container {
+    position: absolute;
     width: 100%;
     margin-top: 5vh;
     font-size: 0.75vw;
     font-family: var(--info-container-font-family);
     text-align: center;
     color: black;
-
 }
 
-.timeline-learn-more { 
+.timeline-learn-more {
     position: relative;
     background-color: rgba(255, 255, 255, 0.641);
     width: 12%;
@@ -97,8 +97,9 @@
 }
 
 .skip-button {
-    position: relative;
-    top: 7vh;
+    position: absolute;
+    bottom: 3vh;
+    left: 3vw;
     width: 10%;
     padding: 1vh 1vw;
     font-size: 1vw;
@@ -106,14 +107,31 @@
     color: rgb(44, 44, 44);
     background-color: #d4d4d4;
     opacity: var(--skip-button-opacity);
-    margin: auto;
     border: 1px solid rgb(75, 75, 75);
     border-radius: 2rem;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 }
 
-.skip-button:hover {
+.reset-button {
+    position: absolute;
+    bottom: 3vh;
+    right: 3vw;
+    width: 10%;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    font-family: var(--info-container-font-family);
+    color: rgb(44, 44, 44);
+    background-color: #d4d4d4;
+    opacity: var(--reset-button-opacity);
+    border: 1px solid rgb(75, 75, 75);
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.skip-button:hover,
+.reset-button:hover {
     transform: scale(1.1);
     opacity: calc(var(--skip-button-opacity) * 1.5);
     transition: 0.3s ease-in-out;

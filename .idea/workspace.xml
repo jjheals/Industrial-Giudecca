@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="testing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
-    </list>
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="download button added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +77,7 @@
       <workItem from="1712045691519" duration="13766000" />
       <workItem from="1712139713533" duration="13336000" />
       <workItem from="1712821649992" duration="34151000" />
+      <workItem from="1713253535344" duration="2944000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -411,7 +407,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712928632803</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="reset button">
+      <option name="closed" value="true" />
+      <created>1713254841277</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1713254841277</updated>
+    </task>
+    <task id="LOCAL-00043" summary="download button added">
+      <option name="closed" value="true" />
+      <created>1713257916952</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1713257916952</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,8 +441,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Factory names" />
-    <MESSAGE value="changed css a little for accordion" />
     <MESSAGE value="changed css a little for accordion no more overflow" />
     <MESSAGE value="hoverable images and refactored" />
     <MESSAGE value="changed &quot;scroll to learn more&quot; to be relative to the text blurb" />
@@ -454,6 +464,8 @@
     <MESSAGE value="Translation half implemented" />
     <MESSAGE value="button for changing language" />
     <MESSAGE value="testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing" />
+    <MESSAGE value="reset button" />
+    <MESSAGE value="download button added" />
+    <option name="LAST_COMMIT_MESSAGE" value="download button added" />
   </component>
 </project>

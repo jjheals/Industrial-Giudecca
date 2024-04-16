@@ -12,31 +12,41 @@ import "../../locals/it/Homepage.json";
 let currTimeperiodIndex = 0;
 
 const MapTimeline = ({ factories, timeperiods }) => {
-    const pageRef = useRef(null);           // Page ref 
+    const pageRef = useRef(null);           // Page ref
     const mapContainerRef = useRef(null);   // Ref for map container element
     const markerRefs = useRef({});          // Refs for marker elements
-    const { t } = useTranslation();         // Translation component 
+    const { t } = useTranslation();         // Translation component
 
     const [activeAdv, setActiveAdv] = useState('');          // Dependent on the num factories (e.g. "There was 1 factory" vs "There were 2 factories")
     const [activeLabel, setActiveLabel] = useState('');      // Dependent on the num factories (e.g. "There is 2 factories" vs "There are 2 factories")
     const [currTimeperiodStr, setTimeperiod] = useState(''); // String representing the current timeperiod that appears on screen
-    const [skipTimeline, setSkipTimeline] = useState(false); // State of whether the skipTimeline button is pressed 
+    const [skipTimeline, setSkipTimeline] = useState(false); // State of whether the skipTimeline button is pressed
     const [minYear, setMinYear] = useState(9999);            // Min year for opening dates of factories
     const [maxYear, setMaxYear] = useState(0);               // Max year for closing dates of factories
     const timelineTop = window.innerHeight;                  // Position of the top of the MapTimeline on the page
-    const currentYear = new Date().getFullYear();            // Current year for scrolling timeline 
+    const currentYear = new Date().getFullYear();            // Current year for scrolling timeline
 
     /* NOTE: do not hardcode "1800" for the year. Get the minimum year from the DB before loading the map, and then calculate the random
-     * opening and closing years based on that instead. Hardcoding the minimum year (1800) risks breaking the map if the minimum year is 
+     * opening and closing years based on that instead. Hardcoding the minimum year (1800) risks breaking the map if the minimum year is
      * raised in the DB */
     const [year, setYear] = useState(1800);
-    
+
+    // Event handler for the reset button
+    const handleResetClick = () => {
+        setYear(minYear);
+        setSkipTimeline(false);
+        setTimeperiod('');
+        currTimeperiodIndex = 0;
+        pageRef.current.scrollTop = 0;
+    };
+
     // Event handler for the skip timeline button
     const handleSkipClick = () => {
         setYear(currentYear);
         pageRef.current.scrollTop = pageRef.current.scrollHeight;
         setSkipTimeline(true);
         setTimeperiod(`(${currentYear}) Modern day.`);
+        currTimeperiodIndex = timeperiods.length - 1;
 
         window.scrollTo({
             top: window.innerHeight * 2,
@@ -59,14 +69,14 @@ const MapTimeline = ({ factories, timeperiods }) => {
         if(factory.Opening_Year < minYear) setMinYear(factory.Opening_Year);  // Check for min year
         if(factory.Closing_Year > maxYear) setMaxYear(factory.Closing_Year);  // Check for max year
     });
-    
+
     // useEffect => logic for an event handler to lock the scroll while the timeline is active
     useEffect(() => {
         const handleWheel = (e) => {
             if (pageRef.current && !skipTimeline) {
                 const top = pageRef.current.getBoundingClientRect().top; // Current top of the screen
                 const margin = 50;                                       // margin is +/- amount from the top of the timeline to lock scroll
-                
+
                 // Check if the position is within the margin for locking the screen
                 // NOTE: <= 0 assumes the timeline top is at pos y = 0
                 if(top - margin <= 0) {
@@ -98,14 +108,14 @@ const MapTimeline = ({ factories, timeperiods }) => {
             }
         };
         window.addEventListener('wheel', handleWheel, { passive: false });  // Add event handler by default
-        return () => { 
+        return () => {
             window.removeEventListener('wheel', handleWheel);
-         }; // Remove event handler on end
+        }; // Remove event handler on end
 
-    }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline 
+    }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
-    useEffect(() => {                
+    useEffect(() => {
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
 
@@ -116,10 +126,10 @@ const MapTimeline = ({ factories, timeperiods }) => {
 
         // Filter the factories based on the scroll position
         const filterFactories = (year) => {
-            
+
             // Set the time period according to the year
-            if(timeperiods.length > 0) { 
-                try { 
+            if(timeperiods.length > 0) {
+                try {
                     // Track the previous end year to move the timeline backwards
                     let prevTimeperiodEndYear = -1;
                     try {  prevTimeperiodEndYear = timeperiods[currTimeperiodIndex - 1]['End_Date']; } catch { }
@@ -144,11 +154,11 @@ const MapTimeline = ({ factories, timeperiods }) => {
                     else if(currTimeperiodStartYear > year) {
                         setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex]));
                     }
-                } catch { 
+                } catch {
                     setTimeperiod('');
                 }
-            } 
-                 
+            }
+
             // Init the active count to 0
             let activeCount = 0;
 
@@ -175,7 +185,7 @@ const MapTimeline = ({ factories, timeperiods }) => {
                         marker.style.top = `calc(${factory.y}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
 
                         // Event listener to redirect to another page on marker click
-                        marker.addEventListener('click', () => { 
+                        marker.addEventListener('click', () => {
                             window.location.href = `/industrial-sites/${factory.Factory_ID}`;
                         })
 
@@ -200,7 +210,7 @@ const MapTimeline = ({ factories, timeperiods }) => {
                             tooltip.style.display = 'none';
                         });
 
-                        // Hide tooltip by default 
+                        // Hide tooltip by default
                         tooltip.style.display = 'none';
 
                         // Store the marker element in the markerRefs object
@@ -214,7 +224,7 @@ const MapTimeline = ({ factories, timeperiods }) => {
 
             // Set the number active on the screen
             if(activeCount === 1) {
-                if(year >= currentYear) { 
+                if(year >= currentYear) {
                     setActiveAdv('is');
                     setTimeperiod(`(${currentYear}) Modern day.`);
                 }
@@ -258,6 +268,7 @@ const MapTimeline = ({ factories, timeperiods }) => {
                         </div>
                     </div>
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
+                    <button className='reset-button' onClick={handleResetClick}>Reset Timeline</button>
                 </div>
             </div>
         </div>
