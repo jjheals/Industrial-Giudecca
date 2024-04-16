@@ -13,6 +13,7 @@ export const nonRelationalColumns = [
 ]
 
 export const productRelationColumns = [
+    'Factory_ID',
     'English_name',
     'Italian_Name',
     'Min_Employment',

@@ -134,6 +134,7 @@ export function setResultsTable(results, lof, featureLayers, formData) {
                 theseProducts.map(product => { 
                     rows.push(
                         [
+                            fid,
                             factoriesDictionary[fid]['English_Name'],
                             factoriesDictionary[fid]['Italian_Name'],
                             factoriesDictionary[fid]['Min_Employment'],

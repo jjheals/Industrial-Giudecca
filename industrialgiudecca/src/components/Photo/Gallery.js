@@ -31,7 +31,7 @@ const Gallery = ({ Factory_ID, allImgURLsPromise }) => {
                                 photoSrc={url}
                                 photoAlt={`Image ${index + 1}`}
                                 photoStyles={{}}
-                                photoCitation='ARCHIVE CITATION'
+                                photoCitation=''
                             />
                         ))}
                     </div>
