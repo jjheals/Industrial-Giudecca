@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/components/MapTimeline.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/components/MapTimeline.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +81,7 @@
       <workItem from="1712045691519" duration="13766000" />
       <workItem from="1712139713533" duration="13336000" />
       <workItem from="1712821649992" duration="34151000" />
+      <workItem from="1713253535344" duration="1078000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
