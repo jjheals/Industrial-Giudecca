@@ -260,9 +260,8 @@
     display: inline-block;
     padding: 16px 32px;
     background-color: transparent;
-    color: var(--title-font-color);
+    color: #050505;
     text-decoration: none;
-    border: 2px solid var(--title-font-color);
     border-radius: 0;
     font-size: 20px;
     font-family: var(--title-font);
@@ -272,6 +271,6 @@
 }
 
 .factory-homepage-button:hover {
-    background-color: var(--title-font-color);
+    background-color: black;
     color: #ffffff;
 }
