@@ -6,7 +6,7 @@ export const attachmentsBaseURL = 'https://services7.arcgis.com/BEVijU9IvwRENrmx
 // URL endpoints to the storymaps for factories that they exist for
 // [ key : val ] => [ Factory_ID : StoryMapURL ]
 export const factoryStoryMapURLs = {
-    g: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258',     // Storymap for Giudecca ("g")
+    g: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258?cover=false',     // Storymap for Giudecca ("g")
     3: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0?cover=false'      // Stucky
 }
 

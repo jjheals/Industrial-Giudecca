@@ -39,12 +39,6 @@ const DataExplorerResultsTable = ({ d }) => {
         link.click();
         document.body.removeChild(link);
     };
-    // Filter out entries without English_Name or Italian_Name
-    const filteredRows = queryResults.rows.filter(row => {
-        const englishNameIndex = queryResults.keys.indexOf('English_Name');
-        const italianNameIndex = queryResults.keys.indexOf('Italian_Name');
-        return row[englishNameIndex] && row[italianNameIndex];
-    });
 
     return (
         <div className="de-results-table-container">
@@ -57,7 +51,7 @@ const DataExplorerResultsTable = ({ d }) => {
                 </tr>
                 </thead>
                 <tbody style={{ height: tableBodyHeight }}>
-                {filteredRows.map((r, index) => (
+                {queryResults.rows.map((r, index) => (
                     <tr key={index} className="de-results-table-row">
                         {r.map((c, idx) => (
                             <td key={idx}>{c}</td>
@@ -71,7 +65,7 @@ const DataExplorerResultsTable = ({ d }) => {
                 <p>No results found.</p>
             </div>
 
-            <button onClick={downloadCSV} disabled={filteredRows.length === 0}>
+            <button onClick={downloadCSV} disabled={queryResults.rows.length === 0}>
                 Download CSV
             </button>
         </div>
