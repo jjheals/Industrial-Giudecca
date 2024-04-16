@@ -32,7 +32,8 @@ export function latLongToPixel(lat, long) {
 }
 
 /** fetchFactoriesFL(serviceURL, filters) 
- * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
+ * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given; basically the same functionality as fetchFL, but returns the
+ * results as an Array of Factory objects instead of dictionaries, and calls factory.getFactoryCoords() on each object
  * @param {string} serviceURL - ArcGIS service endpoint
  * @param {string} filters - SQL style filters to filter the query 
  * @returns {Array} array of Factory objects
@@ -44,7 +45,7 @@ export async function fetchFactoriesFL() {
 
         // Wait for the response, then iterate over the factories 
         const factories = await Promise.all(response.map(async feature => {
-            const factory = new Factory(feature.attributes, {'x':0, 'y':0});
+            const factory = new Factory(feature.attributes);
             await factory.getFactoryCoords();
             return factory;
         }));

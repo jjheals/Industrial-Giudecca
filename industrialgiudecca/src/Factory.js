@@ -4,14 +4,13 @@ import { attachmentsBaseURL, featureLayerServiceURLs } from './GlobalConstants';
 import { latLongToPixel, fetchFL } from './ArcGIS';
 import axios from 'axios';
 
-/** Factory(attributes, geometry)
+/** Factory(attributes)
  * @abstract A Factory object containing the attributes for a "Factory" 
  * @argument { dict } attribtues 
- * @argument { dict } geometry 
  */
 export default class Factory { 
 
-    constructor(attributes, geometry) { 
+    constructor(attributes) { 
         this.Opening_Year = parseInt(attributes.Opening_Year);
         this.Closing_Year = parseInt(attributes.Closing_Year);
         this.English_Name = attributes.English_Name;
@@ -20,8 +19,8 @@ export default class Factory {
         this.Max_Employment = attributes.Max_Employment;
         this.Factory_ID = attributes.Factory_ID;
         this.coverPicURL = attributes.Cover_Image_ArcGIS_URL;
-        this.long = geometry.x;
-        this.lat = geometry.y; 
+        this.long = null;
+        this.lat = null; 
         this.x = null;
         this.y = null;
         this.link = `/industrial-sites/${this.Factory_ID}`;
