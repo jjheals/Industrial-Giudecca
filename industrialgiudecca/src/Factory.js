@@ -25,6 +25,7 @@ export default class Factory {
         this.x = null;
         this.y = null;
         this.link = `/industrial-sites/${this.Factory_ID}`;
+        this.allAttachments = null;
     }
 
     /** toString() 
@@ -46,20 +47,6 @@ export default class Factory {
         s += `\tX: ${this.x}\n`;
         s += `\tY: ${this.y}\n`;
         return s;
-    }
-
-    /** getAllFactoryImageURLs()
-     * @abstract retrieves all attachment IDs for this Factory instance's OBJECTID
-     * @returns {Array} an array of URLs for all of this Factory's attachments
-     */
-    async getAllFactoryImageURLs() { 
-
-        const photoSourceFL = await fetchFL(featureLayerServiceURLs['Photo_Sources'], `Factory_ID = ${this.Factory_ID}`)
-        const allAttachmentDicts = photoSourceFL.map(d => { 
-            return d.attributes;
-        });
-
-        return allAttachmentDicts;      
     }
 
     /** getFactoryCoords()

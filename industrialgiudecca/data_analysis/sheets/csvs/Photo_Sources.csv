@@ -1,93 +1,93 @@
-﻿Building_ID,Factory_ID,Source_ID,Pic_Description,Source_Name,Photographer,ID #/ Inventory Number,Card Number,Link,ArcGIS_Link,Year,File_Extension,File_Name
--1,-1,1,,NCAP Archive,,NCAP-000-000-181-181,,https://ncap.org.uk/frame-download/3-1-4-3-31,,1945,jpg,F-1_S1_1945
-3,3,2,,,,,,,,yyyy,,F3_S2_
-3,3,3,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000009_MC_fv,21754,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1954,.jpeg,F3_S3_1954
-3,3,4,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000012_MC_fv,21760,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1954,,F3_S4_1954
-3,3,5,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000001_MC_fv,21738,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1954,,F3_S5_1954
-3,3,6,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000018_MC_fv,21772,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1954,jpg,F3_S6_1954
-3,3,7,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000032_MC_fv,21800,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1954,,F3_S7_1954
+﻿Building_ID,Factory_ID,Source_ID,Pic_Description,Source_Name,Photographer,ID_Inventory_Num,Card Number,Link,ArcGIS_Link,Year,File_Extension,File_Name
+-1,-1,1,,NCAP Archive,,NCAP-000-000-181-181,,https://ncap.org.uk/frame-download/3-1-4-3-31,https://serendpt.maps.arcgis.com/sharing/rest/content/items/a83146cbafe644f79c107aea3fecfb3a/data,1945,jpg,F-1_S1_1945
+3,3,2,,,,,,,,,,F3_S2_
+3,3,3,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000009_MC_fv,21754,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/fe5008449dbb4194975f19eba4766230/data,1954,.jpeg,F3_S3_1954
+3,3,4,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000012_MC_fv,21760,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/39fa7e8e433346c893b882f15c687b9a/data,1954,,F3_S4_1954
+3,3,5,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000001_MC_fv,21738,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/5ff2a0e48ed4473fad529e54959a7a27/data,1954,,F3_S5_1954
+3,3,6,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000018_MC_fv,21772,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/d0aadd6c685c439aa5dceb2f3e03b655/data,1954,jpg,F3_S6_1954
+3,3,7,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,000032_MC_fv,21800,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/8377a0e571ab46e484cc3ea5ac731765/data,1954,,F3_S7_1954
 3,3,8,Stucky,Giacomelli Photo Archive - Municipality of Venice,"
-Royal Photography Giacomelli",GN004016.JPG,38741,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1950,,F3_S8_1950
+Royal Photography Giacomelli",GN004016.JPG,38741,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/8aaf67648e1441808c86eae0246ee8f5/data,1950,,F3_S8_1950
 3,3,9,Stucky,Giacomelli Photo Archive - Municipality of Venice,"
-Royal Photography Giacomelli",,39971,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1890,,F3_S9_1890
+Royal Photography Giacomelli",,39971,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/be5d087fa9f846e5ab74b5550fb965aa/data,1890,,F3_S9_1890
 3,3,10,Stucky,Giacomelli Photo Archive - Municipality of Venice,"
-Royal Photography Giacomelli",GN003516.JPG,39969,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1890,,F3_S10_1890
+Royal Photography Giacomelli",GN003516.JPG,39969,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/0907529b671740ca849978ad7e817772/data,1890,,F3_S10_1890
 3,3,11,Stucky,Giacomelli Photo Archive - Municipality of Venice,"
-Royal Photography Giacomelli",,39970,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1890,,F3_S11_1890
-3,3,12,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,,21758,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1954,jpg,F3_S12_1954
-3,3,13,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,,21752,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,1954,jpeg,F3_S13_1954
-3,3,14,Stucky,,,,,,,yyyy,,F3_S14_
-3,3,15,Stucky,,,,,,,yyyy,,F3_S15_
-3,3,16,Stucky,Pietro Lando,Pietro Lando,,,,,1985,,F3_S16_1985
-3,3,17,Stucky,,,,,,,1962,,F3_S17_1962
-6,61,18,,Town of Venice,Town of Venice,,568928,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,yyyy,,F61_S18_
+Royal Photography Giacomelli",,39970,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/6815b703b3d449abb0202bb6f55daebd/data,1890,,F3_S11_1890
+3,3,12,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,,21758,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/84982118148c4092a54d5ce10eda9afd/data,1954,jpg,F3_S12_1954
+3,3,13,Stucky,Mantovani Fund - Communication Archive - Municipality of Venice,Carlo Mantovani,,21752,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,https://serendpt.maps.arcgis.com/sharing/rest/content/items/ec549044b1524b60b4d132302a014ae8/data,1954,jpeg,F3_S13_1954
+3,3,14,Stucky,,,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/2996729cde2a49c0b892e14159a75d99/data,,,F3_S14_
+3,3,15,Stucky,,,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/9fba401d35034a2d816e20d9a365655c/data,,,F3_S15_
+3,3,16,Stucky,Pietro Lando,Pietro Lando,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/285a558c4b3041f38ad99c1505ba7f91/data,1985,,F3_S16_1985
+3,3,17,Stucky,,,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/44c3484a00a84be392ee9015f536a638/data,1962,,F3_S17_1962
+6,61,18,,Town of Venice,Town of Venice,,568928,https://www.albumdivenezia.it/sicap/opac.aspx?Web=venezia&TBL=F&FLD1=DESP&VAL1=Archivio+Forti+-+Bazzera&SRC=Y,,,,F61_S18_
 6,6,19,,Birra Venezia,,,Venetian Distillery,https://www.birravenezia.it/en/our-story,,1902,jpeg,F6_S19_1902
-3,3,20,,,,,,,,yyyy,,F3_S20_
+3,3,20,,,,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/d8b5443e4fbc46538469711cb4d64eb8/data,,,F3_S20_
 4,4,21,,,,,,,,1983,,F4_S21_1983
 6,6,22,,Birra Venezia,,,The Birra San Marco Company,https://www.birravenezia.it/storia#,,1908,,F6_S22_1908
-,,23,,,,,,,,yyyy,,F_S23_
+,,23,,,,,,,,,,F_S23_
 4,4,23,,,,,,,,1983,,F4_S23_1983
 4,4,24,,,,,,,,1984,,F4_S24_1984
-6,6,25,,Birra Venezia,,,,https://www.birravenezia.it/storia#,,yyyy,,F6_S25_
--1,-1,26,,Mediterranean Allied Photo Reconnassance Wing,,NCAP-000-000-181-174,,https://ncap.org.uk/frame-download/3-1-4-3-24,,1945,,F-1_S26_1945
--1,-1,27,,Allied Central Interpretation Unit,,NCAP-000-000-178-215,,https://ncap.org.uk/frame-download/1-1-1-27-130,,1945,,F-1_S27_1945
--1,-1,28,,National Environment Research Council,,NCAP-000-001-196-941,,https://ncap.org.uk/frame-download/17-1-1-122-228,,2005,,F-1_S28_2005
-19,19,29,,,,,,,,yyyy,,F19_S29_
--1,-1,30,,Giorgio Cini Foundation,,,,,,yyyy,,F-1_S30_
--1,-1,31,,Giorgio Cini Foundation,,,,,,yyyy,,F-1_S31_
--1,-1,32,,Giorgio Cini Foundation,,70C_781,,,,yyyy,jpeg,F-1_S32_yyyy
-3,3,33,Stucky Hallway,SerenDPT,SerenDPT,,,,,2024,,F3_S33_2024
+6,6,25,,Birra Venezia,,,,https://www.birravenezia.it/storia#,,,,F6_S25_
+-1,-1,26,,Mediterranean Allied Photo Reconnassance Wing,,NCAP-000-000-181-174,,https://ncap.org.uk/frame-download/3-1-4-3-24,https://serendpt.maps.arcgis.com/sharing/rest/content/items/13d6817885084cd2ae90add5518a692e/data,1945,,F-1_S26_1945
+-1,-1,27,,Allied Central Interpretation Unit,,NCAP-000-000-178-215,,https://ncap.org.uk/frame-download/1-1-1-27-130,https://serendpt.maps.arcgis.com/sharing/rest/content/items/b364879d4461432eb94dedab092e68b9/data,1945,,F-1_S27_1945
+-1,-1,28,,National Environment Research Council,,NCAP-000-001-196-941,,https://ncap.org.uk/frame-download/17-1-1-122-228,https://serendpt.maps.arcgis.com/sharing/rest/content/items/a8b51dc323594cefbc8a947ebac438e0/data,2005,,F-1_S28_2005
+19,19,29,,,,,,,,,,F19_S29_
+-1,-1,30,,Giorgio Cini Foundation,,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/282f38cf03a4447c97cae57d0836d534/data,,,F-1_S30_
+-1,-1,31,,Giorgio Cini Foundation,,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/b1a4fdfbd4314c15b69e72485fcaebd0/data,,,F-1_S31_
+-1,-1,32,,Giorgio Cini Foundation,,70C_781,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/42e219cfd0274eee95b4ddb3fe7057c6/data,yyyy,jpeg,F-1_S32_yyyy
+3,3,33,Stucky Hallway,SerenDPT,SerenDPT,,,Picture,,2024,,F3_S33_2024
 21,21,34,Junghans,SerenDPT,SerenDPT,,,,,2024,jpeg,F21_S34_2024
--1,-1,35,View from San Giorgio Clocktower,Alessandro Mander,Alessandro Mander?,,,,,yyyy,,F-1_S35_yyyy
-3,3,36,Stucky Abandoned,Pietro Lando,,,,,,yyyy,,F3_S36_yyyy
--2,-2,37,,Alessandro Mander,,,,,,yyyy,,F-2_S37_yyyy
--2,-2,38,,Alessandro Mander,,,,,,yyyy,,F-2_S38_yyyy
-14,14,39,Herion Ad,Alessandro Mander,,,,,,yyyy,,F14_S39_yyyy
--2,-2,40,,Alessandro Mander,,,,,,yyyy,,F-2_S40_yyyy
--4,-4,41,Ponte Lungo,Alessandro Mander,,,,,,yyyy,,F-4_S41_yyyy
--2,-2,42,Rio della Palada,Alessandro Mander,,,,,,yyyy,,F-2_S42_yyyy
--4,-4,43,Acnil from Ponte Longo,Alessandro Mander,,,,,,yyyy,,F-4_S43_yyyy
--2,-2,44,,Alessandro Mander,,,,,,yyyy,,F-2_S44_yyyy
--3,-3,45,Redentore Festival,Alessandro Mander,,,,,,yyyy,,F-3_S45_yyyy
--2,-2,46,,Alessandro Mander,,,,,,yyyy,,F-2_S46_yyyy
-3,3,47,Stucky building,Alessandro Mander,,,,,,yyyy,,F3_S47_yyyy
--2,-2,48,,Alessandro Mander,,,,,,yyyy,,F-2_S48_yyyy
--2,-2,49,,Alessandro Mander,,,,,,yyyy,,F-2_S49_yyyy
--2,-2,50,,Alessandro Mander,,,,,,yyyy,,F-2_S50_yyyy
--3,-3,51,Redentore Festival Crossing,Alessandro Mander,,,,,,yyyy,,F-3_S51_yyyy
--4,-4,52,Acnil from Ponte Longo,Alessandro Mander,,,,,,yyyy,,F-4_S52_yyyy
-3,3,53,Stucky,Alessandro Mander,,,,,,yyyy,,F3_S53_yyyy
--2,-2,54,Ponte S. Angelo,Alessandro Mander,,,,,,yyyy,,F-2_S54_yyyy
--2,-2,55,Herion and Pivato,Alessandro Mander,,,,,,yyyy,,F-2_S55_yyyy
-3,3,56,Stucky,Alessandro Mander,,,,,,yyyy,,F3_S56_yyyy
--2,-2,57,,Alessandro Mander,,,,,,yyyy,,F-2_S57_yyyy
--2,-2,58,,Alessandro Mander,,,,,,yyyy,,F-2_S58_yyyy
--3,-3,59,Redentore Festival Crossing,Alessandro Mander,,,,,,yyyy,,F-3_S59_yyyy
-14,14,60,Hérion,Alessandro Mander,,,,,,yyyy,,F14_S60_yyyy
--3,-3,61,Redentore Festival Crossing,Alessandro Mander,,,,,,yyyy,,F-3_S61_yyyy
--2,-2,62,Rio della Pallada,Alessandro Mander,,,,,,yyyy,,F-2_S62_yyyy
--3,-3,63,Redentore Festival Crossing,Alessandro Mander,,,,,,yyyy,,F-3_S63_yyyy
-14,14,64,Herion ad,Alessandro Mander,,,,,,yyyy,,F14_S64_yyyy
--4,-4,65,Acnil from Ponte Longo,Alessandro Mander,,,,,,yyyy,,F-4_S65_yyyy
--4,-4,66,Pontelungo,Alessandro Mander,,,,,,yyyy,,F-4_S66_yyyy
--3,-3,67,Redentore Festival Crossing,Alessandro Mander,,,,,,yyyy,,F-3_S67_yyyy
+-1,-1,35,View from San Giorgio Clocktower,Alessandro Mander,Alessandro Mander?,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/d5df1e654ebf45199228dbde82690901/data,yyyy,,F-1_S35_yyyy
+3,3,36,Stucky Abandoned,Pietro Lando,,,,Picture,,yyyy,,F3_S36_yyyy
+-2,-2,37,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/0f0b3f90bdbb402ea3f46235f9930e10/data,yyyy,,F-2_S37_yyyy
+-2,-2,38,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/9cead1aa2f8c4e6fbb3f37b047a90be3/data,yyyy,,F-2_S38_yyyy
+14,14,39,Herion Ad,Alessandro Mander,,,,Picture,,yyyy,,F14_S39_yyyy
+-2,-2,40,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/8ac8f36908d64927908724e2006efda5/data,yyyy,,F-2_S40_yyyy
+-4,-4,41,Ponte Lungo,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/e82d33ebdfb64106b11a15cd021b57fe/data,yyyy,,F-4_S41_yyyy
+-2,-2,42,Rio della Palada,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/f0a664834c914a2e96f0b5b06543a626/data,yyyy,,F-2_S42_yyyy
+-4,-4,43,Acnil from Ponte Longo,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/785e64e19b104853a3d3fd300a92be4a/data,yyyy,,F-4_S43_yyyy
+-2,-2,44,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/546b9b35667842a48d919feb4e5a99f8/data,yyyy,,F-2_S44_yyyy
+-3,-3,45,Redentore Festival,Alessandro Mander,,,,Picture,,yyyy,,F-3_S45_yyyy
+-2,-2,46,,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/3a91a97960f649de8c52514642c31427/data,yyyy,,F-2_S46_yyyy
+3,3,47,Stucky building,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/75ca9b64722b4f2f9fe27e09c261c213/data,yyyy,,F3_S47_yyyy
+-2,-2,48,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/70337755d0f64c7f9681f5cf893cf965/data,yyyy,,F-2_S48_yyyy
+-2,-2,49,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/71660f3864d54315821c7abaa72b8ef9/data,yyyy,,F-2_S49_yyyy
+-2,-2,50,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/6524685ecca742e2ad63fcdd64cd6115/data,yyyy,,F-2_S50_yyyy
+-3,-3,51,Redentore Festival Crossing,Alessandro Mander,,,,Picture,,yyyy,,F-3_S51_yyyy
+-4,-4,52,Acnil from Ponte Longo,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/35c671cfa23d4a27857df040ebcecbf8/data,yyyy,,F-4_S52_yyyy
+3,3,53,Stucky,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/c8ba931d712a4b68891cfeba7e3a452d/data,yyyy,,F3_S53_yyyy
+-2,-2,54,Ponte S. Angelo,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/644556dcbac4462985e41aae990ffbc3/data,yyyy,,F-2_S54_yyyy
+-2,-2,55,Herion and Pivato,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/3c71952233e34d66941d7d6faf7f19d7/data,yyyy,,F-2_S55_yyyy
+3,3,56,Stucky,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/d231834cad4e46cfbc3c2b5b918f7ad0/data,yyyy,,F3_S56_yyyy
+-2,-2,57,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/ca10e606b4054ce59c70738a2f5eef4b/data,yyyy,,F-2_S57_yyyy
+-2,-2,58,?,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/de861ef8cecc4e3c893181e6ecb38c57/data,yyyy,,F-2_S58_yyyy
+-3,-3,59,Redentore Festival Crossing,Alessandro Mander,,,,Picture,,yyyy,,F-3_S59_yyyy
+14,14,60,Hérion,Alessandro Mander,,,,Picture,,yyyy,,F14_S60_yyyy
+-3,-3,61,Redentore Festival Crossing,Alessandro Mander,,,,Picture,,yyyy,,F-3_S61_yyyy
+-2,-2,62,Rio della Pallada,Alessandro Mander,,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/b87fcdf73cb74e3383222faa22cd60b0/data,yyyy,,F-2_S62_yyyy
+-3,-3,63,Redentore Festival Crossing,Alessandro Mander,,,,Picture,,yyyy,,F-3_S63_yyyy
+14,14,64,Herion ad,Alessandro Mander,,,,Picture,,yyyy,,F14_S64_yyyy
+-4,-4,65,Acnil from Ponte Longo,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/3d8cab9761174727a0c4c7097464d271/data,yyyy,,F-4_S65_yyyy
+-4,-4,66,Pontelungo,Alessandro Mander,,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/48d12d307d5d4d12b750a3191f9fe409/data,yyyy,,F-4_S66_yyyy
+-3,-3,67,Redentore Festival Crossing,Alessandro Mander,,,,Picture,,yyyy,,F-3_S67_yyyy
 14,14,68,Hérion,SerenDPT,SerenDPT,,,,,2024,,F14_S68_2024
--4,-4,69,Ponte Longo,SerenDPT,SerenDPT,,,,,2024,,F-4_S69_2024
--4,-4,70,Ponte Longo,SerenDPT,SerenDPT,,,,,2024,,F-4_S70_2024
-17,17,71,Inio,Pietro Lando,,,,,,yyyy,,F17_S71_yyyy
-27,27,72,CNOMV,Pietro Lando,,,,,,1966,,F27_S72_1966
-19,19,73,Campo Junghans,SerenDPT,SerenDPT,,,,,2024,,F19_S73_2024
-16,16,74,Toffolo,SerenDPT,SerenDPT,,,,,2024,,F16_S74_2024
-16,16,75,Toffolo,SerenDPT,SerenDPT,,,,,2024,,F16_S75_2024
--2,-2,76,,SerenDPT,SerenDPT,,,,,2024,,F-2_S76_2024
-19,19,77,Junghans,SerenDPT,SerenDPT,,,,,2024,,F19_S77_2024
-27,27,78,CREA Shipyard,SerenDPT,SerenDPT,,,,,2024,,F27_S78_2024
-26,262,79,Acnil,SerenDPT,SerenDPT,,,,,2024,,F262_S79_2024
-26,262,80,Acnil,SerenDPT,SerenDPT,,,,,2024,,F262_S80_2024
-26,262,81,Acnil,SerenDPT,SerenDPT,,,,,2024,,F262_S81_2024
-26,262,82,Acnil,SerenDPT,SerenDPT,,,,,2024,,F262_S82_2024
+-4,-4,69,Ponte Longo,SerenDPT,SerenDPT,,,Picture,,2024,,F-4_S69_2024
+-4,-4,70,Ponte Longo,SerenDPT,SerenDPT,,,Picture,,2024,,F-4_S70_2024
+17,17,71,Inio,Pietro Lando,,,,Picture,,yyyy,,F17_S71_yyyy
+27,27,72,CNOMV,Pietro Lando,,,,Picture,,1966,,F27_S72_1966
+19,19,73,Campo Junghans,SerenDPT,SerenDPT,,,Picture,,2024,,F19_S73_2024
+16,16,74,Toffolo,SerenDPT,SerenDPT,,,Picture,,2024,,F16_S74_2024
+16,16,75,Toffolo,SerenDPT,SerenDPT,,,Picture,,2024,,F16_S75_2024
+-2,-2,76,,SerenDPT,SerenDPT,,,Picture,https://serendpt.maps.arcgis.com/sharing/rest/content/items/5ae687b1b90d45eaa65fa41d6780a220/data,2024,,F-2_S76_2024
+19,19,77,Junghans,SerenDPT,SerenDPT,,,Picture,,2024,,F19_S77_2024
+27,27,78,CREA Shipyard,SerenDPT,SerenDPT,,,Picture,,2024,,F27_S78_2024
+26,262,79,Acnil,SerenDPT,SerenDPT,,,Picture,,2024,,F262_S79_2024
+26,262,80,Acnil,SerenDPT,SerenDPT,,,Picture,,2024,,F262_S80_2024
+26,262,81,Acnil,SerenDPT,SerenDPT,,,Picture,,2024,,F262_S81_2024
+26,262,82,Acnil,SerenDPT,SerenDPT,,,Picture,,2024,,F262_S82_2024
 -4,-4,83,View from Ponte Longo,SerenDPT,SerenDPT,,,,,2024,,F-4_S83_2024
--2,-2,84,Canottieri Giudecca,SerenDPT,SerenDPT,,,,,2024,,F-2_S84_2024
+-2,-2,84,Canottieri Giudecca,SerenDPT,SerenDPT,,,,https://serendpt.maps.arcgis.com/sharing/rest/content/items/9b3462bec5014b5ab967b98e9a17f85c/data,2024,,F-2_S84_2024
 -4,-4,85,Ponto Longo,SerenDPT,SerenDPT,,,,,2024,,F-4_S85_2024
 -4,-4,86,Ponte Longo,SerenDPT,SerenDPT,,,,,2024,,F-4_S86_2024
 -4,-4,87,Ponte Longo,SerenDPT,SerenDPT,,,,,2024,,F-4_S87_2024
@@ -97,3 +97,17 @@ Royal Photography Giacomelli",,39970,https://www.albumdivenezia.it/sicap/opac.as
 -4,-4,91,Ponte Longo (POV acnil),SerenDPT,SerenDPT,,,,,2024,,F-4_S91_2024
 -4,-4,92,Ponte Longo,SerenDPT,SerenDPT,,,,,2024,,F-4_S92_2024
 9,9,93,Scalera Sound Team,Alessandro Pace photographic archive,public domain,,,,,yyyy,,F9_S93_yyyy
+9,9,94,,,,,,,,1940,,F9_S94_1940
+3,3,95,Stucky Occupation,Fotografi Al Lavaro (1954),Carlo Mantovani,,,,,1954,,F3_S95_1954
+3,3,96,,,,,,,,1954,,F3_S96_1954
+3,3,97,,,,,,,,1954,,F3_S97_1954
+3,3,98,,,,,,,,1954,,F3_S98_1954
+3,3,99,,,,,,,,1954,,F3_S99_1954
+3,3,100,,,,,,,,1954,,F3_S100_1954
+3,3,101,,,,,,,,1954,,F3_S101_1954
+3,3,102,,,,,,,,1954,,F3_S102_1954
+3,3,103,,,,,,,,1954,,F3_S103_1954
+3,3,104,,,,,,,,1954,,F3_S104_1954
+3,3,105,,,,,,,,1954,,F3_S105_1954
+3,3,106,,,,,,,,1954,,F3_S106_1954
+3,3,107,,,,,,,,1954,,F3_S107_1954

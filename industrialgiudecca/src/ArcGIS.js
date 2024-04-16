@@ -31,51 +31,6 @@ export function latLongToPixel(lat, long) {
     return { x: pixelX, y: pixelY };
 }
 
-/** fetchAllFactoryImages(serviceURL, apiToken)
- * @abstract fetch all the images for all factories in the FL at the given serviceURL
- * @param {string} serviceURL - URL to the ArcGIS service hosting the FL
- * @param {string} apiToken - API token with access to the serivceURL
- * @returns {dict} a dictionary containing { key : val } => { Factory_ID : attachmentURLs_Array }
- * 
- * @example
- * import fetchAllFactoryImages from 'path/to/ArcGIS.js'
- * 
- * fetchAllFactoryImages(apiKey)
- * .then(imgsDict => { 
- *    console.log('imgsDict');
- *    console.log(imgsDict);
- * });
- */
-export function fetchAllFactoryImages() { 
-
-    // Init empty return dict to contain { key : val } => { Factory_ID : attachmentURLs_Array }
-    let attachmentsDict = {};
-    const serviceURL = featureLayerServiceURLs['Factory'];
-
-    // Get the FactoriesFL first to get all the factories
-    fetchFactoriesFL(serviceURL)
-    .then(factories => { 
-
-        // Check if factories list is empty
-        if(factories.length == 0) { 
-            console.error('No factories retrieved.');
-            return [];
-        }
-
-        // For each factory, fetch all the images
-        factories.forEach(factory => {
-            factory.getAllFactoryImageURLs()
-            .then(attachmentURLs => {
-                // Add these URLs to attachmentsDict at the key [Factory_ID]
-                attachmentsDict[factory.Factory_ID] = attachmentURLs;
-            });
-        });
-    });
-
-    // Return final populated dict
-    return attachmentsDict;
-}
-
 /** fetchFactoriesFL(serviceURL, filters) 
  * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given
  * @param {string} serviceURL - ArcGIS service endpoint
@@ -91,7 +46,6 @@ export async function fetchFactoriesFL() {
         const factories = await Promise.all(response.map(async feature => {
             const factory = new Factory(feature.attributes, {'x':0, 'y':0});
             await factory.getFactoryCoords();
-
             return factory;
         }));
 
@@ -254,6 +208,9 @@ export function formatTimeperiodString(timeperiodDict) {
  * @returns 
  */
 export function formatImageSource(imgDict) { 
-    return `${imgDict['Source_Name']}, ${imgDict['ID #/ Inventory Number']}`;
+    let s = '';
+    s += imgDict['Source_Name'];
+    if(imgDict['ID_Inventory_Num']) s += imgDict['ID #/ Inventory Number'];
+    return s;
 }
 

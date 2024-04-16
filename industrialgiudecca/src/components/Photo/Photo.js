@@ -20,7 +20,7 @@ const Photo = ({ photoClass, photoID, photoAlt, photoKey, photoSrc, photoCitatio
             <img
                     className='info-icon'
                     id={`info-${photoID}`}
-                    src='i-icon.png'
+                    src={`/info-icon.jpeg`}
                     onClick={() => togglePopup(photoID)}
                     style={{ 
                         left: '1vw',

@@ -12,11 +12,15 @@ import React, { useEffect, useState } from 'react';
 import Photo from './Photo.js';
 import { formatImageSource } from '../../ArcGIS.js';
 
-const Gallery = ({ Factory_ID, allImgURLsPromise }) => {
-    const [allImgURLs, setAllImgURLs] = useState([]);
+const Gallery = ({ Factory_ID, allAttachments }) => {
+    const [allAttachmentDicts, setAllImgURLs] = useState([]);
+
+    console.log('gallery given allAttachments:');
+    console.log(allAttachments);
 
     useEffect(() => { 
-        setAllImgURLs(allImgURLsPromise);
+        console.log(allAttachments);
+        setAllImgURLs(allAttachments);
     });
 
     return (
@@ -24,7 +28,7 @@ const Gallery = ({ Factory_ID, allImgURLsPromise }) => {
 
                 <div class='gallery-inner'>
                     <div class='gallery' id={`gallery-${Factory_ID}`}> 
-                        {allImgURLs.map(d => (
+                        {allAttachmentDicts.map(d => (
                             <Photo
                                 photoClass='gallery-image'
                                 photoID={ `F${Factory_ID}-S${d['Source_ID']}` }

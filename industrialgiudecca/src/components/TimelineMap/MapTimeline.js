@@ -11,7 +11,7 @@ import "../../locals/it/Homepage.json";
 
 let currTimeperiodIndex = 0;
  
-const MapTimeline = ({ factories, timeperiods }) => {
+const MapTimeline = ({ factories, timeperiods, minYear }) => {
     const pageRef = useRef(null);           // Page ref
     const mapContainerRef = useRef(null);   // Ref for map container element
     const markerRefs = useRef({});          // Refs for marker elements

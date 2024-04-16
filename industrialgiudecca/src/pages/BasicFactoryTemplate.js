@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import Sidebar from '../components/Sidebar.js';
 import { featureLayerServiceURLs } from '../GlobalConstants.js';
-import { fetchFactoriesFL } from '../ArcGIS.js';
+import { fetchFactoriesFL, fetchFL } from '../ArcGIS.js';
 import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
 import { factoryStoryMapURLs } from '../GlobalConstants.js';
@@ -26,7 +26,7 @@ import '../css/BasicFactoryTemplate.css';
 function BasicFactoryTemplate() {
     const { Factory_ID } = useParams();
     const [coverPicURL, setCoverPicURL] = useState('');
-    const [imgURLs, setAllImgURLs] = useState([]);
+    const [allAttachments, setAllAttachments] = useState([]);
     const [storymapURL, setStorymapURL] = useState('');
     const [showSidebar, setShowSidebar] = useState(false);
     const [title, setTitle] = useState('');
@@ -51,13 +51,13 @@ function BasicFactoryTemplate() {
             // Since we used a primary key as the filter, there is only one result
             factory = factories[0];
             setTitle(factory.English_Name);       // Set the title as the english name
-            factory.getAllFactoryImageURLs()
-            .then(allImgURLs => {
+            setCoverPicURL(factory.coverPicURL);  // Set the cover img on the title     
 
-                setCoverPicURL(factory.coverPicURL);  // Set the cover img on the title
-                
-                setAllImgURLs(allImgURLs);            // Set the gallery images
-            })
+            fetchFL(featureLayerServiceURLs['Photo_Sources'], `Factory_ID = ${factory.Factory_ID}`)
+            .then(fl => { 
+                const loa = fl.map(feature => { return feature.attributes; });
+                setAllAttachments(loa);
+            });
         })
         .catch(error => {
             console.error('Error fetching details for factory:', error);
@@ -102,7 +102,7 @@ function BasicFactoryTemplate() {
                     <Gallery
                         key={Factory_ID}
                         Factory_ID={Factory_ID}
-                        allImgURLsPromise={imgURLs}
+                        allAttachments={allAttachments}
                     />
             </div>
 
