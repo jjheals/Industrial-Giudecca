@@ -26,10 +26,12 @@ function FactoryHomepage() {
     });
 
     useEffect(() => {
-        fetchFactoriesFL(featureLayerServiceURLs['Factory'])
+        fetchFactoriesFL() 
             .then(factories => {
+                console.log(factories);
+                
                 factories.forEach(factory => {
-                    factory.getCoverImageURL();
+                    //factory.getCoverImageURL();
                     factory.getFactoryCoords();
                 });
                 setFactories(factories);
