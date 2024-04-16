@@ -20,9 +20,25 @@ const DataExplorerResultsTable = ({ d }) => {
     }, [d]);
 
     const downloadCSV = () => {
-        // ... (code remains the same)
-    };
+        if (queryResults.rows.length === 0) {
+            return; // Do nothing if there are no rows to download
+        }
 
+        const csvContent = [
+            queryResults.keys.join(','),
+            ...queryResults.rows.map(row => row.join(',')),
+        ].join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'query_results.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
     // Filter out entries without English_Name or Italian_Name
     const filteredRows = queryResults.rows.filter(row => {
         const englishNameIndex = queryResults.keys.indexOf('English_Name');
