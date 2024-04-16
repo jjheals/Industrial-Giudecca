@@ -1,4 +1,4 @@
-:root { 
+:root {
     --sidebar-z: 1001;
     --sidebar-width: 25vw;
     --hamburger-pos: 20px;
@@ -9,7 +9,7 @@
 }
 
 /* Sidebar.css */
-nav ul li a { 
+nav ul li a {
     text-decoration: none;
 }
 
@@ -95,17 +95,17 @@ nav ul li a {
     font-size: larger;
 }
 
-.sidebar-link { 
+.sidebar-link {
     transition: var(--sidebar-link-hover-transition);
     color: var(--sidebar-link-color);
 }
 
-.sidebar-link:visited { 
+.sidebar-link:visited {
     transition: var(--sidebar-link-hover-transition);
     color: var(--sidebar-link-color);
 }
 
-.sidebar-link:visited:hover { 
+.sidebar-link:visited:hover {
     transition: var(--sidebar-link-hover-transition);
     font-size: 2vw;
 }
@@ -115,7 +115,7 @@ nav ul li a {
     font-size: 2vw;
 }
 
-.sidebar-sub-element { 
+.sidebar-sub-element {
     transition: var(--sidebar-link-hover-transition);
     font-size: 1vw;
     margin: 10px 2vw;
@@ -125,16 +125,16 @@ nav ul li a {
     cursor: pointer;
 }
 
-.sidebar-sub-link { 
+.sidebar-sub-link {
     color: var(--sidebar-link-color);
 }
-.sidebar-sub-link:hover { 
+.sidebar-sub-link:hover {
     transition: var(--sidebar-link-hover-transition);
     color: var(--sidebar-link-color);
     font-size: 1.2vw;
 }
 
-.sidebar-sub-link:visited { 
+.sidebar-sub-link:visited {
     transition: var(--sidebar-link-hover-transition);
     color: var(--sidebar-link-color);
 }

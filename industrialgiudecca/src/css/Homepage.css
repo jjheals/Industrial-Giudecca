@@ -3,7 +3,7 @@
     --container-top-padding: 5%;
     --title-font: "Playfair Display", Serif, monospace;
     --title-font-size: 6vw;
-    --title-font-color: rgb(255, 255, 255);
+    --title-font-color: rgb(0, 0, 0);
     --scroll-text-color: rgb(232, 202, 162);
     --bg-overlay: rgba(0, 0, 0, 0.324); /* Adjust the opacity by changing the last value (0.5 in this case) */
     --text-align: left;
@@ -247,4 +247,31 @@
         opacity: 0;
         transform: rotate(45deg) translate(10px, 10px);
     }
+}
+
+.factory-homepage-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.factory-homepage-button {
+    display: inline-block;
+    padding: 16px 32px;
+    background-color: transparent;
+    color: var(--title-font-color);
+    text-decoration: none;
+    border: 2px solid var(--title-font-color);
+    border-radius: 0;
+    font-size: 20px;
+    font-family: var(--title-font);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.factory-homepage-button:hover {
+    background-color: var(--title-font-color);
+    color: #ffffff;
 }

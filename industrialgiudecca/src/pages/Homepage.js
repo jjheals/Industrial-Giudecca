@@ -12,6 +12,8 @@ import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 import { useTranslation } from "react-i18next";
 import "../i18n.js";
 import LanguageSelector from '../components/LanguageSelector.js'
+import { Link } from 'react-router-dom';
+
  
 /** Homepage 
  * @abstract Renders the homepage at the relative route "/". Takes no parameters. Contains: 
@@ -158,8 +160,15 @@ function Homepage() {
             </div>
 
             {/* Storyboard iframe from ArcGIS */}
-            <iframe src={ storymapURL } width="100%"
+            <iframe src={storymapURL} width="100%"
                     height="1050v" frameBorder="0" allowFullScreen allow="geolocation"></iframe>
+            <div className="factory-homepage-button-container">
+                <Link to="/industrial-sites">
+                    <button className="factory-homepage-button">{"Continue to learn more about the industrial sites of the Giudecca"}</button>
+                </Link>
+            </div>
+
+
         </div>
     );
 }
