@@ -50,11 +50,12 @@ function BasicFactoryTemplate() {
             
             // Since we used a primary key as the filter, there is only one result
             factory = factories[0];
+            setTitle(factory.English_Name);       // Set the title as the english name
             factory.getAllFactoryImageURLs()
-            .then(allImgURLs => { 
-                factory.coverPicURL = allImgURLs[0];  // Cover img is the first attachment
+            .then(allImgURLs => {
+
                 setCoverPicURL(factory.coverPicURL);  // Set the cover img on the title
-                setTitle(factory.English_Name);       // Set the title as the english name
+                
                 setAllImgURLs(allImgURLs);            // Set the gallery images
             })
         })
@@ -106,19 +107,8 @@ function BasicFactoryTemplate() {
             </div>
 
             {/* Grid container for basic factory details if applicable */}
-            <div id='grid-container'>
-                <div class='grid-item' id='image-panel'> 
-                    <img id='factory-image' />
-                </div>
-
-                <div class='grid-item' id='table-panel'> 
-                    <table id='factory-table'>
-
-                    </table>
-                </div>
-
-                <div class='grid-item' id='description-panel'> 
-                </div>
+            <div className='factory-data-table-container'>
+                
             </div>
 
             {/* ArcGIS storyboard for this factory if available */}

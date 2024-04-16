@@ -19,7 +19,7 @@ import { mapHeight, mapWidth, minLong, minLat, deltaLat, deltaLong } from './Glo
  * const x = result.x;
  * const y = result.y; 
  */
-function latLongToPixel(lat, long) {    
+export function latLongToPixel(lat, long) {    
     
     const thisLongOffset = long - minLong;  // Offset from the left of the map in DEGREES
     const thisLatOffset = lat - minLat;     // Offset from the top of the map in DEGREES
@@ -46,7 +46,7 @@ function latLongToPixel(lat, long) {
  *    console.log(imgsDict);
  * });
  */
-function fetchAllFactoryImages() { 
+export function fetchAllFactoryImages() { 
 
     // Init empty return dict to contain { key : val } => { Factory_ID : attachmentURLs_Array }
     let attachmentsDict = {};
@@ -82,7 +82,7 @@ function fetchAllFactoryImages() {
  * @param {string} filters - SQL style filters to filter the query 
  * @returns {Array} array of Factory objects
  */
-async function fetchFactoriesFL(serviceURL, filters) { 
+export async function fetchFactoriesFL(serviceURL, filters) { 
     try {
         // Query the factories FL to get the factory attributes         
         const response = await queryFeatures({
@@ -117,7 +117,7 @@ async function fetchFactoriesFL(serviceURL, filters) {
  * @returns 
  * 
  */
-async function fetchFL(serviceURL, filters) { 
+export async function fetchFL(serviceURL, filters) { 
     
     const response = await queryFeatures({
         url: serviceURL,
@@ -138,7 +138,7 @@ async function fetchFL(serviceURL, filters) {
  * @param { String } filterString - string to search for
  * @returns { Array[int] }
  */
-function filterFeatureLayer(featureLayerDict, targetAttributeString, filterString, returnAttribute) { 
+export function filterFeatureLayer(featureLayerDict, targetAttributeString, filterString, returnAttribute) { 
     let matchedIDs = [];
 
     const matchedFeatures = featureLayerDict.filter(dict => 
@@ -162,7 +162,7 @@ function filterFeatureLayer(featureLayerDict, targetAttributeString, filterStrin
  * @param { String } endYearCol - column name of the end year in the FL
  * @returns { Array [int] }
  */
-function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, targetAttributeString, returnAttribute) { 
+export function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, targetAttributeString, returnAttribute) { 
     let matchedFactoryIDs = [];
 
     // Filter first by ones that have dates
@@ -216,7 +216,7 @@ function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startCol, end
  * @param { String } returnAttribute - string specifying which attribute to filter the final results on (e.g. "Factory_ID" or "Building_ID")
  * @returns { Array [int] } 
  */
-function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, minTargetAttribute, maxTargetAttribute, returnAttribute) { 
+export function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, startCol, endCol, targetAttribute, minTargetAttribute, maxTargetAttribute, returnAttribute) { 
     let matchedFactoryIDs = [];
 
     // Filter first by ones that have dates
@@ -245,7 +245,7 @@ function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, startCol,
      * @param { dict } timeperiodDict 
      * @returns { String }
      */
-function formatTimeperiodString(timeperiodDict) { 
+export function formatTimeperiodString(timeperiodDict) { 
     if(timeperiodDict['Start_Date'] == timeperiodDict['End_Date']) { 
         return `(${timeperiodDict['Start_Date']}) ${timeperiodDict['Title']}`;
     } else { 
@@ -253,13 +253,12 @@ function formatTimeperiodString(timeperiodDict) {
     }
 }
 
-export { 
-    latLongToPixel,
-    fetchAllFactoryImages, 
-    fetchFactoriesFL,
-    fetchFL,
-    filterFeatureLayer,
-    filterFeatureLayerRange,
-    filterFeatureLayerDualRange,
-    formatTimeperiodString
-};
+/** formatImageSource(imgDict) 
+ * @abstract Formats the citations for an image 
+ * @param { dict } imgDict - the image details as a dictionary returned by the Photo_Sources FL in GlobalConstants.js
+ * @returns 
+ */
+export function formatImageSource(imgDict) { 
+    return `${imgDict['Source_Name']}, ${imgDict['ID #/ Inventory Number']}`;
+}
+

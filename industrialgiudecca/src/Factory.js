@@ -1,7 +1,7 @@
 // src/Factory.js
 import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 import { attachmentsBaseURL, featureLayerServiceURLs } from './GlobalConstants';
-import { latLongToPixel } from './ArcGIS';
+import { latLongToPixel, fetchFL } from './ArcGIS';
 import axios from 'axios';
 
 /** Factory(attributes, geometry)
@@ -81,31 +81,12 @@ export default class Factory {
      */
     async getAllFactoryImageURLs() { 
 
-        try {
-            const queryURL = `${attachmentsBaseURL}/queryAttachments?objectids=${this.OBJECTID}&f=pjson`;
-            const thisAttachmentsBaseURL = `${attachmentsBaseURL}/${this.OBJECTID}/attachments`;
-            const response = await axios.get(queryURL);
+        const photoSourceFL = await fetchFL(featureLayerServiceURLs['Photo_Sources'], `Factory_ID = ${this.Factory_ID}`)
+        const allAttachmentDicts = photoSourceFL.map(d => { 
+            return d.attributes;
+        });
 
-            // Handle response 
-            try { 
-                // Extract the attachments from the response
-                const attachmentsData = response.data.attachmentGroups[0].attachmentInfos;
-
-                // Iterate over the results and create URL for this attachment
-                let attachmentURLs = [];
-                attachmentsData.forEach(d => { 
-                    attachmentURLs.push(`${thisAttachmentsBaseURL}/${d.id}/`);
-                })
-                return attachmentURLs;
-            } catch(TypeError) { 
-                // Return an empty array if no attachments exist for this factory
-                console.log(`No images found for ${this.English_Name} (${this.Factory_ID})`);
-                return [];
-            }
-        } catch (error) {
-            console.error(error);
-            return "";
-        }
+        return allAttachmentDicts;      
     }
 
     /** getFactoryImage(apiToken)

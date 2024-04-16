@@ -19,7 +19,8 @@ export const featureLayerServiceURLs = {
     'Product_Over_Time': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Product_Over_Time/FeatureServer/0',
     'Building': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Building/FeatureServer/0',
     'Factory_At_Building': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_At_Building/FeatureServer/0',
-    'Timeperiod': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Timeperiod/FeatureServer/0'
+    'Timeperiod': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Timeperiod/FeatureServer/0',
+    'Photo_Sources': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Photo_Sources/FeatureServer/0'
 }
 
 // Function that takes the intersection of two lists, written to simplify code and improve readability

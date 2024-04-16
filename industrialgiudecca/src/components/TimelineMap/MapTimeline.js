@@ -10,7 +10,7 @@ import "../../locals/en/Homepage.json";
 import "../../locals/it/Homepage.json";
 
 let currTimeperiodIndex = 0;
-
+ 
 const MapTimeline = ({ factories, timeperiods }) => {
     const pageRef = useRef(null);           // Page ref
     const mapContainerRef = useRef(null);   // Ref for map container element
@@ -36,8 +36,11 @@ const MapTimeline = ({ factories, timeperiods }) => {
         setYear(minYear);
         setSkipTimeline(false);
         setTimeperiod('');
+        window.scrollTo({ 
+            top: timelineTop,
+            behavior: 'smooth'
+        });
         currTimeperiodIndex = 0;
-        pageRef.current.scrollTop = 0;
     };
 
     // Event handler for the skip timeline button

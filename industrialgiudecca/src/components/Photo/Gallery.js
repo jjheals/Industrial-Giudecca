@@ -10,6 +10,7 @@
  */
 import React, { useEffect, useState } from 'react';
 import Photo from './Photo.js';
+import { formatImageSource } from '../../ArcGIS.js';
 
 const Gallery = ({ Factory_ID, allImgURLsPromise }) => {
     const [allImgURLs, setAllImgURLs] = useState([]);
@@ -23,15 +24,15 @@ const Gallery = ({ Factory_ID, allImgURLsPromise }) => {
 
                 <div class='gallery-inner'>
                     <div class='gallery' id={`gallery-${Factory_ID}`}> 
-                        {allImgURLs.map((url, index) => (
+                        {allImgURLs.map(d => (
                             <Photo
                                 photoClass='gallery-image'
-                                photoID={ `${Factory_ID}-${index}` }
-                                photoKey={index}
-                                photoSrc={url}
-                                photoAlt={`Image ${index + 1}`}
+                                photoID={ `F${Factory_ID}-S${d['Source_ID']}` }
+                                photoKey={d['Source_ID']}
+                                photoSrc={d['ArcGIS_Link']}
+                                photoAlt={`Image ${d['Photo_Description']}`}
                                 photoStyles={{}}
-                                photoCitation=''
+                                photoCitation={formatImageSource(d)}
                             />
                         ))}
                     </div>
