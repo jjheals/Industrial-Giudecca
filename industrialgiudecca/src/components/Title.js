@@ -47,6 +47,9 @@ const Title = (title) => {
             <div class="title-inner" style={{ backgroundColor: title.titleColor }}> 
                 <h1 className="title" id="title">{ title.title }</h1>
             </div>
+            <div className="title-footer">
+                <p>Scroll to learn more</p>
+            </div>
         </div>
     );
 };
