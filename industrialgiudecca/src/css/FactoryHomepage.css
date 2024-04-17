@@ -18,9 +18,26 @@
     background-color: #f8f8f8;
     padding: 1vh 0;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.fhp-map-container { 
+.toggle-stories-button {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 1vw;
+}
+
+.toggle-stories-button:hover {
+    background-color: #f0f0f0;
+}
+
+.fhp-map-container {
     width: 100%;
     height: 60vh;
 }
@@ -28,7 +45,7 @@
 .factory-list-container {
     overflow-y: visible;
     padding: 0;
-    height: 100vh; 
+    height: auto;
     padding-top: 4vh;
     background-color: white;
 }
@@ -36,7 +53,8 @@
 .factory-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    padding: 0 1vw;
 }
 
 .landscape-item {
@@ -52,6 +70,11 @@
     transition: transform 0.3s ease;
     margin-bottom: 2%;
     margin-right: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: calc(var(--img-height) + 3vw);
 }
 
 .landscape-item:hover {
@@ -72,4 +95,5 @@
     height: var(--img-height);
     margin: 0;
     margin-top: 5%;
+    object-fit: cover;
 }
