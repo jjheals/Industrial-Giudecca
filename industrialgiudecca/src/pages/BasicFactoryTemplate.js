@@ -40,8 +40,21 @@ function BasicFactoryTemplate() {
         top: 0
     });
 
-    let removeGrid = false;
+    let removeTimeline = false;
     let factory = null;
+
+    async function getTimeperiods(minYear, maxYear) { 
+        await fetchFL(featureLayerServiceURLs['Timeperiod'], `Start_Year <= ${maxYear} AND End_Year >= ${minYear}`)
+        .then(timeperiodsFL => {
+            console.log('timeperiodsFL');
+            console.log(timeperiodsFL);
+
+        })
+    }
+
+    function setTimeline(factoryObj, timeperiods) { 
+
+    }
 
     // useEffect => get the details for this factory to init the page
     useEffect(() => { 
@@ -50,19 +63,24 @@ function BasicFactoryTemplate() {
             `Factory_ID = ${Factory_ID}`
         )
         .then(factories => {
-            
-            console.log('factories');
-            console.log(factories);
 
             // Since we used a primary key as the filter, there is only one result
             factory = factories[0];
             setTitle(factory.English_Name);       // Set the title as the english name
             setCoverPicURL(factory.coverPicURL);  // Set the cover img on the title     
-
+            
+            // Get all the images for the gallery
             fetchFL(featureLayerServiceURLs['Photo_Sources'], `Factory_ID = ${factory.Factory_ID}`)
-            .then(fl => { 
-                const loa = fl.map(feature => { return feature.attributes; });
-                setAllAttachments(loa);
+            .then(fl => { setAllAttachments(fl.map(feature => { return feature.attributes; })); })
+            .catch(error => {
+                console.error(`Error fetching the images for the factory with ID ${Factory_ID}:`, error);
+            })
+
+            // Get the timeperiods within the factory's opening/closing dates
+            fetchFL(featureLayerServiceURLs['Timeperiod'], `(Start_Date >= ${factory.Opening_Year}) AND (End_Date <= ${factory.Closing_Year})`)
+            .then(timeperiodsFL => { setTimeperiods(timeperiodsFL); })
+            .catch(error => { 
+                console.error('Error fetching the timeperiods feature layer:', error);
             });
         })
         .catch(error => {
@@ -72,7 +90,7 @@ function BasicFactoryTemplate() {
         // Set the storymap on the page, if it exists 
         const thisStorymapURL = factoryStoryMapURLs[Factory_ID];
         if(thisStorymapURL) { 
-            removeGrid = true;
+            removeTimeline = true;
             setStorymapURL(thisStorymapURL);
         }
     }, []);
@@ -86,23 +104,17 @@ function BasicFactoryTemplate() {
         const storyboardContainer = document.getElementById('storyboard');          // Element for the storyboard
 
         // Conditional: if removeGrid and gridContainer exists, remove the grid and do nothing else 
-        if (timelineContainer && removeGrid) timelineContainer.remove();
+        if (timelineContainer && removeTimeline) timelineContainer.remove();
 
         // There is no storyboard - keep the timeline, remove the storyboard, and populate the timeline
-        else if (storyboardContainer && !removeGrid) { 
+        else if (storyboardContainer && !removeTimeline) { 
             storyboardContainer.remove();
-
-            // Get all the info needed for the timeline
-            const thisFactory = fetchFL(featureLayerServiceURLs['Factory'], `Factory_ID = ${Factory_ID}`);
-            console.log('thisFactory');
-            console.log(thisFactory);
-
         }
 
     }, []);
 
     return (
-        <div className="main-container">
+        <div className='factory-template-container'>
             <div><Sidebar isOpen={showSidebar}/></div>
             <div><Title title={ title } imgSrc={ coverPicURL }/></div>
 
@@ -116,7 +128,7 @@ function BasicFactoryTemplate() {
             </div>
 
             {/* Grid container for basic factory details if applicable */}
-            <div className='factory-timeline-container'><FactoryTimeline factory={factoryObj} timeperiods={timeperiods}/></div>
+            <div className='timeline-container'><FactoryTimeline factory={factoryObj} timeperiods={timeperiods}/></div>
 
             {/* ArcGIS storyboard for this factory if available */}
             <iframe 
