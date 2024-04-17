@@ -33,3 +33,26 @@
     margin: auto;
     width: 100%;
 }
+
+.title-footer{
+    position: absolute;
+    bottom: 0vh;
+    left: 0;
+    width: 100%;
+    background-color: none; 
+    color: #fff; 
+    text-align: center;
+    font-family: 'Garamond', serif;
+    font-size: 2vw;
+    font-weight: 50;
+        animation-name: flash;
+         animation-duration: .85s;
+         animation-timing-function: linear;
+         animation-iteration-count: infinite;
+         animation-direction: alternate;
+         animation-play-state: running;
+        }
+        @keyframes flash {
+            from {color: rgb(255, 255, 255);}
+            to {color: transparent}
+        }
