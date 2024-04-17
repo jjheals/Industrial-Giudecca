@@ -135,6 +135,8 @@ function BasicFactoryTemplate() {
                 <FactoryTimeline 
                     factory={factoryTimelineParams.factory} 
                     timeperiods={factoryTimelineParams.timeperiods}
+                    products={factoryTimelineParams.products}
+                    employment={factoryTimelineParams.employment}
                 />
             </div>
 

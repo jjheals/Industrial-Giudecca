@@ -1,7 +1,7 @@
 // src/components/FactoryTimeline.js
 
 import React, { useState, useEffect, useRef } from 'react';
-
+import TimelineCircle from './Shapes/TimelineCircle';
 import '../css/components/FactoryTimeline.css';
 
  
@@ -14,7 +14,7 @@ const FactoryTimeline = ({ factory, timeperiods, products, employment }) => {
 
         console.log('FactoryTimeline timeperiods');
         console.log(timeperiods);
-        
+
         console.log('FactoryTimeline products');
         console.log(products);
         
@@ -25,7 +25,7 @@ const FactoryTimeline = ({ factory, timeperiods, products, employment }) => {
 
     return (
         <div className='factory-timeline-container'>
-            
+            <TimelineCircle timeperiodYear='1999' />
         </div>
     );
 };
