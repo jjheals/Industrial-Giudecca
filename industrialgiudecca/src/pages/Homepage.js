@@ -34,7 +34,7 @@ function Homepage() {
     // useEffect ==> init page and get all the buildings, factories, and timeperiods to pass to MapTimeline when the page loads
     useEffect(() => {
         // Fetch factories FL when component mounts
-        fetchFactoriesFL(featureLayerServiceURLs['Factory'])
+        fetchFactoriesFL('')
         .then(factories => {     
 
             // Get the min and max year from the factories and pass it to MapTimeline

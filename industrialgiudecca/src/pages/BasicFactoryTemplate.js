@@ -31,41 +31,51 @@ function BasicFactoryTemplate() {
     const [storymapURL, setStorymapURL] = useState('');
     const [showSidebar, setShowSidebar] = useState(false);
     const [title, setTitle] = useState('');
-
-    const [timeperiods, setTimeperiods] = useState([]);
-    const [factoryObj, setFactoryObj] = useState(null);
+    const [factoryTimelineParams, setTimelineParams] = useState({});
+    let removeTimeline = false;
 
     // Set viewport to the top of the page since React is sus
     window.scrollTo({ 
         top: 0
     });
 
-    let removeTimeline = false;
-    let factory = null;
-
-    async function getTimeperiods(minYear, maxYear) { 
-        await fetchFL(featureLayerServiceURLs['Timeperiod'], `Start_Year <= ${maxYear} AND End_Year >= ${minYear}`)
-        .then(timeperiodsFL => {
-            console.log('timeperiodsFL');
-            console.log(timeperiodsFL);
-
-        })
-    }
-
-    function setTimeline(factoryObj, timeperiods) { 
-
-    }
-
     // useEffect => get the details for this factory to init the page
     useEffect(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
-        fetchFactoriesFL(
-            `Factory_ID = ${Factory_ID}`
-        )
-        .then(factories => {
+        fetchFactoriesFL(`Factory_ID = ${Factory_ID}`)
+        .then(async factories => {
 
             // Since we used a primary key as the filter, there is only one result
-            factory = factories[0];
+            const factory = factories[0];
+
+            // Get the timeperiods FL using the factory's opening/closing dates
+            const timeperiodsFL = await fetchFL(
+                featureLayerServiceURLs['Timeperiod'], 
+                `(Start_Date >= ${factory.Opening_Year}) AND (End_Date <= ${factory.Closing_Year})`
+            );
+
+            // Get the product information for this factory
+            const productsFL = await fetchFL(
+                featureLayerServiceURLs['Product_Over_Time'],
+                `Factory_ID = ${Factory_ID}`
+            )
+            .then(fl => { return fl.map(d => { return d.attributes; }); });
+
+            // Get the employment information for this factory
+            const employmentFL = await fetchFL(
+                featureLayerServiceURLs['Employment_Over_Time'],
+                `Factory_ID = ${Factory_ID}`
+            )
+            .then(fl => { return fl.map(d => { return d.attributes; }); })
+
+            // Set the timeline params 
+            setTimelineParams({ 
+                'factory': factory, 
+                'timeperiods': timeperiodsFL,
+                'products': productsFL,
+                'employment': employmentFL,
+            });
+
             setTitle(factory.English_Name);       // Set the title as the english name
             setCoverPicURL(factory.coverPicURL);  // Set the cover img on the title     
             
@@ -75,13 +85,6 @@ function BasicFactoryTemplate() {
             .catch(error => {
                 console.error(`Error fetching the images for the factory with ID ${Factory_ID}:`, error);
             })
-
-            // Get the timeperiods within the factory's opening/closing dates
-            fetchFL(featureLayerServiceURLs['Timeperiod'], `(Start_Date >= ${factory.Opening_Year}) AND (End_Date <= ${factory.Closing_Year})`)
-            .then(timeperiodsFL => { setTimeperiods(timeperiodsFL); })
-            .catch(error => { 
-                console.error('Error fetching the timeperiods feature layer:', error);
-            });
         })
         .catch(error => {
             console.error('Error fetching details for factory:', error);
@@ -128,7 +131,12 @@ function BasicFactoryTemplate() {
             </div>
 
             {/* Grid container for basic factory details if applicable */}
-            <div className='timeline-container'><FactoryTimeline factory={factoryObj} timeperiods={timeperiods}/></div>
+            <div className='timeline-container'>
+                <FactoryTimeline 
+                    factory={factoryTimelineParams.factory} 
+                    timeperiods={factoryTimelineParams.timeperiods}
+                />
+            </div>
 
             {/* ArcGIS storyboard for this factory if available */}
             <iframe 

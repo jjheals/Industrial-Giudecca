@@ -31,33 +31,26 @@ export function latLongToPixel(lat, long) {
     return { x: pixelX, y: pixelY };
 }
 
-/** fetchFactoriesFL(serviceURL, filters) 
+/** fetchFactoriesFL(filters) 
  * @abstract Fetch the "FactoriesFL" using the ArcGIS service endpoint given; basically the same functionality as fetchFL, but returns the
  * results as an Array of Factory objects instead of dictionaries, and calls factory.getFactoryCoords() on each object
- * @param {string} serviceURL - ArcGIS service endpoint
  * @param {string} filters - SQL style filters to filter the query 
  * @returns {Array} array of Factory objects
  */
-export async function fetchFactoriesFL(filters) { 
-    try {
-        // Query the factories FL to get the factory attributes         
-        const response = await fetchFL(featureLayerServiceURLs['Factory'], filters);
-        
-        // Wait for the response, then iterate over the factories 
-        const factories = await Promise.all(response.map(async feature => {
-            const factory = new Factory(feature.attributes);
-            await factory.getFactoryCoords();
-            return factory;
-        }));
+export async function fetchFactoriesFL(flFilters) { 
 
-        // Return the populated array         
-        return factories;
+    // Query the factories FL to get the factory attributes         
+    const response = await fetchFL(featureLayerServiceURLs['Factory'], flFilters);
 
-    } catch (error) {
-        // Return an empty array in case of error
-        console.error('Error fetching factories:', error);
-        return [];  
-    }
+    // Wait for the response, then iterate over the factories 
+    const factories = await Promise.all(response.map(async feature => {
+        const factory = new Factory(feature.attributes);
+        await factory.getFactoryCoords();
+        return factory;
+    }));
+
+    // Return the populated array         
+    return factories;
 }
 
 /** fetchFL(serviceURL, filters)
@@ -68,6 +61,7 @@ export async function fetchFactoriesFL(filters) {
  * 
  */
 export async function fetchFL(serviceURL, filters) { 
+
     const response = await queryFeatures({
         url: serviceURL,
         where: filters

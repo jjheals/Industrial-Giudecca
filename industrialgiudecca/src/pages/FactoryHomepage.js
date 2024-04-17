@@ -23,7 +23,7 @@ function FactoryHomepage() {
     // Scroll to the top when the page loads because React is sus
     useEffect(() => {
         window.scrollTo({ top: 0 }); 
-        fetchFactoriesFL() 
+        fetchFactoriesFL('test') 
             .then(factories => {
                 setFactories(factories);
                 setFilteredFactories(factories);
