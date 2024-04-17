@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="homepage added factory thing">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed homepage black title frfr">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +82,7 @@
       <workItem from="1712045691519" duration="13766000" />
       <workItem from="1712139713533" duration="13336000" />
       <workItem from="1712821649992" duration="34151000" />
-      <workItem from="1713253535344" duration="16149000" />
+      <workItem from="1713253535344" duration="22062000" />
     </task>
     <task id="LOCAL-00001" summary="added the fade in / out">
       <option name="closed" value="true" />
@@ -457,7 +460,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713272855533</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="fixed homepage black title">
+      <option name="closed" value="true" />
+      <created>1713276789258</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1713276789258</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fixed homepage black title frfr">
+      <option name="closed" value="true" />
+      <created>1713276865154</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1713276865154</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,8 +494,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test margins" />
-    <MESSAGE value="margins white box etc" />
     <MESSAGE value="Locking thingy" />
     <MESSAGE value="SEARCH BAR ON FACTORY PAGE" />
     <MESSAGE value="search bar luh photo page" />
@@ -500,6 +517,8 @@
     <MESSAGE value="download button at bottom still" />
     <MESSAGE value="download button fully fixed and working #winning" />
     <MESSAGE value="homepage added factory thing" />
-    <option name="LAST_COMMIT_MESSAGE" value="homepage added factory thing" />
+    <MESSAGE value="fixed homepage black title" />
+    <MESSAGE value="fixed homepage black title frfr" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed homepage black title frfr" />
   </component>
 </project>

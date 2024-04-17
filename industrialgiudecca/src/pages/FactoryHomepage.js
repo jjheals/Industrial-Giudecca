@@ -10,20 +10,16 @@ import SearchBar from '../components/SearchBar';
 import { fetchFactoriesFL } from '../ArcGIS.js';
 import { featureLayerServiceURLs, mapHeight } from '../GlobalConstants.js';
 import FactoriesMap from '../components/FactoriesMap.js';
+import { factoryStoryMapURLs } from '../GlobalConstants';
 
-/** FactoryHomepage
- * @abstract Renders the page containing all industrial sites at the relative path "/industrial-sites". Takes no parameters, but uses 
- * the FactoryMap component defined in src/components/FactoryMap.js alongside the SearchBar defined in src/components/SearchBar.js to
- * dynamically display the content, i.e. [filteredFactories] constant, on the screen. 
- */
 function FactoryHomepage() {
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
+    const [showStoriesOnly, setShowStoriesOnly] = useState(false);
 
-    // Scroll to the top when the page loads because React is sus
     useEffect(() => {
-        window.scrollTo({ top: 0 }); 
-        fetchFactoriesFL('') 
+        window.scrollTo({ top: 0 });
+        fetchFactoriesFL()
             .then(factories => {
                 setFactories(factories);
                 setFilteredFactories(factories);
@@ -32,9 +28,8 @@ function FactoryHomepage() {
                 console.error('Error fetching factories:', error);
             });
     }, []);
-    
-    const handleSearch = (searchTerm) => {
 
+    const handleSearch = (searchTerm) => {
         if (searchTerm.trim() === '') {
             console.log('no search term');
             setFilteredFactories(factories);
@@ -59,17 +54,44 @@ function FactoryHomepage() {
         setFilteredFactories([clickedFactory]);
     };
 
+    const toggleShowStoriesOnly = () => {
+        setShowStoriesOnly(prevState => {
+            const newState = !prevState;
+            if (newState) {
+                // Filter factories with stories
+                const factoriesWithStories = factories.filter(factory => factory.Factory_ID in factoryStoryMapURLs);
+                setFilteredFactories(factoriesWithStories);
+            } else {
+                // Show all factories
+                setFilteredFactories(factories);
+            }
+            return newState;
+        });
+    };
+
     return (
         <div className="factory-homepage">
             {/* Title and sidebar */}
-            <Title title='Industrial Sites' titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg' />
-            <Sidebar />
+            <Title title='Industrial Sites' titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg'/>
+            <Sidebar/>
 
             {/* Search bar that sticks to the top of the page after scrolling past the title */}
-            <div className="search-bar-container"><SearchBar onSearch={handleSearch} /></div>
+            {/* Button to toggle showing only factories with stories */}
+            <div className="search-bar-container">
+                <SearchBar onSearch={handleSearch}/>
+                <button className="toggle-stories-button" onClick={toggleShowStoriesOnly}>
+                    {showStoriesOnly ? 'Show All Factories' : 'Show Factories with Stories'}
+                </button>
+            </div>
 
             {/* FactoriesMap component containing the map with markers to click on */}
-            <FactoriesMap factories={filteredFactories} onMarkerClick={handleMarkerClick} />
+            <FactoriesMap
+                factories={filteredFactories}
+                onMarkerClick={handleMarkerClick}
+                showStoriesOnly={showStoriesOnly}
+            />
+
+
 
             {/* Grid of factories after the map that changes when a search is conducted */}
             <div className="factory-list-container">
