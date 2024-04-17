@@ -15,11 +15,7 @@ import { formatImageSource } from '../../ArcGIS.js';
 const Gallery = ({ Factory_ID, allAttachments }) => {
     const [allAttachmentDicts, setAllImgURLs] = useState([]);
 
-    console.log('gallery given allAttachments:');
-    console.log(allAttachments);
-
     useEffect(() => { 
-        console.log(allAttachments);
         setAllImgURLs(allAttachments);
     });
 

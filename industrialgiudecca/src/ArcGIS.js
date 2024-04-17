@@ -38,11 +38,13 @@ export function latLongToPixel(lat, long) {
  * @param {string} filters - SQL style filters to filter the query 
  * @returns {Array} array of Factory objects
  */
-export async function fetchFactoriesFL() { 
+export async function fetchFactoriesFL(filters) { 
     try {
         // Query the factories FL to get the factory attributes         
-        const response = await fetchFL(featureLayerServiceURLs['Factory']);
-
+        const response = await fetchFL(featureLayerServiceURLs['Factory'], filters);
+        console.log('response');
+        console.log(response);
+        
         // Wait for the response, then iterate over the factories 
         const factories = await Promise.all(response.map(async feature => {
             const factory = new Factory(feature.attributes);
@@ -68,7 +70,9 @@ export async function fetchFactoriesFL() {
  * 
  */
 export async function fetchFL(serviceURL, filters) { 
-    
+    console.log('fetching FL with filter');
+    console.log(filters);
+
     const response = await queryFeatures({
         url: serviceURL,
         where: filters

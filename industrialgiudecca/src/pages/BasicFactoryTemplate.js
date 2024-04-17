@@ -9,6 +9,7 @@ import { fetchFactoriesFL, fetchFL } from '../ArcGIS.js';
 import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
 import { factoryStoryMapURLs } from '../GlobalConstants.js';
+import FactoryTimeline from '../components/FactoryTimeline.js';
 
 import '../css/components/Gallery.css';
 import '../css/components/Photo.css';
@@ -31,6 +32,9 @@ function BasicFactoryTemplate() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [title, setTitle] = useState('');
 
+    const [timeperiods, setTimeperiods] = useState([]);
+    const [factoryObj, setFactoryObj] = useState(null);
+
     // Set viewport to the top of the page since React is sus
     window.scrollTo({ 
         top: 0
@@ -43,11 +47,13 @@ function BasicFactoryTemplate() {
     useEffect(() => { 
         // Use fetchFactoriesFL with a filter to get the preliminary data for just the factory ID passed
         fetchFactoriesFL(
-            featureLayerServiceURLs['Factory'],
             `Factory_ID = ${Factory_ID}`
         )
         .then(factories => {
             
+            console.log('factories');
+            console.log(factories);
+
             // Since we used a primary key as the filter, there is only one result
             factory = factories[0];
             setTitle(factory.English_Name);       // Set the title as the english name
@@ -76,18 +82,21 @@ function BasicFactoryTemplate() {
           - if there is not a storyboard, then keep the grid, populate it, and remove the storyboard element
     */
     useEffect(() => {
-        const gridContainer = document.getElementById('grid-container');    // Element for the grid 
-        const storyboardContainer = document.getElementById('storyboard');  // Element for the storyboard
+        const timelineContainer = document.getElementById('factory-timeline-container');    // Element for the grid 
+        const storyboardContainer = document.getElementById('storyboard');          // Element for the storyboard
 
         // Conditional: if removeGrid and gridContainer exists, remove the grid and do nothing else 
-        if (gridContainer && removeGrid) gridContainer.remove();
+        if (timelineContainer && removeGrid) timelineContainer.remove();
+
+        // There is no storyboard - keep the timeline, remove the storyboard, and populate the timeline
         else if (storyboardContainer && !removeGrid) { 
-            // There is no storyboard - keep the grid, remove the storyboard, and populate the grid
             storyboardContainer.remove();
 
-            // Populate the grid 
-            // DO SOMETHING ... 
-            // ... 
+            // Get all the info needed for the timeline
+            const thisFactory = fetchFL(featureLayerServiceURLs['Factory'], `Factory_ID = ${Factory_ID}`);
+            console.log('thisFactory');
+            console.log(thisFactory);
+
         }
 
     }, []);
@@ -107,9 +116,7 @@ function BasicFactoryTemplate() {
             </div>
 
             {/* Grid container for basic factory details if applicable */}
-            <div className='factory-data-table-container'>
-                
-            </div>
+            <div className='factory-timeline-container'><FactoryTimeline factory={factoryObj} timeperiods={timeperiods}/></div>
 
             {/* ArcGIS storyboard for this factory if available */}
             <iframe 
