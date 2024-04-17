@@ -25,7 +25,7 @@ const FactoryTimeline = ({ factory, timeperiods, products, employment }) => {
 
     return (
         <div className='factory-timeline-container'>
-            <TimelineCircle timeperiodYear='1999' />
+            <TimelineCircle timeperiodYear='1999' timeperiodDescription='Some shit that happened in 1999' />
         </div>
     );
 };

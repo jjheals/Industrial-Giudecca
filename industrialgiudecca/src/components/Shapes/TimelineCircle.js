@@ -1,10 +1,11 @@
 import '../../css/components/TimelineCircle.css';
 
   // React component
-  export default function TimelineCircle({ timeperiodYear }) {
+  export default function TimelineCircle({ timeperiodYear, timeperiodDescription }) {
     return (
         <div className="circle">
-            { timeperiodYear }
+            <p className='timeperiod-year'>{ timeperiodYear }</p>
+            <p className='timeperiod-description'>{ timeperiodDescription }</p>
         </div>
     );
   }
