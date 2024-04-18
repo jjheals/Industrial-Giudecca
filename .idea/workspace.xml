@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="added button for showing factories with stories">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/context/LanguageContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="translation sauce">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/LanguageSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/TimelineMap/MapTimeline.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/i18n.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/locals/en/Homepage.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/locals/it/Homepage.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,15 +81,7 @@
       <workItem from="1712139713533" duration="13336000" />
       <workItem from="1712821649992" duration="34151000" />
       <workItem from="1713253535344" duration="27776000" />
-      <workItem from="1713426743493" duration="3452000" />
-    </task>
-    <task id="LOCAL-00002" summary="fixed the z index on the factory image">
-      <option name="closed" value="true" />
-      <created>1710404043970</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1710404043970</updated>
+      <workItem from="1713426743493" duration="7019000" />
     </task>
     <task id="LOCAL-00003" summary="fixed the z index on the factory image">
       <option name="closed" value="true" />
@@ -486,7 +467,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713347718420</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="translation sauce">
+      <option name="closed" value="true" />
+      <created>1713431970556</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1713431970556</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SEARCH BAR ON FACTORY PAGE" />
     <MESSAGE value="search bar luh photo page" />
     <MESSAGE value="fixed stretching for factory homepage" />
     <MESSAGE value="factory homepage psuedo working" />
@@ -529,6 +517,7 @@
     <MESSAGE value="fixed homepage black title" />
     <MESSAGE value="fixed homepage black title frfr" />
     <MESSAGE value="added button for showing factories with stories" />
-    <option name="LAST_COMMIT_MESSAGE" value="added button for showing factories with stories" />
+    <MESSAGE value="translation sauce" />
+    <option name="LAST_COMMIT_MESSAGE" value="translation sauce" />
   </component>
 </project>

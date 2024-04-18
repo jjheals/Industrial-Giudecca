@@ -10,11 +10,11 @@ export const factoryStoryMapURLs = {
 
     3: { // Stucky
         en: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0?cover=false',
-        it: ''
+        it: 'https://storymaps.arcgis.com/stories/d7a10a3caea84069b79fc722ca782189?cover=false'
     },
     9: { // Scalera
         en: 'https://storymaps.arcgis.com/stories/d488bbdddc3c4c2ca34686b9d230d40f?cover=false',
-        it: ''
+        it: 'https://storymaps.arcgis.com/stories/214333c62d7b4813bffc5d9a4abc6af6?cover=false'
     }
 }
 
