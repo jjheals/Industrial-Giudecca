@@ -1,9 +1,4 @@
-// src/About.js
-import React from 'react';
-import Sidebar from '../components/Sidebar.js';
-
-import Title from '../components/Title.js';
-import '../css/AboutPage.css';
+// src/pages/About.js
 
 /** AboutPage
  * @abstract Renders the AboutPage and all its content at the relative route "/about". Takes no parameters. 
@@ -13,6 +8,12 @@ import '../css/AboutPage.css';
  * director (Fabio Carerra), and the Industrial Giudecca team (Justin, Mary, Tim, Parker). This page does not contain any dynamic
  * data that needs to be updated. 
  */
+import React from 'react';
+import Sidebar from '../components/Sidebar.js';
+
+import Title from '../components/Title.js';
+import '../css/AboutPage.css';
+
 function AboutPage() {
     window.scrollTo({ 
         top: 0

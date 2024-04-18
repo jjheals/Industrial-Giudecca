@@ -1,5 +1,14 @@
 // MapTimeline.js
 
+/** { Component } MapTimeline 
+ * @abstract Component rendered on the Homepage that contains the clickable markers on the map for each industrial site, 
+ * and allows the user to scroll through the timeline
+ * 
+ * @param { Array[Factory] } factories - Array of factories as Factory objects 
+ * @param { Arraoy[Object] } timeperiods - Array of timeperiods as Dictionaries (Objects)
+ * @param { Object } minMaxYear - Object (Dictionary) in the format [ key : val ] => [ min: [int], max: [int] ] 
+ *                                for the min and max year on the timeline
+ */
 import React, { useState, useEffect, useRef } from 'react';
 import { formatTimeperiodString } from '../../ArcGIS.js';
 
@@ -253,6 +262,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
                      style={{ height: window.innerHeight }}>
                 </div>
 
+                {/* Container for the info, including the "In xxxx there was X industrial site" and the context blurb below that */}
                 <div className='info-containerb' style={{ height: window.innerHeight * 0.38 }}>
                     <div className='map-row'>
                         <div className='ib' id='ib1'><h3>In {Math.round(year)}, there {activeAdv} {activeLabel} {t("onGiudecca")}.</h3></div>
@@ -262,8 +272,9 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
                             <h4>{ currTimeperiodStr }</h4>
                         </div>
                     </div>
-                    <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>
-                    <button className='reset-button' onClick={handleResetClick}>Reset Timeline</button>
+        
+                    <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>        {/* Bottom left button */}
+                    <button className='reset-button' onClick={handleResetClick}>Reset Timeline</button>     {/* Bottom right button */}
                 </div>
             </div>
         </div>

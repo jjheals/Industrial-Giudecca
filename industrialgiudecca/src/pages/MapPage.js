@@ -1,7 +1,6 @@
 // src/pages/MapPage.js
 
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import Sidebar from '../components/Sidebar.js';
 import { mapInstantAppURL } from '../GlobalConstants.js';

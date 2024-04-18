@@ -3,14 +3,15 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
-import '../css/FactoryHomepage.css';
+
 import Title from '../components/Title.js';
 import Sidebar from '../components/Sidebar';
 import SearchBar from '../components/SearchBar';
 import { fetchFactoriesFL } from '../ArcGIS.js';
-import { featureLayerServiceURLs, mapHeight } from '../GlobalConstants.js';
 import FactoriesMap from '../components/FactoriesMap.js';
 import { factoryStoryMapURLs } from '../GlobalConstants';
+
+import '../css/FactoryHomepage.css';
 
 function FactoryHomepage() {
     const [factories, setFactories] = useState([]);

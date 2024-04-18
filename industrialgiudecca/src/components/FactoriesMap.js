@@ -1,8 +1,14 @@
 // src/components/FactoriesMap.js
 
+/** { Component } FactoriesMap 
+ * @abstract Map that renders on the FactoryHomepage (industrial sites page) with static clickable pins for each industrial site.
+ * @param { Array[Factory] } factories - Array of Factory objects
+ * @param { function } onMarkerClick - Function/handler for each marker click
+ * @param { String } searchTerm - Search term to filter the map by
+ * @param { bool } showStoriesOnly - Boolean on whether to show only industrial sites with storymaps (true) or all industrial sites (false)
+ */
 import React, { useRef, useEffect } from 'react';
 import '../css/components/FactoriesMap.css';
-import { latLongToPixel } from '../ArcGIS';
 import { factoryStoryMapURLs } from '../GlobalConstants';
 
 const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly }) => {
@@ -11,15 +17,13 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
     const mapContainerRef = useRef(null);
     const clickedMarkerRef = useRef(null);
 
-    // Calculate the top margin of the timeline in pixels based on a margin in VH
-    const marginVH = 5;
-    const marginPx = (marginVH * window.innerHeight) / 50;
-
+    // Event handler for highlighting markers on the map
     const highlightMarker = (marker) => {
         marker.classList.add('highlighted');
         marker.style.zIndex = '1';
     };
 
+    // Event handler for unhighlighting markers on the map
     const unhighlightMarker = (marker) => {
         if (marker !== clickedMarkerRef.current) {
             marker.classList.remove('highlighted');
@@ -27,6 +31,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
         }
     };
 
+    // Event handler for clicking a marker on the map
     const clickMarker = (marker) => {
         if (clickedMarkerRef.current) {
             clickedMarkerRef.current.classList.remove('clicked');
@@ -38,6 +43,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
         clickedMarkerRef.current = marker;
     };
 
+    // useEffect => set the filtered markers on the map
     useEffect(() => {
         if (factories.length > 0 && mapContainerRef.current) {
             mapContainerRef.current.innerHTML = ''; // Clear previous markers
@@ -54,9 +60,10 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
 
             factoriesToShow.map(factory => {
                 // If this factory does not have a location, hide it from the map
-                if (!factory['x'] || !factory['y']) {
-                    return;
-                } else {
+                if (!factory['x'] || !factory['y']) return;
+
+                // Otherwise create the marker and display it
+                else {
                     // Create the marker element and set its attributes
                     const markerWidthPx = 20;
                     const markerHeightPx = 30;
@@ -70,11 +77,13 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
                     marker.style.zIndex = '0';
 
                     // Event listeners for marker interactions
+                    // Add handler for clicking the marker 
                     marker.addEventListener('click', () => {
                         onMarkerClick(factory.Factory_ID);
                         clickMarker(marker);
                     });
 
+                    // Add handler for hovering over the marker
                     marker.addEventListener('mouseover', () => {
                         highlightMarker(marker);
                         // Show the factory name tooltip
@@ -84,6 +93,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
                         tooltip.style.top = `calc(${factory.y}px + 105vh - ${markerHeightPx}px)`;
                     });
 
+                    // Add handler for stop hovering over the marker
                     marker.addEventListener('mouseout', () => {
                         unhighlightMarker(marker);
                         // Hide the factory name tooltip
@@ -100,6 +110,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
         }
     }, [factories, onMarkerClick, searchTerm, showStoriesOnly]);
 
+    // useEffect => update the map if a search term is entered 
     useEffect(() => {
         if (searchTerm) {
             if (clickedMarkerRef.current) {

@@ -1,33 +1,28 @@
-// src/pages/HistoricalStoriesPage.js
-
-import React, { useState, useEffect, useContext } from 'react';
-import Sidebar from '../components/Sidebar.js';
-import { factoryStoryMapURLs, featureLayerServiceURLs } from '../GlobalConstants.js';
-import LanguageSelector from '../components/LanguageSelector.js';
-import { LanguageContext } from '../context/LanguageContext.js';
-import Title from '../components/Title.js';
-import '../css/IndustrialStories.css';
-import { fetchFL } from '../ArcGIS.js';
+// src/pages/IndustrialStoriesPage.js
 
 /** IndustrialStoriesPage
  * @abstract Renders the page containing outlinks to all the historical storymaps at the relative path "/industrial-stories". Takes no parameters.
  * This page serves as a jump-off point for the other historical stories. The content is minimal and intentionally simplistic. 
  */
+import React, { useState, useEffect, useContext } from 'react';
+
+import Sidebar from '../components/Sidebar.js';
+import { factoryStoryMapURLs, featureLayerServiceURLs } from '../GlobalConstants.js';
+import LanguageSelector from '../components/LanguageSelector.js';
+import { LanguageContext } from '../context/LanguageContext.js';
+import Title from '../components/Title.js';
+import { fetchFL } from '../ArcGIS.js';
+
+import '../css/IndustrialStories.css';
+
 function IndustrialStoriesPage() {
     const [allStorymaps, setAllStoryMaps] = useState({});
     const {t, language} = useContext(LanguageContext);
     const [selectedStorymap, setSelectedStorymap] = useState('');
     const [selectedID, setSelectedID] = useState(0);
 
-    const sideComponentBg = 'rgb(179, 179, 179)';
-    const selectedSideComponentBg = 'rgb(255,179,255)';
-
-    // Set viewport to the top of the page since React is sus
-    useEffect(() => { 
-        window.scrollTo({ 
-            top: 0
-        })
-    }, []);
+    const sideComponentBg = 'rgb(179, 179, 179)';           // Background of the side components by default
+    const selectedSideComponentBg = 'rgb(255,179,255)';     // Background color of the currently selected side component
 
     /** changeSelectedStorymap(id) 
      * @abstract changes the currently selected storymap by updating the state variables selectedStorymap and selectedId
@@ -43,6 +38,13 @@ function IndustrialStoriesPage() {
         setSelectedStorymap(allStorymaps[id]['Storymap_URL']);
         setSelectedID(id);
     }
+
+    // Set viewport to the top of the page since React is sus
+    useEffect(() => { 
+        window.scrollTo({ 
+            top: 0
+        })
+    }, []);
 
     // usEffect => fetch the storymap and factory data when the page loads
     useEffect(() => {
@@ -91,13 +93,18 @@ function IndustrialStoriesPage() {
     
     return (
         <div className="industrial-stories-page">
+            {/* Language selector if a language has not yet been chosen this session */}
             {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
+            {/* Title and sidebar */}
             <div><Sidebar /></div>
             <div><Title title={ 'Industrial Stories' } titleColor={ 'rgba(0,0,0,0.3' } imgSrc={ 'stories-page-head.jpeg' } /></div>       
 
+            {/* Main container for this page */}
             <div className='stories-container'>
+                {/* Side container with the list of factories and a small image */}
                 <div className='stories-side-container'>
+                    {/* Iterate over all the storymap dictionaries and set the side components */}
                     {
                         Object.entries(allStorymaps).map(([factoryID, d]) => {
                             return(
@@ -121,6 +128,7 @@ function IndustrialStoriesPage() {
 
                 </div>
 
+                {/* Container for the storymap iframe */}
                 <div className='storymap-container'>
                     <iframe src={ selectedStorymap } frameBorder={0} className='stories-storymap-iframe'/>
                 </div>

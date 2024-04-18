@@ -1,6 +1,11 @@
 // src/components/LanguageSelector.js
 
+/** { Component } LanguageSelector
+ * @abstract Simple component that presents the user with two buttons to choose the language for the site to render. 
+ * Takes no parameters. Renders conditionally on each page.
+ */
 import React, { useContext } from 'react';
+
 import { LanguageContext } from '../context/LanguageContext';
 import '../css/components/LanguageSelector.css';
 

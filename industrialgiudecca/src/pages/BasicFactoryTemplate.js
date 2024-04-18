@@ -1,5 +1,14 @@
 // src/pages/BasicFactoryTemplate.js
 
+/** BasicFactoryTemplate
+ * @abstract Renders the page for each individual factory. Takes one parameter in the URL, "Factory_ID", and renders at the relative
+ * route "/industrial-sites/:Factory_ID". The page renders with the title and cover image, a gallery, plus EITHER: 
+ *      1. If there is no storymap for this factory, the page shows a data table containing raw data on this factory. 
+ *      2. If there is a storymap for this factory (defined in src/GlobalConstants.js => factoryStorymapURLs[Factory_ID]), the page 
+ *         shows the storymap instead of a table of data. The storymap should include a data table.  
+ * @param { int } Factory_ID 
+ */
+
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -12,19 +21,13 @@ import { factoryStoryMapURLs } from '../GlobalConstants.js';
 import FactoryTimeline from '../components/FactoryTimeline.js';
 import { LanguageContext } from '../context/LanguageContext.js';
 import LanguageSelector from '../components/LanguageSelector.js';
+
 import '../css/components/Gallery.css';
 import '../css/components/Photo.css';
 import '../css/BasicFactoryTemplate.css';
 
 
-/** BasicFactoryTemplate
- * @abstract Renders the page for each individual factory. Takes one parameter in the URL, "Factory_ID", and renders at the relative
- * route "/industrial-sites/:Factory_ID". The page renders with the title and cover image, a gallery, plus EITHER: 
- *      1. If there is no storymap for this factory, the page shows a data table containing raw data on this factory. 
- *      2. If there is a storymap for this factory (defined in src/GlobalConstants.js => factoryStorymapURLs[Factory_ID]), the page 
- *         shows the storymap instead of a table of data. The storymap should include a data table.  
- * @param { int } Factory_ID 
- */
+
 function BasicFactoryTemplate() {
     const { Factory_ID } = useParams();
     const [coverPicURL, setCoverPicURL] = useState('');

@@ -1,6 +1,7 @@
 // src/pages/Homepage.js
 
 import React, {useState, useEffect, useContext} from 'react';
+import { Link } from 'react-router-dom';
 
 import '../css/Homepage.css';
 import '../css/components/MapTimeline.css';
@@ -12,7 +13,7 @@ import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 import LanguageSelector from '../components/LanguageSelector';
 import { LanguageContext } from '../context/LanguageContext.js';
 
-import { Link } from 'react-router-dom';
+
 
  
 /** Homepage 

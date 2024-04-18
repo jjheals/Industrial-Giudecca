@@ -1,3 +1,9 @@
+// src/components/shapes/TimelineTriangle.js
+
+/** { Component } TimelineTriangle
+ * @abstract Component rendered on FactoryTimeline that creates the triangles/arrows on the lines between timeperiod circles. 
+ * Renders within TimelineLine.
+ */
 
 export default function TimelineTriangle() {
     return (

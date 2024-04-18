@@ -1,13 +1,12 @@
 // src/GlobalConstants.js
 
 // URL endpoints to the storymaps for factories that they exist for
-// [ key : val ] => [ Factory_ID : StoryMapURL ]
+// [ key : val ] => [ Factory_ID : { en: EnglishStorymapURL, it: ItalianStorymapURL ]
 export const factoryStoryMapURLs = {
     g: { // Homepage story
         en: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258?cover=false',
         it: 'https://storymaps.arcgis.com/stories/8e4b51adb9db4cba8546a3c3df7be7ea?cover=false'
     },
-
     3: { // Stucky
         en: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0',
         it: 'https://storymaps.arcgis.com/stories/d7a10a3caea84069b79fc722ca782189'

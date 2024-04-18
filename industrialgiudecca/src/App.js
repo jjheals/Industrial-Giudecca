@@ -12,9 +12,7 @@ import BasicFactoryTemplate from './pages/BasicFactoryTemplate';
 import DataExplorerPage from './pages/DataExplorerPage';
 import AboutPage from './pages/AboutPage';
 import IndustrialStoriesPage from './pages/IndustrialStoriesPage.js';
-import StoryPage from './pages/StoryPage';
 import MapPage from './pages/MapPage.js';
-import { LanguageContext } from './context/LanguageContext.js';
 
 
 function App() {
@@ -28,7 +26,6 @@ function App() {
                 <Route path={"/industrial-sites/:Factory_ID"} element={<BasicFactoryTemplate />} />
                 <Route path={"/data-explorer"} element={<DataExplorerPage />} />
                 <Route path={"/industrial-stories"} element={<IndustrialStoriesPage />} />
-                <Route path={"/historical-stories/:Story_ID"} element={<StoryPage />} />
                 <Route path={"/map"} element={<MapPage />} />
                 <Route path={"/about"} element={<AboutPage />} />
             </Routes>
