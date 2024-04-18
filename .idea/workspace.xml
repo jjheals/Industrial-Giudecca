@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="translation sauce">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="translated stucky and other one">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,15 +80,7 @@
       <workItem from="1712139713533" duration="13336000" />
       <workItem from="1712821649992" duration="34151000" />
       <workItem from="1713253535344" duration="27776000" />
-      <workItem from="1713426743493" duration="7019000" />
-    </task>
-    <task id="LOCAL-00003" summary="fixed the z index on the factory image">
-      <option name="closed" value="true" />
-      <created>1710404284923</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1710404284923</updated>
+      <workItem from="1713426743493" duration="7694000" />
     </task>
     <task id="LOCAL-00004" summary="fixed blurb elemet if shouldnt work">
       <option name="closed" value="true" />
@@ -475,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713431970556</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="translated stucky and other one">
+      <option name="closed" value="true" />
+      <created>1713441108438</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1713441108438</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="search bar luh photo page" />
     <MESSAGE value="fixed stretching for factory homepage" />
     <MESSAGE value="factory homepage psuedo working" />
     <MESSAGE value="throwing a bone (witterwy factorymap onclick added for search)" />
@@ -518,6 +516,7 @@
     <MESSAGE value="fixed homepage black title frfr" />
     <MESSAGE value="added button for showing factories with stories" />
     <MESSAGE value="translation sauce" />
-    <option name="LAST_COMMIT_MESSAGE" value="translation sauce" />
+    <MESSAGE value="translated stucky and other one" />
+    <option name="LAST_COMMIT_MESSAGE" value="translated stucky and other one" />
   </component>
 </project>
