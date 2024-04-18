@@ -1,6 +1,6 @@
 // src/components/FactoryTimeline.js
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import TimelineCircle from './Shapes/TimelineCircle';
 import TimelineLine from './Shapes/TimelineLine';
 import '../css/components/FactoryTimeline.css';

@@ -183,8 +183,8 @@ function BasicFactoryTemplate() {
         });
 
         // Set the storymap on the page, if it exists 
-        const thisStorymapURL = factoryStoryMapURLs[Factory_ID][language];
-        if(thisStorymapURL) { 
+        const thisStorymapURL = factoryStoryMapURLs[Factory_ID] ? factoryStoryMapURLs[Factory_ID][language] : null;
+        if (thisStorymapURL) {
             removeTimeline = true;
             setStorymapURL(thisStorymapURL);
         }
