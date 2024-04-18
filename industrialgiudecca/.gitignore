@@ -24,3 +24,5 @@ yarn-error.log*
 
 testing-folder/
 fix_npm.sh
+
+data_analysis/sheets/*
