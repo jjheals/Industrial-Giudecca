@@ -1,6 +1,34 @@
+:root { 
+    --factory-timeline-font: "Playfair Display", serif;
+    --circle-diameter: 15vw;
+    --timeperiod-year-height: 3vw;
+    --timeperiod-description-font: 0.75vw;
+
+}
 .circle {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
     border-radius: 50%;
+    border: 3px solid;
+}
+
+.timeperiod-year { 
+    position: relative; 
+    top: calc(var(--circle-diameter)/2 - var(--timeperiod-year-height));
+    height: var(--timeperiod-year-height);
+    font-size: var(--timeperiod-year-height);
+    margin: auto;
+    text-align: center;
+    font-family: var(--factory-timeline-font);
+}
+
+.timeperiod-description { 
+    position: relative; 
+    top: calc(var(--circle-diameter)/2);
+    left: calc(-1 * (var(--circle-diameter)/6));
+    margin: calc(var(--circle-diameter) / 2.5) 0;
+    font-size: var(--timeperiod-description-font);
+    text-align: center;
+    font-family: var(--factory-timeline-font);
+    width: calc(var(--circle-diameter) + 5vw);
 }

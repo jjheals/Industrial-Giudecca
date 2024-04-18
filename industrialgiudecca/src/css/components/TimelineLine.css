@@ -1,0 +1,16 @@
+.timeline-line { 
+    margin: auto 0;
+}
+
+.timeline-triangle-container { 
+    position: relative;
+    margin: auto;
+}
+
+.timeline-line-hr { 
+    position: relative;
+    top: 1.75vh;
+    margin: auto;
+    width: 100%;
+    border: 1px solid black;
+}
