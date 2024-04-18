@@ -44,6 +44,11 @@
   }
 }
 
+body { 
+  padding: 0;
+  margin: 0;
+}
+
 /* Styles for page design */
 .container {
   display: flex;
