@@ -1,0 +1,52 @@
+:root { 
+    --language-selector-font-family: 'Playfair Display', serif;
+    --language-selector-hover-color: rgba(133, 133, 133, 0.692);
+    --language-selector-color: rgba(255, 255, 255, 0.532);
+}
+
+.language-selector-container { 
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    z-index: 2000;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(15px);
+    margin-top: 20vh;
+}
+
+.language-selector-title { 
+    font-size: 3vw;
+    text-align: center;
+    font-family: var(--language-selector-font-family);
+    color: white;
+}
+
+.language-buttons-container { 
+    width: 70%;
+    margin: 10vh auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.language-selector { 
+    height: 5vh;
+    margin: auto;
+    width: auto;
+    height: 7vh;
+    font-size: 1.5vw;
+    font-family: var(--language-selector-font-family);
+    padding: 0 1vw 0 1vw;
+    background-color: var(--language-selector-color);
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    transition: ease-in-out 0.3s;
+}
+
+.language-selector:hover {
+    background-color: var(--language-selector-hover-color);
+    transform: scale(1.1);
+    cursor: pointer;
+}

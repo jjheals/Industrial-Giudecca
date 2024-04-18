@@ -11,8 +11,9 @@ import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 
 import { LanguageContext } from '../context/LanguageContext';
+import LanguageSelector from '../components/LanguageSelector';
+
 import { Link } from 'react-router-dom';
-import LanguageSelector from "../components/LanguageSelector";
 
  
 /** Homepage 
@@ -121,6 +122,9 @@ function Homepage() {
                 <meta charSet="utf-8"/>
                 <title>Industrial Giudecca</title>
             </head>
+
+            {!localStorage.getItem('language') && <LanguageSelector />}
+
             {/* Sidebar div */}
             <div><Sidebar/></div>
 
@@ -136,7 +140,6 @@ function Homepage() {
                     <img id='main-logo' className='logo' src='logo.png' alt='Main Logo'/>
                     <img id='wpi-logo' className='logo' src='wpi-logo.png' alt='WPI Logo'/>
                     <img id='sdpt-logo' className='logo' src='sdpt-logo.png' alt='SDPT Logo'/>
-                    <LanguageSelector/>
                 </div>
 
                 {/* Overlay to darken the homepage front image; also contains the text for the landing screen */}

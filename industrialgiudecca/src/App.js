@@ -1,8 +1,10 @@
 // src/App.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './css/components/Title.css';
+import ReactDOM from 'react-dom';
+import LanguageSelector from './components/LanguageSelector.js';
 
 import FactoryHomepage from './pages/FactoryHomepage';
 import Homepage from './pages/Homepage';
@@ -12,9 +14,11 @@ import AboutPage from './pages/AboutPage';
 import HistoricalStoriesPage from './pages/HistoricalStoriesPage';
 import StoryPage from './pages/StoryPage';
 import MapPage from './pages/MapPage.js';
+import { LanguageContext } from './context/LanguageContext.js';
 
 
 function App() {
+
 
     return (
         <Router>
