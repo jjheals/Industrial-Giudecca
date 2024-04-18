@@ -2,17 +2,17 @@
 
 import React, { createContext, useState, useEffect } from 'react';
 import translations from '../translations';
+import ReactDOM from 'react-dom';
 
 export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState(
-        localStorage.getItem('language') || 'en'
-    );
+    const [language, setLanguage] = useState('en');
 
-    const changeLanguage = (newLanguage) => {
-        localStorage.setItem('language', newLanguage);
+    function changeLanguage(newLanguage) {
+        localStorage.setItem('hasSelectedLanguage', 'true');
         setLanguage(newLanguage);
+        document.getElementById('language-selector-container').style.display = 'none';
     };
 
     const t = (key) => {

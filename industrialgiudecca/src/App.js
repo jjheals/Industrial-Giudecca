@@ -18,7 +18,7 @@ import { LanguageContext } from './context/LanguageContext.js';
 
 
 function App() {
-
+    localStorage.setItem('hasSelectedLanguage', 'false');
 
     return (
         <Router>

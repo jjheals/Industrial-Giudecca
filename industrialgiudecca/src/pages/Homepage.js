@@ -9,9 +9,8 @@ import { fetchFactoriesFL, fetchFL } from '../ArcGIS.js';
 import { featureLayerServiceURLs, factoryStoryMapURLs } from '../GlobalConstants.js';
 import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
-
-import { LanguageContext } from '../context/LanguageContext';
 import LanguageSelector from '../components/LanguageSelector';
+import { LanguageContext } from '../context/LanguageContext.js';
 
 import { Link } from 'react-router-dom';
 
@@ -114,6 +113,8 @@ function Homepage() {
         setStorymapURL(factoryStoryMapURLs.g[language]); // Update the storymapURL when the language changes
     }, [language]);
 
+    console.log('localStorage.getItem("language")');
+    console.log(localStorage.getItem('language'));
     return (
         <div className="homepage">
 
@@ -123,7 +124,7 @@ function Homepage() {
                 <title>Industrial Giudecca</title>
             </head>
 
-            {!localStorage.getItem('language') && <LanguageSelector />}
+            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Sidebar div */}
             <div><Sidebar/></div>
