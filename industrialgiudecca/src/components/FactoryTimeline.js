@@ -12,12 +12,8 @@ const FactoryTimeline = ({ factory, timeperiods }) => {
     useEffect(() => {
         if(!factory || !timeperiods) return; 
 
-        console.log('given timeperiods');
-        console.log(timeperiods);
-
         const years = Object.keys(timeperiods);
         const numTimeperiods = years.length;
-        console.log(years);
         
         /* Calculate how many rows the timeline will need
          * - The rows alternate between 3 and 2 circles 
@@ -45,7 +41,6 @@ const FactoryTimeline = ({ factory, timeperiods }) => {
                     let concatTimeperiodTitle = '';
     
                     theseTimeperiods.forEach(timeperiod => { 
-                        console.log(timeperiod);
                         concatTimeperiodTitle += '\n' + timeperiod.Title;
                     });
     
@@ -72,7 +67,6 @@ const FactoryTimeline = ({ factory, timeperiods }) => {
                                 <div className='factory-timeline-sub-row'>
                                     { 
                                         row.map((timeperiodDict, i) => {  
-                                            console.log(row.length)
                                             return(
                                                 <div className={`factory-timeline-sub-row ${row.length == 3 ? "A" : "B"}`}>
                                                     <TimelineCircle 

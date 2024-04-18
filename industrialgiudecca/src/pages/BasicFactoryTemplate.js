@@ -1,6 +1,6 @@
 // src/pages/BasicFactoryTemplate.js
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Sidebar from '../components/Sidebar.js';
@@ -10,7 +10,7 @@ import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
 import { factoryStoryMapURLs } from '../GlobalConstants.js';
 import FactoryTimeline from '../components/FactoryTimeline.js';
-
+import { LanguageContext } from '../context/LanguageContext.js';
 import '../css/components/Gallery.css';
 import '../css/components/Photo.css';
 import '../css/BasicFactoryTemplate.css';
@@ -33,6 +33,8 @@ function BasicFactoryTemplate() {
     const [title, setTitle] = useState('');
     const [factoryTimelineParams, setTimelineParams] = useState({});
     let removeTimeline = false;
+
+    const { t, language } = useContext(LanguageContext);                   // For translation
 
     const circleColors = { 
         'products': [79, 202, 255],
@@ -181,7 +183,7 @@ function BasicFactoryTemplate() {
         });
 
         // Set the storymap on the page, if it exists 
-        const thisStorymapURL = factoryStoryMapURLs[Factory_ID];
+        const thisStorymapURL = factoryStoryMapURLs[Factory_ID][language];
         if(thisStorymapURL) { 
             removeTimeline = true;
             setStorymapURL(thisStorymapURL);
@@ -196,9 +198,12 @@ function BasicFactoryTemplate() {
         const timelineContainer = document.getElementById('factory-timeline-container');    // Element for the grid 
         const storyboardContainer = document.getElementById('storyboard');          // Element for the storyboard
 
-        // Conditional: if removeGrid and gridContainer exists, remove the grid and do nothing else 
-        if (timelineContainer && removeTimeline) timelineContainer.remove();
+        console.log(timelineContainer);
 
+        // Conditional: if removeGrid and gridContainer exists, remove the grid and do nothing else 
+        if (timelineContainer && removeTimeline) { 
+            timelineContainer.remove();
+        }
         // There is no storyboard - keep the timeline, remove the storyboard, and populate the timeline
         else if (storyboardContainer && !removeTimeline) { 
             storyboardContainer.remove();
@@ -221,7 +226,7 @@ function BasicFactoryTemplate() {
             </div>
 
             {/* Grid container for basic factory details if applicable */}
-            <div className='factory-timeline-container'>
+            <div id='factory-timeline-container' className='factory-timeline-container'>
                 <div className='timeline-header' style={{ backgroundImage: `url("${coverPicURL}")`, backgroundSize: "100% 100%", backgroundAttachment: 'fixed'}}>
                     <p className='timeline-header-inner'>The History of {title}</p>
                 </div>
