@@ -1,0 +1,44 @@
+
+.stories-side-container { 
+    display: flex;
+    flex-direction: column;
+    width: 33vw;
+    height: 100%;
+}
+
+.stories-container { 
+    display: flex;
+    flex-direction: row;
+    margin-top: 10vh;
+    background-color: red;
+}
+.stories-side-component { 
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    border: 1px solid rgb(95, 95, 95);
+    background-color: rgb(215, 215, 215);
+}
+
+.stories-side-img { 
+    width: 30%;
+    height: 10vh;
+}
+
+.story-side-component-title { 
+    font-size: 1.5vw;
+    font-family: 'Playfair Display', serif;
+    margin: auto;
+    margin-left: 2vw;
+}
+
+.storymap-container { 
+    width: 100%;
+    background-color: blue;
+    height: 20vh;
+}
+
+.stories-storymap-iframe { 
+    width: 100%;
+    height: 100%;
+}
