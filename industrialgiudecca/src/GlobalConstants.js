@@ -3,10 +3,21 @@
 // URL endpoints to the storymaps for factories that they exist for
 // [ key : val ] => [ Factory_ID : StoryMapURL ]
 export const factoryStoryMapURLs = {
-    g: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258?cover=false',     // Storymap for Giudecca ("g")
-    3: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0?cover=false',      // Stucky
-    9: 'https://storymaps.arcgis.com/stories/d488bbdddc3c4c2ca34686b9d230d40f?cover=false', // Scalera
+    g: { // Homepage story
+        en: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258?cover=false',
+        it: 'https://storymaps.arcgis.com/stories/8e4b51adb9db4cba8546a3c3df7be7ea?cover=false'
+    },
+
+    3: { // Stucky
+        en: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0?cover=false',
+        it: ''
+    },
+    9: { // Scalera
+        en: 'https://storymaps.arcgis.com/stories/d488bbdddc3c4c2ca34686b9d230d40f?cover=false',
+        it: ''
+    }
 }
+
 
 // URL endpoints for the feature layers that host the data needed for the Data Explorer and the Search Bar
 export const featureLayerServiceURLs = { 

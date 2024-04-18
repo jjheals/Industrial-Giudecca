@@ -1,38 +1,18 @@
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-
-const languages = [
-    { code: "en", lang: "English" },
-    { code: "it", lang: "Italian" },
-];
+import React, { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
 
 const LanguageSelector = () => {
-    const { i18n } = useTranslation();
+    const { language, changeLanguage } = useContext(LanguageContext);
 
-    const changeLng = (lng) => {
-        i18n.changeLanguage(lng)
-            .catch((error) => {
-                console.error("Error changing language:", error);
-            });
+    const toggleLanguage = () => {
+        const newLanguage = language === 'en' ? 'it' : 'en';
+        changeLanguage(newLanguage);
     };
 
-    useEffect(() => {
-        // Log the current language whenever it changes
-        console.log("Current language:", i18n.language);
-    }, [i18n.language]);
-
     return (
-        <div className="btn-container">
-            {languages.map((lng) => (
-                <button
-                    className={lng.code === i18n.language ? "selected" : ""}
-                    key={lng.code}
-                    onClick={() => changeLng(lng.code)}
-                >
-                    {lng.lang}
-                </button>
-            ))}
-        </div>
+        <button onClick={toggleLanguage}>
+            {language === 'en' ? 'Italiano' : 'English'}
+        </button>
     );
 };
 

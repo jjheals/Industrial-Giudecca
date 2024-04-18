@@ -67,7 +67,7 @@
     z-index: -10;
 }
 
-#logos-container { 
+#logos-container {
     position: absolute;
     top: 1.5vh;
     left: 75vw;
@@ -195,7 +195,7 @@
     transition: opacity 0s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
 }
 
-#section-header-container { 
+#section-header-container {
     border-top: var(--dividing-borders);
     border-bottom: var(--dividing-borders);
     width: 100%;

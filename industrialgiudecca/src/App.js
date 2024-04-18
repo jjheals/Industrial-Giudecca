@@ -13,7 +13,6 @@ import HistoricalStoriesPage from './pages/HistoricalStoriesPage';
 import StoryPage from './pages/StoryPage';
 import MapPage from './pages/MapPage.js';
 
-import "./i18n.js";
 
 function App() {
 

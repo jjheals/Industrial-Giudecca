@@ -5,9 +5,7 @@ import { formatTimeperiodString } from '../../ArcGIS.js';
 
 import '../../css/components/MapTimeline.css';
 import { useTranslation } from "react-i18next";
-import "../../i18n.js";
-import "../../locals/en/Homepage.json";
-import "../../locals/it/Homepage.json";
+
 
 let currTimeperiodIndex = 0;
  

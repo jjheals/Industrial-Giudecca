@@ -1,6 +1,6 @@
 // src/pages/Homepage.js
 
-import React, {useState, useEffect, useTransition} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 
 import '../css/Homepage.css';
 import '../css/components/MapTimeline.css';
@@ -9,10 +9,10 @@ import { fetchFactoriesFL, fetchFL } from '../ArcGIS.js';
 import { featureLayerServiceURLs, factoryStoryMapURLs } from '../GlobalConstants.js';
 import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
-import { useTranslation } from "react-i18next";
-import "../i18n.js";
-import LanguageSelector from '../components/LanguageSelector.js'
+
+import { LanguageContext } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
+import LanguageSelector from "../components/LanguageSelector";
 
  
 /** Homepage 
@@ -29,7 +29,7 @@ function Homepage() {
     const [storymapURL, setStorymapURL] = useState('');         // URL for the storymap at the bottom of the page
     const [timeperiodsFL, setTimeperiodsFL] = useState([]);     // FL for timeperiods that appear on the MapTimeline
     const [minMaxYear, setMinMaxYear] = useState({});           // Min and max year to pass to MapTimeline
-    const { t, i18n } = useTranslation();                       // For translation 
+    const { t, language } = useContext(LanguageContext);                   // For translation
 
     // useEffect ==> init page and get all the buildings, factories, and timeperiods to pass to MapTimeline when the page loads
     useEffect(() => {
@@ -45,7 +45,7 @@ function Homepage() {
                 if(factory.Closing_Year > maxYear) maxYear = factory.Closing_Year;  // Check for max year
             });
             setFactories(factories);
-            setStorymapURL(factoryStoryMapURLs.g);
+            setStorymapURL(factoryStoryMapURLs.g[language]);
             setMinMaxYear({ 'minYear': minYear, 'maxYear': maxYear });
         })
         // Handle errors
@@ -109,9 +109,12 @@ function Homepage() {
         };
     }, []);
 
+    useEffect(() => {
+        setStorymapURL(factoryStoryMapURLs.g[language]); // Update the storymapURL when the language changes
+    }, [language]);
+
     return (
         <div className="homepage">
-            <LanguageSelector/>
 
             <head>
                 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
@@ -130,9 +133,10 @@ function Homepage() {
             }} className={blurbOpacity <= 0 ? 'fade-out' : ''}>
                 {/* Contains the logos on the top of the screen */}
                 <div id='logos-container'>
-                    <img id='main-logo' class='logo' src='logo.png'/>
-                    <img id='wpi-logo' class='logo' src='wpi-logo.png'/>
-                    <img id='sdpt-logo' class='logo' src='sdpt-logo.png'/>
+                    <img id='main-logo' className='logo' src='logo.png' alt='Main Logo'/>
+                    <img id='wpi-logo' className='logo' src='wpi-logo.png' alt='WPI Logo'/>
+                    <img id='sdpt-logo' className='logo' src='sdpt-logo.png' alt='SDPT Logo'/>
+                    <LanguageSelector/>
                 </div>
 
                 {/* Overlay to darken the homepage front image; also contains the text for the landing screen */}
@@ -154,7 +158,8 @@ function Homepage() {
             </div>
 
             {/* Timeline container */}
-            <div id="homepage-timeline"><MapTimeline factories={factories} timeperiods={timeperiodsFL} minMaxYear={minMaxYear}/></div>
+            <div id="homepage-timeline"><MapTimeline factories={factories} timeperiods={timeperiodsFL}
+                                                     minMaxYear={minMaxYear}/></div>
 
             {/* Container for the section header container */}
             <div id='section-header-container' style={{
