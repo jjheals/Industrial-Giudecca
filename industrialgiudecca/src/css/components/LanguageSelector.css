@@ -1,10 +1,10 @@
-:root { 
+:root {
     --language-selector-font-family: 'Playfair Display', serif;
     --language-selector-hover-color: rgba(133, 133, 133, 0.692);
     --language-selector-color: rgba(255, 255, 255, 0.532);
 }
 
-.language-selector-container { 
+.language-selector-container {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -16,7 +16,7 @@
     padding-top: 20vh;
 }
 
-.language-selector-title { 
+.language-selector-title {
     font-size: 3vw;
     text-align: center;
     padding: 3vh 0;
@@ -25,14 +25,14 @@
     background-color: rgba(128, 128, 128, 0.514);
 }
 
-.language-buttons-container { 
+.language-buttons-container {
     width: 70%;
     margin: 10vh auto;
     display: flex;
     flex-direction: row;
 }
 
-.language-selector { 
+.language-selector {
     height: 5vh;
     margin: auto;
     width: auto;

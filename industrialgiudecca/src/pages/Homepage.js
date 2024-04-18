@@ -183,7 +183,7 @@ function Homepage() {
                     height="1050v" frameBorder="0" allowFullScreen allow="geolocation"></iframe>
             <div className="factory-homepage-button-container">
                 <Link to="/industrial-sites">
-                    <button className="factory-homepage-button">{"Continue to learn more about the industrial sites of the Giudecca"}</button>
+                    <button className="factory-homepage-button">{t("travelToIndustrialSitesButton")}</button>
                 </Link>
             </div>
 
