@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="translated stucky and other one">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="fixed issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoryTimeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoryTimeline.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/BasicFactoryTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/BasicFactoryTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/components/LanguageSelector.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/components/LanguageSelector.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/Homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,15 +84,7 @@
       <workItem from="1712139713533" duration="13336000" />
       <workItem from="1712821649992" duration="34151000" />
       <workItem from="1713253535344" duration="27776000" />
-      <workItem from="1713426743493" duration="9217000" />
-    </task>
-    <task id="LOCAL-00005" summary="changes app.js to be router only">
-      <option name="closed" value="true" />
-      <created>1710406844142</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1710406844142</updated>
+      <workItem from="1713426743493" duration="13047000" />
     </task>
     <task id="LOCAL-00006" summary="sidebar factory reroutes">
       <option name="closed" value="true" />
@@ -476,7 +470,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713441655849</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="fixed issue">
+      <option name="closed" value="true" />
+      <created>1713443523625</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1713443523625</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +496,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed stretching for factory homepage" />
     <MESSAGE value="factory homepage psuedo working" />
     <MESSAGE value="throwing a bone (witterwy factorymap onclick added for search)" />
     <MESSAGE value="added documentation" />
@@ -519,6 +520,7 @@
     <MESSAGE value="added button for showing factories with stories" />
     <MESSAGE value="translation sauce" />
     <MESSAGE value="translated stucky and other one" />
-    <option name="LAST_COMMIT_MESSAGE" value="translated stucky and other one" />
+    <MESSAGE value="fixed issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed issue" />
   </component>
 </project>

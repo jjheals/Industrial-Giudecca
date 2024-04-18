@@ -1,17 +1,20 @@
 // src/components/Sidebar.js
 
 /** { Component } Sidebar
- * 
- * @abstract The SideBar is the primary sidebar menu that appears on every page in the top left corner. It can be toggled and contains links 
- * to the other pages. 
- * 
+ *
+ * @abstract The SideBar is the primary sidebar menu that appears on every page in the top left corner. It can be toggled and contains links
+ * to the other pages.
+ *
  */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/components/Sidebar.css';
+import LanguageSelector from '../components/LanguageSelector';
+import { LanguageContext } from '../context/LanguageContext.js';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { t, language } = useContext(LanguageContext);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -28,30 +31,30 @@ const Sidebar = () => {
                 <nav>
                     <ul>
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/" onClick={toggleSidebar}>Home</Link>
+                            <Link class="sidebar-link" to="/" onClick={toggleSidebar}>{t("sideBarHome")}</Link>
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/industrial-sites" onClick={toggleSidebar}>Industrial Sites</Link>
+                            <Link class="sidebar-link" to="/industrial-sites" onClick={toggleSidebar}>{t("sideBarIndustrial")}</Link>
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/data-explorer" onClick={toggleSidebar}>Data Explorer</Link>
+                            <Link class="sidebar-link" to="/data-explorer" onClick={toggleSidebar}>{t("sideBarDataExplorer")}</Link>
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/historical-stories" onClick={toggleSidebar}>Historical Stories</Link>
+                            <Link class="sidebar-link" to="/historical-stories" onClick={toggleSidebar}>{t("sideBarHistoricalStories")}</Link>
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/map" onClick={toggleSidebar}>Interactive Map</Link>
+                            <Link class="sidebar-link" to="/map" onClick={toggleSidebar}>{t("sideBarInteractiveMap")}</Link>
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>About</Link>
+                            <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>{t("sideBarAbout")}</Link>
                         </li>
 
-                        
+
                     </ul>
                 </nav>
             </div>
