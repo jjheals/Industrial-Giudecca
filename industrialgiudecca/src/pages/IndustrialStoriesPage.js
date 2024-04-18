@@ -17,6 +17,10 @@ function IndustrialStoriesPage() {
     const [allStorymaps, setAllStoryMaps] = useState({});
     const {t, language} = useContext(LanguageContext);
     const [selectedStorymap, setSelectedStorymap] = useState('');
+    const [selectedID, setSelectedID] = useState(0);
+
+    const sideComponentBg = 'rgb(179, 179, 179)';
+    const selectedSideComponentBg = 'rgb(255,179,255)';
 
     // Set viewport to the top of the page since React is sus
     useEffect(() => { 
@@ -25,11 +29,22 @@ function IndustrialStoriesPage() {
         })
     }, []);
 
+    /** changeSelectedStorymap(id) 
+     * @abstract changes the currently selected storymap by updating the state variables selectedStorymap and selectedId
+     * @param { int } id 
+     * @returns { null }
+     */
     function changeSelectedStorymap(id) { 
-        console.log(`changing to storymap ${id}`);
+        if(id == selectedID) return;
+
+        document.getElementById(`side-component-${id}`).style.backgroundColor = selectedSideComponentBg;
+        document.getElementById(`side-component-${selectedID}`).style.backgroundColor = sideComponentBg;
+
         setSelectedStorymap(allStorymaps[id]['Storymap_URL']);
+        setSelectedID(id);
     }
 
+    // usEffect => fetch the storymap and factory data when the page loads
     useEffect(() => {
         let isMounted = true;
     
@@ -56,16 +71,15 @@ function IndustrialStoriesPage() {
                         'Factory_Name': language == 'en' ? factory.attributes['English_Name'] : factory.attributes['Italian_Name'],
                         'Factory_ID': factory.attributes['Factory_ID'],
                         'Storymap_URL': factoryStoryMapURLs[factory.attributes['Factory_ID']][language],
-                        'Cover_Image_URL': factory.attributes.Cover_Image_ArcGIS_URL 
+                        'Cover_Image_URL': factory.attributes.Cover_Image_ArcGIS_URL,
+                        'Years': `(${factory.attributes.Opening_Year} - ${factory.attributes.Closing_Year})`
                     }
                     storymaps[factory.attributes['Factory_ID']] = thisDict;
                 });
     
-                console.log(storymaps);
-
+                setSelectedID(storymaps[Object.keys(storymaps)[0]]['Factory_ID']);
                 setAllStoryMaps(storymaps);
 
-                console.log(storymaps[Object.keys(storymaps)[0]]['Storymap_URL']);
                 setSelectedStorymap(storymaps[Object.keys(storymaps)[0]]['Storymap_URL']);
             }
         };
@@ -75,8 +89,6 @@ function IndustrialStoriesPage() {
         return () => { isMounted = false; };
     }, [language]); 
     
-    
-
     return (
         <div className="industrial-stories-page">
             {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
@@ -89,7 +101,7 @@ function IndustrialStoriesPage() {
                     {
                         Object.entries(allStorymaps).map(([factoryID, d]) => {
                             return(
-                                <div className='stories-side-component' onClick={() => changeSelectedStorymap(factoryID)}>
+                                <div className='stories-side-component' style={{ backgroundColor: sideComponentBg }} id={`side-component-${factoryID}`} onClick={() => changeSelectedStorymap(factoryID)}>
                                     <div className='stories-side-img' 
                                          style={
                                             { 
@@ -98,7 +110,10 @@ function IndustrialStoriesPage() {
                                             }
                                         }
                                     />
-                                    <h1 className='story-side-component-title'>{d['Factory_Name']}</h1>
+                                    <div>
+                                        <h1 className='story-side-component-title'>{d['Factory_Name']}</h1>
+                                        <h2 className='story-side-component-years'>{d['Years']}</h2>
+                                    </div>
                                 </div>
                             )
                         })
@@ -107,7 +122,7 @@ function IndustrialStoriesPage() {
                 </div>
 
                 <div className='storymap-container'>
-                    <iframe src={ selectedStorymap } className='stories-storymap-iframe'/>
+                    <iframe src={ selectedStorymap } frameBorder={0} className='stories-storymap-iframe'/>
                 </div>
             </div>
             

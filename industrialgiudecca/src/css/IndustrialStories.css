@@ -1,3 +1,6 @@
+:root { 
+    --side-component-bg: rgb(179, 179, 179);
+}  
 
 .stories-side-container { 
     display: flex;
@@ -10,14 +13,20 @@
     display: flex;
     flex-direction: row;
     margin-top: 10vh;
-    background-color: red;
+    height: 100vh;
+    border-top: 2px solid black;
 }
+
 .stories-side-component { 
     display: flex;
     flex-direction: row;
     height: 10vh;
-    border: 1px solid rgb(95, 95, 95);
-    background-color: rgb(215, 215, 215);
+    transition: ease-in-out 0.3s;
+    border-bottom: 1px solid black;
+}
+
+.stories-side-component:hover { 
+    cursor: pointer;
 }
 
 .stories-side-img { 
@@ -25,17 +34,22 @@
     height: 10vh;
 }
 
-.story-side-component-title { 
-    font-size: 1.5vw;
+.story-side-component-years, .story-side-component-title { 
     font-family: 'Playfair Display', serif;
     margin: auto;
     margin-left: 2vw;
+    text-align: left;
 }
 
+.story-side-component-title { 
+    font-size: 1.5vw;
+}
+
+.story-side-component-years { 
+    font-size: 0.8vw;
+}
 .storymap-container { 
     width: 100%;
-    background-color: blue;
-    height: 20vh;
 }
 
 .stories-storymap-iframe { 
