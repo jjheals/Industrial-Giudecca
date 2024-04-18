@@ -244,7 +244,7 @@ function BasicFactoryTemplate() {
             <iframe 
                 id="storyboard"
                 className="storyboard-iframe" 
-                src={ storymapURL }
+                src={ storymapURL + '?cover=false' }
                 width="100%" 
                 frameborder="0" 
             />
