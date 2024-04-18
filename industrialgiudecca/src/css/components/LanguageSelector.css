@@ -13,14 +13,16 @@
     height: 100vh;
     width: 100vw;
     backdrop-filter: blur(15px);
-    margin-top: 20vh;
+    padding-top: 20vh;
 }
 
 .language-selector-title { 
     font-size: 3vw;
     text-align: center;
+    padding: 3vh 0;
     font-family: var(--language-selector-font-family);
     color: white;
+    background-color: rgba(128, 128, 128, 0.514);
 }
 
 .language-buttons-container { 

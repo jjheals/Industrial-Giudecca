@@ -11,6 +11,7 @@ import Gallery from '../components/Photo/Gallery.js';
 import { factoryStoryMapURLs } from '../GlobalConstants.js';
 import FactoryTimeline from '../components/FactoryTimeline.js';
 import { LanguageContext } from '../context/LanguageContext.js';
+import LanguageSelector from '../components/LanguageSelector.js';
 import '../css/components/Gallery.css';
 import '../css/components/Photo.css';
 import '../css/BasicFactoryTemplate.css';
@@ -213,6 +214,7 @@ function BasicFactoryTemplate() {
 
     return (
         <div className='factory-template-container'>
+            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
             <div><Sidebar isOpen={showSidebar}/></div>
             <div><Title title={ title } imgSrc={ coverPicURL }/></div>
 
