@@ -1,13 +1,19 @@
 .search-bar-container {
+    position: sticky;
+    top: 2vh;
     display: flex;
-    justify-content: center;
-    margin: 0;
+    flex-direction: row;
+    height: 0;
 }
 
 .search-input {
-    width: 80%;
-    padding: 10px 15px;
+
+    width: 70vw;
+    margin-left: 5.5vw;
+    padding: 1vh 2vw;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 0.85vw;
+    font-family: 'Playfair Display';
 }

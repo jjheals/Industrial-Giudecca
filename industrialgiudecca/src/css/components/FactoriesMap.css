@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.fhp-map-container { 
+    background-color: red;
+}
+
 .fhp-factory-pin { 
     position: absolute;
     display: block;
@@ -20,8 +24,6 @@
     transform: scale(1.2);
     filter: brightness(1.2);
 }
-
-
 
 .fhp-factory-tooltip {
     position: absolute;

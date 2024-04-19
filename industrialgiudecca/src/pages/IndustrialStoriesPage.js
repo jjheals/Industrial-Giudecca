@@ -98,7 +98,7 @@ function IndustrialStoriesPage() {
 
             {/* Title and sidebar */}
             <div><Sidebar /></div>
-            <div><Title title={ 'Industrial Stories' } titleColor={ 'rgba(0,0,0,0.3' } imgSrc={ 'stories-page-head.jpeg' } /></div>       
+            <div><Title title={ t('industrialStoriesTitle') } titleColor={ 'rgba(0,0,0,0.3' } imgSrc={ 'stories-page-head.jpeg' } /></div>       
 
             {/* Main container for this page */}
             <div className='stories-container'>

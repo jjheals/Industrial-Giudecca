@@ -10,6 +10,7 @@
 import React, { useRef, useEffect } from 'react';
 import '../css/components/FactoriesMap.css';
 import { factoryStoryMapURLs } from '../GlobalConstants';
+import { mapHeight } from '../GlobalConstants';
 
 const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly }) => {
     // Refs for accessing DOM elements
@@ -73,7 +74,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
                     marker.id = `${factory.Factory_ID}-marker`;
                     marker.src = 'pin-icon-2.png';
                     marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                    marker.style.top = `calc(${factory.y}px + 105vh)`;
+                    marker.style.top = `calc(${factory.y}px + 97vh)`;
                     marker.style.zIndex = '0';
 
                     // Event listeners for marker interactions
@@ -136,7 +137,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
                 <div
                     ref={mapContainerRef}
                     className='fhp-map-container'
-                    style={{ height: window.innerHeight }}
+                    style={{ height: mapHeight }}
                 ></div>
             </div>
         </div>

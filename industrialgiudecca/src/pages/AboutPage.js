@@ -8,21 +8,32 @@
  * director (Fabio Carerra), and the Industrial Giudecca team (Justin, Mary, Tim, Parker). This page does not contain any dynamic
  * data that needs to be updated. 
  */
-import React from 'react';
+import React, { useContext } from 'react';
 import Sidebar from '../components/Sidebar.js';
+
+import LanguageSelector from '../components/LanguageSelector.js';
+import { LanguageContext } from '../context/LanguageContext.js';
 
 import Title from '../components/Title.js';
 import '../css/AboutPage.css';
 
 function AboutPage() {
+    const {t, language} = useContext(LanguageContext);
+
+    console.log(t);
+
     window.scrollTo({ 
         top: 0
     });
     
     return (
         <div className="about-page">
+
+            {/* Language selector if a language has not yet been chosen this session */}
+            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+
             <div><Sidebar /></div>
-            <div><Title title={ 'About' } imgSrc={ 'about-title-img.png' } /></div>
+            <div><Title title={ t('aboutTitle') } imgSrc={ 'about-title-img.png' } /></div>
 
             <div class='about-container'> 
 

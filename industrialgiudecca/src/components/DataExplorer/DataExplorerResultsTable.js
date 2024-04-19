@@ -1,7 +1,8 @@
 // src/components/DataExplorer/DataExplorerResultsTable.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../../css/DataExplorer.css';
+
 
 const DataExplorerResultsTable = ({ d }) => {
     const [queryResults, setQueryResults] = useState({ keys: [], rows: [] });
@@ -57,7 +58,7 @@ const DataExplorerResultsTable = ({ d }) => {
                     </table>
                 ) : (
                     <div id="no-results-found-msg">
-                        <p>No results found.</p>
+                        <p>No Results Found.</p>
                     </div>
                 )}
             </div>

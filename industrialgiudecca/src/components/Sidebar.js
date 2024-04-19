@@ -43,7 +43,7 @@ const Sidebar = () => {
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" to="/historical-stories" onClick={toggleSidebar}>{t("sideBarHistoricalStories")}</Link>
+                            <Link class="sidebar-link" to="/industrial-stories" onClick={toggleSidebar}>{t("sideBarHistoricalStories")}</Link>
                         </li>
 
                         <li className="sidebar-element">

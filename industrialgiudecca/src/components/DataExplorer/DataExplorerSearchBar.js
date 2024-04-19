@@ -6,18 +6,22 @@
  * search functions for the DataExplorer. The fields correspond to the Entities and Relationships in the ArcGIS database.  
  * 
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../../css/DataExplorer.css';
 
 import { featureLayerServiceURLs, intersection } from '../../GlobalConstants.js';
 import { RelationalFilters } from './DataExplorerConstants.js';
 import { fetchFL, filterFeatureLayer, filterFeatureLayerRange, filterFeatureLayerDualRange } from '../../ArcGIS.js';
 import { setResultsTable } from './DataExplorerFunctions.js';
+import { LanguageContext } from '../../context/LanguageContext.js';
 
 const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState([]);
     const [ purposes, setPurposes ] = useState([]);
+    const { t, language } = useContext(LanguageContext);  
 
+    console.log(`Data explorer SEARCH BAR language: ${language}`);
+    
     // Define state variables to track form data
     const [formData, setFormData] = useState({
         English_Name: '',
@@ -294,17 +298,17 @@ const DataExplorerSearchBar = () => {
 
                 {/* Row 1 of inputs */}
                 <div className='de-search-bar-row'>
-                    <div className='input-container'><input type='text' className='de-search-input' name='English_Name' placeholder='Factory Name (English)' onChange={handleInputChange}></input></div>
-                    <div className='input-container'><input type='text' className='de-search-input' name='Italian_Name' placeholder='Factory Name (Italian)' onChange={handleInputChange}></input></div>
-                    <div className='input-container'><input type='number' className='de-search-input' name='Min_Employment' placeholder='Minumum Employment' onChange={handleInputChange}></input></div>
-                    <div className='input-container'><input type='number' className='de-search-input' name='Min_Year' placeholder='Minimum Year' onChange={handleInputChange}></input></div>
+                    <div className='input-container'><input type='text' className='de-search-input' name='English_Name' placeholder={ t('factoryNameEnglish') } onChange={handleInputChange}></input></div>
+                    <div className='input-container'><input type='text' className='de-search-input' name='Italian_Name' placeholder={ t('factoryNameItalian') } onChange={handleInputChange}></input></div>
+                    <div className='input-container'><input type='number' className='de-search-input' name='Min_Employment' placeholder={ t('minEmployment') } onChange={handleInputChange}></input></div>
+                    <div className='input-container'><input type='number' className='de-search-input' name='Min_Year' placeholder={ t('minYear') } onChange={handleInputChange}></input></div>
                 </div>
 
                 {/* Row 2 of inputs */}
                 <div className='de-search-bar-row'>
                     <div className='input-container'>
                         <select className='de-search-input' name='Product' onChange={handleInputChange}>
-                            <option className='de-select-option' value='' onChange={handleInputChange}>Select Product</option>
+                            <option className='de-select-option' value='' onChange={handleInputChange}>{ t('selectProduct') }</option>
                             {
                                 products.map(product => { 
                                     return <option className='de-select-option' name={ product } value={ product } onChange={handleInputChange}>{ product }</option> 
@@ -314,7 +318,7 @@ const DataExplorerSearchBar = () => {
                     </div>
                     <div className='input-container'>
                         <select className='de-search-input' name='Current_Purpose' onChange={handleInputChange}>
-                            <option className='de-select-option' value='' onChange={handleInputChange}>Select Current Purpose</option>
+                            <option className='de-select-option' value='' onChange={handleInputChange}>{ t('selectCurrentPurpose') }</option>
                             {
                                 purposes.map(purpose => { 
                                     return <option className='de-select-option' name={ 'Current_Purpose' } value={ purpose } onChange={handleInputChange}>{ purpose }</option> 
@@ -322,12 +326,12 @@ const DataExplorerSearchBar = () => {
                             }
                         </select>
                     </div>
-                    <div className='input-container'><input type='number' className='de-search-input' name='Max_Employment' placeholder='Maximum Employment' onChange={handleInputChange}></input></div>
-                    <div className='input-container'><input type='number' className='de-search-input' name='Max_Year' placeholder='Maximum Year' onChange={handleInputChange}></input></div>
+                    <div className='input-container'><input type='number' className='de-search-input' name='Max_Employment' placeholder={ t('maxEmployment') } onChange={handleInputChange}></input></div>
+                    <div className='input-container'><input type='number' className='de-search-input' name='Max_Year' placeholder={ t('maxYear') } onChange={handleInputChange}></input></div>
                 </div>
 
                 {/* Row 3 for submit button */}
-                <div className='de-search-bar-row'><button type='submit' className='de-search-submit'>Search</button></div>
+                <div className='de-search-bar-row'><button type='submit' className='de-search-submit'>{ t('search') }</button></div>
             </form>
         </div>
     );

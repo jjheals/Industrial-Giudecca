@@ -1,6 +1,6 @@
 // src/pages/FactoryHomepage.js
 
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
 
@@ -11,9 +11,13 @@ import { fetchFactoriesFL } from '../ArcGIS.js';
 import FactoriesMap from '../components/FactoriesMap.js';
 import { factoryStoryMapURLs } from '../GlobalConstants';
 
+import LanguageSelector from '../components/LanguageSelector';
+import { LanguageContext } from '../context/LanguageContext.js';
+
 import '../css/FactoryHomepage.css';
 
 function FactoryHomepage() {
+    const { t, language } = useContext(LanguageContext);
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
     const [showStoriesOnly, setShowStoriesOnly] = useState(false);
@@ -72,8 +76,12 @@ function FactoryHomepage() {
 
     return (
         <div className="factory-homepage">
+            
+            {/* Language selector if a language has not yet been chosen this session */}
+            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+
             {/* Title and sidebar */}
-            <Title title='Industrial Sites' titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg'/>
+            <Title title={ t('factoryHomepageTitle') } titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg'/>
             <Sidebar/>
 
             {/* Search bar that sticks to the top of the page after scrolling past the title */}
@@ -81,7 +89,7 @@ function FactoryHomepage() {
             <div className="search-bar-container">
                 <SearchBar onSearch={handleSearch}/>
                 <button className="toggle-stories-button" onClick={toggleShowStoriesOnly}>
-                    {showStoriesOnly ? 'Show All Factories' : 'Show Factories with Stories'}
+                    {showStoriesOnly ? t('showAllFactories') : t('showFactoriesWithStories') }
                 </button>
             </div>
 

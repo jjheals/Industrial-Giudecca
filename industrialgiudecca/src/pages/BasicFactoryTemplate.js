@@ -19,6 +19,7 @@ import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
 import { factoryStoryMapURLs } from '../GlobalConstants.js';
 import FactoryTimeline from '../components/FactoryTimeline.js';
+
 import { LanguageContext } from '../context/LanguageContext.js';
 import LanguageSelector from '../components/LanguageSelector.js';
 

@@ -8,11 +8,13 @@
  * @param { function } onSearch - Callback function for when a search is submitted 
  */
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../css/components/Searchbar.css'; 
+import { LanguageContext } from '../context/LanguageContext.js';
 
 const SearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
+    const { t, language } = useContext(LanguageContext);
 
     const handleInputChange = (e) => {
         const value = e.target.value;
@@ -21,10 +23,10 @@ const SearchBar = ({ onSearch }) => {
     };
 
     return (
-        <div className="search-bar-container">
+        <div>
             <input
                 type="text"
-                placeholder="Search for factories..."
+                placeholder={t('searchForIndustrialSites')}
                 value={searchTerm}
                 onChange={handleInputChange}
                 className="search-input"

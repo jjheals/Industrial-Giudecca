@@ -12,9 +12,6 @@ import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 import LanguageSelector from '../components/LanguageSelector';
 import { LanguageContext } from '../context/LanguageContext.js';
-
-
-
  
 /** Homepage 
  * @abstract Renders the homepage at the relative route "/". Takes no parameters. Contains: 
@@ -30,7 +27,7 @@ function Homepage() {
     const [storymapURL, setStorymapURL] = useState('');         // URL for the storymap at the bottom of the page
     const [timeperiodsFL, setTimeperiodsFL] = useState([]);     // FL for timeperiods that appear on the MapTimeline
     const [minMaxYear, setMinMaxYear] = useState({});           // Min and max year to pass to MapTimeline
-    const { t, language } = useContext(LanguageContext);                   // For translation
+    const { t, language } = useContext(LanguageContext);        // For translation
 
     // useEffect ==> init page and get all the buildings, factories, and timeperiods to pass to MapTimeline when the page loads
     useEffect(() => {
@@ -113,9 +110,7 @@ function Homepage() {
     useEffect(() => {
         setStorymapURL(factoryStoryMapURLs.g[language]); // Update the storymapURL when the language changes
     }, [language]);
-
-    console.log('localStorage.getItem("language")');
-    console.log(localStorage.getItem('language'));
+    
     return (
         <div className="homepage">
 
@@ -125,6 +120,7 @@ function Homepage() {
                 <title>Industrial Giudecca</title>
             </head>
 
+            {/* Language selector if a language has not yet been chosen this session */}
             {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Sidebar div */}

@@ -6,11 +6,14 @@
  * @param {str} title - the title to display (verbatim)
  * 
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import '../css/components/Title.css';
+
+import { LanguageContext } from '../context/LanguageContext.js';
 
 const Title = (title) => {
     const [titleOpacity, setTitleOpacity] = useState(1);
+    const { t, language } = useContext(LanguageContext);  
 
     // useEffect ==> title fade in and out logic
     useEffect(() => {
@@ -48,7 +51,7 @@ const Title = (title) => {
                 <h1 className="title" id="title">{ title.title }</h1>
             </div>
             <div className="title-footer">
-                <p>Scroll to learn more</p>
+                <p>{ t('scrollToLearnMore') }</p>
             </div>
         </div>
     );
