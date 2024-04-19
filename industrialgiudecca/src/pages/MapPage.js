@@ -13,11 +13,11 @@ import { mapInstantAppURL } from '../GlobalConstants.js';
 function MapPage() {
     const [showSidebar, setShowSidebar] = useState(false);
     return (
-        <div className="map-page" style={{ width: '100vw', height: '100vh' }}>
+        <div className="map-page" style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
             <div><Sidebar isOpen={showSidebar}/></div>
             <iframe src={ mapInstantAppURL }
                     frameborder="0" 
-                    style={{ width: '100%', height: '93vh', marginTop: '7vh' }}
+                    style={{ width: '100%', height: '90vh', marginTop: '9vh' }}
                     allowfullscreen
             >iFrames are not supported on this page.</iframe>
 
