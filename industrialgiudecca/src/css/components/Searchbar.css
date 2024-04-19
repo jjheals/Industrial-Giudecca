@@ -1,13 +1,14 @@
 .search-bar-container {
     position: sticky;
-    top: 2vh;
+    top: 0vh;
     display: flex;
     flex-direction: row;
+    z-index: 1000;
     height: 0;
 }
 
 .search-input {
-
+    margin-top: 2vh;
     width: 70vw;
     margin-left: 5.5vw;
     padding: 1vh 2vw;
@@ -16,4 +17,5 @@
     border-radius: 5px;
     font-size: 0.85vw;
     font-family: 'Playfair Display';
+    z-index: 2000;
 }

@@ -27,8 +27,6 @@ import '../css/components/Gallery.css';
 import '../css/components/Photo.css';
 import '../css/BasicFactoryTemplate.css';
 
-
-
 function BasicFactoryTemplate() {
     const { Factory_ID } = useParams();
     const [coverPicURL, setCoverPicURL] = useState('');
@@ -40,6 +38,7 @@ function BasicFactoryTemplate() {
     let removeTimeline = false;
 
     const { t, language } = useContext(LanguageContext);                   // For translation
+    let languageSelected = localStorage.getItem('hasSelectedLanguage');
 
     const circleColors = { 
         'products': [79, 202, 255],
@@ -74,7 +73,7 @@ function BasicFactoryTemplate() {
             .then(fl => { 
                 fl.map(d => { 
                     timeperiods[d.attributes['Start_Date']] = [{
-                        'Title': d.attributes['Title'],
+                        'Title': d.attributes[`Title_${language}`],
                         'Color': circleColors['timeperiods']
                     }];
                 });
@@ -83,11 +82,19 @@ function BasicFactoryTemplate() {
             
             // Push the opening and closing dates for this factory onto the timeperiods (if they exist)
             if(factory.Opening_Year) { 
-                const returnDict = {
-                    'Title': `${factory.English_Name} opens.`,
-                    'Color': circleColors['info']
-                };
-                
+                let returnDict = {};
+
+                if(language == 'en') { 
+                    returnDict = { 
+                        'Title': `${factory.English_Name} opens.`,
+                        'Color': circleColors['info']
+                    }
+                } else { 
+                    returnDict = { 
+                        'Title': `${t('opens')} ${factory.Italian_Name}.`,
+                        'Color': circleColors['info']
+                    }
+                }
                 if(timeperiods.hasOwnProperty(parseInt(factory.Opening_Year))) { 
                     timeperiods[parseInt(factory.Opening_Year)].push(returnDict);
                 } else { 
@@ -96,10 +103,19 @@ function BasicFactoryTemplate() {
             }
             
             if(factory.Closing_Year && factory.Closing_Year != 9999) { 
-                const returnDict = {
-                    'Title': `${factory.English_Name} closes.`,
-                    'Color': circleColors['info']
-                };
+                let returnDict = {};
+
+                if(language == 'en') { 
+                    returnDict = { 
+                        'Title': `${factory.English_Name} closes.`,
+                        'Color': circleColors['info']
+                    }
+                } else { 
+                    returnDict = { 
+                        'Title': `${t('closes')} ${factory.Italian_Name}.`,
+                        'Color': circleColors['info']
+                    }
+                }
                 
                 if(timeperiods.hasOwnProperty(parseInt(factory.Closing_Year))) { 
                     timeperiods[parseInt(factory.Closing_Year)].push(returnDict);
@@ -125,10 +141,10 @@ function BasicFactoryTemplate() {
 
                     if(thisStartDate) {
                         const returnDict = { 
-                            'Title': `${factory.English_Name} starts producing ${String(d.attributes['Product']).toLowerCase()}.`,
+                            'Title': `${factory.English_Name} ${t('startsProducing')} ${String(d.attributes[`Product_${language}`]).toLowerCase()}.`,
                             'Color': circleColors['products']
                         }
-                        
+
                         if(timeperiods.hasOwnProperty(thisStartDate)) { 
                             timeperiods[thisStartDate].push(returnDict);
                         } else { 
@@ -137,8 +153,6 @@ function BasicFactoryTemplate() {
                     }
                 }); 
             });
-
-            
 
             /** Get the employment information for this factory & construct timeperiods
              * @constant { dict } employmentTimeperiods - the changes in employment rates for this factory in the format 
@@ -154,7 +168,7 @@ function BasicFactoryTemplate() {
 
                     if(thisYear) {
                         const returnDict = { 
-                            'Title': `${factory.English_Name} has ${d.attributes.Employment} employees.`,
+                            'Title': `${factory.English_Name} ${t('has')} ${d.attributes.Employment} ${t('employees')}.`,
                             'Color': circleColors['employment']
                         }
                         
@@ -166,6 +180,8 @@ function BasicFactoryTemplate() {
                     }
                 }); 
             })
+
+            console.log(timeperiods);
 
             // Set the timeline params 
             setTimelineParams({ 
@@ -193,7 +209,7 @@ function BasicFactoryTemplate() {
             removeTimeline = true;
             setStorymapURL(thisStorymapURL);
         }
-    }, []);
+    }, [languageSelected]);
 
     /* useEffect => Run after DOM loads - check if there's a storyboard for this factory
           - if there is a storyboard, then remove the grid and do nothing else
@@ -202,8 +218,6 @@ function BasicFactoryTemplate() {
     useEffect(() => {
         const timelineContainer = document.getElementById('factory-timeline-container');    // Element for the grid 
         const storyboardContainer = document.getElementById('storyboard');          // Element for the storyboard
-
-        console.log(timelineContainer);
 
         // Conditional: if removeGrid and gridContainer exists, remove the grid and do nothing else 
         if (timelineContainer && removeTimeline) { 
@@ -214,7 +228,7 @@ function BasicFactoryTemplate() {
             storyboardContainer.remove();
         }
 
-    }, []);
+    }, [languageSelected]);
 
     return (
         <div className='factory-template-container'>

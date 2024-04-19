@@ -47,9 +47,15 @@ const translations = {
         minYear: "Min Year",
         selectCurrentPurpose: "Select Current Purpose", 
         selectProduct: "Select a Product",
-        search: "Search"
+        search: "Search",
 
-
+        // BasicFactoryTemplate FactoryTimeline
+        startsProducing: "starts producing",
+        has: "has",
+        employees: "employees",
+        closes: "Chiude",
+        opens: "Apre"
+        
     },
     it: {
         // Homepage translations
@@ -99,7 +105,14 @@ const translations = {
         minYear: "Anno Minimo",
         selectCurrentPurpose: "Seleziona lo Scopo Attuale",
         selectProduct: "Seleziona il Prodotto",
-        search: "Ricera"
+        search: "Ricera",
+
+        // BasicFactoryTemplate FactoryTimeline
+        startsProducing: "inizia a produrre",
+        has: "ha", 
+        employees: "dipendenti",
+        closes: "Chiude",
+        opens: "Apre"
     }
 };
 

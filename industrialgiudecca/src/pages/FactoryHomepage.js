@@ -115,7 +115,7 @@ function FactoryHomepage() {
                                     className="landscape-placeholder factory-image"
                                 />
                             </Link>
-                            <h2>{factory.English_Name}</h2>
+                            <h2>{language == 'en' ? factory.English_Name : factory.Italian_Name}</h2>
                         </div>
                     ))}
                 </div>

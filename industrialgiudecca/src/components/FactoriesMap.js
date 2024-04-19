@@ -75,7 +75,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
                     marker.src = 'pin-icon-2.png';
                     marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
                     marker.style.top = `calc(${factory.y}px + 97vh)`;
-                    marker.style.zIndex = '0';
+                    marker.style.zIndex = '0.5';
 
                     // Event listeners for marker interactions
                     // Add handler for clicking the marker 
