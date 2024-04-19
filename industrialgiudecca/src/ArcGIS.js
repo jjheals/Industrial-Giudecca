@@ -188,11 +188,13 @@ export function filterFeatureLayerDualRange(featureLayerDict, minVal, maxVal, st
      * @param { dict } timeperiodDict 
      * @returns { String }
      */
-export function formatTimeperiodString(timeperiodDict) { 
+export function formatTimeperiodString(timeperiodDict, lang) { 
+    console.log(lang);
+    
     if(timeperiodDict['Start_Date'] == timeperiodDict['End_Date']) { 
-        return `(${timeperiodDict['Start_Date']}) ${timeperiodDict['Title']}`;
+        return `(${timeperiodDict['Start_Date']}) ${timeperiodDict[`Title_${lang}`]}`;
     } else { 
-        return `(${timeperiodDict['Start_Date']}-${timeperiodDict['End_Date']}) ${timeperiodDict['Title']}`;
+        return `(${timeperiodDict['Start_Date']}-${timeperiodDict['End_Date']}) ${timeperiodDict[`Title_${lang}`]}`;
     }
 }
 

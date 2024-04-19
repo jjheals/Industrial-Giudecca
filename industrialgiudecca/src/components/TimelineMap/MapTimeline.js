@@ -18,7 +18,7 @@ import { useTranslation } from "react-i18next";
 
 let currTimeperiodIndex = 0;
  
-const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
+const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const pageRef = useRef(null);           // Page ref
     const mapContainerRef = useRef(null);   // Ref for map container element
     const markerRefs = useRef({});          // Refs for marker elements
@@ -158,7 +158,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
                     // Check if moving on to the next time period
                     else if(nextTimeperiodStartYear < year) {
                         currTimeperiodIndex = currTimeperiodIndex + 1;
-                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex]));
+                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex], language));
                     }
                     // Check if moving back to the previous time period
                     else if(prevTimeperiodEndYear > 0 && prevTimeperiodEndYear < year || currTimeperiodStartYear > year) {
@@ -167,7 +167,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear }) => {
 
                     // Set the time period on the screen
                     else if(currTimeperiodStartYear > year) {
-                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex]));
+                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex], language));
                     }
                 } catch {
                     setTimeperiod('');

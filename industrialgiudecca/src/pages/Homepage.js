@@ -28,7 +28,7 @@ function Homepage() {
     const [timeperiodsFL, setTimeperiodsFL] = useState([]);     // FL for timeperiods that appear on the MapTimeline
     const [minMaxYear, setMinMaxYear] = useState({});           // Min and max year to pass to MapTimeline
     const { t, language } = useContext(LanguageContext);        // For translation
-
+    
     // useEffect ==> init page and get all the buildings, factories, and timeperiods to pass to MapTimeline when the page loads
     useEffect(() => {
         // Fetch factories FL when component mounts
@@ -75,7 +75,7 @@ function Homepage() {
         .catch(error => {
             console.error('Error fetching timeperiods:', error);
         });
-    }, []); // Empty dependency array
+    }, [language]); // Empty dependency array
 
     // useEffect ==> blurb/title fade in and out logic
     useEffect(() => {
@@ -110,7 +110,7 @@ function Homepage() {
     useEffect(() => {
         setStorymapURL(factoryStoryMapURLs.g[language]); // Update the storymapURL when the language changes
     }, [language]);
-    
+
     return (
         <div className="homepage">
 
@@ -160,7 +160,7 @@ function Homepage() {
 
             {/* Timeline container */}
             <div id="homepage-timeline"><MapTimeline factories={factories} timeperiods={timeperiodsFL}
-                                                     minMaxYear={minMaxYear}/></div>
+                                                     minMaxYear={minMaxYear} language={language}/></div>
 
             {/* Container for the section header container */}
             <div id='section-header-container' style={{
