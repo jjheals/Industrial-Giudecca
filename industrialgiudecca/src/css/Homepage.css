@@ -1,33 +1,28 @@
 :root {
     --container-side-padding: 10%;
     --container-top-padding: 5%;
-    --title-font: "Playfair Display", Serif, monospace;
+    --title-font: 'Playfair Display', Serif, monospace;
     --title-font-size: 6vw;
     --title-font-color: rgb(255, 255, 255);
     --scroll-text-color: rgb(232, 202, 162);
-    --bg-overlay: rgba(0, 0, 0, 0.324); /* Adjust the opacity by changing the last value (0.5 in this case) */
+    --bg-overlay: rgba(0, 0, 0, 0.324);
     --text-align: left;
-
-    /* Title/landing page styles */
     --scroll-top: 42vh;
     --subtitle-bottom: -37vh;
     --subtitle-left: 3vw;
     --title-top: 45vh;
     --title-left: 3vw;
     --w: 80%;
-
-    /* Section header styles */
     --dividing-borders: 2px solid rgb(255, 255, 255);
     --section-header-font-color: rgb(255, 255, 255);
     --section-header-overlay: rgba(0, 0, 0, 0.612);
 }
 
-body { 
+body {
     margin: 0;
 }
 
-/* Styles for page design */
-.homepage { 
+.homepage {
     width: 100%;
     overflow: hidden;
     z-index: -10;
@@ -44,7 +39,7 @@ body {
     z-index: 1001;
 }
 
-.logo { 
+.logo {
     width: 5vw;
     height: auto;
     margin: auto;
@@ -70,15 +65,15 @@ body {
     text-align: center;
     height: 60vh;
     z-index: 4;
-    transition: opacity 0s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
+    transition: opacity 0s ease-in-out, z-index 1s step-end;
 }
 
-.blurbElm { 
+.blurbElm {
     margin: 0;
     width: 70%;
 }
 
-#blurbTop { 
+#blurbTop {
     position: relative;
     text-align: var(--text-align);
     color: var(--title-font-color);
@@ -87,7 +82,7 @@ body {
     width: var(--w);
 }
 
-#blurbBottom { 
+#blurbBottom {
     position: relative;
     text-align: var(--text-align);
     bottom: var(--subtitle-bottom);
@@ -107,10 +102,10 @@ body {
     padding: 0;
     padding-top: 2%;
     padding-bottom: 2%;
-
 }
 
-#blurb.fade-out, #section-header-container.fade-out {
+#blurb.fade-out,
+#section-header-container.fade-out {
     opacity: 0;
     z-index: -1;
     pointer-events: none;
@@ -121,8 +116,8 @@ body {
     font-size: 1vw;
 }
 
-#scrollText { 
-    color: var(--scroll-text-color);    
+#scrollText {
+    color: var(--scroll-text-color);
     font-size: 1.4vw;
     margin: 0;
     width: var(--w);
@@ -149,7 +144,7 @@ body {
     opacity: 0;
 }
 
-#homepage-timeline { 
+#homepage-timeline {
     position: relative;
     top: 1700;
     left: 0;
@@ -158,7 +153,7 @@ body {
     z-index: 10;
     border-bottom: var(--dividing-borders);
     border-top: var(--dividing-borders);
-    transition: opacity 0s ease-in-out, z-index 1s step-end; /* Reduced transition duration */
+    transition: opacity 0s ease-in-out, z-index 1s step-end;
 }
 
 #section-header-container {
@@ -170,14 +165,14 @@ body {
     opacity: 1;
 }
 
-.section-header-overlay { 
+.section-header-overlay {
     position: absolute;
     background-color: var(--section-header-overlay);
     height: 100vh;
     width: 100%;
 }
 
-.section-header { 
+.section-header {
     position: relative;
     top: 35vh;
     left: 3vw;
@@ -189,17 +184,15 @@ body {
     color: var(--section-header-font-color);
     z-index: 1000;
     text-align: left;
-
 }
 
-.storyboard-iframe { 
+.storyboard-iframe {
     display: block;
     width: 100%;
     height: 100vh;
     margin: auto;
     border-top: var(--dividing-borders);
 }
-
 
 @keyframes scrollAnimation {
     0% {
@@ -239,4 +232,78 @@ body {
 .factory-homepage-button:hover {
     background-color: black;
     color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    #homepage-timeline {
+        display: none;
+    }
+
+    #blurb {
+        padding: 0;
+        font-size: var(--title-font-size);
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .bg-overlay {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #blurbTop {
+        top: auto;
+        padding-top: 25vh;
+        left: 0;
+        width: 90%;
+        text-align: center;
+        margin-bottom: 2vh;
+    }
+
+    #blurbBottom {
+        bottom: auto;
+        left: 0;
+        top: auto;
+        width: 90%;
+        text-align: center;
+        margin-top: 1vh;
+    }
+
+    #blurbSubtitle {
+        font-size: 4vw;
+    }
+
+    #blurbCredits {
+        font-size: 3vw;
+    }
+
+    #blurbScroll {
+        top: auto;
+        bottom: 5vh;
+        width: 100%;
+    }
+
+    #scrollText {
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    .section-header {
+        font-size: 8vw;
+    }
+
+    #logos-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        justify-content: space-around;
+        top: 3vh;
+    }
+
+    .logo {
+        width: 10vw;
+    }
 }
