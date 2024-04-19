@@ -12,7 +12,7 @@ import '../css/components/FactoriesMap.css';
 import { factoryStoryMapURLs } from '../GlobalConstants';
 import { mapHeight } from '../GlobalConstants';
 
-const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly }) => {
+const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, language }) => {
     // Refs for accessing DOM elements
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
@@ -88,7 +88,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly })
                     marker.addEventListener('mouseover', () => {
                         highlightMarker(marker);
                         // Show the factory name tooltip
-                        tooltip.textContent = factory.English_Name;
+                        tooltip.textContent = language == 'en' ? factory.English_Name: factory.Italian_Name;
                         tooltip.style.display = 'block';
                         tooltip.style.left = `${factory.x + (markerWidthPx / 2)}px`;
                         tooltip.style.top = `calc(${factory.y}px + 105vh - ${markerHeightPx}px)`;

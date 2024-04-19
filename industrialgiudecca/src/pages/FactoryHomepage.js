@@ -98,6 +98,7 @@ function FactoryHomepage() {
                 factories={filteredFactories}
                 onMarkerClick={handleMarkerClick}
                 showStoriesOnly={showStoriesOnly}
+                language={language}
             />
 
 
