@@ -1,12 +1,12 @@
 // MapTimeline.js
 
-/** { Component } MapTimeline 
- * @abstract Component rendered on the Homepage that contains the clickable markers on the map for each industrial site, 
+/** { Component } MapTimeline
+ * @abstract Component rendered on the Homepage that contains the clickable markers on the map for each industrial site,
  * and allows the user to scroll through the timeline
- * 
- * @param { Array[Factory] } factories - Array of factories as Factory objects 
- * @param { Arraoy[Object] } timeperiods - Array of timeperiods as Dictionaries (Objects)
- * @param { Object } minMaxYear - Object (Dictionary) in the format [ key : val ] => [ min: [int], max: [int] ] 
+ *
+ * @param { Array[Factory] } factories - Array of factories as Factory objects
+ * @param { Array[Object] } timeperiods - Array of timeperiods as Dictionaries (Objects)
+ * @param { Object } minMaxYear - Object (Dictionary) in the format [ key : val ] => [ min: [int], max: [int] ]
  *                                for the min and max year on the timeline
  */
 import React, { useState, useEffect, useRef } from 'react';
@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 
 
 let currTimeperiodIndex = 0;
- 
+
 const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const pageRef = useRef(null);           // Page ref
     const mapContainerRef = useRef(null);   // Ref for map container element
@@ -34,25 +34,70 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const currentYear = new Date().getFullYear();   // Current year for scrolling timeline
     const minYear = minMaxYear.minYear;             // Min year as passed to MapTimeline
     const maxYear = minMaxYear.maxYear;             // Max year as passed to MapTimeline
-    
+
     // Calculate the top margin of the timeline in pixels
     // NOTE: vh in the below formula is the margin in VH
     const marginVH = 5;  // Margin in VH
     const marginPx = (marginVH * window.innerHeight) / 50;
 
     // useEffect => Init the year as minYear
-    useEffect(() => { setYear(minYear); }, [minMaxYear, language]);
+    useEffect(() => { setYear(minYear); }, [minMaxYear]);
+
+    // Event handler for the wheel event
+    const handleWheel = (e) => {
+        if (pageRef.current && !skipTimeline) {
+            const top = pageRef.current.getBoundingClientRect().top; // Current top of the screen
+            const margin = 50;                                       // margin is +/- amount from the top of the timeline to lock scroll
+
+            // Check if the position is within the margin for locking the screen
+            // NOTE: <= 0 assumes the timeline top is at pos y = 0
+            if(top - margin <= 0) {
+                if(!skipTimeline) window.scrollTo(0, timelineTop);
+                e.preventDefault();
+
+                // Control the scroll speed in both directions
+                const scrollFactor = 0.7;                                       // DECREASE => SLOWER
+                const direction = e.deltaY > 0 ? scrollFactor : -scrollFactor;  // Set the scroll speed
+
+                // Calculate the year
+                setYear((prevYear) => {
+                    const newYear = prevYear + direction;
+
+                    // Scroll is "down" (increase year)
+                    if (newYear >= minYear && newYear <= currentYear) return newYear;
+
+                    // We are at the end (current year), so remove the event listener to unlock scroll
+                    else if (newYear >= currentYear) {
+                        setTimeperiod(`(${currentYear}) Modern day.`);
+                        window.removeEventListener('wheel', handleWheel);
+                        return currentYear;
+                    }
+
+                    // Scroll is "up" (decrease year)
+                    else return prevYear;
+                });
+            }
+        }
+    };
 
     // Event handler for the reset button
     const handleResetClick = () => {
         setYear(minYear);
         setSkipTimeline(false);
         setTimeperiod('');
-        window.scrollTo({ 
+        setActiveAdv('');
+        setActiveLabel('');
+        window.scrollTo({
             top: timelineTop,
             behavior: 'smooth'
         });
         currTimeperiodIndex = 0;
+
+        // Remove the existing wheel event listener
+        window.removeEventListener('wheel', handleWheel);
+
+        // Add a new wheel event listener with the updated skipTimeline state
+        window.addEventListener('wheel', handleWheel, { passive: false });
     };
 
     // Event handler for the skip timeline button
@@ -71,48 +116,12 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
     // useEffect => logic for an event handler to lock the scroll while the timeline is active
     useEffect(() => {
-        const handleWheel = (e) => {
-            if (pageRef.current && !skipTimeline) {
-                const top = pageRef.current.getBoundingClientRect().top; // Current top of the screen
-                const margin = 50;                                       // margin is +/- amount from the top of the timeline to lock scroll
-
-                // Check if the position is within the margin for locking the screen
-                // NOTE: <= 0 assumes the timeline top is at pos y = 0
-                if(top - margin <= 0) {
-                    if(!skipTimeline) window.scrollTo(0, timelineTop);
-                    e.preventDefault();
-
-                    // Control the scroll speed in both directions
-                    const scrollFactor = 0.7;                                       // DECREASE => SLOWER
-                    const direction = e.deltaY > 0 ? scrollFactor : -scrollFactor;  // Set the scroll speed
-
-                    // Calculate the year
-                    setYear((prevYear) => {
-                        const newYear = prevYear + direction;
-
-                        // Scroll is "down" (increase year)
-                        if (newYear >= minYear && newYear <= currentYear) return newYear;
-
-                        // We are at the end (current year), so remove the event listener to unlock scroll
-                        else if (newYear >= currentYear) {
-                            setTimeperiod(`(${currentYear}) Modern day.`);
-                            window.removeEventListener('wheel', handleWheel);
-                            return currentYear;
-                        }
-
-                        // Scroll is "up" (decrease year)
-                        else return prevYear;
-                    });
-                }
-            }
-        };
-        
         window.addEventListener('wheel', handleWheel, { passive: false });  // Add event handler by default
         return () => {
             window.removeEventListener('wheel', handleWheel);
         }; // Remove event handler on end
 
-    }, [skipTimeline, minYear, maxYear, language]); // Note dependency array contains skipTimeline
+    }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline
 
     // Iterate over the factories and find the minimum/maximum year, and get the cover image & coords for each
     factories.forEach(factory => {
@@ -128,7 +137,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
         mapContainerRef.current.innerHTML = '';
 
         // Create the tooltip element
-        const tooltip = document.createElement('div');  // Create element 
+        const tooltip = document.createElement('div');  // Create element
         tooltip.className = 'factory-tooltip';          // Set class name
         tooltip.style.display = 'none';                 // IMPORTANT: hide by default
         mapContainerRef.current.appendChild(tooltip);   // Add as a child to the map container
@@ -140,38 +149,24 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
             let activeCount = 0;
 
             // Set the time period according to the year
-            if(timeperiods.length > 0) {
-                try {
-                    // Track the previous end year to move the timeline backwards
-                    let prevTimeperiodEndYear = -1;
-                    let nextTimeperiodStartYear = -1;
-                    let currTimeperiodStartYear = -1;
+            if (timeperiods.length > 0) {
+                let currentTimeperiodIndex = currTimeperiodIndex;
 
-                    try { prevTimeperiodEndYear = timeperiods[currTimeperiodIndex - 1]['End_Date']; } catch { }
-                    try { nextTimeperiodStartYear = timeperiods[currTimeperiodIndex + 1]['Start_Date']; } catch { }
-                    try { currTimeperiodStartYear = timeperiods[currTimeperiodIndex]['Start_Date']; } catch { }
-
-                    // Check if we've reached modern day
-                    if(year == currentYear) {
-                        setTimeperiod(`(${currentYear}) Modern day.`);
+                if (year === currentYear) {
+                    setTimeperiod(`(${currentYear}) Modern day.`);
+                    currentTimeperiodIndex = timeperiods.length - 1;
+                } else {
+                    for (let i = 0; i < timeperiods.length; i++) {
+                        const timeperiod = timeperiods[i];
+                        if (year >= timeperiod.Start_Date && year <= timeperiod.End_Date) {
+                            setTimeperiod(formatTimeperiodString(timeperiod, language));
+                            currentTimeperiodIndex = i;
+                            break;
+                        }
                     }
-                    // Check if moving on to the next time period
-                    else if(nextTimeperiodStartYear < year) {
-                        currTimeperiodIndex = currTimeperiodIndex + 1;
-                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex], language));
-                    }
-                    // Check if moving back to the previous time period
-                    else if(prevTimeperiodEndYear > 0 && prevTimeperiodEndYear < year || currTimeperiodStartYear > year) {
-                        currTimeperiodIndex = currTimeperiodIndex - 1;
-                    }
-
-                    // Set the time period on the screen
-                    else if(currTimeperiodStartYear > year) {
-                        setTimeperiod(formatTimeperiodString(timeperiods[currTimeperiodIndex], language));
-                    }
-                } catch {
-                    setTimeperiod('');
                 }
+
+                currTimeperiodIndex = currentTimeperiodIndex;
             }
 
             // Iterate over and filter the factories
@@ -272,7 +267,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                             <h4>{ currTimeperiodStr }</h4>
                         </div>
                     </div>
-        
+
                     <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>        {/* Bottom left button */}
                     <button className='reset-button' onClick={handleResetClick}>Reset Timeline</button>     {/* Bottom right button */}
                 </div>
