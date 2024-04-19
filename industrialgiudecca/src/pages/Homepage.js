@@ -185,6 +185,7 @@ function Homepage() {
                         factories={factories}
                         timeperiods={timeperiodsFL}
                         minMaxYear={minMaxYear}
+                        language={language}
                     />
                 </div>
             )}
