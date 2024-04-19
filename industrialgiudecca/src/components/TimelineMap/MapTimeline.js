@@ -15,11 +15,6 @@ import { formatTimeperiodString } from '../../ArcGIS.js';
 import '../../css/components/MapTimeline.css';
 
 import { LanguageContext } from '../../context/LanguageContext.js';
-// nel 1726 c'era 1 sito industriale alla Giudecca was
-// nel 1726 c'erano 2 siti industriali alla Giudecca were
-// nel 2024 c'è 1 sito industriale sulla Giudecca is
-
-
 
 let currTimeperiodIndex = 0;
 
@@ -46,14 +41,14 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
             clickToLearnMore: "Fare Clic su uno Spillo per Saperne di Più",
             skipTimeline: "Salta la Sequenza Temporale",
             resetTimeline: "Reimpostare la Sequenza Temporale",
-            modernDay: "Giorno moderno."
+            modernDay: "Giorno moderno"
 
         },
         en: { 
             clickToLearnMore: "Click on a pin to learn more",
             skipTimeline: "Skip Timeline",
             resetTimeline: "Reset Timeline",
-            modernDay: "Modern day."
+            modernDay: "Modern day"
         }
     }
 
@@ -175,21 +170,28 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
             if (timeperiods.length > 0) {
                 let currentTimeperiodIndex = currTimeperiodIndex;
 
+                // Final year
                 if (year === currentYear) {
                     setTimeperiod(`(${currentYear}) ${translations[language].modernDay}.`);
                     currentTimeperiodIndex = timeperiods.length - 1;
                 } else {
-                    for (let i = 0; i < timeperiods.length; i++) {
-                        const timeperiod = timeperiods[i];
-                        if (year >= timeperiod.Start_Date && year <= timeperiod.End_Date) {
-                            setTimeperiod(formatTimeperiodString(timeperiod, language));
-                            currentTimeperiodIndex = i;
-                            break;
-                        }
+                    const thisTimeperiod = timeperiods[currTimeperiodIndex];
+                    const thisTimeperiodStartYear = parseInt(thisTimeperiod.Start_Date);
+                    const thisTimeperiodEndYear = parseInt(thisTimeperiod.End_Date);
+                    const nextTimeperiod = timeperiods[currTimeperiodIndex + 1];
+
+                    if(nextTimeperiod && nextTimeperiod.Start_Date <= year) { 
+                        setTimeperiod(formatTimeperiodString(nextTimeperiod, language));
+                        currTimeperiodIndex++;
+                    } else if( 
+                        (year >= parseInt(thisTimeperiodStartYear) && year <= parseInt(thisTimeperiodEndYear)) || 
+                        (year >= parseInt(thisTimeperiodStartYear) && thisTimeperiodStartYear == thisTimeperiodEndYear)
+                    ) { 
+                        setTimeperiod(formatTimeperiodString(thisTimeperiod, language));
                     }
                 }
 
-                currTimeperiodIndex = currentTimeperiodIndex;
+                currTimeperiodIndex = currTimeperiodIndex;
             }
 
             // Iterate over and filter the factories
@@ -284,25 +286,19 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                 {/* Container for the info, including the "In xxxx there was X industrial site" and the context blurb below that */}
                 <div className='info-containerb' style={{ height: window.innerHeight * 0.38 }}>
                     <div className='map-row'>
-                        <div className='ib' id='ib1'>
+                        <div className='ib'>
                             <h3>
-                                <div className='map-row'>
-                                    <div className='ib' id='ib1'>
-                                        <h3>
 
-                                            {language === 'it' ? (
-                                                <>
-                                                    Nel {Math.round(year)}, {activeAdv} {activeLabel} {t("onGiudecca")}.
-                                                </>
-                                            ) : (
-                                                <>
-                                                    In {Math.round(year)},
-                                                    there {activeAdv} {activeLabel} {t("onGiudecca")}.
-                                                </>
-                                            )}
-                                        </h3>
-                                    </div>
-                                </div>
+                                {language === 'it' ? (
+                                    <>
+                                        Nel {Math.round(year)}, {activeAdv} {activeLabel} {t("onGiudecca")}.
+                                    </>
+                                ) : (
+                                    <>
+                                        In {Math.round(year)},
+                                        there {activeAdv} {activeLabel} {t("onGiudecca")}.
+                                    </>
+                                )}
                             </h3>
                         </div>
                     </div>
