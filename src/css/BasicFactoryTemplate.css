@@ -1,0 +1,34 @@
+
+.factory-template-container { 
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;  
+    margin-bottom: 10vh; 
+}
+
+.f-gallery-container { 
+    margin-top: 10vh;
+    margin: auto;
+    width: 100%;
+}
+
+.factory-timeline-container { 
+    display: 'block';
+}
+
+.timeline-header { 
+    font-size: 5vw;
+    font-family: 'Garamond', serif;
+    color: white;
+    height: 30vh;
+    text-align: center;
+    margin: 7vh auto;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    width: 100%;
+}
+
+.timeline-header-inner{ 
+    position: relative;
+}

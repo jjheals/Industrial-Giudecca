@@ -1,0 +1,309 @@
+:root {
+    --container-side-padding: 10%;
+    --container-top-padding: 5%;
+    --title-font: 'Playfair Display', Serif, monospace;
+    --title-font-size: 6vw;
+    --title-font-color: rgb(255, 255, 255);
+    --scroll-text-color: rgb(232, 202, 162);
+    --bg-overlay: rgba(0, 0, 0, 0.324);
+    --text-align: left;
+    --scroll-top: 42vh;
+    --subtitle-bottom: -37vh;
+    --subtitle-left: 3vw;
+    --title-top: 45vh;
+    --title-left: 3vw;
+    --w: 80%;
+    --dividing-borders: 2px solid rgb(255, 255, 255);
+    --section-header-font-color: rgb(255, 255, 255);
+    --section-header-overlay: rgba(0, 0, 0, 0.612);
+}
+
+body {
+    margin: 0;
+}
+
+.homepage {
+    width: 100%;
+    overflow: hidden;
+    z-index: -10;
+}
+
+#logos-container {
+    position: absolute;
+    top: 1.5vh;
+    left: 75vw;
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    margin: 0;
+    z-index: 1001;
+}
+
+.logo {
+    width: 5vw;
+    height: auto;
+    margin: auto;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--bg-overlay);
+    z-index: 500;
+}
+
+#blurb {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--title-font);
+    font-size: var(--title-font-size);
+    color: var(--title-font-color);
+    padding: 20vh;
+    text-align: center;
+    height: 60vh;
+    z-index: 4;
+    transition: opacity 0s ease-in-out, z-index 1s step-end;
+}
+
+.blurbElm {
+    margin: 0;
+    width: 70%;
+}
+
+#blurbTop {
+    position: relative;
+    text-align: var(--text-align);
+    color: var(--title-font-color);
+    top: calc(var(--title-top));
+    left: var(--title-left);
+    width: var(--w);
+}
+
+#blurbBottom {
+    position: relative;
+    text-align: var(--text-align);
+    bottom: var(--subtitle-bottom);
+    left: var(--subtitle-left);
+    width: var(--w);
+}
+
+#blurbSubtitle {
+    font-size: 2vw;
+    margin: 0;
+}
+
+.blurbRow {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding: 0;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#blurb.fade-out,
+#section-header-container.fade-out {
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#blurbCredits {
+    margin-top: 1%;
+    font-size: 1vw;
+}
+
+#scrollText {
+    color: var(--scroll-text-color);
+    font-size: 1.4vw;
+    margin: 0;
+    width: var(--w);
+}
+
+#blurbScroll {
+    position: relative;
+    top: var(--scroll-top);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--w);
+    margin: auto;
+}
+
+.scrollArrow {
+    margin-top: 1.5vh;
+    width: 7.5px;
+    height: 7.5px;
+    border-right: 2px solid var(--scroll-text-color);
+    border-bottom: 2px solid var(--scroll-text-color);
+    transform: rotate(45deg);
+    animation: scrollAnimation 3s infinite;
+    opacity: 0;
+}
+
+#homepage-timeline {
+    position: relative;
+    top: 1700;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    border-bottom: var(--dividing-borders);
+    border-top: var(--dividing-borders);
+    transition: opacity 0s ease-in-out, z-index 1s step-end;
+}
+
+#section-header-container {
+    border-top: var(--dividing-borders);
+    border-bottom: var(--dividing-borders);
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    opacity: 1;
+}
+
+.section-header-overlay {
+    position: absolute;
+    background-color: var(--section-header-overlay);
+    height: 100vh;
+    width: 100%;
+}
+
+.section-header {
+    position: relative;
+    top: 35vh;
+    left: 3vw;
+    margin: 0;
+    font-family: var(--title-font);
+    font-weight: 200;
+    font-size: 5vw;
+    width: 100%;
+    color: var(--section-header-font-color);
+    z-index: 1000;
+    text-align: left;
+}
+
+.storyboard-iframe {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    border-top: var(--dividing-borders);
+}
+
+@keyframes scrollAnimation {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
+
+.factory-homepage-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.factory-homepage-button {
+    display: inline-block;
+    padding: 16px 32px;
+    background-color: transparent;
+    color: #050505;
+    text-decoration: none;
+    border-radius: 0;
+    font-size: 20px;
+    font-family: var(--title-font);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.factory-homepage-button:hover {
+    background-color: black;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    #homepage-timeline {
+        display: none;
+    }
+
+    #blurb {
+        padding: 0;
+        font-size: var(--title-font-size);
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .bg-overlay {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #blurbTop {
+        top: auto;
+        padding-top: 25vh;
+        left: 0;
+        width: 90%;
+        text-align: center;
+        margin-bottom: 2vh;
+    }
+
+    #blurbBottom {
+        bottom: auto;
+        left: 0;
+        top: auto;
+        width: 90%;
+        text-align: center;
+        margin-top: 1vh;
+    }
+
+    #blurbSubtitle {
+        font-size: 4vw;
+    }
+
+    #blurbCredits {
+        font-size: 3vw;
+    }
+
+    #blurbScroll {
+        top: auto;
+        bottom: 5vh;
+        width: 100%;
+    }
+
+    #scrollText {
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    .section-header {
+        font-size: 8vw;
+    }
+
+    #logos-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        justify-content: space-around;
+        top: 3vh;
+    }
+
+    .logo {
+        width: 10vw;
+    }
+}

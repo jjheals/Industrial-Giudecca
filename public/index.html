@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Industrial Giudecca</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta charSet="utf-8"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="An interactive history of the industrial Giudecca."/>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  </head>
+
+  <header> 
+    <!-- ArcGIS API scripts -->
+    <script src="https://js.arcgis.com/4.28/"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.9.2/calcite.esm.js"></script>
+
+    <!-- Fonts from http://fonts.googleapis.com -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Judson"/>
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css"/>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.9.2/calcite.css"/>
+    <link rel="stylesheet" href="../static/index.css"/>
+  </header>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript> 
+    <div id="root"></div>
+  </body>
+</html>

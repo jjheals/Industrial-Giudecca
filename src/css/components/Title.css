@@ -1,0 +1,58 @@
+#title-container {
+    width: 100%;
+    height: 100vh;
+    padding: auto;
+    margin: auto;
+    z-index: 1000;
+    transition: opacity 0s ease-in-out, z-index 1s step-end;
+}
+
+#title-container.fade-out { 
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.title-inner { 
+    position: relative;
+    top: 40vh;
+    margin: auto;
+}
+
+.title { 
+    margin: auto;
+    color: #ffffff;
+    text-align: center;
+    padding: 1% 0;
+    font-family: 'Garamond', serif;
+    font-size: 4vw;
+    font-weight: 100;
+}
+
+.title-hr {
+    margin: auto;
+    width: 100%;
+}
+
+.title-footer{
+    position: absolute;
+    bottom: 5vh;
+    left: 0;
+    width: 100%;
+    background-color: none; 
+    color: #fff; 
+    text-align: center;
+    font-family: 'Garamond', serif;
+    font-size: 2vw;
+    font-weight: 50;
+        animation-name: flash;
+         animation-duration: 1.5s;
+         animation-timing-function: linear;
+         animation-iteration-count: infinite;
+         animation-direction: alternate;
+         animation-play-state: running;
+        }
+        @keyframes flash {
+            from {color: rgb(255, 255, 255);}
+            to {color: transparent}
+        }

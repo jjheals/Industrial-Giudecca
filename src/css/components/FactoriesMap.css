@@ -1,0 +1,34 @@
+
+.fhp-giudecca-map-img { 
+    width: 100%;
+}
+
+.fhp-factory-pin { 
+    position: absolute;
+    display: block;
+    width: var(--pin-width);
+    height: var(--pin-height);
+    transition: 0.2s ease;
+}
+
+.fhp-factory-pin:hover { 
+    cursor: pointer;
+}
+
+.fhp-factory-pin.highlighted {
+    /* Add your desired styles for the highlighted marker */
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.fhp-factory-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 17px;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translateX(-50%);
+}
