@@ -35,6 +35,23 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const minYear = minMaxYear.minYear;             // Min year as passed to MapTimeline
     const maxYear = minMaxYear.maxYear;             // Max year as passed to MapTimeline
 
+    // Maptimeline translations 
+    const translations = {
+        it: {
+            clickToLearnMore: "Fare Clic su uno Spillo per Saperne di Più",
+            skipTimeline: "Salta la Sequenza Temporale",
+            resetTimeline: "Reimpostare la Sequenza Temporale",
+            modernDay: "Giorno moderno."
+
+        },
+        en: { 
+            clickToLearnMore: "Click on a pin to learn more",
+            skipTimeline: "Skip Timeline",
+            resetTimeline: "Reset Timeline",
+            modernDay: "Modern day."
+        }
+    }
+
     // Calculate the top margin of the timeline in pixels
     // NOTE: vh in the below formula is the margin in VH
     const marginVH = 5;  // Margin in VH
@@ -68,7 +85,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
                     // We are at the end (current year), so remove the event listener to unlock scroll
                     else if (newYear >= currentYear) {
-                        setTimeperiod(`(${currentYear}) Modern day.`);
+                        setTimeperiod(`(${currentYear}) ${translations[language].modernDay}.`);
                         window.removeEventListener('wheel', handleWheel);
                         return currentYear;
                     }
@@ -105,7 +122,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
         setYear(currentYear);
         pageRef.current.scrollTop = pageRef.current.scrollHeight;
         setSkipTimeline(true);
-        setTimeperiod(`(${currentYear}) Modern day.`);
+        setTimeperiod(`(${currentYear}) ${translations[language].modernDay}.`);
         currTimeperiodIndex = timeperiods.length - 1;
 
         window.scrollTo({
@@ -153,7 +170,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                 let currentTimeperiodIndex = currTimeperiodIndex;
 
                 if (year === currentYear) {
-                    setTimeperiod(`(${currentYear}) Modern day.`);
+                    setTimeperiod(`(${currentYear}) ${translations[language].modernDay}.`);
                     currentTimeperiodIndex = timeperiods.length - 1;
                 } else {
                     for (let i = 0; i < timeperiods.length; i++) {
@@ -242,7 +259,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
     return (
         <div ref={pageRef} className='timeline-container'>
-            <div className='learn-more-container'><p className='timeline-learn-more'>Click on a pin to learn more</p></div>
+            <div className='learn-more-container'><p className='timeline-learn-more'>{translations[language].clickToLearnMore}</p></div>
             <div className='giudecca-map-timeline' style={{ width: '100%', height: '100%' }}>
                 {/* Container for map image */}
                 <img src="giudecca-map.png"
@@ -268,8 +285,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                         </div>
                     </div>
 
-                    <button className='skip-button' onClick={handleSkipClick}>Skip Timeline</button>        {/* Bottom left button */}
-                    <button className='reset-button' onClick={handleResetClick}>Reset Timeline</button>     {/* Bottom right button */}
+                    <button className='skip-button' onClick={handleSkipClick}>{translations[language]['skipTimeline']}</button>        {/* Bottom left button */}
+                    <button className='reset-button' onClick={handleResetClick}>{translations[language].resetTimeline}</button>     {/* Bottom right button */}
                 </div>
             </div>
         </div>

@@ -54,7 +54,12 @@ const translations = {
         has: "has",
         employees: "employees",
         closes: "Chiude",
-        opens: "Apre"
+        opens: "Apre",
+
+        // Maptimeline translations
+        clickToLearnMore: "Click on a pin to learn more",
+        skipTimeline: "Skip Timeline",
+        resetTimeline: "Reset Timeline"
         
     },
     it: {
@@ -112,7 +117,12 @@ const translations = {
         has: "ha", 
         employees: "dipendenti",
         closes: "Chiude",
-        opens: "Apre"
+        opens: "Apre",
+
+        // Maptimeline translations 
+        clickToLearnMore: "Fare Clic su uno Spillo per Saperne di Più",
+        skipTimeline: "Salta la Sequenza Temporale",
+        resetTimeline: "Reimpostare la Sequenza Temporale"
     }
 };
 
