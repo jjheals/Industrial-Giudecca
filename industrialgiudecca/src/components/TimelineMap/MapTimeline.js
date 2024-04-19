@@ -39,9 +39,9 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     // NOTE: vh in the below formula is the margin in VH
     const marginVH = 5;  // Margin in VH
     const marginPx = (marginVH * window.innerHeight) / 50;
-    
+
     // useEffect => Init the year as minYear
-    useEffect(() => { setYear(minYear); }, [minMaxYear]);
+    useEffect(() => { setYear(minYear); }, [minMaxYear, language]);
 
     // Event handler for the reset button
     const handleResetClick = () => {
@@ -112,7 +112,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
             window.removeEventListener('wheel', handleWheel);
         }; // Remove event handler on end
 
-    }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline
+    }, [skipTimeline, minYear, maxYear, language]); // Note dependency array contains skipTimeline
 
     // Iterate over the factories and find the minimum/maximum year, and get the cover image & coords for each
     factories.forEach(factory => {
@@ -243,7 +243,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
         // Call filterFactories function
         filterFactories(year);
-    }, [year, factories]);
+    }, [year, factories, language]);
 
     return (
         <div ref={pageRef} className='timeline-container'>
