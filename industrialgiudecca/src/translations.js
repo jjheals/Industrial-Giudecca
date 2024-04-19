@@ -74,9 +74,9 @@ const translations = {
         // Timeline on homepage translations
         activeLabel: "sito industriale",
         activeLabelPlural: "siti industriali",
-        mapWas: "was",
-        mapIs: "is",
-        mapWere: "were",
+        mapWas: "c'era",
+        mapIs: "c'è",
+        mapWere: "c'erano",
         onGiudecca: "sulla Giudecca",
 
         // Search bar 
@@ -122,7 +122,9 @@ const translations = {
         // Maptimeline translations 
         clickToLearnMore: "Fare Clic su uno Spillo per Saperne di Più",
         skipTimeline: "Salta la Sequenza Temporale",
-        resetTimeline: "Reimpostare la Sequenza Temporale"
+        resetTimeline: "Reimpostare la Sequenza Temporale",
+
+
     }
 };
 

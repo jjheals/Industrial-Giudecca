@@ -9,11 +9,16 @@
  * @param { Object } minMaxYear - Object (Dictionary) in the format [ key : val ] => [ min: [int], max: [int] ]
  *                                for the min and max year on the timeline
  */
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import { formatTimeperiodString } from '../../ArcGIS.js';
 
 import '../../css/components/MapTimeline.css';
-import { useTranslation } from "react-i18next";
+
+import { LanguageContext } from '../../context/LanguageContext.js';
+// nel 1726 c'era 1 sito industriale alla Giudecca was
+// nel 1726 c'erano 2 siti industriali alla Giudecca were
+// nel 2024 c'è 1 sito industriale sulla Giudecca is
+
 
 
 let currTimeperiodIndex = 0;
@@ -22,7 +27,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const pageRef = useRef(null);           // Page ref
     const mapContainerRef = useRef(null);   // Ref for map container element
     const markerRefs = useRef({});          // Refs for marker elements
-    const { t } = useTranslation();         // Translation component
+    const { t} = useContext(LanguageContext); // Context for translation
     const [year, setYear] = useState(0);    // The year that appears as the timeline scrolls
 
     const [activeAdv, setActiveAdv] = useState('');          // Dependent on the num factories (e.g. "There was 1 factory" vs "There were 2 factories")
@@ -149,6 +154,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     });
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
+
     useEffect(() => {
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
@@ -239,16 +245,17 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
             });
 
             // Set the number active on the screen
-            if(activeCount === 1) {
-                if(year >= currentYear) {
-                    setActiveAdv('is');
-                    setTimeperiod(`(${currentYear}) Modern day.`);
+
+            if (activeCount === 1) {
+                if (year >= currentYear) {
+                    setActiveAdv(t('mapIs'));
+                    setTimeperiod(`(${currentYear}) ${translations[language].modernDay}.`);
+                } else {
+                    setActiveAdv(t('mapWas'));
                 }
-                else setActiveAdv('was');
                 setActiveLabel(`${activeCount} ${t("activeLabel")}`);
-            }
-            else {
-                setActiveAdv('were');
+            } else {
+                setActiveAdv(t('mapWere'));
                 setActiveLabel(`${activeCount} ${t("activeLabelPlural")}`);
             }
         };
@@ -277,11 +284,31 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                 {/* Container for the info, including the "In xxxx there was X industrial site" and the context blurb below that */}
                 <div className='info-containerb' style={{ height: window.innerHeight * 0.38 }}>
                     <div className='map-row'>
-                        <div className='ib' id='ib1'><h3>In {Math.round(year)}, there {activeAdv} {activeLabel} {t("onGiudecca")}.</h3></div>
+                        <div className='ib' id='ib1'>
+                            <h3>
+                                <div className='map-row'>
+                                    <div className='ib' id='ib1'>
+                                        <h3>
+
+                                            {language === 'it' ? (
+                                                <>
+                                                    Nel {Math.round(year)}, {activeAdv} {activeLabel} {t("onGiudecca")}.
+                                                </>
+                                            ) : (
+                                                <>
+                                                    In {Math.round(year)},
+                                                    there {activeAdv} {activeLabel} {t("onGiudecca")}.
+                                                </>
+                                            )}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
                     </div>
                     <div className='map-row'>
                         <div className='context-blurb'>
-                            <h4>{ currTimeperiodStr }</h4>
+                            <h4>{currTimeperiodStr}</h4>
                         </div>
                     </div>
 
