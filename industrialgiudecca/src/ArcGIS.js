@@ -88,7 +88,6 @@ export function filterFeatureLayer(featureLayerDict, targetAttributeString, filt
         (dict.attributes[targetAttributeString]) && 
         dict.attributes[targetAttributeString].toLowerCase().includes(filterString.toLowerCase())
     );
-
     matchedFeatures.map(dict => { 
         matchedIDs.push(dict.attributes[returnAttribute]);
     });
