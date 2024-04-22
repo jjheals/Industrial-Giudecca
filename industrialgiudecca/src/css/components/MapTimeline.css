@@ -138,21 +138,19 @@
     transition: 0.3s ease-in-out;
 }
 
-.skip-button:hover,
-.reset-button:hover {
+.skip-button:hover, .reset-button:hover {
     transform: scale(1.1);
     opacity: calc(var(--skip-button-opacity) * 1.5);
     transition: 0.3s ease-in-out;
     color: rgb(83, 83, 83);
 }
 
-.factory-tooltip {
+.pin-popup {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgb(86, 86, 86);
     color: white;
-    padding: 5px;
-    border-radius: 4px;
-    font-size: 20px;
-    pointer-events: none;
-    z-index: 100;
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: fit-content;
+    padding: 2px 10px;
 }

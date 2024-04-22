@@ -7,31 +7,42 @@ export const FactoryPin = ({id, name, left, top}) => {
     useEffect(() => {
         const pin = document.getElementById(`marker-${id}`);
 
-        if(pin) { 
-            // Create the tooltip element
-            const tooltip = document.createElement('div');  // Create element
-            tooltip.className = 'factory-tooltip';          // Set class name
-            tooltip.style.display = 'none';                 // IMPORTANT: hide by default
+         // Calculate the top margin of the timeline in pixels
+        // NOTE: vh in the below formula is the margin in VH
+        const marginVH = 5;  // Margin in VH
+        const marginPx = (marginVH * window.innerHeight) / 50;
 
+        if(pin) { 
+            const popupElm = document.createElement('div'); // Create a new div element for the popup
+            popupElm.className = 'pin-popup'; // Set the class name
+            popupElm.id = `popup-${id}`;
+            popupElm.style.display = 'none'; // Hide the popup initially
+            popupElm.textContent = name; // Set the text content of the popup
+            
+            // Calculate the tooltip position
+            const popupWidth = popupElm.offsetWidth;
+            const popupHeight = popupElm.offsetHeight;
+            const popupLeft = left - (popupWidth / 2) + (markerWidthPx / 2);
+            const popupTop = top - popupHeight - 10; // Adjust the vertical position as needed
+
+            popupElm.style.left = `${popupLeft}px`;
+            popupElm.style.top = `calc(${popupTop}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
+
+            console.log(popupElm);
+
+            // Append the popup element to the document body
+            document.getElementById(`pin-container-${id}`).appendChild(popupElm);
+            
             // Event listeners to show/hide popups on hover
             // Show the factory name tooltip on mouseover
             pin.addEventListener('mouseover', () => {
-                tooltip.textContent = name; 
-                tooltip.style.display = 'block';
-
-                // Calculate the tooltip position
-                const tooltipWidth = tooltip.offsetWidth;
-                const tooltipHeight = tooltip.offsetHeight;
-                const tooltipLeft = left - (tooltipWidth / 2) + (markerWidthPx / 2);
-                const tooltipTop = top - tooltipHeight - 10; // Adjust the vertical position as needed
-
-                tooltip.style.left = `${tooltipLeft}px`;
-                tooltip.style.top = `calc(${tooltipTop}px - ${markerHeightPx * 4}px)`;
+                document.getElementById(`popup-${id}`).style.display = 'block';
             });
 
             // Hide the factory name tooltip on mouseout
-            pin.addEventListener('mouseout', () => { tooltip.style.display = 'none'; });
-
+            pin.addEventListener('mouseout', () => { 
+                document.getElementById(`popup-${id}`).style.display= 'none'; 
+            });
 
             // Event listener to redirect to another page on marker click
             pin.addEventListener('click', () => {
@@ -39,10 +50,11 @@ export const FactoryPin = ({id, name, left, top}) => {
             });
         }
         
-    });
+    }, []);
 
     return(
-        <img className='factory-pin hidden'
+        <div id={`pin-container-${id}`}>
+            <img className='factory-pin hidden'
              id={`marker-${id}`}
              src='pin-icon-2.png'
              style={{
@@ -53,8 +65,8 @@ export const FactoryPin = ({id, name, left, top}) => {
                 display: 'none'
              }}
             >
-
-        </img>
+            </img>
+        </div>
     );
 
 }
