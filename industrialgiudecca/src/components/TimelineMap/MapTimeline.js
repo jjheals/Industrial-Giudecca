@@ -60,6 +60,12 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     // useEffect => Init the year as minYear
     useEffect(() => { setYear(minYear); }, [minMaxYear]);
 
+    // Iterate over the factories and give random opening/closing dates to those that don't have them
+    factories.forEach(factory => {
+        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
+        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
+    });
+
     // Event handler for the wheel event
     const handleWheel = (e) => {
         if (pageRef.current && !skipTimeline) {
@@ -99,17 +105,19 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
     // Event handler for the reset button
     const handleResetClick = () => {
-        setYear(minYear);
-        setSkipTimeline(false);
-        setTimeperiod('');
-        setActiveAdv('');
-        setActiveLabel('');
-        window.scrollTo({
+        setYear(minYear);           // Set the year back to min year
+        setSkipTimeline(false);     // Now using timeline again
+        currTimeperiodIndex = 0;    // Reset timeperiod index to 0
+        setTimeperiod('');          // Reset the timeperiod
+        setActiveAdv('');           // Reset the active adv
+        setActiveLabel('');         // Reset the active label
+
+        // Scroll user back to the top of the timeline
+        window.scrollTo({   
             top: timelineTop,
             behavior: 'smooth'
         });
-        currTimeperiodIndex = 0;
-
+        
         // Remove the existing wheel event listener
         window.removeEventListener('wheel', handleWheel);
 
@@ -136,20 +144,11 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
         window.addEventListener('wheel', handleWheel, { passive: false });  // Add event handler by default
         return () => {
             window.removeEventListener('wheel', handleWheel);
-        }; // Remove event handler on end
-
+        };
     }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline
 
-    // Iterate over the factories and find the minimum/maximum year, and get the cover image & coords for each
-    factories.forEach(factory => {
-
-        // Set random opening years and random closing years if they are NULL
-        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
-        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
-    });
 
     // useEffect ==> on every scroll, check and update the factories that appear on the map
-
     useEffect(() => {
         // Clear previous factory pins
         mapContainerRef.current.innerHTML = '';
@@ -168,30 +167,52 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
             // Set the time period according to the year
             if (timeperiods.length > 0) {
-                let currentTimeperiodIndex = currTimeperiodIndex;
 
                 // Final year
-                if (year === currentYear) {
+                if (year >= currentYear) {
                     setTimeperiod(`(${currentYear}) ${translations[language].modernDay}.`);
-                    currentTimeperiodIndex = timeperiods.length - 1;
+                    currTimeperiodIndex = timeperiods.length - 1;
                 } else {
-                    const thisTimeperiod = timeperiods[currTimeperiodIndex];
-                    const thisTimeperiodStartYear = parseInt(thisTimeperiod.Start_Date);
-                    const thisTimeperiodEndYear = parseInt(thisTimeperiod.End_Date);
-                    const nextTimeperiod = timeperiods[currTimeperiodIndex + 1];
+                    const thisTimeperiod = timeperiods[currTimeperiodIndex];                // Current timeperiod displayed
+                    const thisTimeperiodStartYear = parseInt(thisTimeperiod.Start_Date);    // Start year of the currently displayed timeperiod
+                    const thisTimeperiodEndYear = parseInt(thisTimeperiod.End_Date);        // End year of the currently displayed timeperiod
+                    const nextTimeperiod = timeperiods[currTimeperiodIndex + 1];            // Next timeperiod in the sequence
 
+                    // prevTimeperiod is the previous timeperiod if it exists, i.e. if currTimeperiodIndex is > 0
+                    const prevTimeperiod = currTimeperiodIndex > 0 ? timeperiods[currTimeperiodIndex - 1] : null;
+
+                    /* If there is a next timeperiod and the start date is less than the current year, i.e. we have passed the start year,
+                     * then display the new timeperiod on the screen */ 
                     if(nextTimeperiod && nextTimeperiod.Start_Date <= year) { 
                         setTimeperiod(formatTimeperiodString(nextTimeperiod, language));
                         currTimeperiodIndex++;
-                    } else if( 
-                        (year >= parseInt(thisTimeperiodStartYear) && year <= parseInt(thisTimeperiodEndYear)) || 
-                        (year >= parseInt(thisTimeperiodStartYear) && thisTimeperiodStartYear == thisTimeperiodEndYear)
+                    } 
+                    /* Else if: 
+                     * 0. If the current year falls within this timeperiod's start and end year
+                     * 
+                     * OR ALL THREE OF 
+                     * 1. this timeperiod's start year is the same as this timeperiod's end year
+                     * 2. this year is after than the current timeperiod's start year 
+                     * 3. the current year is less than the next time period's start year
+                     */
+                    else if( 
+                        (year >= thisTimeperiodStartYear && year <= thisTimeperiodEndYear) ||    // 0. Curr year is in this timeperiod
+                        (
+                            thisTimeperiodStartYear == thisTimeperiodEndYear &&                 // 1. This tp startYear == this tp endYear
+                            year >= thisTimeperiodStartYear &&                                  // 2. Curr year is after this tp startYear
+                            (nextTimeperiod && year <= parseInt(nextTimeperiod.Start_Date))     // 3. Curr year is before the next tp startYear
+                        )
                     ) { 
                         setTimeperiod(formatTimeperiodString(thisTimeperiod, language));
                     }
+                    // Timeline is scrolling backwards  
+                    else if(prevTimeperiod) { 
+                        setTimeperiod(formatTimeperiodString(prevTimeperiod, language));
+                        currTimeperiodIndex--;
+                    } else { 
+                        setTimeperiod('');
+                    }
                 }
-
-                currTimeperiodIndex = currTimeperiodIndex;
             }
 
             // Iterate over and filter the factories
@@ -247,8 +268,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
             });
 
             // Set the number active on the screen
-
             if (activeCount === 1) {
+                // Timeline is at the end
                 if (year >= currentYear) {
                     setActiveAdv(t('mapIs'));
                     setTimeperiod(`(${currentYear}) ${translations[language].modernDay}.`);

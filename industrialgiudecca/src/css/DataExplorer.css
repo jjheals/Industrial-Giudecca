@@ -147,6 +147,7 @@ select, .de-search-bar button {
 .de-results-table-row td {
     padding: 0.5vh 2vw;
 }
+
 #no-results-found-msg {
     text-align: center;
     width: 100%;
@@ -180,4 +181,17 @@ select, .de-search-bar button {
     background-color: var(--hover-color);
     transition: 0.5s ease;
     cursor: pointer;
+}
+
+.de-location-div
+.de-location-checkbox { 
+    width: 1vw;
+    height: 1vw;
+    margin: auto;
+}
+
+.de-location-label { 
+    margin: auto;
+    text-align: left;
+    background-color: red;
 }
