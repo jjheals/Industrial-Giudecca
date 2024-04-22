@@ -70,6 +70,14 @@
     transition: 0.2s ease;
 }
 
+.factory-pin.visible { 
+    display: block;
+}
+
+.factory-pin.hidden { 
+    display: hidden;
+}
+
 .factory-pin:hover {
     cursor: pointer;
     transform: scale(1.2);
