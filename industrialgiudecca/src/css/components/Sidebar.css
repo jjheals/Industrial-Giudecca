@@ -1,6 +1,6 @@
 :root {
     --sidebar-z: 1001;
-    --sidebar-width: 25vw;
+    --sidebar-width: 75vw;
     --hamburger-pos: 20px;
 
     --sidebar-link-color: rgb(94, 94, 94);
@@ -28,7 +28,7 @@ nav ul li a {
     height: 100vh;
     background-color: var(--sidebar-bg-color);
     transition: left 0.3s ease;
-    padding-top: 10%;
+    padding-top: 30%; /* Increased padding-top to start top element lower */
     overflow-y: auto;
 }
 
@@ -83,9 +83,9 @@ nav ul li a {
 }
 
 .sidebar-element {
-    font-size: 1.5vw;
-    margin: 10px 0;
-    padding: 10px;
+    font-size: 5vw;
+    margin: 30px 0; /* Increased margin for more space between elements */
+    padding: 5px;
     color: var(--sidebar-link-color);
     text-transform: uppercase;
     cursor: pointer;
@@ -107,19 +107,19 @@ nav ul li a {
 
 .sidebar-link:visited:hover {
     transition: var(--sidebar-link-hover-transition);
-    font-size: 2vw;
+    font-size: 6vw;
 }
 
 .sidebar-link:hover {
     transition: var(--sidebar-link-hover-transition);
-    font-size: 2vw;
+    font-size: 6vw;
 }
 
 .sidebar-sub-element {
     transition: var(--sidebar-link-hover-transition);
-    font-size: 1vw;
-    margin: 10px 2vw;
-    padding: 10px;
+    font-size: 3.5vw;
+    margin: 30px 2vw; /* Increased margin for more space between sub-elements */
+    padding: 5px;
     color: var(--sidebar-link-color);
     text-transform: uppercase;
     cursor: pointer;
@@ -131,10 +131,44 @@ nav ul li a {
 .sidebar-sub-link:hover {
     transition: var(--sidebar-link-hover-transition);
     color: var(--sidebar-link-color);
-    font-size: 1.2vw;
+    font-size: 4vw;
 }
 
 .sidebar-sub-link:visited {
     transition: var(--sidebar-link-hover-transition);
     color: var(--sidebar-link-color);
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        --sidebar-width: 25vw;
+    }
+
+    .sidebar {
+        padding-top: 10%; /* Adjusted padding-top for larger screens */
+    }
+
+    .sidebar-element {
+        font-size: 1.5vw;
+        margin: 20px 0; /* Increased margin for larger screens */
+        padding: 10px;
+    }
+
+    .sidebar-link:visited:hover {
+        font-size: 2vw;
+    }
+
+    .sidebar-link:hover {
+        font-size: 2vw;
+    }
+
+    .sidebar-sub-element {
+        font-size: 1vw;
+        margin: 20px 2vw; /* Increased margin for larger screens */
+        padding: 10px;
+    }
+
+    .sidebar-sub-link:hover {
+        font-size: 1.2vw;
+    }
 }
