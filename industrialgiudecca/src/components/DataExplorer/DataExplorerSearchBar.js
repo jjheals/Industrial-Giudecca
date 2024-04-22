@@ -331,7 +331,13 @@ const DataExplorerSearchBar = () => {
                 </div>
 
                 {/* Row 3 for submit button */}
-                <div className='de-search-bar-row'><button type='submit' className='de-search-submit'>{ t('search') }</button></div>
+                <div className='de-search-bar-row'>
+                    <div className='de-location-div'>
+                        <input type='checkbox' name='include-location' className='de-location-checkbox'/>
+                        <label className='de-location-label'>Include location data</label>
+                    </div>
+                    <button type='submit' className='de-search-submit'>{ t('search') }</button>
+                </div>
             </form>
         </div>
     );

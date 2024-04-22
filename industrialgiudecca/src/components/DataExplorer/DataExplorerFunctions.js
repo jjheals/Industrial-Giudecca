@@ -65,7 +65,7 @@ export function setResultsTable(results, lof, featureLayers, formData) {
     results.map(fid => { 
         // Get the factory details
         const thisFactory = factoryFL.find(factory => factory.attributes['Factory_ID'] === fid).attributes;
-
+        
         // Get the current purpose using factoryAtBuildingFL and buildingFL
         const thisCurrentPurpose = findCurrentPurpose(buildingFL, factoryAtBuildingFL, thisFactory);
 
