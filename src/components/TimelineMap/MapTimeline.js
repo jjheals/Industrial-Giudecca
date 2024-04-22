@@ -209,6 +209,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                     else if(prevTimeperiod) { 
                         setTimeperiod(formatTimeperiodString(prevTimeperiod, language));
                         currTimeperiodIndex--;
+                    } else { 
+                        setTimeperiod('');
                     }
                 }
             }
