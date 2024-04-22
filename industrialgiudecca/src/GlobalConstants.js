@@ -61,4 +61,4 @@ export const maxLong = 12.3485030;                  // Right map limit
 export const deltaLong = maxLong - minLong;         // Map X axis distance (horiz) in DEGREES
 export const deltaLat = maxLat - minLat;            // Map Y axis distance (vert) in DEGREES
 export const mapWidth = window.innerWidth;          // Map width == screen width
-export const mapHeight = window.innerHeight * .95;  // Map height is 95% of the screen 
+export const mapHeight = window.innerHeight;  // Map height is 95% of the screen 

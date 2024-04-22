@@ -235,7 +235,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                         marker.id = `${factory.Factory_ID}-marker`;
                         marker.src = 'pin-icon-2.png';
                         marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                        marker.style.top = `calc(${factory.y}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
+                        marker.style.top = `${factory.y}px`;
 
                         // Event listener to redirect to another page on marker click
                         marker.addEventListener('click', () => {
