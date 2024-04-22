@@ -25,7 +25,11 @@ export const factoryStoryMapURLs = {
     },
     14: { // Herion
         en: 'https://storymaps.arcgis.com/stories/81706d259ec54394b759eb0d6dcdfbee',
-        it: 'https://storymaps.arcgis.com/stories/54c18757ada74835b763f4b24b97cd68',    
+        it: 'https://storymaps.arcgis.com/stories/54c18757ada74835b763f4b24b97cd68'    
+    },
+    16: { // Toffolo
+        en: 'https://storymaps.arcgis.com/stories/090dc60ff7f8486b8209d3f79d38a329',
+        it: 'https://storymaps.arcgis.com/stories/090dc60ff7f8486b8209d3f79d38a329',
     }
 }
 
