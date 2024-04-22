@@ -58,7 +58,7 @@ export const FactoryPin = ({id, name, left, top}) => {
              id={`marker-${id}`}
              src='pin-icon-2.png'
              style={{
-                top: `${top- markerHeightPx * 1.5}px`,
+                top: `${top - markerHeightPx}px`,
                 left: `${left - (markerWidthPx / 2)}px`,
                 width: markerWidthPx,
                 height: markerHeightPx,
