@@ -2,7 +2,7 @@
 import Factory from './Factory.js';
 import { queryFeatures, fetchAttachments } from '@esri/arcgis-rest-feature-service';
 import { featureLayerServiceURLs } from './GlobalConstants.js';
-import { mapHeight, mapWidth, minLong, minLat, deltaLat, deltaLong } from './GlobalConstants.js';
+import { minLong, minLat, deltaLat, deltaLong } from './GlobalConstants.js';
 
 /** latLongToPixel(lat, long) 
  * @abstract Converts latitude and longitude coordinates to pixels on a map using the min/max lat/long 
@@ -19,7 +19,7 @@ import { mapHeight, mapWidth, minLong, minLat, deltaLat, deltaLong } from './Glo
  * const x = result.x;
  * const y = result.y; 
  */
-export function latLongToPixel(lat, long) {    
+export function latLongToPixel(lat, long, mapWidth, mapHeight) {    
     
     const thisLongOffset = long - minLong;  // Offset from the left of the map in DEGREES
     const thisLatOffset = lat - minLat;     // Offset from the top of the map in DEGREES

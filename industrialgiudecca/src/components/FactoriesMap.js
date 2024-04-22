@@ -10,7 +10,6 @@
 import React, { useRef, useEffect } from 'react';
 import '../css/components/FactoriesMap.css';
 import { factoryStoryMapURLs } from '../GlobalConstants';
-import { mapHeight } from '../GlobalConstants';
 
 const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, language }) => {
     // Refs for accessing DOM elements
@@ -137,7 +136,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                 <div
                     ref={mapContainerRef}
                     className='fhp-map-container'
-                    style={{ height: mapHeight }}
+                    style={{ height: window.innerHeight }}
                 ></div>
             </div>
         </div>

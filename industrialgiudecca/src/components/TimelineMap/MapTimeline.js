@@ -30,7 +30,20 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const [currTimeperiodStr, setTimeperiod] = useState(''); // String representing the current timeperiod that appears on screen
     const [skipTimeline, setSkipTimeline] = useState(false); // State of whether the skipTimeline button is pressed
 
-    const timelineTop = window.innerHeight;         // Position of the top of the MapTimeline on the page
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+    
+    window.addEventListener('resize', async () => {
+        // This function will be called whenever the window is resized
+        setWindowWidth(window.innerWidth);
+        setWindowHeight(window.innerHeight);
+
+        factories.forEach(async factory => {
+            await factory.getFactoryCoords();
+        });
+    });
+
+    const timelineTop = windowHeight;         // Position of the top of the MapTimeline on the page
     const currentYear = new Date().getFullYear();   // Current year for scrolling timeline
     const minYear = minMaxYear.minYear;             // Min year as passed to MapTimeline
     const maxYear = minMaxYear.maxYear;             // Max year as passed to MapTimeline
@@ -235,7 +248,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                         marker.id = `${factory.Factory_ID}-marker`;
                         marker.src = 'pin-icon-2.png';
                         marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                        marker.style.top = `${factory.y}px`;
+                        marker.style.top = `${factory.y - markerHeightPx * 1.5}px`;
 
                         // Event listener to redirect to another page on marker click
                         marker.addEventListener('click', () => {
