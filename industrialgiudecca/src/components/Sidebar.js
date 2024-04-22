@@ -26,8 +26,12 @@ const Sidebar = () => {
                 <span></span>
                 <span></span>
                 <span></span>
+
             </button>
+
+
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+
                 <nav>
                     <ul>
                         <li className="sidebar-element">
@@ -53,8 +57,6 @@ const Sidebar = () => {
                         <li className="sidebar-element">
                             <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>{t("sideBarAbout")}</Link>
                         </li>
-
-
                     </ul>
                 </nav>
             </div>

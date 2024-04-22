@@ -21,6 +21,7 @@ function FactoryHomepage() {
     const [factories, setFactories] = useState([]);
     const [filteredFactories, setFilteredFactories] = useState([]);
     const [showStoriesOnly, setShowStoriesOnly] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         window.scrollTo({ top: 0 });
@@ -32,6 +33,17 @@ function FactoryHomepage() {
             .catch(error => {
                 console.error('Error fetching factories:', error);
             });
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     const handleSearch = (searchTerm) => {
@@ -81,7 +93,9 @@ function FactoryHomepage() {
             {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Title and sidebar */}
-            <Title title={ t('factoryHomepageTitle') } titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg'/>
+            {!isMobile && (
+                <Title title={t('factoryHomepageTitle')} titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg' />
+            )}
             <Sidebar/>
 
             {/* Search bar that sticks to the top of the page after scrolling past the title */}

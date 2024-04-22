@@ -32,7 +32,6 @@
     background-color: #369bff;
     color: white;
     transform: scale(1.03);
-
 }
 
 .fhp-map-container {
@@ -98,3 +97,49 @@
     margin-top: 5%;
     object-fit: cover;
 }
+
+@media screen and (max-width: 768px) {
+    :root {
+        --img-height: 50vh;
+        --img-width: 80vw;
+    }
+
+    .fhp-map-container {
+        display: none;
+    }
+
+    .factory-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .search-bar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 100px;
+        position: relative;
+        padding-top: 0.5vh;
+    }
+
+    .search-input {
+        font-size: 3vw;
+        width: 50vw; /* Change the width to match the toggle button */
+    }
+
+    .toggle-stories-button {
+        font-size: 3vw;
+        width: 80%;
+        margin-top: 10px;
+    }
+
+
+    .landscape-item {
+        width: var(--img-width);
+        font-size: 3vw;
+        margin-right: 0;
+        margin-bottom: 5vh;
+    }
+}
+

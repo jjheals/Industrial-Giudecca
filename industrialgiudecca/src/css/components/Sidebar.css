@@ -23,12 +23,12 @@ nav ul li a {
 .sidebar {
     position: fixed;
     top: 0;
-    left: calc(var(--sidebar-width) * -1);
+    left: -100%;
     width: var(--sidebar-width);
     height: 100vh;
-    background-color: var(--sidebar-bg-color);
+    background-color: black;
     transition: left 0.3s ease;
-    padding-top: 30%; /* Increased padding-top to start top element lower */
+    padding-top: 30%;
     overflow-y: auto;
 }
 
@@ -45,32 +45,41 @@ nav ul li a {
 }
 
 .hamburger {
-    position: absolute;
-    top: var(--hamburger-pos);
-    left: var(--hamburger-pos);
-    width: var(--hamburger-pos);
-    height: var(--hamburger-pos);
-    background-color: transparent;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #333;
     border: none;
     cursor: pointer;
     z-index: calc(var(--sidebar-z) + 1);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
 }
 
 .hamburger span {
     display: block;
-    width: 100%;
+    width: 80%;
     height: 2px;
-    background-color: #333;
-    transition: transform 0.3s ease;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+}
+
+.hamburger span:nth-child(1) {
+    transform: translateY(-8px);
+}
+
+.hamburger span:nth-child(3) {
+    transform: translateY(8px);
 }
 
 .hamburger.open span:nth-child(1) {
-    z-index: 1000;
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(0) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -78,15 +87,14 @@ nav ul li a {
 }
 
 .hamburger.open span:nth-child(3) {
-    z-index: 1000;
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(0) rotate(-45deg);
 }
 
 .sidebar-element {
     font-size: 5vw;
-    margin: 30px 0; /* Increased margin for more space between elements */
+    margin: 30px 0;
     padding: 5px;
-    color: var(--sidebar-link-color);
+    color: white;
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -97,12 +105,12 @@ nav ul li a {
 
 .sidebar-link {
     transition: var(--sidebar-link-hover-transition);
-    color: var(--sidebar-link-color);
+    color: white;
 }
 
 .sidebar-link:visited {
     transition: var(--sidebar-link-hover-transition);
-    color: var(--sidebar-link-color);
+    color: white;
 }
 
 .sidebar-link:visited:hover {
@@ -118,25 +126,69 @@ nav ul li a {
 .sidebar-sub-element {
     transition: var(--sidebar-link-hover-transition);
     font-size: 3.5vw;
-    margin: 30px 2vw; /* Increased margin for more space between sub-elements */
+    margin: 30px 2vw;
     padding: 5px;
-    color: var(--sidebar-link-color);
+    color: white;
     text-transform: uppercase;
     cursor: pointer;
 }
 
 .sidebar-sub-link {
-    color: var(--sidebar-link-color);
+    color: white;
 }
+
 .sidebar-sub-link:hover {
     transition: var(--sidebar-link-hover-transition);
-    color: var(--sidebar-link-color);
+    color: white;
     font-size: 4vw;
 }
 
 .sidebar-sub-link:visited {
     transition: var(--sidebar-link-hover-transition);
-    color: var(--sidebar-link-color);
+    color: white;
+}
+
+@media screen and (max-width: 767px) {
+    :root {
+        --sidebar-width: 100vw;
+    }
+
+    .sidebar {
+        background-color: black;
+    }
+
+    .sidebar-element {
+        color: white;
+        font-size: 6vw;
+        margin: 15px 0;
+    }
+
+    .sidebar-link {
+        color: white;
+    }
+
+    .sidebar-link:visited {
+        color: white;
+    }
+
+    .sidebar-link:visited:hover {
+        font-size: 7vw;
+    }
+
+    .sidebar-link:hover {
+        font-size: 7vw;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 24px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -145,12 +197,12 @@ nav ul li a {
     }
 
     .sidebar {
-        padding-top: 10%; /* Adjusted padding-top for larger screens */
+        padding-top: 10%;
     }
 
     .sidebar-element {
         font-size: 1.5vw;
-        margin: 20px 0; /* Increased margin for larger screens */
+        margin: 20px 0;
         padding: 10px;
     }
 
@@ -164,7 +216,7 @@ nav ul li a {
 
     .sidebar-sub-element {
         font-size: 1vw;
-        margin: 20px 2vw; /* Increased margin for larger screens */
+        margin: 20px 2vw;
         padding: 10px;
     }
 

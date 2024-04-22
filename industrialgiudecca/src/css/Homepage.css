@@ -300,7 +300,7 @@ body {
         transform: translateX(-50%);
         width: 80%;
         justify-content: space-around;
-        top: 3vh;
+        top: 1vh;
     }
 
     .logo {
