@@ -10,7 +10,7 @@ export const LanguageProvider = ({ children }) => {
     const [language, setLanguage] = useState('en');
 
     function changeLanguage(newLanguage) {
-        localStorage.setItem('hasSelectedLanguage', 'true');
+        sessionStorage.setItem('hasSelectedLanguage', 'true');
         setLanguage(newLanguage);
         document.getElementById('language-selector-container').style.display = 'none';
     };

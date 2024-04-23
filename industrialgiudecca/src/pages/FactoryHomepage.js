@@ -8,7 +8,7 @@ import Title from '../components/Title.js';
 import Sidebar from '../components/Sidebar';
 import SearchBar from '../components/SearchBar';
 import { fetchFactoriesFL } from '../ArcGIS.js';
-import FactoriesMap from '../components/FactoriesMap.js';
+import FactoriesMap from '../components/FactoriesMap/FactoriesMap.js';
 import { factoryStoryMapURLs } from '../GlobalConstants';
 
 import LanguageSelector from '../components/LanguageSelector';
@@ -114,9 +114,7 @@ function FactoryHomepage() {
                 showStoriesOnly={showStoriesOnly}
                 language={language}
             />
-
-
-
+            
             {/* Grid of factories after the map that changes when a search is conducted */}
             <div className="factory-list-container">
                 <div className="factory-list">

@@ -291,7 +291,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                             <div className='pin-wrapper' id={`pin-wrapper-${factory.Factory_ID}`}>
                                 <FactoryPin id={factory.Factory_ID} name={factory.English_Name} left={factory.x} top={factory.y}/>
                             </div>
-                        ))}
+                        ))
+                    }
                 </div>
 
                 {/* Container for the info, including the "In xxxx there was X industrial site" and the context blurb below that */}

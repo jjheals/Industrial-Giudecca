@@ -3,32 +3,28 @@
     width: 100%;
 }
 
-.fhp-factory-pin { 
+.fhp-map-overlay { 
+    position: absolute;
+    background-color: red;
+    z-index: 2001;
+}
+
+.building-pin { 
     position: absolute;
     display: block;
     width: var(--pin-width);
     height: var(--pin-height);
-    transition: 0.2s ease;
+    transition: 0.25s ease-in-out;
+    z-index: 1;
 }
 
-.fhp-factory-pin:hover { 
+.building-pin:hover { 
     cursor: pointer;
+    transform: scale(1.15);
 }
 
-.fhp-factory-pin.highlighted {
+.building-pin.highlighted {
     /* Add your desired styles for the highlighted marker */
     transform: scale(1.2);
     filter: brightness(1.2);
-}
-
-.fhp-factory-tooltip {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px;
-    border-radius: 4px;
-    font-size: 17px;
-    pointer-events: none;
-    z-index: 1000;
-    transform: translateX(-50%);
 }
