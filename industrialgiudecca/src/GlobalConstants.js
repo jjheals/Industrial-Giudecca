@@ -8,16 +8,16 @@ export const factoryStoryMapURLs = {
         it: 'https://storymaps.arcgis.com/stories/8e4b51adb9db4cba8546a3c3df7be7ea?cover=false'
     },
     3: { // Stucky
-        en: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0?cover=false',
-        it: 'https://storymaps.arcgis.com/stories/d7a10a3caea84069b79fc722ca782189?cover=false'
+        en: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0',
+        it: 'https://storymaps.arcgis.com/stories/d7a10a3caea84069b79fc722ca782189'
     },
     9: { // Scalera
-        en: 'https://storymaps.arcgis.com/stories/d488bbdddc3c4c2ca34686b9d230d40f?cover=false',
-        it: 'https://storymaps.arcgis.com/stories/214333c62d7b4813bffc5d9a4abc6af6?cover=false'
+        en: 'https://storymaps.arcgis.com/stories/d488bbdddc3c4c2ca34686b9d230d40f',
+        it: 'https://storymaps.arcgis.com/stories/214333c62d7b4813bffc5d9a4abc6af6'
     },
     28: { // Gianolla
-        en: 'https://storymaps.arcgis.com/stories/f4e8d9f7c1c9475a803d7ecef51d3553?cover=false',
-        it: 'https://storymaps.arcgis.com/stories/fd499fa9a0b847fe99b256b8c7118487?cover=false'     // NOTE: link to english storymap, italian one not made yet
+        en: 'https://storymaps.arcgis.com/stories/f4e8d9f7c1c9475a803d7ecef51d3553',
+        it: 'https://storymaps.arcgis.com/stories/fd499fa9a0b847fe99b256b8c7118487'     
     },
     19: { // Junghans
         en: 'https://storymaps.arcgis.com/stories/9c618746736243bc9894725311a4ee20?cover=false',
