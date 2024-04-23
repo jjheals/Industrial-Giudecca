@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="more mobile friendly">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="more mobile shiiii">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/FactoryHomepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/Homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/components/Sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/components/Sidebar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/components/Title.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/components/Title.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/FactoryHomepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/DataExplorer.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/DataExplorer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,14 +83,7 @@
       <workItem from="1712821649992" duration="34151000" />
       <workItem from="1713253535344" duration="27776000" />
       <workItem from="1713426743493" duration="23994000" />
-    </task>
-    <task id="LOCAL-00010" summary="stucky paralax scroll fixed">
-      <option name="closed" value="true" />
-      <created>1710503860783</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1710503860783</updated>
+      <workItem from="1713855602237" duration="2810000" />
     </task>
     <task id="LOCAL-00011" summary="stucky paralax scroll fixed">
       <option name="closed" value="true" />
@@ -480,7 +469,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713774381026</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="more mobile shiiii">
+      <option name="closed" value="true" />
+      <created>1713789976237</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1713789976237</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,7 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="removed title from homepage of arcgis iframe" />
     <MESSAGE value="skip button added" />
     <MESSAGE value="skip button added 1" />
     <MESSAGE value="hover working = w rizz" />
@@ -523,6 +519,7 @@
     <MESSAGE value="added some mobile support" />
     <MESSAGE value="reset timeline works" />
     <MESSAGE value="more mobile friendly" />
-    <option name="LAST_COMMIT_MESSAGE" value="more mobile friendly" />
+    <MESSAGE value="more mobile shiiii" />
+    <option name="LAST_COMMIT_MESSAGE" value="more mobile shiiii" />
   </component>
 </project>
