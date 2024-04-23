@@ -19,8 +19,6 @@ const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState([]);
     const [ purposes, setPurposes ] = useState([]);
     const { t, language } = useContext(LanguageContext);  
-
-    console.log(`Data explorer SEARCH BAR language: ${language}`);
     
     // Define state variables to track form data
     const [formData, setFormData] = useState({
@@ -31,7 +29,7 @@ const DataExplorerSearchBar = () => {
         Min_Employment: 0,
         Max_Employment: null,
         Min_Year: 0,
-        Max_Year: null
+        Max_Year: null,
     });
 
     /** handleInputChange = (e) => {} 
@@ -144,7 +142,7 @@ const DataExplorerSearchBar = () => {
                 matchedFactoryIDs['Product'] = matchProductTimes;
 
             } else { 
-                const matchedProducts = filterFeatureLayer(productOverTimeFL, 'Product', formData.Product, 'Factory_ID');
+                const matchedProducts = filterFeatureLayer(productOverTimeFL, `Product_en`, formData.Product, 'Factory_ID');
                 matchedFactoryIDs['Product'] = matchedProducts;
             }
 
@@ -257,7 +255,7 @@ const DataExplorerSearchBar = () => {
         }
 
         // -- DONE WITH FILTERS -- // 
-        
+
         // Now intersect all the arrays in matchedFactoryIDs to get the factory IDs that match every parameter
         const allMatches = Object.values(matchedFactoryIDs);
 
@@ -266,6 +264,7 @@ const DataExplorerSearchBar = () => {
 
         // Edge case: only one filter was used
         else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, queriedFLs, formData);
+    
         
         // Default case: more than one filter used, so intersect all of them to get the final AND result
         else { 
@@ -332,10 +331,6 @@ const DataExplorerSearchBar = () => {
 
                 {/* Row 3 for submit button */}
                 <div className='de-search-bar-row'>
-                    <div className='de-location-div'>
-                        <input type='checkbox' name='include-location' className='de-location-checkbox'/>
-                        <label className='de-location-label'>Include location data</label>
-                    </div>
                     <button type='submit' className='de-search-submit'>{ t('search') }</button>
                 </div>
             </form>

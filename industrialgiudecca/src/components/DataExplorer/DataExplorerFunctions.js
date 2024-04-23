@@ -69,6 +69,9 @@ export function setResultsTable(results, lof, featureLayers, formData) {
         // Get the current purpose using factoryAtBuildingFL and buildingFL
         const thisCurrentPurpose = findCurrentPurpose(buildingFL, factoryAtBuildingFL, thisFactory);
 
+        // Get the location data if available
+        const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
+
         // Get the min/max employment
         let thisMinEmployment = null;
         let thisMaxEmployment = null;
@@ -88,7 +91,9 @@ export function setResultsTable(results, lof, featureLayers, formData) {
             'Min_Employment': thisMinEmployment,
             'Max_Employment': thisMaxEmployment,
             'Opening_Year': thisFactory.Opening_Year,
-            'Closing_Year': thisFactory.Closing_Year
+            'Closing_Year': thisFactory.Closing_Year,
+            'Latitude': locationData.lat,           
+            'Longitude': locationData.long  
         }
     });
 
@@ -98,10 +103,9 @@ export function setResultsTable(results, lof, featureLayers, formData) {
 
         // NOTE: in a non-relational table, each row is a factory 
         let rows = results.map(fid => {
+            const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
 
-            
-
-            let thisRow = [
+            return [
                 fid,
                 factoriesDictionary[fid]['English_Name'],    // English_Name
                 factoriesDictionary[fid]['Italian_Name'],    // Italian_Name
@@ -109,9 +113,10 @@ export function setResultsTable(results, lof, featureLayers, formData) {
                 factoriesDictionary[fid]['Closing_Year'],    // Closing_Year
                 factoriesDictionary[fid]['Min_Employment'],  // Min employment
                 factoriesDictionary[fid]['Max_Employment'],  // Max employment
-                factoriesDictionary[fid]['Current_Purpose']  // Current purpose 
+                factoriesDictionary[fid]['Current_Purpose'], // Current purpose 
+                locationData.lat,                            // Latitude
+                locationData.long                            // Longitude
             ];
-            return thisRow;
         });
 
         renderResultsTable(resultsTableContainerElm, theseKeys, rows);
@@ -125,29 +130,33 @@ export function setResultsTable(results, lof, featureLayers, formData) {
         if(lof.includes('Product')) { 
             let rows = [];
             const productOverTimeFL = featureLayers['Product'];
+            theseKeys = productRelationColumns;
 
             // Get the product data for each factory
             results.map(fid => { 
                 const theseProducts = getProductData(productOverTimeFL, fid, formData.Product, formData.Min_Year, formData.Max_Year);
-
+                const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
+                
                 // Iterate over the results and push each new row to rows
                 theseProducts.map(product => { 
-                    rows.push(
-                        [
-                            fid,
-                            factoriesDictionary[fid]['English_Name'],
-                            factoriesDictionary[fid]['Italian_Name'],
-                            factoriesDictionary[fid]['Min_Employment'],
-                            factoriesDictionary[fid]['Max_Employment'],
-                            product.attributes['Year_Started'],
-                            product.attributes['Year_Stopped'],
-                            product.attributes['Product']
-                        ]
-                    );
+                    let thisRow = [
+                        fid,
+                        factoriesDictionary[fid]['English_Name'],
+                        factoriesDictionary[fid]['Italian_Name'],
+                        factoriesDictionary[fid]['Min_Employment'],
+                        factoriesDictionary[fid]['Max_Employment'],
+                        product.attributes['Year_Started'],
+                        product.attributes['Year_Stopped'],
+                        product.attributes['Product_en'],
+                        locationData.lat,                            // Latitude
+                        locationData.long                            // Longitude
+                    ];
+                    rows.push(thisRow);
                 })
-            })
+            });
+
             // Render the relational table
-            renderResultsTable(resultsTableContainerElm, productRelationColumns, rows);
+            renderResultsTable(resultsTableContainerElm, theseKeys, rows);
         }   
     }
 }
@@ -233,8 +242,6 @@ function findCurrentPurpose(buildingsFL, factoryAtBuildingFL, factoryDict) {
  */
 function getProductData(productOverTimeFL, fid, product, startYear, endYear) { 
 
-    console.log(`CALLED getProductData with product = ${product}`);
-
     // If not given a start and end year, then set startYear as 0 and endYear as a max value (999999) 
     if(!startYear) startYear = 0;
     if(!endYear) endYear = 999999;
@@ -243,7 +250,7 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear) {
     let matchedRows = productOverTimeFL.filter(dict => 
         (dict.attributes['Year_Started']) && (dict.attributes['Year_Stopped']) &&   // Have years
         (dict.attributes['Factory_ID'] == fid) &&                                   // Match factory ID
-        (dict.attributes['Product'] == product)                                     // Match product
+        (dict.attributes['Product_en'] == product)                                     // Match product
     );
 
     // Now refine to be within the minVal and maxVal and match the targetAttribute
@@ -260,4 +267,23 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear) {
     );
 
     return matchedRows;
+}
+
+function getLocationData(fid, buildingFL, factoryAtBuildingFL) { 
+    const factoryAtBuildingMatch = factoryAtBuildingFL.find(dict => dict.attributes['Factory_ID'] === fid);
+    let returnDict = { lat: 0, long: 0 }
+    try { 
+        // Get the building ID
+        const thisBuildingID = factoryAtBuildingMatch.attributes['Building_ID'];
+
+        // Throw error for the catch statement to handle if the Building ID doesn't exist
+        if(!thisBuildingID) throw new Error();
+
+        // Extract the current purpose for this building 
+        const thisBuilding = buildingFL.find(dict => dict.attributes['Building_ID'] === thisBuildingID).attributes;
+        returnDict.lat = thisBuilding['Latitude_'];
+        returnDict.long = thisBuilding['Longitude_'];
+    } catch {}
+
+    return returnDict;
 }

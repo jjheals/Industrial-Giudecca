@@ -94,7 +94,7 @@ function IndustrialStoriesPage() {
     return (
         <div className="industrial-stories-page">
             {/* Language selector if a language has not yet been chosen this session */}
-            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+            {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Title and sidebar */}
             <div><Sidebar /></div>

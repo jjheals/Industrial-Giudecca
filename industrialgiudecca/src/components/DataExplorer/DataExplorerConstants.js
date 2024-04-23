@@ -9,7 +9,9 @@ export const nonRelationalColumns = [
     'Closing_Year',
     'Min_Employment',
     'Max_Employment', 
-    'Current_Purpose'
+    'Current_Purpose',
+    'Latitude',
+    'Longitude'
 ]
 
 export const productRelationColumns = [
@@ -20,5 +22,7 @@ export const productRelationColumns = [
     'Max_Employment',
     'Year_Started',
     'Year_Stopped', 
-    'Product'
+    'Product_en',
+    'Latitude',
+    'Longitude'
 ]

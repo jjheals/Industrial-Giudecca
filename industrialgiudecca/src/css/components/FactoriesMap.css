@@ -3,32 +3,74 @@
     width: 100%;
 }
 
-.fhp-factory-pin { 
+.fhp-map-overlay { 
+    position: absolute;    
+}
+
+.all-popup-divs-container {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    width: 20vw;
+    height: 60vh;
+    z-index: 1000;
+    background-color: rgba(33, 66, 104, 0.673);
+    border: 2px solid black;
+}
+
+.building-pin { 
     position: absolute;
     display: block;
     width: var(--pin-width);
     height: var(--pin-height);
-    transition: 0.2s ease;
+    transition: 0.25s ease-in-out;
+    z-index: 1;
 }
 
-.fhp-factory-pin:hover { 
+.building-pin:hover { 
     cursor: pointer;
+    transform: scale(1.15);
 }
 
-.fhp-factory-pin.highlighted {
+.building-pin.highlighted {
     /* Add your desired styles for the highlighted marker */
     transform: scale(1.2);
     filter: brightness(1.2);
 }
 
-.fhp-factory-tooltip {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
+.bpopup-div { 
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 8vh;
+}
+
+.bpopup { 
     color: white;
-    padding: 5px;
-    border-radius: 4px;
-    font-size: 17px;
-    pointer-events: none;
-    z-index: 1000;
-    transform: translateX(-50%);
+    padding: 2%;
+}
+
+.bpopup.year { 
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+.bpopup.name-row { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid rgb(155, 155, 155);
+}
+
+.bpopup-img { 
+    float: right;
+    margin-left: 1vw;
+    width: 6vw;
+    height: 6vw;
+}
+
+.bpopup.name-text { 
+    width: 11vw;
+    text-wrap: wrap;
+    text-align: left;
 }

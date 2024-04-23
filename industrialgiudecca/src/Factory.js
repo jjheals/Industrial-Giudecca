@@ -73,7 +73,7 @@ export default class Factory {
             this.lat = resp[0].attributes.Latitude_;
                         
             // Convert the lat/long to pixel coordinates on the map
-            const factoryMapPos = latLongToPixel(this.lat, this.long);
+            const factoryMapPos = latLongToPixel(this.lat, this.long, window.innerWidth, window.innerHeight);
             this.x = factoryMapPos.x;
             this.y = factoryMapPos.y;            
             return;

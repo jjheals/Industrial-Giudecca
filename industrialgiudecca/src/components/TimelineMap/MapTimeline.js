@@ -10,31 +10,34 @@
  *                                for the min and max year on the timeline
  */
 import React, {useState, useEffect, useRef, useContext} from 'react';
-import { formatTimeperiodString } from '../../ArcGIS.js';
 
+// Stylesheets
 import '../../css/components/MapTimeline.css';
 
+// Components/Functions
+import { formatTimeperiodString } from '../../ArcGIS.js';
 import { LanguageContext } from '../../context/LanguageContext.js';
+import { FactoryPin } from './FactoryPin.js';
 
 let currTimeperiodIndex = 0;
 
 const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
-    const pageRef = useRef(null);           // Page ref
-    const mapContainerRef = useRef(null);   // Ref for map container element
-    const markerRefs = useRef({});          // Refs for marker elements
-    const { t} = useContext(LanguageContext); // Context for translation
-    const [year, setYear] = useState(0);    // The year that appears as the timeline scrolls
+    const pageRef = useRef(null);               // Page ref
+    const {t} = useContext(LanguageContext);   // Context for translation
+    const [year, setYear] = useState(0);        // The year that appears as the timeline scrolls
 
     const [activeAdv, setActiveAdv] = useState('');          // Dependent on the num factories (e.g. "There was 1 factory" vs "There were 2 factories")
     const [activeLabel, setActiveLabel] = useState('');      // Dependent on the num factories (e.g. "There is 2 factories" vs "There are 2 factories")
     const [currTimeperiodStr, setTimeperiod] = useState(''); // String representing the current timeperiod that appears on screen
     const [skipTimeline, setSkipTimeline] = useState(false); // State of whether the skipTimeline button is pressed
 
-    const timelineTop = window.innerHeight;         // Position of the top of the MapTimeline on the page
-    const currentYear = new Date().getFullYear();   // Current year for scrolling timeline
+    const [allFactories, setAllFactories] = useState([]);                   // List of ALL factories as originally passed to MapTimeline
+
+    const currentYear = new Date().getFullYear();   // Current year so the scrolling timeline knows when to stop
     const minYear = minMaxYear.minYear;             // Min year as passed to MapTimeline
     const maxYear = minMaxYear.maxYear;             // Max year as passed to MapTimeline
-
+    const timelineTop = window.innerHeight;         // Top of the timeline (y-pos), i.e. one page height down from the start
+    
     // Maptimeline translations 
     const translations = {
         it: {
@@ -52,19 +55,33 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
         }
     }
 
-    // Calculate the top margin of the timeline in pixels
-    // NOTE: vh in the below formula is the margin in VH
-    const marginVH = 5;  // Margin in VH
-    const marginPx = (marginVH * window.innerHeight) / 50;
+    /** showMarker(fid)
+     * @abstract Function that will show the marker for the given factory id (fid)
+     * @param { int } fid a factory ID 
+     * @returns { null }
+     */
+    function showMarker(fid) { 
+        try { 
+            const thisMarker = document.getElementById(`marker-${fid}`);
+            thisMarker.style.display = 'block';
+        } catch(error) { 
+            console.log(`Error setting marker for ${fid}: `, error);
+        }
+    }
 
-    // useEffect => Init the year as minYear
-    useEffect(() => { setYear(minYear); }, [minMaxYear]);
-
-    // Iterate over the factories and give random opening/closing dates to those that don't have them
-    factories.forEach(factory => {
-        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
-        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
-    });
+    /** hideMarker(fid)
+     * @abstract Function to hide the marker for a give factory ID (fid)
+     * @param { int } fid - a factory ID
+     * @returns { null }
+     */
+    function hideMarker(fid) { 
+        try { 
+            const thisMarker = document.getElementById(`marker-${fid}`);
+            thisMarker.style.display = 'none';
+        } catch(error) { 
+            console.log(`Error setting marker for ${fid}: `, error);
+        }
+    }
 
     // Event handler for the wheel event
     const handleWheel = (e) => {
@@ -102,6 +119,18 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
             }
         }
     };
+
+    // useEffect => Init the year as minYear
+    useEffect(() => { 
+        setAllFactories(factories); 
+        setYear(minYear); 
+    }, [minMaxYear, allFactories]);
+
+    // Iterate over the factories and give random opening/closing dates to those that don't have them
+    factories.forEach(factory => {
+        if(!factory.Opening_Year) { factory.Opening_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
+        if(!factory.Closing_Year) { factory.Closing_Year = Math.floor(Math.random() * (2000 - minYear + 30 + 1)) + minYear + 30; }
+    });
 
     // Event handler for the reset button
     const handleResetClick = () => {
@@ -147,17 +176,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
         };
     }, [skipTimeline, minYear, maxYear]); // Note dependency array contains skipTimeline
 
-
     // useEffect ==> on every scroll, check and update the factories that appear on the map
     useEffect(() => {
-        // Clear previous factory pins
-        mapContainerRef.current.innerHTML = '';
-
-        // Create the tooltip element
-        const tooltip = document.createElement('div');  // Create element
-        tooltip.className = 'factory-tooltip';          // Set class name
-        tooltip.style.display = 'none';                 // IMPORTANT: hide by default
-        mapContainerRef.current.appendChild(tooltip);   // Add as a child to the map container
 
         // Filter the factories based on the scroll position
         const filterFactories = (year) => {
@@ -182,7 +202,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                     const prevTimeperiod = currTimeperiodIndex > 0 ? timeperiods[currTimeperiodIndex - 1] : null;
 
                     /* If there is a next timeperiod and the start date is less than the current year, i.e. we have passed the start year,
-                     * then display the new timeperiod on the screen */ 
+                     * then display the new timeperiod on the screen 
+                     */ 
                     if(nextTimeperiod && nextTimeperiod.Start_Date <= year) { 
                         setTimeperiod(formatTimeperiodString(nextTimeperiod, language));
                         currTimeperiodIndex++;
@@ -220,50 +241,11 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
                 // Check that this factory's opening/closing dates are within the current range
                 if(factory && factory.Opening_Year <= year && (!factory.Closing_Year || factory.Closing_Year >= year)) {
-                    // Increment the active count to appear on the screen
-                    activeCount++;
-
-                    // If this factory does not have a location, hide it from the map
-                    if(!factory.x || !factory.y) return;
-                    else {
-                        // Create the marker to appear on the screen & set its attributes accordingly
-                        const markerWidthPx = 20;
-                        const markerHeightPx = 30;
-                        const marker = document.createElement('img');
-
-                        marker.className = 'factory-pin';
-                        marker.id = `${factory.Factory_ID}-marker`;
-                        marker.src = 'pin-icon-2.png';
-                        marker.style.left = `${factory.x - (markerWidthPx / 2)}px`;
-                        marker.style.top = `calc(${factory.y}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
-
-                        // Event listener to redirect to another page on marker click
-                        marker.addEventListener('click', () => {
-                            window.location.href = `/industrial-sites/${factory.Factory_ID}`;
-                        })
-
-                        // Event listeners to show/hide popups on hover
-                        // Show the factory name tooltip on mouseover
-                        marker.addEventListener('mouseover', () => {
-                            tooltip.textContent = factory.English_Name;
-                            tooltip.style.display = 'block';
-
-                            // Calculate the tooltip position
-                            const tooltipWidth = tooltip.offsetWidth;
-                            const tooltipHeight = tooltip.offsetHeight;
-                            const tooltipLeft = factory.x - (tooltipWidth / 2) + (markerWidthPx / 2);
-                            const tooltipTop = factory.y - tooltipHeight - 10; // Adjust the vertical position as needed
-
-                            tooltip.style.left = `${tooltipLeft}px`;
-                            tooltip.style.top = `calc(${tooltipTop}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
-                        });
-
-                        // Hide the factory name tooltip on mouseout
-                        marker.addEventListener('mouseout', () => { tooltip.style.display = 'none'; });
-
-                        markerRefs.current[factory.Factory_ID] = marker;    // Store the marker element in the markerRefs object
-                        mapContainerRef.current.appendChild(marker);        // Add the marker to the map overlay
-                    }
+                    console.log(`Factory ${factory.English_Name} is open in the year ${year}`);
+                    activeCount++;                      // Increment the active count to appear on the screen
+                    showMarker(factory.Factory_ID);
+                } else { 
+                    hideMarker(factory.Factory_ID);
                 }
             });
 
@@ -299,9 +281,18 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                 />
 
                 {/* Overlayed container for factory pins */}
-                <div ref={mapContainerRef}
+                <div 
+                     id='factory-container'
                      className='factory-container'
-                     style={{ height: window.innerHeight }}>
+                     style={{ height: window.innerHeight }}
+                >
+                    {
+                        allFactories.map(factory => ( 
+                            <div className='pin-wrapper' id={`pin-wrapper-${factory.Factory_ID}`}>
+                                <FactoryPin id={factory.Factory_ID} name={factory.English_Name} left={factory.x} top={factory.y}/>
+                            </div>
+                        ))
+                    }
                 </div>
 
                 {/* Container for the info, including the "In xxxx there was X industrial site" and the context blurb below that */}

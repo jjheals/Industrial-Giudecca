@@ -38,7 +38,7 @@ function BasicFactoryTemplate() {
     let removeTimeline = false;
 
     const { t, language } = useContext(LanguageContext);                   // For translation
-    let languageSelected = localStorage.getItem('hasSelectedLanguage');
+    let languageSelected = sessionStorage.getItem('hasSelectedLanguage');
 
     const circleColors = { 
         'products': [79, 202, 255],
@@ -232,7 +232,7 @@ function BasicFactoryTemplate() {
 
     return (
         <div className='factory-template-container'>
-            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+            {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
             <div><Sidebar isOpen={showSidebar}/></div>
             <div><Title title={ title } imgSrc={ coverPicURL }/></div>
 

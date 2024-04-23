@@ -5,11 +5,12 @@
     flex-direction: row;
     z-index: 1000;
     height: 0;
+    padding-left: 17vw;
 }
 
 .search-input {
     margin-top: 2vh;
-    width: 70vw;
+    width: 50vw;
     margin-left: 5.5vw;
     padding: 1vh 2vw;
     font-size: 16px;

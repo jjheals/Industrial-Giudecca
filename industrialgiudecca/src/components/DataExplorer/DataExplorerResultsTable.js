@@ -9,7 +9,7 @@ const DataExplorerResultsTable = ({ d }) => {
 
     useEffect(() => {
         if (d.rows && d.rows.length > 0) {
-            // Remove the factories that don't have a name 
+            console.log('DataExplorerResultsTable rows:');
             console.log(d.rows);
             setQueryResults(d);
         }

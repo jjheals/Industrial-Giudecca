@@ -16,7 +16,7 @@ import MapPage from './pages/MapPage.js';
 
 
 function App() {
-    localStorage.setItem('hasSelectedLanguage', 'false');
+    sessionStorage.setItem('hasSelectedLanguage', 'false');
 
     return (
         <Router>

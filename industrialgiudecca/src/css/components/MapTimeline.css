@@ -17,19 +17,21 @@
 
 .info-containerb {
     position: absolute;
-    margin-top: 55vh;
+    margin: auto;
+    top: 55vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     color: var(--info-text-color);
     font-family: var(--info-container-font-family);
     font-weight: var(--info-font-weight);
+    padding: auto 1%;
 }
 
 .map-row {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
     height: 10vh;
     padding-left: 3vw;
     margin-bottom: 2vh;
@@ -46,8 +48,8 @@
 
 .giudecca-map-img {
     position: absolute;
-    width: 100%;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
 }
 
@@ -68,6 +70,14 @@
     width: var(--pin-width);
     height: var(--pin-height);
     transition: 0.2s ease;
+}
+
+.factory-pin.visible { 
+    display: block;
+}
+
+.factory-pin.hidden { 
+    display: hidden;
 }
 
 .factory-pin:hover {
@@ -130,21 +140,19 @@
     transition: 0.3s ease-in-out;
 }
 
-.skip-button:hover,
-.reset-button:hover {
+.skip-button:hover, .reset-button:hover {
     transform: scale(1.1);
     opacity: calc(var(--skip-button-opacity) * 1.5);
     transition: 0.3s ease-in-out;
     color: rgb(83, 83, 83);
 }
 
-.factory-tooltip {
+.pin-popup {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgb(86, 86, 86);
     color: white;
-    padding: 5px;
-    border-radius: 4px;
-    font-size: 20px;
-    pointer-events: none;
-    z-index: 100;
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: fit-content;
+    padding: 2px 10px;
 }
