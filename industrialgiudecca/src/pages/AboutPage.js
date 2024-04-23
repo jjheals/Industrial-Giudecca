@@ -30,7 +30,7 @@ function AboutPage() {
         <div className="about-page">
 
             {/* Language selector if a language has not yet been chosen this session */}
-            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+            {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             <div><Sidebar /></div>
             <div><Title title={ t('aboutTitle') } imgSrc={ 'about-title-img.png' } /></div>

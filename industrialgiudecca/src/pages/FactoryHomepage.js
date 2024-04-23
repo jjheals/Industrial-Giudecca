@@ -90,7 +90,7 @@ function FactoryHomepage() {
         <div className="factory-homepage">
             
             {/* Language selector if a language has not yet been chosen this session */}
-            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+            {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Title and sidebar */}
             {!isMobile && (
@@ -114,7 +114,7 @@ function FactoryHomepage() {
                 showStoriesOnly={showStoriesOnly}
                 language={language}
             />
-            
+
             {/* Grid of factories after the map that changes when a search is conducted */}
             <div className="factory-list-container">
                 <div className="factory-list">

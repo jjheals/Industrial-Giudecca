@@ -22,9 +22,6 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
     const clickedMarkerRef = useRef(null);
     const [buildings, setBuildings] = useState([]);
 
-    console.log(`given factories | showStoriesOnly: ${showStoriesOnly}`);
-    console.log(factories);
-
     /** fetchBuildings()
      * @abstract Function to fetch the buildings feature layer from ArcGIS and set the 'buildings' constant to an Array[Object]
      * @returns { null }
@@ -93,16 +90,6 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
         setBuildings(mapBuildingsToFactories);
     }
     
-    
-
-    // Event handler for unhighlighting markers on the map
-    const unhighlightMarker = (marker) => {
-        if (marker !== clickedMarkerRef.current) {
-            marker.classList.remove('highlighted');
-            marker.style.zIndex = '0';
-        }
-    };
-
     // Event handler for clicking a marker on the map
     const clickMarker = (marker) => {
         if (clickedMarkerRef.current) {
@@ -126,7 +113,9 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
     // useEffect => set the filtered markers on the map
     useEffect(() => {
         if (factories.length > 0 && mapContainerRef.current) {
-
+            // Filter the factories by the search term 
+            // DO SOMETHING ...
+            // ...
         }
     }, [factories, onMarkerClick, searchTerm, showStoriesOnly]);
 
@@ -156,9 +145,11 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                 <div
                     ref={mapContainerRef}
                     className='fhp-map-overlay'
+                    id='fhp-map-overlay'
                     style={{ height: window.innerHeight }}
                 >
                     { 
+                        // Iterate over the buildings and display the pins 
                         Object.keys(buildings).map(buildingID => (
                                 <div className='pin-wrapper' id={`pin-wrapper-${buildingID}`}>
                                     <BuildingPin id={buildingID} factories={buildings[buildingID].lof} left={buildings[buildingID].x} top={buildings[buildingID].y}/>
@@ -166,6 +157,9 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                             )
                         )
                     }
+                </div>
+                <div className='all-popup-divs-container' id='all-popup-divs-container'>
+
                 </div>
             </div>
         </div>

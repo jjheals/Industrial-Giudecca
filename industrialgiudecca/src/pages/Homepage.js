@@ -127,7 +127,7 @@ function Homepage() {
             </head>
 
             {/* Language selector if a language has not yet been chosen this session */}
-            {localStorage.getItem('hasSelectedLanguage') === 'false' ? <LanguageSelector /> : ''}
+            {sessionStorage.getItem('hasSelectedLanguage') === 'false' ? <LanguageSelector /> : ''}
 
             {/* Sidebar div */}
             <div>
