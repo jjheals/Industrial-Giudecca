@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="data explorer mobile friendly">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="changed image to logo but its weird">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,15 +83,7 @@
       <workItem from="1713253535344" duration="27776000" />
       <workItem from="1713426743493" duration="23994000" />
       <workItem from="1713855602237" duration="4278000" />
-      <workItem from="1713873670295" duration="1360000" />
-    </task>
-    <task id="LOCAL-00012" summary="paralax text header needs to be fixed">
-      <option name="closed" value="true" />
-      <created>1710511864285</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1710511864285</updated>
+      <workItem from="1713873670295" duration="2610000" />
     </task>
     <task id="LOCAL-00013" summary="fixed header size">
       <option name="closed" value="true" />
@@ -477,7 +469,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713860333381</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="changed image to logo but its weird">
+      <option name="closed" value="true" />
+      <created>1713875048756</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1713875048756</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,7 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="skip button added 1" />
     <MESSAGE value="hover working = w rizz" />
     <MESSAGE value="hover on factory page" />
     <MESSAGE value="industrial sites title" />
@@ -520,6 +519,7 @@
     <MESSAGE value="more mobile friendly" />
     <MESSAGE value="more mobile shiiii" />
     <MESSAGE value="data explorer mobile friendly" />
-    <option name="LAST_COMMIT_MESSAGE" value="data explorer mobile friendly" />
+    <MESSAGE value="changed image to logo but its weird" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed image to logo but its weird" />
   </component>
 </project>
