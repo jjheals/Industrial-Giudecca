@@ -34,7 +34,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const [allFactories, setAllFactories] = useState([]);                   // List of ALL factories as originally passed to MapTimeline
 
     const currentYear = new Date().getFullYear();   // Current year so the scrolling timeline knows when to stop
-    const minYear = minMaxYear.minYear;             // Min year as passed to MapTimeline
+    const minYear = 1800;             // Min year as passed to MapTimeline
     const maxYear = minMaxYear.maxYear;             // Max year as passed to MapTimeline
     const timelineTop = window.innerHeight;         // Top of the timeline (y-pos), i.e. one page height down from the start
     
