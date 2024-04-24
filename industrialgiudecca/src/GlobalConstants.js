@@ -50,6 +50,10 @@ export const factoryStoryMapURLs = {
     271: { // Cnav
         en: 'https://storymaps.arcgis.com/stories/32d4ad50d45140a8868e4939713733ca',
         it: 'https://storymaps.arcgis.com/stories/32d4ad50d45140a8868e4939713733ca',
+    },
+    58: { // Savinem
+        en: 'https://storymaps.arcgis.com/stories/dc9099a7d0684f21a2b1e5c7a5b90c3f',
+        it: 'https://storymaps.arcgis.com/stories/dc9099a7d0684f21a2b1e5c7a5b90c3f',
     }
 }
 
