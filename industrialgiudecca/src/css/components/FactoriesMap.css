@@ -33,7 +33,6 @@
 }
 
 .building-pin.highlighted {
-    /* Add your desired styles for the highlighted marker */
     transform: scale(1.2);
     filter: brightness(1.2);
 }
@@ -42,35 +41,47 @@
     display: none;
     flex-direction: column;
     width: 100%;
-    height: 8vh;
+    height: 5vh;
+}
+
+.bpopup-factory-container { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    margin-top: 0.5vh;
+    margin-left: 0.5vw;
+    padding-bottom: 0.25vh;
+    border-bottom: 1px solid white;
+}
+
+.bpopup-info-container { 
+    display: flex;
+    flex-direction: column;
+    width: 70%;
 }
 
 .bpopup { 
     color: white;
-    padding: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .bpopup.year { 
     font-weight: bold;
-    margin-top: 1vh;
-}
-
-.bpopup.name-row { 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: 1px solid rgb(155, 155, 155);
+    margin: 0;
 }
 
 .bpopup-img { 
     float: right;
-    margin-left: 1vw;
-    width: 6vw;
-    height: 6vw;
+    width: 4.3vw;
+    height: 4.3vw;
+
 }
 
 .bpopup.name-text { 
-    width: 11vw;
     text-wrap: wrap;
     text-align: left;
+    margin: 0;
+    margin-top: 0.25vh;
 }

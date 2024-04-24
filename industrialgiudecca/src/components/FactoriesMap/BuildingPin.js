@@ -15,6 +15,13 @@ export const BuildingPin = ({id, factories, left, top}) => {
         // Iterate over the factories and create the elements to display on the sidebar
         // NOTE: factoires.reverse() to display them in order of most recent to least recent 
         factories.reverse().map(factory => { 
+            const thisFactoryContainer = document.createElement('div');
+            thisFactoryContainer.className = 'bpopup-factory-container';
+            thisFactoryContainer.id = `bpopup-factory-container-${factory.Factory_ID}`;
+
+            const infoContainerElm = document.createElement('div');
+            infoContainerElm.className = 'bpopup-info-container';
+            infoContainerElm.id = `bpopup-info-container-${id}`;
 
             // yearElm => element with the year bolded above the name
             const yearElm = document.createElement('div');
@@ -25,28 +32,23 @@ export const BuildingPin = ({id, factories, left, top}) => {
             let closingYear = factory.Closing_Year;
             if(closingYear == 9999) closingYear = 'Present';
             yearElm.textContent = `(${factory.Opening_Year} to ${closingYear})`;
-
-            // nameRow => row below the year containing the name and image
-            const nameRow = document.createElement('div');
-            nameRow.className = 'bpopup name-row';
-            nameRow.id = `bpopup-${factory.Factory_ID}`;
             
             // nameElm => text containing the factory name 
             const nameElm = document.createElement('p');
             nameElm.className = 'bpopup name-text';
             nameElm.textContent = factory.English_Name;
             
-
             // imgElm => image for the factory
             const imgElm = document.createElement('img');
             imgElm.className = 'bpopup-img';
             imgElm.id = `bpopup-img-${factory.Factory_ID}`;
             imgElm.src = factory.coverPicURL;
 
-            nameRow.appendChild(nameElm);       // Append the name text to the name row
-            nameRow.appendChild(imgElm);        // Append the image to the name row
-            popupDivElm.appendChild(yearElm);   // Append the year to the name row
-            popupDivElm.appendChild(nameRow);   // Append the entire popup div to the name row
+            infoContainerElm.appendChild(yearElm);                // Append the year elm to the info container
+            infoContainerElm.appendChild(nameElm);                // Append the name text to the info container
+            thisFactoryContainer.appendChild(infoContainerElm);   // Append the info container to the factory container
+            thisFactoryContainer.appendChild(imgElm);             // Append the img elm to the factory container 
+            popupDivElm.appendChild(thisFactoryContainer);        // Append the factory container to the popup div
         });
 
         // Append the popup div to the side container
