@@ -1,12 +1,5 @@
 // src/components/FactoriesMap.js
 
-/** { Component } FactoriesMap 
- * @abstract Map that renders on the FactoryHomepage (industrial sites page) with static clickable pins for each industrial site.
- * @param { Array[Factory] } factories - Array of Factory objects
- * @param { function } onMarkerClick - Function/handler for each marker click
- * @param { String } searchTerm - Search term to filter the map by
- * @param { bool } showStoriesOnly - Boolean on whether to show only industrial sites with storymaps (true) or all industrial sites (false)
- */
 import React, { useRef, useEffect, useState } from 'react';
 import '../../css/components/FactoriesMap.css';
 
@@ -22,74 +15,82 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
     const clickedMarkerRef = useRef(null);
     const [buildings, setBuildings] = useState([]);
 
-    /** fetchBuildings()
-     * @abstract Function to fetch the buildings feature layer from ArcGIS and set the 'buildings' constant to an Array[Object]
-     * @returns { null }
-     */
-    async function fetchBuildings() { 
+    // useEffect => fetch buildings and factories data
+    useEffect(() => {
+        const fetchData = async () => {
+            // Fetch the Building FL to get the building locations and IDs
+            const buildings = await fetchFL(featureLayerServiceURLs['Building'])
+                .then(p => {
+                    return p.map(d => {
+                        return d.attributes;
+                    });
+                });
 
-        // Fetch the Building FL to get the building locations and IDs
-        const buildings = await fetchFL(featureLayerServiceURLs['Building'])
-        .then(p => {
-            return p.map(d => { 
-                return d.attributes;
-            });
-        });
+            // If we are filtering by factories with stories, then create a 'where' filter for the fetchFL function
+            let whereFilter = '';
+            if (showStoriesOnly) {
+                const factoriesWithStories = Object.keys(factoryStoryMapURLs);
 
-        // If we are filtering by factories with stories, then create a 'where' filter for the fetchFL function 
-        let whereFilter = '';
-        if(showStoriesOnly) { 
-            const factoriesWithStories = Object.keys(factoryStoryMapURLs);
+                factoriesWithStories.map(fid => {
+                    if (parseInt(fid)) whereFilter += `Factory_ID = ${fid} OR `;
+                });
 
-            factoriesWithStories.map(fid => { 
-                if(parseInt(fid)) whereFilter += `Factory_ID = ${fid} OR `;
-            });
-
-            // Remove the trailing "OR"
-            whereFilter = whereFilter.slice(0, -4);
-        }
-        // Fetch the Factory_At_Building FL to get the factory locations 
-        const factoryAtBuilding = await fetchFL(featureLayerServiceURLs['Factory_At_Building'], whereFilter)
-        .then(p => { 
-            return p.map(d => { 
-                return d.attributes;
-            });
-        });
-
-        // Create a dictionary to map Building_IDs to an array of Factory_IDs
-        let mapBuildingsToFactories = {};
-        buildings.map(building => { 
-
-            // Map the building's lat/long to x/y
-            const mapHeight = '50vh';
-            const buildingPos = latLongToPixel(building.Latitude_, building.Longitude_, window.innerWidth, window.innerHeight);
-            
-            const thisBuildingID = building.Building_ID;    // Get the current building ID
-            let theseFactories = [];                        // Init theseFactories as an empty array, to be populated with Factory objects 
-
-            // Filter the factory at building FL to match factories at this building over any period of time
-            const theseFactoryIDs = factoryAtBuilding.filter(r => r.Building_ID == thisBuildingID);
-
-            if(theseFactoryIDs.length > 0) { 
-                // Iterate over the matched factory IDs and get the Factory objects for each
-                theseFactoryIDs.map(r => { 
-                    const thisFactoryID = r.Factory_ID;
-                    const thisFactory = factories.filter(f => f.Factory_ID == thisFactoryID)[0];
-
-                    // If there was a result, push thisFactory onto theseFactories
-                    if(thisFactory) theseFactories.push(thisFactory);
-                })
-
-                // Add theseFactories to mapBuildingsToFactories at thisBuildingID
-                mapBuildingsToFactories[thisBuildingID] = { x: buildingPos.x, y: buildingPos.y, lof: theseFactories };
+                // Remove the trailing "OR"
+                whereFilter = whereFilter.slice(0, -4);
             }
-            
-        })
+            // Fetch the Factory_At_Building FL to get the factory locations
+            const factoryAtBuilding = await fetchFL(featureLayerServiceURLs['Factory_At_Building'], whereFilter)
+                .then(p => {
+                    return p.map(d => {
+                        return d.attributes;
+                    });
+                });
 
-        // Set the buildings on the page
-        setBuildings(mapBuildingsToFactories);
-    }
-    
+            // Filter the factories based on factoryStoryMapURLs
+            const factoriesWithStories = factories.filter(factory => factoryStoryMapURLs[factory.Factory_ID]);
+
+            // Create a dictionary to map Building_IDs to an array of Factory_IDs
+            let mapBuildingsToFactories = {};
+            buildings.map(building => {
+                // Map the building's lat/long to x/y
+                const mapHeight = '50vh';
+                const buildingPos = latLongToPixel(building.Latitude_, building.Longitude_, window.innerWidth, window.innerHeight);
+
+                const thisBuildingID = building.Building_ID;
+                let theseFactories = [];
+
+                const theseFactoryIDs = factoryAtBuilding.filter(r => r.Building_ID === thisBuildingID);
+
+                if (theseFactoryIDs.length > 0) {
+                    theseFactoryIDs.map(r => {
+                        const thisFactoryID = r.Factory_ID;
+                        const thisFactory = factoriesWithStories.filter(f => f.Factory_ID === thisFactoryID)[0];
+
+                        if (thisFactory) theseFactories.push(thisFactory);
+                    });
+
+                    mapBuildingsToFactories[thisBuildingID] = { x: buildingPos.x, y: buildingPos.y, lof: theseFactories };
+                }
+            });
+
+            // Filter the buildings based on showStoriesOnly
+            const filteredBuildings = {};
+            Object.keys(mapBuildingsToFactories).forEach(buildingID => {
+                const building = mapBuildingsToFactories[buildingID];
+                if (!showStoriesOnly || building.lof.some(factory => factoryStoryMapURLs[factory.Factory_ID])) {
+                    filteredBuildings[buildingID] = building;
+                }
+            });
+
+            // Set the filtered buildings on the page
+            setBuildings(filteredBuildings);
+        };
+
+        if (factories && factories.length > 0) {
+            fetchData();
+        }
+    }, [factories, showStoriesOnly]);
+
     // Event handler for clicking a marker on the map
     const clickMarker = (marker) => {
         if (clickedMarkerRef.current) {
@@ -102,24 +103,16 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
         clickedMarkerRef.current = marker;
     };
 
-    // useEffect => call fetchBuildings() to get the buildings FL
-    useEffect(() => { 
-        if(
-            factories &&
-            factories.length > 0 
-        ) fetchBuildings(); 
-    }, [factories, showStoriesOnly])
-
     // useEffect => set the filtered markers on the map
     useEffect(() => {
         if (factories.length > 0 && mapContainerRef.current) {
-            // Filter the factories by the search term 
+            // Filter the factories by the search term
             // DO SOMETHING ...
             // ...
         }
     }, [factories, onMarkerClick, searchTerm, showStoriesOnly]);
 
-    // useEffect => update the map if a search term is entered 
+    // useEffect => update the map if a search term is entered
     useEffect(() => {
         if (searchTerm) {
             if (clickedMarkerRef.current) {
@@ -148,15 +141,16 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                     id='fhp-map-overlay'
                     style={{ height: window.innerHeight }}
                 >
-                    { 
-                        // Iterate over the buildings and display the pins 
-                        Object.keys(buildings).map(buildingID => (
-                                <div className='pin-wrapper' id={`pin-wrapper-${buildingID}`}>
-                                    <BuildingPin id={buildingID} factories={buildings[buildingID].lof} left={buildings[buildingID].x} top={buildings[buildingID].y}/>
-                                </div>
-                            )
-                        )
-                    }
+                    {Object.keys(buildings).map(buildingID => (
+                        <div className='pin-wrapper' id={`pin-wrapper-${buildingID}`} key={buildingID}>
+                            <BuildingPin
+                                id={buildingID}
+                                factories={buildings[buildingID].lof}
+                                left={buildings[buildingID].x}
+                                top={buildings[buildingID].y}
+                            />
+                        </div>
+                    ))}
                 </div>
                 <div className='all-popup-divs-container' id='all-popup-divs-container'>
 
