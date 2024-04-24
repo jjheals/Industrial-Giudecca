@@ -37,7 +37,19 @@ export const factoryStoryMapURLs = {
     },
     37: { // Tanner
         en: 'https://storymaps.arcgis.com/stories/f24b394505f741f18a57c02f8eca6970',
-        it: 'https://storymaps.arcgis.com/stories/f24b394505f741f18a57c02f8eca6970',
+        it: 'https://storymaps.arcgis.com/stories/f24b394505f741f18a57c02f8eca6970'
+    },
+    5: { // Fortuny
+        en: 'https://storymaps.arcgis.com/stories/56ba99283a3845e380c44c8f7da739c6',
+        it: 'https://storymaps.arcgis.com/stories/56ba99283a3845e380c44c8f7da739c6'
+    },
+    27: { // Cnomv
+        en: 'https://storymaps.arcgis.com/stories/53c2cc50b9974482ba8326317b736018',
+        it: 'https://storymaps.arcgis.com/stories/53c2cc50b9974482ba8326317b736018'
+    },
+    271: { // Cnav
+        en: 'https://storymaps.arcgis.com/stories/32d4ad50d45140a8868e4939713733ca',
+        it: 'https://storymaps.arcgis.com/stories/32d4ad50d45140a8868e4939713733ca',
     }
 }
 
