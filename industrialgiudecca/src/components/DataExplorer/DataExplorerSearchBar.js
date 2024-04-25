@@ -50,16 +50,10 @@ const DataExplorerSearchBar = () => {
      * @param { Event } e 
      */
     const handleSubmit = async (e) => {
-
-        console.log('submitting DE search with formData');
-        console.log(formData);
-        
         e.preventDefault();
 
         let isRelational = false;   // Flag to determine whether the returned table will be relational or not 
         let queriedFLs = {};         // Keep a dict of the feature layers we query so we can pass them to the resulting table at the end 
-
-        console.log('Form submitted with data:', formData);
 
         // Query the FLs that are needed for every return table, i.e. Factory, Employment, Factory_At_Building, and Building 
         const factoryFL = await fetchFL(featureLayerServiceURLs['Factory']);
@@ -284,14 +278,8 @@ const DataExplorerSearchBar = () => {
 
     // useEffect => dynamically pull all possible products AND purposes from the DB to populate the options on the sheet
     useEffect(() => { 
-        async function getProducts() {
-            setProducts((await getProductCategories(language)).sort());
-        }
-        
-        async function getPurposes() { 
-            setPurposes((await getCurrPurposes()).sort());
-        }
-
+        async function getProducts() { setProducts((await getProductCategories(language)).sort()); }
+        async function getPurposes() { setPurposes((await getCurrPurposes()).sort()); }
         getProducts();
         getPurposes();
     }, [language]);

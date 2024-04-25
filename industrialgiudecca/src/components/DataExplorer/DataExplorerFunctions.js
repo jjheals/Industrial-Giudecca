@@ -103,9 +103,7 @@ export function setResultsTable(results, lof, featureLayers, formData, lang) {
                 'Longitude': locationData.long  
             }
 
-        } catch { 
-
-        }
+        } catch { }
     });
 
     // Render a non-relational table
@@ -256,15 +254,6 @@ function findCurrentPurpose(buildingsFL, factoryAtBuildingFL, factoryDict) {
  */
 function getProductData(productOverTimeFL, fid, product, startYear, endYear, lang) { 
 
-    console.log('getProductData product');
-    console.log(product);
-
-    console.log('getProductData lang');
-    console.log(lang);
-
-    console.log('getProductData FL');
-    console.log(productOverTimeFL);
-
     // If not given a start and end year, then set startYear as 0 and endYear as a max value (999999) 
     if(!startYear) startYear = 0;
     if(!endYear) endYear = 999999;
@@ -275,9 +264,6 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear, lan
         (dict.attributes['Factory_ID'] == fid) &&                                   // Match factory ID
         (dict.attributes[`Product_Cat_${lang}`] == product)                                  // Match product
     );
-
-    console.log('matched rows for getProductData');
-    console.log(matchedRows);
 
     // Now refine to be within the minVal and maxVal and match the targetAttribute
     matchedRows = matchedRows.filter(dict => 
@@ -291,9 +277,6 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear, lan
             (dict.attributes['Year_Started'] <= startYear) && (dict.attributes['Year_Stopped'] > endYear)  
         )
     );
-
-    console.log('filtered matchedRows');
-    console.log(matchedRows);
     
     return matchedRows;
 }
@@ -330,8 +313,6 @@ export async function getProductCategories(lang) {
 
 export async function getCurrPurposes() { 
     const resp = await fetchFL(featureLayerServiceURLs['Building']);
-
-    console.log(resp);
 
     const currPurposes = resp.map(d => { 
         const thisPurpose = d.attributes['Now_Used_For'];

@@ -35,8 +35,6 @@ function DataExplorerPage() {
         };
     }, []);
 
-    console.log(`Data explorer PAGE language: ${language}`);
-
     // Set viewport to the top of the page since React is sus
     window.scrollTo({
         top: 0

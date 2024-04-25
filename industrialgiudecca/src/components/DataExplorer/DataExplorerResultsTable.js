@@ -7,13 +7,8 @@ import '../../css/DataExplorer.css';
 const DataExplorerResultsTable = ({ d }) => {
     const [queryResults, setQueryResults] = useState({ keys: [], rows: [] });
 
-    console.log('DE Results Table');
-    console.log(d);
-    
     useEffect(() => {
         if (d.rows && d.rows.length > 0) {
-            console.log('DataExplorerResultsTable rows:');
-            console.log(d.rows);
             setQueryResults(d);
         }
     }, [d]);
