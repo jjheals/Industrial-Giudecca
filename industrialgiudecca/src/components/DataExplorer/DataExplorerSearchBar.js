@@ -51,6 +51,10 @@ const DataExplorerSearchBar = () => {
      * @param { Event } e 
      */
     const handleSubmit = async (e) => {
+
+        console.log('submitting DE search with formData');
+        console.log(formData);
+        
         e.preventDefault();
 
         let isRelational = false;   // Flag to determine whether the returned table will be relational or not 

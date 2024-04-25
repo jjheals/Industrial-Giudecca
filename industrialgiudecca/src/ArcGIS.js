@@ -92,6 +92,12 @@ export function filterFeatureLayer(featureLayerDict, targetAttributeString, filt
         matchedIDs.push(dict.attributes[returnAttribute]);
     });
 
+    console.log('filterFeatureLayer matchedFeatures');
+    console.log(matchedFeatures);
+
+    console.log('filterFeatureLayer matchedIDs');
+    console.log(matchedIDs);
+    
     return matchedIDs;
 }
 

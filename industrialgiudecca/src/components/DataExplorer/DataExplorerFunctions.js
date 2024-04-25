@@ -13,6 +13,12 @@ import { nonRelationalColumns, productRelationColumns } from "./DataExplorerCons
  */
 export function setResultsTable(results, lof, featureLayers, formData) { 
 
+    console.log('setResultsTable results');
+    console.log(results);
+
+    console.log('setResultsTable lof');
+    console.log(lof);
+
     // Check if this is a relational table or not
     const isRelational = lof.includes('Product');
 
@@ -36,6 +42,9 @@ export function setResultsTable(results, lof, featureLayers, formData) {
         console.log('no results given - rendering empty table');
         renderResultsTable(resultsTableContainerElm, theseKeys, []);
     }
+
+    // Remove duplicates from the results 
+    results = [...new Set(results)];
 
     /* Format the table based on whether it is a relational query or not
      * 
@@ -136,7 +145,7 @@ export function setResultsTable(results, lof, featureLayers, formData) {
             results.map(fid => { 
                 const theseProducts = getProductData(productOverTimeFL, fid, formData.Product, formData.Min_Year, formData.Max_Year);
                 const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
-                
+
                 // Iterate over the results and push each new row to rows
                 theseProducts.map(product => { 
                     let thisRow = [
@@ -250,8 +259,11 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear) {
     let matchedRows = productOverTimeFL.filter(dict => 
         (dict.attributes['Year_Started']) && (dict.attributes['Year_Stopped']) &&   // Have years
         (dict.attributes['Factory_ID'] == fid) &&                                   // Match factory ID
-        (dict.attributes['Product_en'] == product)                                     // Match product
+        (dict.attributes['Product_en'] == product)                                  // Match product
     );
+
+    console.log('matched rows for getProductData');
+    console.log(matchedRows);
 
     // Now refine to be within the minVal and maxVal and match the targetAttribute
     matchedRows = matchedRows.filter(dict => 
@@ -266,6 +278,9 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear) {
         )
     );
 
+    console.log('filtered matchedRows');
+    console.log(matchedRows);
+    
     return matchedRows;
 }
 
