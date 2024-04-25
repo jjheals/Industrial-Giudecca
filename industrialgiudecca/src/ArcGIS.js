@@ -1,6 +1,6 @@
 // src/ArcGIS.js
 import Factory from './Factory.js';
-import { queryFeatures, fetchAttachments } from '@esri/arcgis-rest-feature-service';
+import { queryFeatures } from '@esri/arcgis-rest-feature-service';
 import { featureLayerServiceURLs } from './GlobalConstants.js';
 import { minLong, minLat, deltaLat, deltaLong } from './GlobalConstants.js';
 
@@ -92,12 +92,6 @@ export function filterFeatureLayer(featureLayerDict, targetAttributeString, filt
         matchedIDs.push(dict.attributes[returnAttribute]);
     });
 
-    console.log('filterFeatureLayer matchedFeatures');
-    console.log(matchedFeatures);
-
-    console.log('filterFeatureLayer matchedIDs');
-    console.log(matchedIDs);
-    
     return matchedIDs;
 }
 
