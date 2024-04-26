@@ -42,6 +42,13 @@
     text-align: left;
 }
 
+/* First row (row 0) with the project overview content */
+#project-overview-row { 
+    width: 60%;
+    margin: auto;
+    margin-bottom: 10vh;
+}
+
 /* Titles for all rows */
 .row-title {
     font-size: 4vw;
@@ -62,7 +69,7 @@
 
 /* Text content in each row */
 .about-content {
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     font-family: var(--content-font-family);
     color: rgb(193, 193, 193);
 }
@@ -117,9 +124,34 @@
     height: 20vw;
 }
 
-/* Add padding to the bottom of the page */
-.about-container:last-child {
-    padding-bottom: 20vh;
+/* Footer at bottom */
+.about-page-footer { 
+    display: flex;
+    height: 20vh;
+    width: 100%;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin: auto;
+}
+
+.about-learn-more { 
+    width: 40%;
+    margin: auto;
+    font-family: "Playfair Display", sans-serif;
+    font-size: 1.3vw;
+    color: var(--obsidian-accent-color);
+    border: 1px solid var(--obsidian-accent-color);
+    background-color: transparent;
+    transition: 0.3s ease;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.about-learn-more:hover { 
+    transition: 0.3s ease;
+    color: white;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 /* Media queries for mobile devices */
@@ -145,7 +177,5 @@
         width: 30vw;
         height: 30vw;
     }
-
-
 
 }

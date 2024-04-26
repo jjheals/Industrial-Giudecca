@@ -6,6 +6,8 @@
     --sidebar-link-color: rgb(94, 94, 94);
     --sidebar-bg-color: #e0e0e0b4;
     --sidebar-link-hover-transition: font-size 0.3s ease;
+    --obsidian-color: #0e1116;
+    --obsidian-accent-color: #ea5b41;
 }
 
 /* Sidebar.css */
@@ -50,7 +52,7 @@ nav ul li a {
     left: 20px;
     width: 30px;
     height: 30px;
-    background-color: #333;
+    background-color: var(--obsidian-color);
     border: none;
     cursor: pointer;
     z-index: calc(var(--sidebar-z) + 1);
@@ -58,14 +60,15 @@ nav ul li a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 1%;
+    border-radius: 0.3rem;
 }
 
 .hamburger span {
     display: block;
     width: 80%;
     height: 2px;
-    background-color: white;
+    background-color: var(--obsidian-accent-color);
     transition: transform 0.3s ease, opacity 0.3s ease;
     position: absolute;
 }

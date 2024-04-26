@@ -20,6 +20,10 @@ import '../css/AboutPage.css';
 function AboutPage() {
     const {t, language} = useContext(LanguageContext);
 
+    const learnMoreClick = () => { 
+        window.open('https://sites.google.com/view/industrialgiudecca/home', '_blank');
+    }
+    
     window.scrollTo({ 
         top: 0
     });
@@ -37,7 +41,17 @@ function AboutPage() {
 
                 {/* Row 0 (project overview) */}
                 <div className='about-row c'> 
-                    <h1 className='row-title'>Project Overview</h1>
+                    <div className='row-content-container' id='project-overview-row'>
+                        <h1 className='row-title'>Project Overview</h1>
+                        <p className='about-content'>
+                            Digitizing historical data is a process that has been made possible through advancements in modern technology. Digital databases 
+                            allow researchers and historians to access copious amounts of information and data; moreover, the digitization of data provides 
+                            easier access to a wider range of audiences. For this project, we seized an opportunity to digitize data about social, cultural, 
+                            and economic history. We created a digital database and designed a digital platform to provide users with information about Giudecca’s 
+                            industrial history. It is our hope that this project inspires future work to explore solutions for preserving delicate, culturally 
+                            significant histories.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Row 1 (right align) */}
@@ -158,6 +172,12 @@ function AboutPage() {
                         </p>
                     </div>
                 </div>
+            </div>
+            
+            <div className='about-page-footer'>
+                <button className='about-learn-more' onClick={learnMoreClick}>
+                    Click to learn more about our process and journey
+                </button>
             </div>
         </div>
     );
