@@ -50,15 +50,15 @@ const Sidebar = ({ selected }) => {
                         </li>
 
                         <li className="sidebar-element">
-                            <Link class="sidebar-link" id='sideBarDataExplorer' to="/data-explorer" onClick={toggleSidebar}>{t("sideBarDataExplorer")}</Link>
-                        </li>
-
-                        <li className="sidebar-element">
                             <Link class="sidebar-link"  id='sideBarHistoricalStories' to="/industrial-stories" onClick={toggleSidebar}>{t("sideBarHistoricalStories")}</Link>
                         </li>
 
                         <li className="sidebar-element">
                             <Link class="sidebar-link" id='sideBarMap' to="/map" onClick={toggleSidebar}>{t("sideBarInteractiveMap")}</Link>
+                        </li>
+
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" id='sideBarDataExplorer' to="/data-explorer" onClick={toggleSidebar}>{t("sideBarDataExplorer")}</Link>
                         </li>
 
                         <li className="sidebar-element">

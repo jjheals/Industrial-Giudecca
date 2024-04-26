@@ -128,7 +128,10 @@ function FactoryHomepage() {
                                     className="landscape-placeholder factory-image"
                                 />
                             </Link>
-                            <h2>{language == 'en' ? factory.English_Name : factory.Italian_Name}</h2>
+                            <div className='fhp-factory-details'>
+                                <h1 className='fhp-factory-name'>{language == 'en' ? factory.English_Name : factory.Italian_Name}</h1>
+                                <h2 className='fhp-factory-years'>{ `(${factory.Opening_Year} to ${factory.Closing_Year == 9999 ? 'Present' : factory.Closing_Year})` }</h2>
+                            </div>
                         </div>
                     ))}
                 </div>
