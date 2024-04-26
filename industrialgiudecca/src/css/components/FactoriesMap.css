@@ -15,7 +15,9 @@
     height: 60vh;
     z-index: 1000;
     background-color: rgba(33, 66, 104, 0.673);
-    border: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
 }
 
 .building-pin { 
