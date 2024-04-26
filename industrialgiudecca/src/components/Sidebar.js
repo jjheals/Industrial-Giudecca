@@ -21,7 +21,11 @@ const Sidebar = ({ selected }) => {
     };
 
     useEffect(() => { 
-    })
+        const selectedElm = document.getElementById(selected);
+        console.log('selectedElm');
+        console.log(selectedElm);
+        if(selected) document.getElementById(selected).style.color = '#EA5B41';
+    }, [selected])
 
     return (
         <div className="sidebar-container">
@@ -37,28 +41,28 @@ const Sidebar = ({ selected }) => {
 
                 <nav>
                     <ul>
-                        <li className="sidebar-element" id='sideBarHome'>
-                            <Link class="sidebar-link" to="/" onClick={toggleSidebar}>{t("sideBarHome")}</Link>
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" id='sideBarHome' to="/" onClick={toggleSidebar}>{t("sideBarHome")}</Link>
                         </li>
 
-                        <li className="sidebar-element" id='sideBarIndustrial'>
-                            <Link class="sidebar-link" to="/industrial-sites" onClick={toggleSidebar}>{t("sideBarIndustrial")}</Link>
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" id='sideBarIndustrial' to="/industrial-sites" onClick={toggleSidebar}>{t("sideBarIndustrial")}</Link>
                         </li>
 
-                        <li className="sidebar-element" id='sideBarDataExplorer'>
-                            <Link class="sidebar-link" to="/data-explorer" onClick={toggleSidebar}>{t("sideBarDataExplorer")}</Link>
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" id='sideBarDataExplorer' to="/data-explorer" onClick={toggleSidebar}>{t("sideBarDataExplorer")}</Link>
                         </li>
 
-                        <li className="sidebar-element" id='sideBarHistoricalStories'>
-                            <Link class="sidebar-link" to="/industrial-stories" onClick={toggleSidebar}>{t("sideBarHistoricalStories")}</Link>
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link"  id='sideBarHistoricalStories' to="/industrial-stories" onClick={toggleSidebar}>{t("sideBarHistoricalStories")}</Link>
                         </li>
 
-                        <li className="sidebar-element" id='sideBarMap'>
-                            <Link class="sidebar-link" to="/map" onClick={toggleSidebar}>{t("sideBarInteractiveMap")}</Link>
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" id='sideBarMap' to="/map" onClick={toggleSidebar}>{t("sideBarInteractiveMap")}</Link>
                         </li>
 
-                        <li className="sidebar-element" id='sideBarAbout'>
-                            <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>{t("sideBarAbout")}</Link>
+                        <li className="sidebar-element">
+                            <Link class="sidebar-link" id='sideBarAbout' to="/About" onClick={toggleSidebar}>{t("sideBarAbout")}</Link>
                         </li>
                     </ul>
                 </nav>

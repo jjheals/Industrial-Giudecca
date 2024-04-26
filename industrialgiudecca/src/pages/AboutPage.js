@@ -32,7 +32,7 @@ function AboutPage() {
             {/* Language selector if a language has not yet been chosen this session */}
             {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
-            <div><Sidebar /></div>
+            <div><Sidebar selected='sideBarAbout'/></div>
             <div><Title title={ t('aboutTitle') } imgSrc={ 'about-title-img.png' } /></div>
 
             <div class='about-container'> 

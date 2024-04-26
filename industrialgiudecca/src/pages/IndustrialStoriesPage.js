@@ -100,7 +100,7 @@ function IndustrialStoriesPage() {
             {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Title and sidebar */}
-            <div><Sidebar /></div>
+            <div><Sidebar selected='sideBarHistoricalStories'/></div>
             <div><Title title={ t('industrialStoriesTitle') } titleColor={ 'rgba(0,0,0,0.3' } imgSrc={ 'stories-page-head.jpeg' } /></div>       
 
             {/* Side container with the list of factories and a small image */}

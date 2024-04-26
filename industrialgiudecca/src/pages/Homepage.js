@@ -131,7 +131,7 @@ function Homepage() {
 
             {/* Sidebar div */}
             <div>
-                <Sidebar />
+                <Sidebar selected='sideBarHome'/>
             </div>
 
             {/* Title div ('blurb') */}

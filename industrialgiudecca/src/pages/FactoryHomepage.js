@@ -96,7 +96,7 @@ function FactoryHomepage() {
             {!isMobile && (
                 <Title title={t('factoryHomepageTitle')} titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg' />
             )}
-            <Sidebar/>
+            <Sidebar selected='sideBarIndustrial'/>
 
             {/* Search bar that sticks to the top of the page after scrolling past the title */}
             {/* Button to toggle showing only factories with stories */}

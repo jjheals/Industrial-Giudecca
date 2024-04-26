@@ -42,7 +42,7 @@ function DataExplorerPage() {
 
     return (
         <div className="main-container">
-            <div><Sidebar /></div>
+            <div><Sidebar selected='sideBarDataExplorer'/></div>
             {!isMobile && (
                 <div><Title title={ t('dataExplorerTitle') } titleColor='' imgSrc='F-1_S35_yyyy.png'/></div>
             )}
