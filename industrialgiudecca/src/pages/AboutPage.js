@@ -5,8 +5,8 @@
  * 
  * NOTE: all content for this page is hardcoded for simplicity. It should not need to change frequently, if ever, since it only
  * contains factual information about the project sponsor (Dr. Lando), the sponsoring organization (SerenDPT), the project center
- * director (Fabio Carerra), and the Industrial Giudecca team (Justin, Mary, Tim, Parker). This page does not contain any dynamic
- * data that needs to be updated. 
+ * director (Fabio Carerra), and the Industrial Giudecca team (Justin, Mary, Tim, Parker) and its Sponsors (Rick Vaz & Chrys Demetry). 
+ * This page does not contain any dynamic data that needs to be updated. 
  */
 import React, { useContext } from 'react';
 import Sidebar from '../components/Sidebar.js';
@@ -19,8 +19,6 @@ import '../css/AboutPage.css';
 
 function AboutPage() {
     const {t, language} = useContext(LanguageContext);
-
-    console.log(t);
 
     window.scrollTo({ 
         top: 0
@@ -44,21 +42,21 @@ function AboutPage() {
                     </div>
                     <div class='row-content-container'>
                         <h1 class='row-title'>Dr. Pietro Lando</h1>
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
@@ -70,56 +68,84 @@ function AboutPage() {
                 {/* Row 2 (left align) */}
                 <div class='about-row l'>
                     <div class='row-content-container'>
-                        <h1 class='row-title'>SerenDPT & Fabio Carrera</h1>
-                        <p class='content'>
+                        <h1 class='row-title'>Fabio Carrera & SerenDPT</h1>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                     </div>
-                    <div className='content-img-container'>
-                        <img className='content-img' src='fabio_carrera.jpeg' />
-                        <img className='content-img' src='sdpt-logo.png' />
+                    <div className='content-img-container sdpt'>
+
+                        {/*
+                        <div className='content-img-row sdpt'>
+                            <img className='content-img sdpt logo' src='sdpt-logo.png' />
+                        </div>
+                        */}
+
+                        <div className='content-img-row sdpt'>
+                            <div className='content-img-subrow'>
+                                <img className='content-img sdpt' src='fabio.jpeg' />
+                                <p className='content-img-caption'>Fabio Carerra</p>
+                            </div>
+                            <div className='content-img-subrow'>
+                                <img className='content-img sdpt' src='gianluca.jpeg' />
+                                <p className='content-img-caption'>Gianluca Coró</p>
+                            </div>
+                            
+                        </div>
+
+                        <div className='content-img-row sdpt'>
+                            <div className='content-img-subrow'>
+                                <img className='content-img sdpt' src='aurora.jpeg' />
+                                <p className='content-img-caption'>Aurora del Sordo</p>
+                            </div>
+                            <div className='content-img-subrow'>
+                                <img className='content-img sdpt' src='marco.jpeg' />
+                                <p className='content-img-caption'>Marco Bertoldi</p>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
 
                 {/* Row 3 (right align) */}
                 <div className='about-row r'>
                     <div className='content-img-container'>
-                        <img src='wpi-logo.png' />
+                        <img src='wpi-logo.png' className='content-img logo'/>
                     </div>
                     <div class='row-content-container'>
                         <h1 class='row-title'>WPI & The Industrial Giudecca Team</h1>
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='content'>
+                        <p class='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
@@ -128,7 +154,6 @@ function AboutPage() {
                     </div>
                 </div>
             </div>
-            
         </div>
     );
 }

@@ -1,62 +1,119 @@
 :root { 
-    --row-title-font-family: "Judson", serif;
-    --row-title-font-color: black;
+    
+    --obsidian-color: #0e1116;
+    --obsidian-accent-color: #ea5b41;
     --about-row-bg: rgba(255, 255, 255, 0.14);
+
+    --row-title-font-family: "Judson", serif;
+    --content-font-family: 'Geneva', serif;
+    --row-title-font-color: rgb(196, 196, 196);
 }
 
+/* Container for the entire page */
+.about-page { 
+    background-color: var(--obsidian-color);
+}
+
+/* Container for the actual content (not incl title) */
 .about-container { 
-    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-top: 5vh;
-    margin-bottom: 10vh;
 }
 
+/* Each row containing a section with a title, content, and images */
 .about-row { 
     display: flex;
     flex-direction: row;
     margin-top: 3vh;
-    margin-bottom: 10vh;
-    background-color: var(--about-row-bg);
 }
 
+/* Right aligned rows */
+.about-row.r .row-title, .about-row.r .about-content { 
+    text-align: right;
+}
+
+/* Left aligned rows */
+.about-row.l .row-title, .about-row.l .about-content { 
+    text-align: left;
+}
+
+/* Titles for all rows */
 .row-title { 
     font-size: 4vw;
     font-weight: 100;
     font-family: var(--row-title-font-family);
     color: var(--row-title-font-color);
+    border-bottom: 1px solid var(--obsidian-accent-color);
 }
 
-/* Text alignment for right-aligned content (r) and left aligned content (l) */
-.about-row.r p, .about-row.r h1 { 
-    text-align: right;
-}
-
-.about-row.l p, .about-row.l h1 { 
-    text-align: left;
-}
-
+/* Container for the content in each row */
 .row-content-container { 
     display: flex;
     flex-direction: column;
-    padding-top: 0;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding: 0 2%;
     width: 70%;
     margin: 0;
 }
 
+/* Text content in each row */
+.about-content { 
+    font-size: 0.8vw;
+    font-family: var(--content-font-family);
+    color: rgb(193, 193, 193);
+}
+
+/* Container for the images in each row */
 .content-img-container { 
     display: flex;
     flex-direction: column;
     height: 50%;
     width: 30%;
-    margin: 0;
+    margin: auto;
+    padding: 0;
 }
 
+/* A row of images in a content row */
+.content-img-row { 
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 0.5vh;
+    padding: 0;
+}
+
+/* Individual images in the row */
 .content-img {
     height: 100%;
     width: 100%;
+    margin-top: 1vh;
 }
 
+/* Captions for images in each row */
+.content-img-caption { 
+    color: white;
+    font-size: 0.6vw;
+    font-family: var(--content-font-family);
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
+/* SerenDPT row images */
+.content-img.sdpt { 
+    width: 12vw;
+    height: 12vw;
+    margin-right: 0.5vh;
+    overflow: hidden;
+}
+
+/* Images that are logos */
+.content-img.logo { 
+    width: 20vw;
+    height: 20vw;
+}
+
+/* Add padding to the bottom of the page */
+.about-container:last-child { 
+    padding-bottom: 20vh;
+}

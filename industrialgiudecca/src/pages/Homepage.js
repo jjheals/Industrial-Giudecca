@@ -136,7 +136,7 @@ function Homepage() {
 
             {/* Title div ('blurb') */}
             <div
-                id="blurb"
+                id="hp-title-container"
                 style={{
                     opacity: blurbOpacity,
                     backgroundImage: 'url("front-image.jpeg")',
@@ -154,22 +154,22 @@ function Homepage() {
 
                 {/* Overlay to darken the homepage front image; also contains the text for the landing screen */}
                 <div className="bg-overlay">
-                    <div className="blurbRow" id="blurbTop">
-                        <p className="blurbElm" id="blurbTitle">
-                            {t('blurbElmBlurbTitle')}
+                    <div className="hp-title-row" id="hp-title-title">
+                        <p className="hp-title-elm">
+                            {t('homepageTitle')}
                         </p>
                     </div>
 
-                    <div className="blurbRow" id="blurbBottom">
-                        <p className="blurbElm" id="blurbSubtitle">
+                    <div className="hp-title-row" id="hp-title-subtitle">
+                        <p className="hp-title-elm">
                             {t('blurbElmBlurbSubTitle')}
                         </p>
-                        <p className="blurbElm" id="blurbCredits">
+                        <p className="hp-title-elm" id="hp-title-credits">
                             - Mario Isnenghi
                         </p>
                     </div>
 
-                    <div className="blurbRow" id="blurbScroll">
+                    <div className="hp-title-row" id="hp-title-scroll">
                         <p className="blurbElm" id="scrollText">
                             {t('blurbElmScrollText')}
                         </p>

@@ -1,12 +1,12 @@
 const translations = {
     en: {
         // Homepage translations
-        blurbElmBlurbTitle: "Industrial Giudecca",
+        homepageTitle: "Industrial Giudecca",
         blurbElmBlurbSubTitle: "\"A history without memory.\"",
         blurbElmScrollText: "This platform tells the story of industry on Giudecca.",
         deeperDive: "Let's take a deeper dive",
         intoIndustrialHistory: "into the industrial history of Giudecca ...",
-        travelToIndustrialSitesButton: "Continue to learn more about the industrial sites of the Giudecca",
+        travelToIndustrialSitesButton: "Continue to learn more about the industrial sites of Giudecca",
 
         // Timeline on homepage translations
         activeLabel: "industrial site",
@@ -67,7 +67,7 @@ const translations = {
     },
     it: {
         // Homepage translations
-        blurbElmBlurbTitle: "Giudecca Industriale",
+        homepageTitle: "Giudecca Industriale",
         blurbElmBlurbSubTitle: "\"Una storia senza memoria\"",
         blurbElmScrollText: "Questa piattaforma racconta la storia dell'industria alla Giudecca.",
         deeperDive: "Facciamo un'immersione più profonda",

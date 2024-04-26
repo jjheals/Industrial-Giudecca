@@ -8,14 +8,19 @@
     --bg-overlay: rgba(0, 0, 0, 0.324);
     --text-align: left;
     --scroll-top: 42vh;
-    --subtitle-bottom: -37vh;
+
+    --subtitle-bottom: -25vh;
     --subtitle-left: 3vw;
+
     --title-top: 45vh;
     --title-left: 3vw;
-    --w: 80%;
+
+    --w: 100%;
     --dividing-borders: 2px solid rgb(255, 255, 255);
     --section-header-font-color: rgb(255, 255, 255);
     --section-header-overlay: rgba(0, 0, 0, 0.612);
+    --obsidian-color: #0e1116;
+    --obsidian-accent-color: #ea5b41;
 }
 
 body {
@@ -55,7 +60,7 @@ body {
     z-index: 500;
 }
 
-#blurb {
+#hp-title-container {
     display: flex;
     flex-direction: column;
     font-family: var(--title-font);
@@ -68,12 +73,12 @@ body {
     transition: opacity 0s ease-in-out, z-index 1s step-end;
 }
 
-.blurbElm {
+.hp-title-elm {
     margin: 0;
     width: 70%;
 }
 
-#blurbTop {
+#hp-title-title {
     position: relative;
     text-align: var(--text-align);
     color: var(--title-font-color);
@@ -82,7 +87,7 @@ body {
     width: var(--w);
 }
 
-#blurbBottom {
+#hp-title-subtitle {
     position: relative;
     text-align: var(--text-align);
     bottom: var(--subtitle-bottom);
@@ -90,12 +95,12 @@ body {
     width: var(--w);
 }
 
-#blurbSubtitle {
+#hp-title-subtitle {
     font-size: 2vw;
     margin: 0;
 }
 
-.blurbRow {
+.hp-title-row {
     display: flex;
     flex-direction: column;
     width: auto;
@@ -104,14 +109,14 @@ body {
     padding-bottom: 2%;
 }
 
-#blurb.fade-out,
+#hp-title-container.fade-out,
 #section-header-container.fade-out {
     opacity: 0;
     z-index: -1;
     pointer-events: none;
 }
 
-#blurbCredits {
+#hp-title-credits {
     margin-top: 1%;
     font-size: 1vw;
 }
@@ -123,7 +128,7 @@ body {
     width: var(--w);
 }
 
-#blurbScroll {
+#hp-title-scroll {
     position: relative;
     top: var(--scroll-top);
     display: flex;
@@ -219,19 +224,21 @@ body {
     display: inline-block;
     padding: 16px 32px;
     background-color: transparent;
-    color: #050505;
+    color: white;
     text-decoration: none;
+    border: 1px solid var(--obsidian-accent-color);
     border-radius: 0;
     font-size: 20px;
     font-family: var(--title-font);
-    text-transform: uppercase;
     letter-spacing: 2px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .factory-homepage-button:hover {
-    background-color: black;
-    color: #ffffff;
+    transition: 0.3s ease;
+    border-width: 2px;
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 @media screen and (max-width: 768px) {
