@@ -1,60 +1,71 @@
 :root { 
-    --side-component-bg: rgb(179, 179, 179);
+    --top-container-bg: #0e1116;
+    --primary-font: 'Playfair Display', serif;
 }  
 
-.stories-side-container { 
-    display: flex;
-    flex-direction: column;
-    width: 33vw;
-    height: 100%;
-    max-height: 100vh;
-    overflow-y: scroll;
-}
-
-.stories-container { 
+.stories-top-container { 
     display: flex;
     flex-direction: row;
-    margin-top: 10vh;
-    height: 100vh;
-    border-top: 2px solid black;
+    background-color: var(--top-container-bg);
+    height: 20vh;
+    width: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
-.stories-side-component { 
+.stories-top-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+.stories-top-component { 
     display: flex;
     flex-direction: row;
-    height: 10vh;
+    color: white;
     transition: ease-in-out 0.3s;
-    border-bottom: 1px solid black;
 }
 
-.stories-side-component:hover { 
+.stories-top-component:hover { 
     cursor: pointer;
 }
 
-.stories-side-img { 
-    width: 30%;
-    height: 10vh;
+.stories-top-img { 
+    width: 20vh;
+    height: 20vh;
 }
 
-.story-side-component-years, .story-side-component-title { 
-    font-family: 'Playfair Display', serif;
+.stories-top-component-text { 
+    width: 15vw;
+    margin: 1vh 1vw;
+    padding-right: 1vw;
+}
+
+.stories-top-component-years, .stories-top-component-title, .stories-top-desc { 
+    font-family: var(--primary-font);
     margin: auto;
-    margin-left: 2vw;
     text-align: left;
 }
 
-.story-side-component-title { 
-    font-size: 1.2vw;
+.stories-top-component-title { 
+    font-size: 1.4vw;
 }
 
-.story-side-component-years { 
+.stories-top-component-years { 
+    font-size: 1vw;
+}
+
+.stories-top-desc { 
+    font-family: 'Judson', serif;
+    margin-top: 1vh;
     font-size: 0.8vw;
 }
+/* Storymap container and iframe styles */
 .storymap-container { 
     width: 100%;
 }
 
 .stories-storymap-iframe { 
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }

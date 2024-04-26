@@ -1,29 +1,28 @@
 :root { 
-    --gallery-inner-bg: rgb(200, 200, 200);
+    --gallery-bg: black;
 }
 
 .gallery-container { 
     width: 100%;
     padding-top: 3vh;
     padding-bottom: 3vh;
-    margin-top: 1vh;
-    margin-bottom: 4vh;
-    background-color: #d0d0d0;
+    background-color: black;
+    border-top: 2px solid white;
 }
 
 .gallery {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin: auto;
-    background-color: white;
+    margin: 0;
+    background-color: var(--gallery-bg);
 }
 
 .gallery-inner { 
     background-color: var(--gallery-inner-bg);
     overflow-x: scroll;
-    scrollbar-width: none; /* Hide standard scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide standard scrollbar in IE and Edge */
+    scrollbar-width: none;      /* Hide standard scrollbar in Firefox */
+    -ms-overflow-style: none;   /* Hide standard scrollbar in IE and Edge */
     margin: auto;
     padding: 0;
 }
@@ -31,10 +30,8 @@
 .gallery-image {
     height: 40vh;
     max-width: none;
-    border: 1px solid black;
     margin: 0;
 }
-
 
 .gallery::-webkit-scrollbar {
     display: none; /* Hide scrollbar in WebKit browsers */

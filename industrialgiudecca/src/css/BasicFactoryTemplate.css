@@ -4,12 +4,11 @@
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;  
-    margin-bottom: 10vh; 
 }
 
 .f-gallery-container { 
-    margin-top: 10vh;
-    margin: auto;
+    margin: 0;
+    padding: 0;
     width: 100%;
 }
 
@@ -23,7 +22,7 @@
     color: white;
     height: 30vh;
     text-align: center;
-    margin: 7vh auto;
+    margin: 0 auto;
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
     width: 100%;
@@ -31,4 +30,47 @@
 
 .timeline-header-inner{ 
     position: relative;
+}
+
+.sb-iframe-container { 
+    overflow: visible;
+    width: 100vvw;
+    margin: 0;
+    padding: 0;
+}
+
+.factory-template-footer { 
+    background-color: #0e1116;
+    display: flex;
+    flex-direction: column;
+    height: 35vh;
+    padding-top: 10vh;
+    padding-left: 5vw;
+}
+
+.factory-template-button {
+    width: fit-content;
+    font-family: 'Judson', serif;
+    text-align: left;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    margin-top: 2vh;
+    background-color: #EA5B41;
+    transition: 0.3s ease;
+}
+
+.factory-template-button:hover {
+    background-color: white;
+    color: #EA5B41;
+    transform: scale(1.1);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.factory-template-footer-hr { 
+    width: 20vw;
+    margin: 0;
+    margin-top: 3vh;
 }

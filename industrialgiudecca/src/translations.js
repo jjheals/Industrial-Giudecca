@@ -53,8 +53,11 @@ const translations = {
         startsProducing: "starts producing",
         has: "has",
         employees: "employees",
-        closes: "Chiude",
-        opens: "Apre",
+        closes: "closes",
+        opens: "opens",
+        goToHome: "Go to Home",
+        goToIndustrialSites: "Go to Industrial Sites",
+        goToStories: "Go to Stories Page",
 
         // Maptimeline translations
         clickToLearnMore: "Click on a pin to learn more",
@@ -118,6 +121,9 @@ const translations = {
         employees: "dipendenti",
         closes: "Chiude",
         opens: "Apre",
+        goToHome: "Vai a Casa",
+        goToIndustrialSites: "Recarsi nei Siti Industriali",
+        goToStories: "Vai alla Pagina delle Storie",
 
         // Maptimeline translations 
         clickToLearnMore: "Fare Clic su uno Spillo per Saperne di Più",

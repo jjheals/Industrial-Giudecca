@@ -259,13 +259,25 @@ function BasicFactoryTemplate() {
             </div>
 
             {/* ArcGIS storyboard for this factory if available */}
-            <iframe 
-                id="storyboard"
-                className="storyboard-iframe" 
-                src={ storymapURL + '?cover=false' }
-                width="100%" 
-                frameborder="0" 
-            />
+            <div className='sb-iframe-container'>
+                <iframe 
+                    id="storyboard"
+                    className="storyboard-iframe" 
+                    src={ storymapURL + '?cover=false' }
+                    style={{ 
+                        overflow: 'visible',
+                        width: '100vw',
+                    }}
+                    width="100%" 
+                    frameborder="0" 
+                />
+            </div>
+            <div className='factory-template-footer'>
+                <button className='factory-template-button' onClick={() => window.location.href = '/'}>{ t('goToHome') }</button>
+                <button className='factory-template-button' onClick={() => window.location.href = '/'}>{ t('goToIndustrialSites') }</button>
+                <button className='factory-template-button' onClick={() => window.location.href = '/'}>{ t('goToStories') }</button>
+                <hr className='factory-template-footer-hr'></hr>
+            </div>
         </div>
     );
 }

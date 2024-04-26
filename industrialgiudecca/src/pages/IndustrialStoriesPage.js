@@ -21,7 +21,7 @@ function IndustrialStoriesPage() {
     const [selectedStorymap, setSelectedStorymap] = useState('');
     const [selectedID, setSelectedID] = useState(0);
 
-    const sideComponentBg = 'rgb(179, 179, 179)';           // Background of the side components by default
+    const sideComponentBg = '#0e1116';           // Background of the side components by default
     const selectedSideComponentBg = 'rgb(255,179,255)';     // Background color of the currently selected side component
 
     /** changeSelectedStorymap(id) 
@@ -32,8 +32,8 @@ function IndustrialStoriesPage() {
     function changeSelectedStorymap(id) { 
         if(id == selectedID) return;
 
-        document.getElementById(`side-component-${id}`).style.backgroundColor = selectedSideComponentBg;
-        document.getElementById(`side-component-${selectedID}`).style.backgroundColor = sideComponentBg;
+        document.getElementById(`top-component-${id}`).style.backgroundColor = selectedSideComponentBg;
+        document.getElementById(`top-component-${selectedID}`).style.backgroundColor = sideComponentBg;
 
         setSelectedStorymap(allStorymaps[id]['Storymap_URL']);
         setSelectedID(id);
@@ -76,7 +76,8 @@ function IndustrialStoriesPage() {
                         'Factory_ID': factory.attributes['Factory_ID'],
                         'Storymap_URL': factoryStoryMapURLs[factory.attributes['Factory_ID']][language],
                         'Cover_Image_URL': factory.attributes.Cover_Image_ArcGIS_URL,
-                        'Years': `(${factory.attributes.Opening_Year} - ${closingYear})`
+                        'Years': `(${factory.attributes.Opening_Year} - ${closingYear})`,
+                        'Desc': factory.attributes.Factory_Description
                     }
                     storymaps[factory.attributes['Factory_ID']] = thisDict;
                 });
@@ -102,38 +103,36 @@ function IndustrialStoriesPage() {
             <div><Sidebar /></div>
             <div><Title title={ t('industrialStoriesTitle') } titleColor={ 'rgba(0,0,0,0.3' } imgSrc={ 'stories-page-head.jpeg' } /></div>       
 
-            {/* Main container for this page */}
-            <div className='stories-container'>
-                {/* Side container with the list of factories and a small image */}
-                <div className='stories-side-container'>
-                    {/* Iterate over all the storymap dictionaries and set the side components */}
-                    {
-                        Object.entries(allStorymaps).map(([factoryID, d]) => {
-                            return(
-                                <div className='stories-side-component' style={{ backgroundColor: sideComponentBg }} id={`side-component-${factoryID}`} onClick={() => changeSelectedStorymap(factoryID)}>
-                                    <div className='stories-side-img' 
-                                         style={
-                                            { 
-                                                backgroundImage: `url("${d['Cover_Image_URL']}")`, 
-                                                backgroundSize: '100% 100%' 
-                                            }
+            {/* Side container with the list of factories and a small image */}
+            <div className='stories-top-container'>
+                {/* Iterate over all the storymap dictionaries and set the top components */}
+                {
+                    Object.entries(allStorymaps).map(([factoryID, d]) => {
+                        return(
+                            <div className='stories-top-component' style={{ backgroundColor: sideComponentBg }} id={`top-component-${factoryID}`} onClick={() => changeSelectedStorymap(factoryID)}>
+                                <div className='stories-top-img' 
+                                        style={
+                                        { 
+                                            backgroundImage: `url("${d['Cover_Image_URL']}")`, 
+                                            backgroundSize: '100% 100%' 
                                         }
-                                    />
-                                    <div>
-                                        <h1 className='story-side-component-title'>{d['Factory_Name']}</h1>
-                                        <h2 className='story-side-component-years'>{d['Years']}</h2>
-                                    </div>
+                                    }
+                                />
+                                <div className='stories-top-component-text'>
+                                    <h1 className='stories-top-component-title'>{d['Factory_Name']}</h1>
+                                    <h2 className='stories-top-component-years'>{d['Years']}</h2>
+                                    <p className='stories-top-desc'>{d['Desc']}</p>
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                        )
+                    })
+                }
 
-                </div>
+            </div>
 
-                {/* Container for the storymap iframe */}
-                <div className='storymap-container'>
-                    <iframe src={ selectedStorymap } frameBorder={0} className='stories-storymap-iframe'/>
-                </div>
+            {/* Container for the storymap iframe */}
+            <div className='storymap-container'>
+                <iframe src={ selectedStorymap } frameBorder={0} className='stories-storymap-iframe'/>
             </div>
             
         </div>

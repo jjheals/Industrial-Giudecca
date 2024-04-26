@@ -6,19 +6,22 @@
  * to the other pages.
  *
  */
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/components/Sidebar.css';
 import LanguageSelector from '../components/LanguageSelector';
 import { LanguageContext } from '../context/LanguageContext.js';
 
-const Sidebar = () => {
+const Sidebar = ({ selected }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { t, language } = useContext(LanguageContext);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => { 
+    })
 
     return (
         <div className="sidebar-container">
@@ -34,27 +37,27 @@ const Sidebar = () => {
 
                 <nav>
                     <ul>
-                        <li className="sidebar-element">
+                        <li className="sidebar-element" id='sideBarHome'>
                             <Link class="sidebar-link" to="/" onClick={toggleSidebar}>{t("sideBarHome")}</Link>
                         </li>
 
-                        <li className="sidebar-element">
+                        <li className="sidebar-element" id='sideBarIndustrial'>
                             <Link class="sidebar-link" to="/industrial-sites" onClick={toggleSidebar}>{t("sideBarIndustrial")}</Link>
                         </li>
 
-                        <li className="sidebar-element">
+                        <li className="sidebar-element" id='sideBarDataExplorer'>
                             <Link class="sidebar-link" to="/data-explorer" onClick={toggleSidebar}>{t("sideBarDataExplorer")}</Link>
                         </li>
 
-                        <li className="sidebar-element">
+                        <li className="sidebar-element" id='sideBarHistoricalStories'>
                             <Link class="sidebar-link" to="/industrial-stories" onClick={toggleSidebar}>{t("sideBarHistoricalStories")}</Link>
                         </li>
 
-                        <li className="sidebar-element">
+                        <li className="sidebar-element" id='sideBarMap'>
                             <Link class="sidebar-link" to="/map" onClick={toggleSidebar}>{t("sideBarInteractiveMap")}</Link>
                         </li>
 
-                        <li className="sidebar-element">
+                        <li className="sidebar-element" id='sideBarAbout'>
                             <Link class="sidebar-link" to="/About" onClick={toggleSidebar}>{t("sideBarAbout")}</Link>
                         </li>
                     </ul>
