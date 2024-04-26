@@ -41,10 +41,10 @@ function BasicFactoryTemplate() {
     let languageSelected = sessionStorage.getItem('hasSelectedLanguage');
 
     const circleColors = { 
-        'products': [79, 202, 255],
-        'employment': [79, 202, 255],
-        'info': [186, 7, 7],
-        'timeperiods': [77, 77, 77]
+        'products': [255, 199, 238],
+        'employment': [255, 251, 199],
+        'info': [199, 255, 246],
+        'timeperiods': [216, 204, 255]
     }
 
     // Set viewport to the top of the page since React is sus
@@ -247,9 +247,7 @@ function BasicFactoryTemplate() {
 
             {/* Grid container for basic factory details if applicable */}
             <div id='factory-timeline-container' className='factory-timeline-container'>
-                <div className='timeline-header' style={{ backgroundImage: `url("${coverPicURL}")`, backgroundSize: "100% 100%", backgroundAttachment: 'fixed'}}>
-                    <p className='timeline-header-inner'>The History of {title}</p>
-                </div>
+
                 <FactoryTimeline 
                     factory={factoryTimelineParams.factory} 
                     timeperiods={factoryTimelineParams.timeperiods}

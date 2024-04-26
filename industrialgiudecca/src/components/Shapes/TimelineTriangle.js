@@ -8,26 +8,28 @@
 export default function TimelineTriangle() {
     return (
     <div className='timeline-triangle-container'>
-        <hr
+        <div
             className="triangle"
             style={{
                 position: 'relative',
-                bottom: 'calc(3vw / 4)',
+                top: '-0.4vw',
+                left: '5vw',
                 width: '3vw',
                 transform: 'rotate(45deg)',
-                border: '1px solid black'
+                border: '1px solid #ea5b41'
             }}
-            ></hr>
-            <hr
+            ></div>
+            <div
             className="triangle"
             style={{
                 position: 'relative',
-                top: 'calc(3vw / 4)',
+                top: '1.7vw',
+                left: '5vw',
                 width: '3vw',
                 transform: 'rotate(135deg)',
-                border: '1px solid black'
+                border: '1px solid #ea5b41'
             }}
-            ></hr>
+            ></div>
     </div>
       
     );

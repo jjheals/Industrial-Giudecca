@@ -1,9 +1,14 @@
+:root {
+    --obsidian-color: #0e1116;
+    --obsidian-accent-color: #ea5b41;
+}
 
 .factory-template-container { 
     display: flex;
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;  
+    background-color: var(--obsidian-color);
 }
 
 .f-gallery-container { 
@@ -13,6 +18,7 @@
 }
 
 .factory-timeline-container { 
+    background-color: var(--obsidian-color);
     display: 'block';
 }
 
@@ -40,7 +46,7 @@
 }
 
 .factory-template-footer { 
-    background-color: #0e1116;
+    background-color: var(--obsidian-color);
     display: flex;
     flex-direction: column;
     height: 35vh;
@@ -57,13 +63,13 @@
     border: 1px solid grey;
     border-radius: 1rem;
     margin-top: 2vh;
-    background-color: #EA5B41;
+    background-color: var(--obsidian-accent-color);
     transition: 0.3s ease;
 }
 
 .factory-template-button:hover {
     background-color: white;
-    color: #EA5B41;
+    color: var(--obsidian-accent-color);
     transform: scale(1.1);
     transition: 0.3s ease;
     cursor: pointer;

@@ -24,6 +24,8 @@
     flex-direction: row;
     color: white;
     transition: ease-in-out 0.3s;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 .stories-top-component:hover { 
