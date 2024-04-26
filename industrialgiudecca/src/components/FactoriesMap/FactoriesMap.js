@@ -20,11 +20,14 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
         const fetchData = async () => {
             // Fetch the Building FL to get the building locations and IDs
             const buildings = await fetchFL(featureLayerServiceURLs['Building'])
-                .then(p => {
-                    return p.map(d => {
-                        return d.attributes;
-                    });
+            .then(p => {
+                return p.map(d => {
+                    return d.attributes;
                 });
+            });
+
+            console.log('buildings');
+            console.log(buildings);
 
             // If we are filtering by factories with stories, then create a 'where' filter for the fetchFL function
             let whereFilter = '';
@@ -38,13 +41,14 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                 // Remove the trailing "OR"
                 whereFilter = whereFilter.slice(0, -4);
             }
+
             // Fetch the Factory_At_Building FL to get the factory locations
             const factoryAtBuilding = await fetchFL(featureLayerServiceURLs['Factory_At_Building'], whereFilter)
-                .then(p => {
-                    return p.map(d => {
-                        return d.attributes;
-                    });
+            .then(p => {
+                return p.map(d => {
+                    return d.attributes;
                 });
+            });
 
             // Filter the factories based on factoryStoryMapURLs
             const factoriesWithStories = factories.filter(factory => factoryStoryMapURLs[factory.Factory_ID]);
@@ -56,16 +60,23 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                 const mapHeight = '50vh';
                 const buildingPos = latLongToPixel(building.Latitude_, building.Longitude_, window.innerWidth, window.innerHeight);
 
+                // Get the factories that are at this building
                 const thisBuildingID = building.Building_ID;
                 let theseFactories = [];
-
                 const theseFactoryIDs = factoryAtBuilding.filter(r => r.Building_ID === thisBuildingID);
-
                 if (theseFactoryIDs.length > 0) {
+                    
                     theseFactoryIDs.map(r => {
-                        const thisFactoryID = r.Factory_ID;
-                        const thisFactory = factoriesWithStories.filter(f => f.Factory_ID === thisFactoryID)[0];
+                        console.log('r');
+                        console.log(r);
 
+                        let thisFactory = null;
+                        const thisFactoryID = r.Factory_ID;
+
+                        if(showStoriesOnly) { 
+                            thisFactory = factoriesWithStories.filter(f => f.Factory_ID === thisFactoryID)[0];
+                        }
+                        else thisFactory = factories.filter(f => f.Factory_ID == thisFactoryID)[0];
                         if (thisFactory) theseFactories.push(thisFactory);
                     });
 
@@ -73,12 +84,15 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                 }
             });
 
-            // Filter the buildings based on showStoriesOnly
+            // Filter the buildings to those that have at least one factory
+            // NOTE: this automatically filters by showStoriesOnly, since we already filtered the factories down to those
+            // with stories if necessary (or kept all of them if not filtering)
             const filteredBuildings = {};
             Object.keys(mapBuildingsToFactories).forEach(buildingID => {
-                const building = mapBuildingsToFactories[buildingID];
-                if (!showStoriesOnly || building.lof.some(factory => factoryStoryMapURLs[factory.Factory_ID])) {
-                    filteredBuildings[buildingID] = building;
+                const thisBuilding = mapBuildingsToFactories[buildingID];
+
+                if(mapBuildingsToFactories[buildingID].lof.length > 0) { 
+                    filteredBuildings[buildingID] = thisBuilding;
                 }
             });
 
@@ -86,9 +100,9 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
             setBuildings(filteredBuildings);
         };
 
-        if (factories && factories.length > 0) {
-            fetchData();
-        }
+        // Call fetchData() if factories is initialized and not empty
+        if (factories && factories.length > 0) fetchData();
+
     }, [factories, showStoriesOnly]);
 
     // Event handler for clicking a marker on the map
@@ -102,15 +116,6 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
         marker.style.zIndex = '2';
         clickedMarkerRef.current = marker;
     };
-
-    // useEffect => set the filtered markers on the map
-    useEffect(() => {
-        if (factories.length > 0 && mapContainerRef.current) {
-            // Filter the factories by the search term
-            // DO SOMETHING ...
-            // ...
-        }
-    }, [factories, onMarkerClick, searchTerm, showStoriesOnly]);
 
     // useEffect => update the map if a search term is entered
     useEffect(() => {

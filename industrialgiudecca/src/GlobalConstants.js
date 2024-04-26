@@ -8,8 +8,8 @@ export const factoryStoryMapURLs = {
         it: 'https://storymaps.arcgis.com/stories/8e4b51adb9db4cba8546a3c3df7be7ea?cover=false'
     },
     3: { // Stucky
-        en: 'https://storymaps.arcgis.com/stories/93bdc12fbfbb450fb1ab6ee01c663cc0',
-        it: 'https://storymaps.arcgis.com/stories/d7a10a3caea84069b79fc722ca782189'
+        en: 'https://storymaps.arcgis.com/stories/9cb7b8c694384786a8208b17b8f16a52',
+        it: ''
     },
     9: { // Scalera
         en: 'https://storymaps.arcgis.com/stories/d488bbdddc3c4c2ca34686b9d230d40f',
@@ -20,8 +20,8 @@ export const factoryStoryMapURLs = {
         it: 'https://storymaps.arcgis.com/stories/fd499fa9a0b847fe99b256b8c7118487'     
     },
     19: { // Junghans
-        en: 'https://storymaps.arcgis.com/stories/9c618746736243bc9894725311a4ee20?cover=false',
-        it: 'https://storymaps.arcgis.com/stories/98b8a108d89948f9b82fcaab598da83f?cover=false'
+        en: 'https://storymaps.arcgis.com/stories/9c618746736243bc9894725311a4ee20?',
+        it: 'https://storymaps.arcgis.com/stories/98b8a108d89948f9b82fcaab598da83f?'
     },
     14: { // Hérion
         en: 'https://storymaps.arcgis.com/stories/81706d259ec54394b759eb0d6dcdfbee',
