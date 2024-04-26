@@ -20,8 +20,8 @@ export const factoryStoryMapURLs = {
         it: 'https://storymaps.arcgis.com/stories/fd499fa9a0b847fe99b256b8c7118487'     
     },
     19: { // Junghans
-        en: 'https://storymaps.arcgis.com/stories/9c618746736243bc9894725311a4ee20?',
-        it: 'https://storymaps.arcgis.com/stories/98b8a108d89948f9b82fcaab598da83f?'
+        en: 'https://storymaps.arcgis.com/stories/9c618746736243bc9894725311a4ee20',
+        it: 'https://storymaps.arcgis.com/stories/fcaff9ccd04f40e796753b529046c663'
     },
     14: { // Hérion
         en: 'https://storymaps.arcgis.com/stories/81706d259ec54394b759eb0d6dcdfbee',
