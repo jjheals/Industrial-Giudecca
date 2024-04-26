@@ -25,6 +25,8 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
     const pageRef = useRef(null);               // Page ref
     const {t} = useContext(LanguageContext);   // Context for translation
     const [year, setYear] = useState(0);        // The year that appears as the timeline scrolls
+    const [showScrollArrow] = useState(false); // State for "keep scrolling" animation
+
 
     const [activeAdv, setActiveAdv] = useState('');          // Dependent on the num factories (e.g. "There was 1 factory" vs "There were 2 factories")
     const [activeLabel, setActiveLabel] = useState('');      // Dependent on the num factories (e.g. "There is 2 factories" vs "There are 2 factories")
@@ -270,7 +272,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
     return (
         <div ref={pageRef} className='timeline-container'>
-            <div className='learn-more-container'><p className='timeline-learn-more'>{translations[language].clickToLearnMore}</p></div>
+            <div className='learn-more-container'><p className='timeline-learn-more'>{t('clickToLearnMore')}</p></div>
             <div className='giudecca-map-timeline' style={{ width: '100%', height: '100%' }}>
                 {/* Container for map image */}
                 <img src="giudecca-map.png"
@@ -288,7 +290,7 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                     {
                         allFactories.map(factory => ( 
                             <div className='pin-wrapper' id={`pin-wrapper-${factory.Factory_ID}`}>
-                                <FactoryPin id={factory.Factory_ID} name={factory.English_Name} left={factory.x} top={factory.y}/>
+                                <FactoryPin id={factory.Factory_ID} name={language == 'en' ? factory.English_Name : factory.Italian_Name} left={factory.x} top={factory.y}/>
                             </div>
                         ))
                     }
@@ -299,16 +301,10 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                     <div className='map-row'>
                         <div className='ib'>
                             <h3>
-
                                 {language === 'it' ? (
-                                    <>
-                                        Nel {Math.round(year)}, {activeAdv} {activeLabel} {t("onGiudecca")}.
-                                    </>
+                                    <>Nel {Math.round(year)}, {activeAdv} {activeLabel} {t("onGiudecca")}.</>
                                 ) : (
-                                    <>
-                                        In {Math.round(year)},
-                                        there {activeAdv} {activeLabel} {t("onGiudecca")}.
-                                    </>
+                                    <>In {Math.round(year)}, there {activeAdv} {activeLabel} {t("onGiudecca")}.</>
                                 )}
                             </h3>
                         </div>
@@ -319,8 +315,15 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
                         </div>
                     </div>
 
-                    <button className='skip-button' onClick={handleSkipClick}>{translations[language]['skipTimeline']}</button>        {/* Bottom left button */}
+                    {/* Buttons and text at bottom of timeline */}
+                    <button className='skip-button' onClick={handleSkipClick}>{translations[language]['skipTimeline']}</button>     {/* Bottom left button */}
                     <button className='reset-button' onClick={handleResetClick}>{translations[language].resetTimeline}</button>     {/* Bottom right button */}
+
+                    {/* "Scroll to advance the timeline" */}
+                    <div className='timeline-keep-scrolling'>
+                        <p className='timeline-keep-scolling-text'>{t('keepScrolling')}</p>
+                        <div className={`timeline-scroll-arrow ${showScrollArrow ? 'show' : ''}`} id='timeline-scroll-arrow'></div>
+                    </div>
                 </div>
             </div>
         </div>

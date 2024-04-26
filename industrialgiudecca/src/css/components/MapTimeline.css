@@ -157,3 +157,23 @@
     padding: 2px 10px;
     z-index: 1000;
 }
+
+.timeline-keep-scrolling { 
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: -5vh;
+    margin: auto;
+    font-size: 1.4vw;
+}
+
+.timeline-scroll-arrow { 
+    width: 7.5px;
+    height: 7.5px;
+    margin: auto;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(45deg);
+    animation: scrollAnimation 3s infinite;
+    opacity: 0;
+}
