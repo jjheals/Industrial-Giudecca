@@ -22,7 +22,7 @@ import { LanguageContext } from '../context/LanguageContext.js';
  * - A storymap of the history of Giudecca. The URL for this storymap is defined in src/GlobalConstants.js => factoryStoryMapURLs[g]
  */
 function Homepage() {
-    const [blurbOpacity, setBlurbOpacity] = useState(1); // State for title fade in/out
+    const [titleContainerOpacity, setTitleContainerOpacity] = useState(1); // State for title fade in/out
     const [showScrollArrow] = useState(false); // State for "Scroll to learn more" title animation
     const [factories, setFactories] = useState([]); // State for factories that appear on the MapTimeline
     const [storymapURL, setStorymapURL] = useState(''); // State for the URL of the storymap at the bottom of the page
@@ -92,16 +92,20 @@ function Homepage() {
     // useEffect to handle blurb/title fade in and out logic
     useEffect(() => {
         const handleScroll = () => {
+            console.log('handleScroll');
+
             const scrollPosition = window.scrollY;
-            const blurbElement = document.getElementById('blurb');
-            if (blurbElement) {
-                const blurbHeight = blurbElement.offsetHeight;
-                const scrollThreshold = blurbHeight * 3;
+            console.log(`scrollPosition: ${scrollPosition}`);
+
+            const titleContainerElm = document.getElementById('hp-title-container');
+            if (titleContainerElm) {
+                const titleContainerHeight = titleContainerElm.offsetHeight;
+                const scrollThreshold = titleContainerHeight;
                 if (scrollPosition < scrollThreshold) {
                     const opacity = 1 - scrollPosition / scrollThreshold;
-                    setBlurbOpacity(opacity);
+                    setTitleContainerOpacity(opacity);
                 } else {
-                    setBlurbOpacity(0);
+                    setTitleContainerOpacity(0);
                 }
             }
         };
@@ -120,59 +124,49 @@ function Homepage() {
 
     return (
         <div className="homepage">
-            <head>
-                <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-                <meta charSet="utf-8" />
-                <title>Industrial Giudecca</title>
-            </head>
 
             {/* Language selector if a language has not yet been chosen this session */}
             {sessionStorage.getItem('hasSelectedLanguage') === 'false' ? <LanguageSelector /> : ''}
 
             {/* Sidebar div */}
-            <div>
-                <Sidebar selected='sideBarHome'/>
+            <Sidebar selected='sideBarHome'/>
+
+            {/* Contains the logos on the top of the screen */}
+            <div id="logos-container">
+                <img id="main-logo" className="logo" src="logo.png" alt="Main Logo" />
+                <img id="wpi-logo" className="logo" src="wpi-logo.png" alt="WPI Logo" />
+                <img id="sdpt-logo" className="logo" src="sdpt-logo.png" alt="SDPT Logo" />
             </div>
 
             {/* Title div ('blurb') */}
             <div
                 id="hp-title-container"
                 style={{
-                    opacity: blurbOpacity,
+                    opacity: titleContainerOpacity,
                     backgroundImage: 'url("front-image.jpeg")',
                     backgroundSize: '100vw 100vh',
                     backgroundAttachment: 'fixed',
                 }}
-                className={blurbOpacity <= 0 ? 'fade-out' : ''}
+                className={titleContainerOpacity <= 0 ? 'fade-out' : ''}
             >
-                {/* Contains the logos on the top of the screen */}
-                <div id="logos-container">
-                    <img id="main-logo" className="logo" src="logo.png" alt="Main Logo" />
-                    <img id="wpi-logo" className="logo" src="wpi-logo.png" alt="WPI Logo" />
-                    <img id="sdpt-logo" className="logo" src="sdpt-logo.png" alt="SDPT Logo" />
-                </div>
-
+                
                 {/* Overlay to darken the homepage front image; also contains the text for the landing screen */}
-                <div className="bg-overlay">
-                    <div className="hp-title-row" id="hp-title-title">
-                        <p className="hp-title-elm">
-                            {t('homepageTitle')}
-                        </p>
+                <div className="hp-bg-overlay">
+
+                    {/* Title "Industrial Giudecca" */}
+                    <div className="hp-title-text">
+                        <p>{t('homepageTitle')}</p>
                     </div>
 
-                    <div className="hp-title-row" id="hp-title-subtitle">
-                        <p className="hp-title-elm">
-                            {t('blurbElmBlurbSubTitle')}
-                        </p>
-                        <p className="hp-title-elm" id="hp-title-credits">
-                            - Mario Isnenghi
-                        </p>
+                    {/* Row for the subtitle/quote and credits */}
+                    <div className="hp-title-subtitle">
+                        <p className='hp-title-subtitle-text'>{t('blurbElmBlurbSubTitle')}</p>
+                        <p className="hp-title-credits-text">- Mario Isnenghi</p>
                     </div>
 
-                    <div className="hp-title-row" id="hp-title-scroll">
-                        <p className="blurbElm" id="scrollText">
-                            {t('blurbElmScrollText')}
-                        </p>
+                    {/* "Scroll to learn more" text at bottom */}
+                    <div className="hp-title-scroll">
+                        <p className='hp-scroll-text'>{t('blurbElmScrollText')}</p>
                         <div className={`scrollArrow ${showScrollArrow ? 'show' : ''}`}></div>
                     </div>
                 </div>

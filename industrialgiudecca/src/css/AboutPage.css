@@ -28,6 +28,11 @@
     margin-top: 3vh;
 }
 
+/* Center aligned rows */
+.about-row.c .row-title, .about-row.c .about-content { 
+    text-align: center;
+}
+
 /* Right aligned rows */
 .about-row.r .row-title, .about-row.r .about-content { 
     text-align: right;

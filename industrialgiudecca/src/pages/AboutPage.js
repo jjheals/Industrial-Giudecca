@@ -33,30 +33,35 @@ function AboutPage() {
             <div><Sidebar selected='sideBarAbout'/></div>
             <div><Title title={ t('aboutTitle') } imgSrc={ 'about-title-img.png' } /></div>
 
-            <div class='about-container'> 
+            <div className='about-container'> 
+
+                {/* Row 0 (project overview) */}
+                <div className='about-row c'> 
+                    <h1 className='row-title'>Project Overview</h1>
+                </div>
 
                 {/* Row 1 (right align) */}
-                <div class='about-row r'>
+                <div className='about-row r'>
                     <div className='content-img-container'>
                     <img src='lando-1.png' />
                     </div>
-                    <div class='row-content-container'>
-                        <h1 class='row-title'>Dr. Pietro Lando</h1>
-                        <p class='about-content'>
+                    <div className='row-content-container'>
+                        <h1 className='row-title'>Dr. Pietro Lando</h1>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='about-content'>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='about-content'>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
@@ -66,24 +71,24 @@ function AboutPage() {
                 </div>
 
                 {/* Row 2 (left align) */}
-                <div class='about-row l'>
-                    <div class='row-content-container'>
-                        <h1 class='row-title'>Fabio Carrera & SerenDPT</h1>
-                        <p class='about-content'>
+                <div className='about-row l'>
+                    <div className='row-content-container'>
+                        <h1 className='row-title'>Fabio Carrera & SerenDPT</h1>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='about-content'>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='about-content'>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
@@ -129,23 +134,23 @@ function AboutPage() {
                     <div className='content-img-container'>
                         <img src='wpi-logo.png' className='content-img logo'/>
                     </div>
-                    <div class='row-content-container'>
-                        <h1 class='row-title'>WPI & The Industrial Giudecca Team</h1>
-                        <p class='about-content'>
+                    <div className='row-content-container'>
+                        <h1 className='row-title'>WPI & The Industrial Giudecca Team</h1>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='about-content'>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
 
-                        <p class='about-content'>
+                        <p className='about-content'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 

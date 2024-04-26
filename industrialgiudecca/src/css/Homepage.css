@@ -2,20 +2,18 @@
     --container-side-padding: 10%;
     --container-top-padding: 5%;
     --title-font: 'Playfair Display', Serif, monospace;
-    --title-font-size: 6vw;
+    --hp-left-offset: 3vw;
+
     --title-font-color: rgb(255, 255, 255);
     --scroll-text-color: rgb(232, 202, 162);
-    --bg-overlay: rgba(0, 0, 0, 0.324);
-    --text-align: left;
-    --scroll-top: 42vh;
+    --bg-overlay: rgba(0, 0, 0, 0.4);
 
-    --subtitle-bottom: -25vh;
-    --subtitle-left: 3vw;
+    --title-font-size: 6vw;   /* Font size for the "Industrial Giudecca" title */
+    --title-top: 35vh;        /* Offset for the title from the top */
 
-    --title-top: 45vh;
-    --title-left: 3vw;
+    --subtitle-top: 25vh;     /* Offset for the subtitle/quote from the bottom */
+    --scroll-top: 37vh;       /* Offset for the "This platform tells the story..." text from the top */
 
-    --w: 100%;
     --dividing-borders: 2px solid rgb(255, 255, 255);
     --section-header-font-color: rgb(255, 255, 255);
     --section-header-overlay: rgba(0, 0, 0, 0.612);
@@ -50,7 +48,7 @@ body {
     margin: auto;
 }
 
-.bg-overlay {
+.hp-bg-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -63,50 +61,41 @@ body {
 #hp-title-container {
     display: flex;
     flex-direction: column;
-    font-family: var(--title-font);
-    font-size: var(--title-font-size);
     color: var(--title-font-color);
-    padding: 20vh;
     text-align: center;
-    height: 60vh;
-    z-index: 4;
+    height: 100vh;
     transition: opacity 0s ease-in-out, z-index 1s step-end;
 }
 
-.hp-title-elm {
-    margin: 0;
-    width: 70%;
-}
-
-#hp-title-title {
+.hp-title-text, .hp-title-subtitle { 
     position: relative;
-    text-align: var(--text-align);
+    left: var(--hp-left-offset);
+    font-family: var(--title-font);
+    text-align: left;
     color: var(--title-font-color);
+    margin-top: 1vh;
+}
+
+.hp-title-text {
+    font-size: var(--title-font-size);
     top: calc(var(--title-top));
-    left: var(--title-left);
-    width: var(--w);
 }
 
-#hp-title-subtitle {
-    position: relative;
-    text-align: var(--text-align);
-    bottom: var(--subtitle-bottom);
-    left: var(--subtitle-left);
-    width: var(--w);
+.hp-title-subtitle { 
+    top: var(--subtitle-top);
 }
 
-#hp-title-subtitle {
-    font-size: 2vw;
+.hp-title-subtitle-text {
     margin: 0;
+    font-size: 2vw;
+    bottom: var(--subtitle-bottom);
 }
 
-.hp-title-row {
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    padding: 0;
-    padding-top: 2%;
-    padding-bottom: 2%;
+.hp-title-credits-text {
+    margin: 0;
+    margin-top: 2vh;
+    padding-left: 1vw;
+    font-size: 1vw;
 }
 
 #hp-title-container.fade-out,
@@ -116,19 +105,7 @@ body {
     pointer-events: none;
 }
 
-#hp-title-credits {
-    margin-top: 1%;
-    font-size: 1vw;
-}
-
-#scrollText {
-    color: var(--scroll-text-color);
-    font-size: 1.4vw;
-    margin: 0;
-    width: var(--w);
-}
-
-#hp-title-scroll {
+.hp-title-scroll {
     position: relative;
     top: var(--scroll-top);
     display: flex;
@@ -136,6 +113,13 @@ body {
     align-items: center;
     width: var(--w);
     margin: auto;
+}
+
+.hp-scroll-text {
+    color: var(--scroll-text-color);
+    font-family: var(--title-font);
+    font-size: 1.4vw;
+    margin: 0;
 }
 
 .scrollArrow {
