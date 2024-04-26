@@ -3,6 +3,8 @@ import DataExplorerResultsTable from "./DataExplorerResultsTable";
 import ReactDOM from 'react-dom';
 
 import { nonRelationalColumns, productRelationColumns } from "./DataExplorerConstants";
+import { featureLayerServiceURLs } from "../../GlobalConstants";
+import { fetchFL } from "../../ArcGIS";
 
 /** setResultsTable(results, lof, isRelational)
  * @abstract 
@@ -11,13 +13,7 @@ import { nonRelationalColumns, productRelationColumns } from "./DataExplorerCons
  * @param {Boolean} isRelational - bool whether the resulting table is a relational table (true) or an entity table (false)
  * @returns 
  */
-export function setResultsTable(results, lof, featureLayers, formData) { 
-
-    console.log('setResultsTable results');
-    console.log(results);
-
-    console.log('setResultsTable lof');
-    console.log(lof);
+export function setResultsTable(results, lof, featureLayers, formData, lang) { 
 
     // Check if this is a relational table or not
     const isRelational = lof.includes('Product');
@@ -72,43 +68,47 @@ export function setResultsTable(results, lof, featureLayers, formData) {
      */
     const factoriesDictionary = {};
     results.map(fid => { 
+
         // Get the factory details
-        const thisFactory = factoryFL.find(factory => factory.attributes['Factory_ID'] === fid).attributes;
-        
-        // Get the current purpose using factoryAtBuildingFL and buildingFL
-        const thisCurrentPurpose = findCurrentPurpose(buildingFL, factoryAtBuildingFL, thisFactory);
+        try { 
+            const thisFactory = factoryFL.find(factory => factory.attributes['Factory_ID'] === fid).attributes;
 
-        // Get the location data if available
-        const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
+            // Get the current purpose using factoryAtBuildingFL and buildingFL
+            const thisCurrentPurpose = findCurrentPurpose(buildingFL, factoryAtBuildingFL, thisFactory);
 
-        // Get the min/max employment
-        let thisMinEmployment = null;
-        let thisMaxEmployment = null;
-        const thisFactoryEmploymentData = employmentOverTimeFL.filter(r => r.attributes['Factory_ID'] === fid);
+            // Get the location data if available
+            const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
 
-        // Check if there were results for employment data. If not, use null values
-        if(thisFactoryEmploymentData.length > 0) { 
-            const filteredEmpData = findMinMaxEmployment(thisFactoryEmploymentData, fid);
-            thisMinEmployment = filteredEmpData.min;
-            thisMaxEmployment = filteredEmpData.max;
-        }
+            // Get the min/max employment
+            let thisMinEmployment = null;
+            let thisMaxEmployment = null;
+            const thisFactoryEmploymentData = employmentOverTimeFL.filter(r => r.attributes['Factory_ID'] === fid);
 
-        factoriesDictionary[fid] = { 
-            'English_Name': thisFactory.English_Name, 
-            'Italian_Name': thisFactory.Italian_Name, 
-            'Current_Purpose': thisCurrentPurpose,
-            'Min_Employment': thisMinEmployment,
-            'Max_Employment': thisMaxEmployment,
-            'Opening_Year': thisFactory.Opening_Year,
-            'Closing_Year': thisFactory.Closing_Year,
-            'Latitude': locationData.lat,           
-            'Longitude': locationData.long  
-        }
+            // Check if there were results for employment data. If not, use null values
+            if(thisFactoryEmploymentData.length > 0) { 
+                const filteredEmpData = findMinMaxEmployment(thisFactoryEmploymentData, fid);
+                thisMinEmployment = filteredEmpData.min;
+                thisMaxEmployment = filteredEmpData.max;
+            }
+
+            factoriesDictionary[fid] = { 
+                'English_Name': thisFactory.English_Name, 
+                'Italian_Name': thisFactory.Italian_Name, 
+                'Current_Purpose': thisCurrentPurpose,
+                'Min_Employment': thisMinEmployment,
+                'Max_Employment': thisMaxEmployment,
+                'Opening_Year': thisFactory.Opening_Year,
+                'Closing_Year': thisFactory.Closing_Year,
+                'Latitude': locationData.lat,           
+                'Longitude': locationData.long  
+            }
+
+        } catch { }
     });
 
     // Render a non-relational table
     if(!isRelational) { 
-        theseKeys = nonRelationalColumns;
+        theseKeys = nonRelationalColumns[lang];
 
         // NOTE: in a non-relational table, each row is a factory 
         let rows = results.map(fid => {
@@ -139,28 +139,31 @@ export function setResultsTable(results, lof, featureLayers, formData) {
         if(lof.includes('Product')) { 
             let rows = [];
             const productOverTimeFL = featureLayers['Product'];
-            theseKeys = productRelationColumns;
+            theseKeys = productRelationColumns[lang];
 
             // Get the product data for each factory
             results.map(fid => { 
-                const theseProducts = getProductData(productOverTimeFL, fid, formData.Product, formData.Min_Year, formData.Max_Year);
+                const theseProducts = getProductData(productOverTimeFL, fid, formData.Product, formData.Min_Year, formData.Max_Year, lang);
                 const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
 
                 // Iterate over the results and push each new row to rows
                 theseProducts.map(product => { 
-                    let thisRow = [
-                        fid,
-                        factoriesDictionary[fid]['English_Name'],
-                        factoriesDictionary[fid]['Italian_Name'],
-                        factoriesDictionary[fid]['Min_Employment'],
-                        factoriesDictionary[fid]['Max_Employment'],
-                        product.attributes['Year_Started'],
-                        product.attributes['Year_Stopped'],
-                        product.attributes['Product_en'],
-                        locationData.lat,                            // Latitude
-                        locationData.long                            // Longitude
-                    ];
-                    rows.push(thisRow);
+                    try { 
+                        let thisRow = [
+                            fid,
+                            factoriesDictionary[fid]['English_Name'],
+                            factoriesDictionary[fid]['Italian_Name'],
+                            factoriesDictionary[fid]['Min_Employment'],
+                            factoriesDictionary[fid]['Max_Employment'],
+                            product.attributes['Year_Started'],
+                            product.attributes['Year_Stopped'],
+                            product.attributes[`Product_${lang}`],
+                            locationData.lat,                            // Latitude
+                            locationData.long                            // Longitude
+                        ];
+                        rows.push(thisRow);
+                    } catch { } 
+                    
                 })
             });
 
@@ -249,7 +252,7 @@ function findCurrentPurpose(buildingsFL, factoryAtBuildingFL, factoryDict) {
  * @param {*} endYear - Year to stop looking for products
  * @returns {*}
  */
-function getProductData(productOverTimeFL, fid, product, startYear, endYear) { 
+function getProductData(productOverTimeFL, fid, product, startYear, endYear, lang) { 
 
     // If not given a start and end year, then set startYear as 0 and endYear as a max value (999999) 
     if(!startYear) startYear = 0;
@@ -259,11 +262,8 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear) {
     let matchedRows = productOverTimeFL.filter(dict => 
         (dict.attributes['Year_Started']) && (dict.attributes['Year_Stopped']) &&   // Have years
         (dict.attributes['Factory_ID'] == fid) &&                                   // Match factory ID
-        (dict.attributes['Product_en'] == product)                                  // Match product
+        (dict.attributes[`Product_Cat_${lang}`] == product)                                  // Match product
     );
-
-    console.log('matched rows for getProductData');
-    console.log(matchedRows);
 
     // Now refine to be within the minVal and maxVal and match the targetAttribute
     matchedRows = matchedRows.filter(dict => 
@@ -277,9 +277,6 @@ function getProductData(productOverTimeFL, fid, product, startYear, endYear) {
             (dict.attributes['Year_Started'] <= startYear) && (dict.attributes['Year_Stopped'] > endYear)  
         )
     );
-
-    console.log('filtered matchedRows');
-    console.log(matchedRows);
     
     return matchedRows;
 }
@@ -301,4 +298,26 @@ function getLocationData(fid, buildingFL, factoryAtBuildingFL) {
     } catch {}
 
     return returnDict;
+}
+
+export async function getProductCategories(lang) { 
+    const resp = await fetchFL(featureLayerServiceURLs['Product_Over_Time']);
+
+    const productCategories = resp.map(d => { 
+        const thisProduct = d.attributes[`Product_Cat_${lang}`]; // NOTE: always english
+        if(thisProduct.length > 0) return thisProduct;
+    });
+
+    return [... new Set(productCategories)];
+}
+
+export async function getCurrPurposes() { 
+    const resp = await fetchFL(featureLayerServiceURLs['Building']);
+
+    const currPurposes = resp.map(d => { 
+        const thisPurpose = d.attributes['Now_Used_For'];
+        return thisPurpose;
+    });
+
+    return [... new Set(currPurposes)];
 }

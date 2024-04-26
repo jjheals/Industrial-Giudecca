@@ -9,8 +9,6 @@ const DataExplorerResultsTable = ({ d }) => {
 
     useEffect(() => {
         if (d.rows && d.rows.length > 0) {
-            console.log('DataExplorerResultsTable rows:');
-            console.log(d.rows);
             setQueryResults(d);
         }
     }, [d]);

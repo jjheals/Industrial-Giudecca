@@ -10,14 +10,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../../css/DataExplorer.css';
 
 import { featureLayerServiceURLs, intersection } from '../../GlobalConstants.js';
-import { RelationalFilters } from './DataExplorerConstants.js';
 import { fetchFL, filterFeatureLayer, filterFeatureLayerRange, filterFeatureLayerDualRange } from '../../ArcGIS.js';
-import { setResultsTable } from './DataExplorerFunctions.js';
+import { setResultsTable, getProductCategories, getCurrPurposes } from './DataExplorerFunctions.js';
 import { LanguageContext } from '../../context/LanguageContext.js';
 
 const DataExplorerSearchBar = () => {
-    const [ products, setProducts ] = useState([]);
-    const [ purposes, setPurposes ] = useState([]);
+    const [ products, setProducts ] = useState(['test']);
+    const [ purposes, setPurposes ] = useState(['test']);
     const { t, language } = useContext(LanguageContext);  
     
     // Define state variables to track form data
@@ -51,16 +50,10 @@ const DataExplorerSearchBar = () => {
      * @param { Event } e 
      */
     const handleSubmit = async (e) => {
-
-        console.log('submitting DE search with formData');
-        console.log(formData);
-        
         e.preventDefault();
 
         let isRelational = false;   // Flag to determine whether the returned table will be relational or not 
         let queriedFLs = {};         // Keep a dict of the feature layers we query so we can pass them to the resulting table at the end 
-
-        console.log('Form submitted with data:', formData);
 
         // Query the FLs that are needed for every return table, i.e. Factory, Employment, Factory_At_Building, and Building 
         const factoryFL = await fetchFL(featureLayerServiceURLs['Factory']);
@@ -87,7 +80,7 @@ const DataExplorerSearchBar = () => {
         // Base case: If not given any filters, then we just want every factory
         if(theseFilters.length == 0) { 
             const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });
-            setResultsTable(allFactoryIDs, [], queriedFLs, formData);
+            setResultsTable(allFactoryIDs, [], queriedFLs, formData, language);
             return;
         }
 
@@ -98,7 +91,7 @@ const DataExplorerSearchBar = () => {
             // NOTE: already added factoryFL to queriedFLs
             if(matchedFactoryIDs['English_Name'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], queriedFLs, formData);
+                setResultsTable([], [], queriedFLs, formData, language);
                 return;
             }
         }
@@ -109,7 +102,7 @@ const DataExplorerSearchBar = () => {
             // NOTE: already added factoryFL to queriedFLs
             if(matchedFactoryIDs['Italian_Name'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], queriedFLs, formData);
+                setResultsTable([], [], queriedFLs, formData, language);
                 return;
             }
         }
@@ -146,13 +139,13 @@ const DataExplorerSearchBar = () => {
                 matchedFactoryIDs['Product'] = matchProductTimes;
 
             } else { 
-                const matchedProducts = filterFeatureLayer(productOverTimeFL, `Product_en`, formData.Product, 'Factory_ID');
+                const matchedProducts = filterFeatureLayer(productOverTimeFL, `Product_Cat_${language}`, formData.Product, 'Factory_ID');
                 matchedFactoryIDs['Product'] = matchedProducts;
             }
 
             if(matchedFactoryIDs['Product'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], queriedFLs, formData);
+                setResultsTable([], [], queriedFLs, formData, language);
                 return;
             }
         }
@@ -166,7 +159,7 @@ const DataExplorerSearchBar = () => {
             // Check for results 
             if(matchBuildingCurrPurpose.length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], queriedFLs, formData);
+                setResultsTable([], [], queriedFLs, formData, language);
                 return;
             }
 
@@ -228,7 +221,7 @@ const DataExplorerSearchBar = () => {
 
             if(matchedFactoryIDs['Employment_Over_Time'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], queriedFLs, formData);
+                setResultsTable([], [], queriedFLs, formData, language);
                 return;
             }
             
@@ -253,7 +246,7 @@ const DataExplorerSearchBar = () => {
             matchedFactoryIDs['Years'] = filterFeatureLayerRange(factoryFL, minYear, maxYear, 'Opening_Year', 'Closing_Year', '', '', 'Factory_ID');
             if(matchedFactoryIDs['Years'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
-                setResultsTable([], [], queriedFLs, formData);
+                setResultsTable([], [], queriedFLs, formData, language);
                 return;
             }
         }
@@ -264,12 +257,11 @@ const DataExplorerSearchBar = () => {
         const allMatches = Object.values(matchedFactoryIDs);
 
         // Base case: no matches were found (should never happen, but to prevent future errors)
-        if(allMatches.length == 0) setResultsTable([], [], queriedFLs, formData); 
+        if(allMatches.length == 0) setResultsTable([], [], queriedFLs, formData, language); 
 
         // Edge case: only one filter was used
-        else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, queriedFLs, formData);
+        else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, queriedFLs, formData, language);
     
-        
         // Default case: more than one filter used, so intersect all of them to get the final AND result
         else { 
             // Init intersectMatches as the first array in allMatches, so that we can keep intersecting intersectMatches with itself
@@ -279,22 +271,19 @@ const DataExplorerSearchBar = () => {
             for(let i = 1; i < allMatches.length; i++) intersectMatches = intersection(intersectMatches, allMatches[i]);
 
             // DONE
-            setResultsTable(intersectMatches, theseFilters, queriedFLs, formData);
+            setResultsTable(intersectMatches, theseFilters, queriedFLs, formData, language);
             return;
         }
     };
 
+    // useEffect => dynamically pull all possible products AND purposes from the DB to populate the options on the sheet
     useEffect(() => { 
-        // DO TO: dynamically pull all possible products AND purposes from the DB to populate the options on the sheet
-        // DO SOMETHING ...
-        // ...
-        const productsFromDB = ['Silk', 'Pasta', 'Watches', 'Fuzes', 'Radios', 'Shipyard'];
-        const purposesFromDB = ['Residential', 'Abandoned', 'Municipality', 'Business'];
+        async function getProducts() { setProducts((await getProductCategories(language)).sort()); }
+        async function getPurposes() { setPurposes((await getCurrPurposes()).sort()); }
+        getProducts();
+        getPurposes();
+    }, [language]);
 
-        setPurposes(purposesFromDB);
-        setProducts(productsFromDB);
-    }, []);
-    
     return (
         <div className='de-search-bar'>
             <form id='de-search-form' onSubmit={handleSubmit}>

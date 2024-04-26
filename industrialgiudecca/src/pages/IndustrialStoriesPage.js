@@ -69,12 +69,14 @@ function IndustrialStoriesPage() {
             if (isMounted) {
                 // Iterate over the factories and add to storymaps 
                 factories.forEach(factory => { 
+                    const closingYear = factory.attributes.Closing_Year === 9999 ? 'Present' : factory.attributes.Closing_Year;
+
                     const thisDict = { 
                         'Factory_Name': language == 'en' ? factory.attributes['English_Name'] : factory.attributes['Italian_Name'],
                         'Factory_ID': factory.attributes['Factory_ID'],
                         'Storymap_URL': factoryStoryMapURLs[factory.attributes['Factory_ID']][language],
                         'Cover_Image_URL': factory.attributes.Cover_Image_ArcGIS_URL,
-                        'Years': `(${factory.attributes.Opening_Year} - ${factory.attributes.Closing_Year})`
+                        'Years': `(${factory.attributes.Opening_Year} - ${closingYear})`
                     }
                     storymaps[factory.attributes['Factory_ID']] = thisDict;
                 });

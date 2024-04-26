@@ -241,7 +241,6 @@ const MapTimeline = ({ factories, timeperiods, minMaxYear, language }) => {
 
                 // Check that this factory's opening/closing dates are within the current range
                 if(factory && factory.Opening_Year <= year && (!factory.Closing_Year || factory.Closing_Year >= year)) {
-                    console.log(`Factory ${factory.English_Name} is open in the year ${year}`);
                     activeCount++;                      // Increment the active count to appear on the screen
                     showMarker(factory.Factory_ID);
                 } else { 
