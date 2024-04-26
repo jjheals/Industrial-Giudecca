@@ -1,9 +1,9 @@
-:root { 
+:root {
     --top-container-bg: #0e1116;
     --primary-font: 'Playfair Display', serif;
-}  
+}
 
-.stories-top-container { 
+.stories-top-container {
     display: flex;
     flex-direction: row;
     background-color: var(--top-container-bg);
@@ -13,13 +13,14 @@
     overflow-y: hidden;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+    position: relative; /* Add this line */
 }
 
 .stories-top-container::-webkit-scrollbar {
     display: none; /* Hide scrollbar in WebKit browsers */
 }
 
-.stories-top-component { 
+.stories-top-component {
     display: flex;
     flex-direction: row;
     color: white;
@@ -28,46 +29,106 @@
     border-right: 1px solid white;
 }
 
-.stories-top-component:hover { 
+.stories-top-component:hover {
     cursor: pointer;
 }
 
-.stories-top-img { 
+.stories-top-img {
     width: 20vh;
     height: 20vh;
 }
 
-.stories-top-component-text { 
+.stories-top-component-text {
     width: 15vw;
     margin: 1vh 1vw;
     padding-right: 1vw;
 }
 
-.stories-top-component-years, .stories-top-component-title, .stories-top-desc { 
+.stories-top-component-years,
+.stories-top-component-title,
+.stories-top-desc {
     font-family: var(--primary-font);
     margin: auto;
     text-align: left;
 }
 
-.stories-top-component-title { 
+.stories-top-component-title {
     font-size: 1.4vw;
 }
 
-.stories-top-component-years { 
+.stories-top-component-years {
     font-size: 1vw;
 }
 
-.stories-top-desc { 
+.stories-top-desc {
     font-family: 'Judson', serif;
     margin-top: 1vh;
     font-size: 0.8vw;
 }
+
 /* Storymap container and iframe styles */
-.storymap-container { 
+.storymap-container {
     width: 100%;
 }
 
-.stories-storymap-iframe { 
+.stories-storymap-iframe {
     width: 100%;
     height: 100vh;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    .stories-top-container {
+        height: 30vh; /* Increase the height for better readability */
+    }
+
+    .stories-top-img {
+        width: 30vh; /* Increase the image size */
+        height: 30vh;
+    }
+
+    .stories-top-component-text {
+        width: 50vw; /* Increase the text container width */
+    }
+
+    .stories-top-component-title {
+        font-size: 4vw; /* Adjust the font size for mobile */
+    }
+
+    .stories-top-component-years {
+        font-size: 3vw; /* Adjust the font size for mobile */
+    }
+
+    .stories-top-desc {
+        font-size: 2.5vw; /* Adjust the font size for mobile */
+    }
+
+    /* Add arrow indicator */
+    /* Add arrow indicator */
+    .stories-top-container {
+        position: relative; /* Add this line */
+    }
+
+    .stories-top-container::after {
+        content: '→'; /* Use an arrow symbol */
+        position: absolute; /* Change back to absolute positioning */
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 24px;
+        opacity: 0; /* Initially hide the arrow */
+        animation: fade 2s infinite; /* Apply the fade animation */
+        pointer-events: none; /* Prevent the arrow from interfering with clicks */
+    }
+
+    /* Define the fade animation */
+    @keyframes fade {
+        0%, 100% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
 }

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="removed covers from stories">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="show factory with story now works perfectly (a little slow)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap/FactoriesMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/FactoriesMap/FactoriesMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/IndustrialStories.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/IndustrialStories.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,15 +85,9 @@
       <workItem from="1713855602237" duration="4278000" />
       <workItem from="1713873670295" duration="3435000" />
       <workItem from="1713879358109" duration="617000" />
-      <workItem from="1713942790320" duration="2241000" />
-    </task>
-    <task id="LOCAL-00014" summary="added photos bar">
-      <option name="closed" value="true" />
-      <created>1710751264755</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1710751264755</updated>
+      <workItem from="1713942790320" duration="6098000" />
+      <workItem from="1714117539429" duration="279000" />
+      <workItem from="1714117875688" duration="5735000" />
     </task>
     <task id="LOCAL-00015" summary="photos tab">
       <option name="closed" value="true" />
@@ -479,7 +473,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713877817017</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="show factory with story now works perfectly (a little slow)">
+      <option name="closed" value="true" />
+      <created>1713945270348</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1713945270348</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,7 +499,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="hover on factory page" />
     <MESSAGE value="industrial sites title" />
     <MESSAGE value="Translation half implemented" />
     <MESSAGE value="button for changing language" />
@@ -522,6 +523,7 @@
     <MESSAGE value="data explorer mobile friendly" />
     <MESSAGE value="changed image to logo but its weird" />
     <MESSAGE value="removed covers from stories" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed covers from stories" />
+    <MESSAGE value="show factory with story now works perfectly (a little slow)" />
+    <option name="LAST_COMMIT_MESSAGE" value="show factory with story now works perfectly (a little slow)" />
   </component>
 </project>
