@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="show factory with story now works perfectly (a little slow)">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="industrial stories fix mobile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/IndustrialStories.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/IndustrialStories.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,23 +87,7 @@
       <workItem from="1713879358109" duration="617000" />
       <workItem from="1713942790320" duration="6098000" />
       <workItem from="1714117539429" duration="279000" />
-      <workItem from="1714117875688" duration="5735000" />
-    </task>
-    <task id="LOCAL-00015" summary="photos tab">
-      <option name="closed" value="true" />
-      <created>1710752272876</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1710752272876</updated>
-    </task>
-    <task id="LOCAL-00016" summary="updated homepage for now">
-      <option name="closed" value="true" />
-      <created>1710772095528</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1710772095528</updated>
+      <workItem from="1714117875688" duration="9308000" />
     </task>
     <task id="LOCAL-00017" summary="Updated accordion stuff">
       <option name="closed" value="true" />
@@ -481,7 +465,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713945270348</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="industrial stories fix mobile">
+      <option name="closed" value="true" />
+      <created>1714127521702</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1714127521702</updated>
+    </task>
+    <task id="LOCAL-00065" summary="industrial stories fix mobile">
+      <option name="closed" value="true" />
+      <created>1714128881278</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1714128881278</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,7 +499,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="industrial sites title" />
     <MESSAGE value="Translation half implemented" />
     <MESSAGE value="button for changing language" />
     <MESSAGE value="testing" />
@@ -524,6 +523,7 @@
     <MESSAGE value="changed image to logo but its weird" />
     <MESSAGE value="removed covers from stories" />
     <MESSAGE value="show factory with story now works perfectly (a little slow)" />
-    <option name="LAST_COMMIT_MESSAGE" value="show factory with story now works perfectly (a little slow)" />
+    <MESSAGE value="industrial stories fix mobile" />
+    <option name="LAST_COMMIT_MESSAGE" value="industrial stories fix mobile" />
   </component>
 </project>
