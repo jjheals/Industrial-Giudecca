@@ -9,11 +9,11 @@ export const factoryStoryMapURLs = {
     },
     3: { // Stucky
         en: 'https://storymaps.arcgis.com/stories/9cb7b8c694384786a8208b17b8f16a52',
-        it: ''
+        it: 'https://storymaps.arcgis.com/stories/c929e323569746d197298582d855feec'
     },
     9: { // Scalera
         en: 'https://storymaps.arcgis.com/stories/d488bbdddc3c4c2ca34686b9d230d40f',
-        it: 'https://storymaps.arcgis.com/stories/214333c62d7b4813bffc5d9a4abc6af6'
+        it: 'https://storymaps.arcgis.com/stories/e8d4a8e29be24c6f984a3f4abd9f8099'
     },
     28: { // Gianolla
         en: 'https://storymaps.arcgis.com/stories/f4e8d9f7c1c9475a803d7ecef51d3553',
