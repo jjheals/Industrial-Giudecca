@@ -22,8 +22,8 @@ function IndustrialStoriesPage() {
     const [selectedStorymap, setSelectedStorymap] = useState('');
     const [selectedID, setSelectedID] = useState(0);
 
-    const sideComponentBg = '#0e1116';           // Background of the side components by default
-    const selectedSideComponentBg = 'rgb(255,179,255)';     // Background color of the currently selected side component
+    const sideComponentBg = 'var(--obsidian-color)';           // Background of the side components by default
+    const selectedSideComponentBg = 'var(--obsidian-accent-color)';     // Background color of the currently selected side component
 
     /** changeSelectedStorymap(id) 
      * @abstract changes the currently selected storymap by updating the state variables selectedStorymap and selectedId
