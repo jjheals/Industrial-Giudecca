@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="industrial stories fix mobile">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="about page editted for mobile">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/InteractiveMap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/InteractiveMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/MapPage.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -87,15 +92,8 @@
       <workItem from="1713879358109" duration="617000" />
       <workItem from="1713942790320" duration="6098000" />
       <workItem from="1714117539429" duration="279000" />
-      <workItem from="1714117875688" duration="9308000" />
-    </task>
-    <task id="LOCAL-00017" summary="Updated accordion stuff">
-      <option name="closed" value="true" />
-      <created>1710874638925</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1710874638925</updated>
+      <workItem from="1714117875688" duration="10786000" />
+      <workItem from="1714292740563" duration="4030000" />
     </task>
     <task id="LOCAL-00018" summary="Factory names">
       <option name="closed" value="true" />
@@ -481,7 +479,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714128881278</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="about page editted for mobile">
+      <option name="closed" value="true" />
+      <created>1714139914921</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1714139914921</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,7 +505,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Translation half implemented" />
     <MESSAGE value="button for changing language" />
     <MESSAGE value="testing" />
     <MESSAGE value="reset button" />
@@ -524,6 +529,7 @@
     <MESSAGE value="removed covers from stories" />
     <MESSAGE value="show factory with story now works perfectly (a little slow)" />
     <MESSAGE value="industrial stories fix mobile" />
-    <option name="LAST_COMMIT_MESSAGE" value="industrial stories fix mobile" />
+    <MESSAGE value="about page editted for mobile" />
+    <option name="LAST_COMMIT_MESSAGE" value="about page editted for mobile" />
   </component>
 </project>

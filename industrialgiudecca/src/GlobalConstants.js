@@ -76,7 +76,7 @@ export function intersection(list1, list2) {
     return list1.filter(item => list2.includes(item));
 }
 
-// URL for the instant app service that is shown fullscreen on the "/map" enpoint (src/pages/MapPage.js)
+// URL for the instant app service that is shown fullscreen on the "/map" enpoint (src/pages/InteractiveMap.js)
 export const mapInstantAppURL = "https://serendpt.maps.arcgis.com/apps/instant/sidebar/index.html?appid=01fcbf22fca04b278bd20a2e2cc0a675";
 
 // Constants needed for the MapTimeline and FactoryMap
