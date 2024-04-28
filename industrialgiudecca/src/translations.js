@@ -61,7 +61,23 @@ const translations = {
         opens: "opens",
         goToHome: "Go to Home",
         goToIndustrialSites: "Go to Industrial Sites",
-        goToStories: "Go to Stories Page"        
+        goToStories: "Go to Stories Page",
+
+        // About page translations
+        landoSection: "Biographical notes of Pietro Lando\n" +
+            "\n" +
+            "Born in Lido di Venezia, where he has always lived, he graduated in Biological Sciences, in Padua in 1978, and in History, in Venice in 2001. \n" +
+            "Historian of industrial Venice at the turn of the 20th century, he published: \n" +
+            "\n" +
+            "2013 Le ali di Venezia (fifty years of twentieth-century Venetian history as seen through the vicissitudes of aviation) for the publisher Il Poligrafo of Padua\n" +
+            "\n" +
+            "2023 the volume Giudecca dedicated to the history of the island in the 20th century, for the publisher Il Poligrafo of Padua\n" +
+            "\n" +
+            "2108 I primi tumultuosi anni del Lido di Venezia da Fisola a Spada (dedicated to the origin of the tourism in Venice Lido), for the publisher El Squero of Venice.\n" +
+            "\n" +
+            "2024  Ferro, Carbone e Vapore. L’antimito di Venezia industriale 1880-1917 (concerning the origins of the industrial revolution in Venice) in, edited by L. Zan, Storia, sviluppo e sostenibilità. Venezia un caso particolare, for the publisher Il Mulino of Bologna. \n" +
+            "\n" +
+            "He collaborates with the universities of Venice and Bologna in connection with his researches on Venice at the turn of the 19th and 20th centuries.",
         
     },
     it: {
@@ -126,7 +142,10 @@ const translations = {
         opens: "Apre",
         goToHome: "Vai a Casa",
         goToIndustrialSites: "Recarsi nei Siti Industriali",
-        goToStories: "Vai alla Pagina delle Storie"        
+        goToStories: "Vai alla Pagina delle Storie",
+
+        // About page translations
+        landoSection: "",
 
     }
 };
