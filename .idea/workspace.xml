@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="loading added to interactie map">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/public/landoHeadshot.jpg" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="about page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,15 +94,7 @@
       <workItem from="1713942790320" duration="6098000" />
       <workItem from="1714117539429" duration="279000" />
       <workItem from="1714117875688" duration="10786000" />
-      <workItem from="1714292740563" duration="7924000" />
-    </task>
-    <task id="LOCAL-00019" summary="changed css a little for accordion">
-      <option name="closed" value="true" />
-      <created>1710927542169</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1710927542169</updated>
+      <workItem from="1714292740563" duration="10983000" />
     </task>
     <task id="LOCAL-00020" summary="changed css a little for accordion no more overflow">
       <option name="closed" value="true" />
@@ -489,7 +480,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714296981069</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="about page">
+      <option name="closed" value="true" />
+      <created>1714305669613</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1714305669613</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +506,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testing" />
     <MESSAGE value="reset button" />
     <MESSAGE value="download button added" />
     <MESSAGE value="download button added fixed" />
@@ -532,6 +530,7 @@
     <MESSAGE value="industrial stories fix mobile" />
     <MESSAGE value="about page editted for mobile" />
     <MESSAGE value="loading added to interactie map" />
-    <option name="LAST_COMMIT_MESSAGE" value="loading added to interactie map" />
+    <MESSAGE value="about page" />
+    <option name="LAST_COMMIT_MESSAGE" value="about page" />
   </component>
 </project>

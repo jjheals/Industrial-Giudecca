@@ -44,14 +44,9 @@ function AboutPage() {
                 {/* Row 0 (project overview) */}
                 <div className='about-row c'> 
                     <div className='row-content-container' id='project-overview-row'>
-                        <h1 className='row-title'>Project Overview</h1>
+                        <h1 className='row-title'>{t("projectOverview")}</h1>
                         <p className='about-content'>
-                            Digitizing historical data is a process that has been made possible through advancements in modern technology. Digital databases
-                            allow researchers and historians to access copious amounts of information and data; moreover, the digitization of data provides
-                            easier access to a wider range of audiences. For this project, we seized an opportunity to digitize data about social, cultural,
-                            and economic history. We created a digital database and designed a digital platform to provide users with information about Giudecca’s
-                            industrial history. It is our hope that this project inspires future work to explore solutions for preserving delicate, culturally
-                            significant histories.
+                            {t('briefDescription')}
                         </p>
                     </div>
                 </div>
@@ -64,24 +59,14 @@ function AboutPage() {
                     <div className='row-content-container'>
                         <h1 className='row-title'>Dr. Pietro Lando</h1>
                         <p className='about-content'>
-                            Born in Lido di Venezia, where he has always lived, he graduated in Biological Sciences, in
-                            Padua in 1978, and in History, in Venice in 2001.
-                            Historian of industrial Venice at the turn of the 20th century, he published:
+                            {t('landoSection1')}
                         </p>
                         <p className='about-content'>
-                            2013 Le ali di Venezia (fifty years of twentieth-century Venetian history as seen through the vicissitudes of aviation) for the publisher Il Poligrafo of Padua,
-
-                            2023 the volume Giudecca dedicated to the history of the island in the 20th century, for the publisher Il Poligrafo of Padua,
-
-                            2018 I primi tumultuosi anni del Lido di Venezia da Fisola a Spada (dedicated to the origin of the tourism in Venice Lido), for the publisher El Squero of Venice, and
-
-                            2024  Ferro, Carbone e Vapore. L’antimito di Venezia industriale 1880-1917 (concerning the origins of the industrial revolution in Venice) in, edited by L. Zan, Storia, sviluppo e sostenibilità. Venezia un caso particolare, for the publisher Il Mulino of Bologna.
-
+                            {t('landoSection2')}
                         </p>
 
                         <p className='about-content'>
-                            He collaborates with the universities of Venice and Bologna in connection with his
-                            researches on Venice at the turn of the 19th and 20th centuries.
+                            {t('landoSection3')}
                         </p>
                     </div>
                 </div>
@@ -91,16 +76,10 @@ function AboutPage() {
                     <div className='row-content-container'>
                         <h1 className='row-title'>Fabio Carrera & SerenDPT</h1>
                         <p className='about-content'>
-                            This project would not have been possible without the work and support of Fabio Carerra and SerenDPT.
-                            Professor Carerra, the Director at WPI’s Venice Project Center and Founder of SerenDPT,
-                            worked with us and the other teams throughout our experience to provide feedback and guidance on our projects.
-                            We are extremely grateful for his support.
-
+                            {t("serenDPTSection1")}
                         </p>
-
                         <p className='about-content'>
-                            In addition to Professor Carerra, the SerenDPT staff, including Gianluca, Aurora, and Marco, were incredibly helpful throughout this journey.
-                            They worked with us to accurately translate the site’s content into Italian and made sure we had a positive, memorable experience in Venice.
+                            {t("serenDPTSection2")}
                         </p>
 
 
@@ -145,25 +124,15 @@ function AboutPage() {
                         <img src='wpi-logo.png' className='content-img logo'/>
                     </div>
                     <div className='row-content-container'>
-                        <h1 className='row-title'>The Industrial Giudecca Team</h1>
+                        <h1 className='row-title'>{t("industrialGiudeccaTitle")}</h1>
                         <p className='about-content'>
-                            The Industrial Giudecca Team, composed of four students with diverse backgrounds: Tim is majoring in management engineering; Mary is pursuing a double major
-                            in biomedical engineering and mechanical engineering; Justin and Parker are computer science majors; together, we worked with
-                            Dr. Lando, our advisors Rick Vaz and Chrys Demetry, SerenDPT staff, and a variety of
-                            Venetian organizations to aggregate data and tell the lost history of industry on Giudecca.
+                            {t('industrialGiudeccaSection1')}
                         </p>
-
                         <p className='about-content'>
-                            We cannot over-explain the impact of our project advisors Rick Vaz and Chrys Demetry. Throughout the semester, they guided, encouraged, and supported us in our goals; their feedback and
-                            support for our work were paramount to our success.
-                            We are incredibly grateful for the time and effort they put in to help us grow as students and teammates.
+                            {t('industrialGiudeccaSection2')}
                         </p>
-
                         <p className='about-content'>
-                            We would like to give a special thank you to our sponsor, Dr. Pietro Lando, for providing his book Giudecca and for sharing his passion for preserving a place with such a rich history. In addition to his passion, his knowledge and expertise was fundamental to our data collection and in telling the history of industry on Giudecca.
-
-                            Dr. Lando went above and beyond acting as a normal sponsor; he helped us enjoy our time in Venice outside the project by recommending places to see, eat, and experience in and around the lagoon. He elevated our time here by sharing his knowledge of the area beyond Giudecca's industrial history.
-
+                            {t('industrialGiudeccaSection3')}
                         </p>
                     </div>
                 </div>
@@ -171,7 +140,7 @@ function AboutPage() {
             
             <div className='about-page-footer'>
                 <button className='about-learn-more' onClick={learnMoreClick}>
-                    Click to learn more about our process and journey
+                    {t("buttonBottomAbout")}
                 </button>
             </div>
             
