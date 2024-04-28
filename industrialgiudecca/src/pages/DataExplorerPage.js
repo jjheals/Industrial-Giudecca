@@ -19,7 +19,7 @@ import '../css/DataExplorer.css';
 
 
 function DataExplorerPage() {
-    const { t, language } = useContext(LanguageContext);
+    const { t } = useContext(LanguageContext);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {

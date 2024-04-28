@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="about page editted for mobile">
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/InteractiveMap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/InteractiveMap.js" afterDir="false" />
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="loading added to interactie map">
+      <change afterPath="$PROJECT_DIR$/industrialgiudecca/public/landoHeadshot.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/GlobalConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/DataExplorerPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/MapPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,24 +38,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/parkerlavering/Documents/GitHub/Industrial-Giudecca/industrialgiudecca/public",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/industrialgiudecca/src" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/industrialgiudecca/public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/industrialgiudecca/public" />
+      <recent name="$PROJECT_DIR$/industrialgiudecca/src" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -93,15 +95,7 @@
       <workItem from="1713942790320" duration="6098000" />
       <workItem from="1714117539429" duration="279000" />
       <workItem from="1714117875688" duration="10786000" />
-      <workItem from="1714292740563" duration="4030000" />
-    </task>
-    <task id="LOCAL-00018" summary="Factory names">
-      <option name="closed" value="true" />
-      <created>1710875531154</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1710875531154</updated>
+      <workItem from="1714292740563" duration="7924000" />
     </task>
     <task id="LOCAL-00019" summary="changed css a little for accordion">
       <option name="closed" value="true" />
@@ -487,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714139914921</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="loading added to interactie map">
+      <option name="closed" value="true" />
+      <created>1714296981065</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1714296981069</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,7 +507,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="button for changing language" />
     <MESSAGE value="testing" />
     <MESSAGE value="reset button" />
     <MESSAGE value="download button added" />
@@ -530,6 +531,7 @@
     <MESSAGE value="show factory with story now works perfectly (a little slow)" />
     <MESSAGE value="industrial stories fix mobile" />
     <MESSAGE value="about page editted for mobile" />
-    <option name="LAST_COMMIT_MESSAGE" value="about page editted for mobile" />
+    <MESSAGE value="loading added to interactie map" />
+    <option name="LAST_COMMIT_MESSAGE" value="loading added to interactie map" />
   </component>
 </project>
