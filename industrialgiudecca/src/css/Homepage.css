@@ -14,7 +14,7 @@
     --subtitle-top: 25vh;     /* Offset for the subtitle/quote from the bottom */
     --scroll-top: 37vh;       /* Offset for the "This platform tells the story..." text from the top */
 
-    --dividing-borders: 2px solid rgb(255, 255, 255);
+    --dividing-borders: 2px solid var(--obsidian-accent-color);
     --section-header-font-color: rgb(255, 255, 255);
     --section-header-overlay: rgba(0, 0, 0, 0.612);
 }

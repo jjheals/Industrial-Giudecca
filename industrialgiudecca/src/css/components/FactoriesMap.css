@@ -20,6 +20,16 @@
     border-top: 2px solid var(--obsidian-accent-color);
 }
 
+.fhp-learn-more-container {
+    position: absolute;
+    bottom: -57vh;
+    width: 100%;
+    font-size: 0.75vw;
+    font-family: var(--info-container-font-family);
+    text-align: center;
+    color: black;
+}
+
 .building-pin { 
     position: absolute;
     display: block;

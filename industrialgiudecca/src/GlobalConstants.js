@@ -5,7 +5,7 @@
 export const factoryStoryMapURLs = {
     g: { // Homepage story
         en: 'https://storymaps.arcgis.com/stories/d6072e65094c49269316d897de0cb258?cover=false',
-        it: 'https://storymaps.arcgis.com/stories/8e4b51adb9db4cba8546a3c3df7be7ea?cover=false'
+        it: 'https://storymaps.arcgis.com/stories/dce8b118c92a46a59302409a3486cc17?cover=false'
     },
     3: { // Stucky
         en: 'https://storymaps.arcgis.com/stories/9cb7b8c694384786a8208b17b8f16a52',
