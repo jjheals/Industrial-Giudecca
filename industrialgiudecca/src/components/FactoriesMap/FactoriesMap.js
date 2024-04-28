@@ -7,7 +7,7 @@ import { featureLayerServiceURLs, factoryStoryMapURLs } from '../../GlobalConsta
 import { fetchFL, latLongToPixel } from '../../ArcGIS.js';
 import { BuildingPin } from './BuildingPin.js';
 
-const FactoriesMap = ({ factories, searchTerm, showStoriesOnly, language }) => {
+const FactoriesMap = ({ factories, searchTerm, showStoriesOnly, t }) => {
     // Refs for accessing DOM elements
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
@@ -130,6 +130,8 @@ const FactoriesMap = ({ factories, searchTerm, showStoriesOnly, language }) => {
     return (
         <div ref={pageRef} className='fhp-map-container'>
             <div className='fhp-giudecca-map' style={{ width: '100%', height: '100%' }}>
+                <div className='fhp-learn-more-container'><p className='timeline-learn-more'>{t('clickToLearnMore')}</p></div>
+
                 {/* Container for map image */}
                 <img
                     src="giudecca-map.png"

@@ -108,6 +108,7 @@ function FactoryHomepage() {
                 factories={filteredFactories}
                 showStoriesOnly={showStoriesOnly}
                 language={language}
+                t={t}
             />
 
             {/* Grid of factories after the map that changes when a search is conducted */}

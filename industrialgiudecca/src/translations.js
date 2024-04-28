@@ -135,7 +135,7 @@ const translations = {
         search: "Ricera",
 
         // BasicFactoryTemplate FactoryTimeline
-        startsProducing: "prodotto primario/industria:",
+        startsProducing: "Prodotto primario/industria:",
         has: "ha", 
         employees: "dipendenti",
         closes: "Chiude",
