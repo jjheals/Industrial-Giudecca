@@ -1,0 +1,38 @@
+.footer { 
+    background-color: var(--obsidian-color);
+    display: flex;
+    flex-direction: column;
+    height: 35vh;
+    padding-top: 10vh;
+    padding-left: 5vw;
+    margin-top: 5vh;
+    border-top: 1px solid white;
+}
+
+.footer-button {
+    width: fit-content;
+    font-family: 'Judson', serif;
+    text-align: left;
+    padding: 1vh 1vw;
+    font-size: 1vw;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    margin-top: 2vh;
+    background-color: var(--obsidian-accent-color);
+    transition: 0.3s ease;
+}
+
+.footer-button:hover {
+    background-color: white;
+    color: var(--obsidian-accent-color);
+    transform: scale(1.1);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.footer-hr { 
+    width: 20vw;
+    margin: 0;
+    margin-top: 3vh;
+}
+
