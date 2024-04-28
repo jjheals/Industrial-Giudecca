@@ -15,9 +15,9 @@
     height: 60vh;
     z-index: 1000;
     background-color: rgba(33, 66, 104, 0.673);
-    border-right: 2px solid black;
-    border-bottom: 2px solid white;
-    border-top: 2px solid white;
+    border-right: 2px solid var(--obsidian-accent-color);
+    border-bottom: 2px solid var(--obsidian-accent-color);
+    border-top: 2px solid var(--obsidian-accent-color);
 }
 
 .building-pin { 
@@ -54,7 +54,7 @@
     margin-top: 0.5vh;
     margin-left: 0.5vw;
     padding-bottom: 0.25vh;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--obsidian-accent-color);
 }
 
 .bpopup-info-container { 

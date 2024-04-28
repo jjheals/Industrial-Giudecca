@@ -50,8 +50,6 @@ function DataExplorerPage() {
             {/* Language selector if a language has not yet been chosen this session */}
             {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
             <div className='de-container'><DataExplorer /></div>
-
-            
         </div>
     );
 }

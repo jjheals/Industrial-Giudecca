@@ -1,6 +1,5 @@
 :root {
-    --obsidian-color: #0e1116;
-    --obsidian-accent-color: #ea5b41;
+
 }
 
 .factory-template-container { 
@@ -29,8 +28,8 @@
     height: 30vh;
     text-align: center;
     margin: 0 auto;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
+    border-top: 1px solid var(--obsidian-accent-color);
+    border-bottom: 1px solid var(--obsidian-accent-color);
     width: 100%;
 }
 

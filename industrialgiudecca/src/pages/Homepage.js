@@ -12,6 +12,7 @@ import Sidebar from '../components/Sidebar.js';
 import MapTimeline from '../components/TimelineMap/MapTimeline.js';
 import LanguageSelector from '../components/LanguageSelector';
 import { LanguageContext } from '../context/LanguageContext.js';
+import Footer from '../components/Footer.js';
 
 /**
  * Homepage component
@@ -218,6 +219,9 @@ function Homepage() {
                     </button>
                 </Link>
             </div>
+
+            {/* Footer */}
+            <Footer />
         </div>
     );
 }

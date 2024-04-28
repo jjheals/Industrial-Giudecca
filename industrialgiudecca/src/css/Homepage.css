@@ -17,8 +17,6 @@
     --dividing-borders: 2px solid rgb(255, 255, 255);
     --section-header-font-color: rgb(255, 255, 255);
     --section-header-overlay: rgba(0, 0, 0, 0.612);
-    --obsidian-color: #0e1116;
-    --obsidian-accent-color: #ea5b41;
 }
 
 body {

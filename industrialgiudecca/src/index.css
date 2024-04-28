@@ -6,6 +6,9 @@
   width: 100vw;
   scrollbar-width: none; /* Hide standard scrollbar in Firefox */
   -ms-overflow-style: none; /* Hide standard scrollbar in IE and Edge */
+
+  --obsidian-color: #0e1116;
+  --obsidian-accent-color: #5f639c;
 }
 
 body {
