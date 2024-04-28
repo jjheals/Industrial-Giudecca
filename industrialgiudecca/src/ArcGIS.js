@@ -121,7 +121,7 @@ export function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startC
         (
             (dict.attributes[startCol] >= minVal) && (dict.attributes[endCol] <= maxVal) ||     // Clause 1: After minVal AND before maxVal
             (dict.attributes[startCol] <= minVal) && (dict.attributes[endCol] >= maxVal)        // Clause 2: Before minVal AND after maxVal 
-        ) &&    
+        ) ||    
 
         // Final clause: either not given a target attribute OR matches target attribute
         (!targetAttribute || (dict.attributes[targetAttribute] == targetAttributeString)) 

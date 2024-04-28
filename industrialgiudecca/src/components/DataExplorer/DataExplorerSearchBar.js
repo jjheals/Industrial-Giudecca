@@ -124,8 +124,8 @@ const DataExplorerSearchBar = () => {
                 let maxYear = 9999;
 
                 // Check if given a max and min year and set the values accordingly so the search captures the timeframe desired
-                if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
-                if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
+                if(theseFilters.includes('Min_Year')) minYear = parseInt(formData.Min_Year);
+                if(theseFilters.includes('Max_Year')) maxYear = parseInt(formData.Max_Year);
 
                 console.log('filtering for products within years');
                 console.log(`minYear: ${minYear}`);
@@ -141,6 +141,9 @@ const DataExplorerSearchBar = () => {
                     formData.Product,
                     'Factory_ID'
                 );
+
+                console.log('matchProductTimes');
+                console.log(matchProductTimes);
 
                 matchedFactoryIDs['Product'] = matchProductTimes;
 
