@@ -19,6 +19,7 @@ import Title from '../components/Title.js';
 import Gallery from '../components/Photo/Gallery.js';
 import { factoryStoryMapURLs } from '../GlobalConstants.js';
 import FactoryTimeline from '../components/FactoryTimeline.js';
+import Footer from '../components/Footer.js';
 
 import { LanguageContext } from '../context/LanguageContext.js';
 import LanguageSelector from '../components/LanguageSelector.js';
@@ -270,12 +271,7 @@ function BasicFactoryTemplate() {
                     frameborder="0" 
                 />
             </div>
-            <div className='factory-template-footer'>
-                <button className='factory-template-button' onClick={() => window.location.href = '/'}>{ t('goToHome') }</button>
-                <button className='factory-template-button' onClick={() => window.location.href = '/'}>{ t('goToIndustrialSites') }</button>
-                <button className='factory-template-button' onClick={() => window.location.href = '/'}>{ t('goToStories') }</button>
-                <hr className='factory-template-footer-hr'></hr>
-            </div>
+            <Footer />
         </div>
     );
 }

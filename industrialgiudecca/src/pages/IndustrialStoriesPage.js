@@ -12,6 +12,7 @@ import LanguageSelector from '../components/LanguageSelector.js';
 import { LanguageContext } from '../context/LanguageContext.js';
 import Title from '../components/Title.js';
 import { fetchFL } from '../ArcGIS.js';
+import Footer from '../components/Footer.js';
 
 import '../css/IndustrialStories.css';
 
@@ -135,6 +136,7 @@ function IndustrialStoriesPage() {
                 <iframe src={ selectedStorymap } frameBorder={0} className='stories-storymap-iframe'/>
             </div>
             
+            <Footer />
         </div>
     );
 }

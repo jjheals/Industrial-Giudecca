@@ -10,6 +10,7 @@
  */
 import React, { useContext } from 'react';
 import Sidebar from '../components/Sidebar.js';
+import Footer from '../components/Footer.js';
 
 import LanguageSelector from '../components/LanguageSelector.js';
 import { LanguageContext } from '../context/LanguageContext.js';
@@ -179,6 +180,8 @@ function AboutPage() {
                     Click to learn more about our process and journey
                 </button>
             </div>
+            
+            <Footer />
         </div>
     );
 }

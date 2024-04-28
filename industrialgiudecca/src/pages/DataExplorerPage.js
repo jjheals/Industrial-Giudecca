@@ -11,7 +11,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import Sidebar from '../components/Sidebar.js';
 import DataExplorer from '../components/DataExplorer/DataExplorer.js';
 import Title from '../components/Title.js';
-
+import Footer from '../components/Footer.js';
 import LanguageSelector from '../components/LanguageSelector';
 import { LanguageContext } from '../context/LanguageContext.js';
 
@@ -41,7 +41,7 @@ function DataExplorerPage() {
     });
 
     return (
-        <div className="main-container">
+        <div className="de-page-container">
             <div><Sidebar selected='sideBarDataExplorer'/></div>
             {!isMobile && (
                 <div><Title title={ t('dataExplorerTitle') } titleColor='' imgSrc='F-1_S35_yyyy.png'/></div>
@@ -49,7 +49,9 @@ function DataExplorerPage() {
 
             {/* Language selector if a language has not yet been chosen this session */}
             {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
-            <div className='data-explorer'><DataExplorer /></div>
+            <div className='de-container'><DataExplorer /></div>
+
+            
         </div>
     );
 }

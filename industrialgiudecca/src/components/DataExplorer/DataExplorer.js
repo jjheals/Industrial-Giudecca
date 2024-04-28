@@ -11,7 +11,7 @@ import React, { useEffect } from 'react';
 import '../../css/DataExplorer.css';
 import DataExplorerSearchBar from './DataExplorerSearchBar';
 import DataExplorerResultsTable from './DataExplorerResultsTable';
-
+import Footer from '../Footer';
 import { LanguageProvider } from '../../context/LanguageContext';
 
 const DataExplorer = () => {
@@ -26,9 +26,13 @@ const DataExplorer = () => {
     }, []); // Empty dependency array
 
     return (
-        <div className='main-container'>
+        <div className='data-explorer'>
             <div id='search-bar-container'><DataExplorerSearchBar/></div>
             <div id='results-table-container'><DataExplorerResultsTable d={defaultResults}/></div>
+
+            {/* Footer */}
+            <Footer />
+
         </div>
     );
 };

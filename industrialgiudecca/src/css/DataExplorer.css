@@ -24,19 +24,17 @@
     --de-results-side-margin: 1vw;
 }
 
-.main-container {
+.de-page-container {
     margin: 0;
     padding: 0;
     background-color: rgb(234, 234, 234);
-    height: calc(var(--de-results-table-height)*3);
-    overflow-y: hidden;
 }
 
 .data-explorer {
     width: 100%;
-    height: 70vh;
     margin: 0 auto 10vh auto;
     font-family: var(--main-font-family);
+    margin-bottom: 10vh;
 }
 
 /* Search bar styles */
@@ -101,11 +99,37 @@ select, .de-search-bar button {
 
 /* Results table styles */
 .de-results-table-container {
-    max-height: var(--de-results-table-height);
     margin: 2vh var(--de-results-side-margin);
     overflow-y: scroll;
     border: 1px solid black;
+    max-height: 70vh;
 }
+
+#download-icon {
+    width: 2vw;
+    margin: auto;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.de-download-results {
+    margin: 2vh var(--de-results-side-margin);
+    width: 3vw;
+    height: 3vw;
+    border: 1px solid black;
+    border-radius: 20%;
+    transition: 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.de-download-results:hover {
+    background-color: var(--hover-color);
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+    
 
 .de-results-table {
     display: table;
@@ -116,7 +140,6 @@ select, .de-search-bar button {
     font-family: var(--main-font-family);
     text-align: left;
     width: 100%;
-    
 }
 
 .de-results-table-thead {
@@ -150,31 +173,6 @@ select, .de-search-bar button {
 
 .loading-message {
     background-color: red;
-}
-
-#download-icon {
-    width: 2vw;
-    margin: auto;
-    transition: 0.5s ease;
-    cursor: pointer;
-}
-
-.de-download-results {
-    margin: 2vh var(--de-results-side-margin);
-    width: 3vw;
-    height: 3vw;
-    border: 1px solid black;
-    border-radius: 20%;
-    transition: 0.5s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.de-download-results:hover {
-    background-color: var(--hover-color);
-    transition: 0.5s ease;
-    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
