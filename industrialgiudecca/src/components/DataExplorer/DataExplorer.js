@@ -34,4 +34,3 @@ const DataExplorer = () => {
 };
 
 export default DataExplorer;
-

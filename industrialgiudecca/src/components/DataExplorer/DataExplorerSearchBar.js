@@ -52,6 +52,8 @@ const DataExplorerSearchBar = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        console.log('submission');
+
         let isRelational = false;   // Flag to determine whether the returned table will be relational or not 
         let queriedFLs = {};         // Keep a dict of the feature layers we query so we can pass them to the resulting table at the end 
 
@@ -77,9 +79,15 @@ const DataExplorerSearchBar = () => {
         let matchedFactoryIDs = {};
         const theseFilters = Object.keys(formData).filter(filter => formData[filter]);
 
+        console.log('theseFilters');
+        console.log(theseFilters);
+
         // Base case: If not given any filters, then we just want every factory
         if(theseFilters.length == 0) { 
-            const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });
+            console.log('theseFilers.length == 0');
+            console.log('getting all factories');
+
+            const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });            
             setResultsTable(allFactoryIDs, [], queriedFLs, formData, language);
             return;
         }

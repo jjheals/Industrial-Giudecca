@@ -15,12 +15,21 @@ import { fetchFL } from "../../ArcGIS";
  */
 export function setResultsTable(results, lof, featureLayers, formData, lang) { 
 
+    console.log('setResultsTable results');
+    console.log(results);
+
+    console.log('lof');
+    console.log(lof);
+
     // Check if this is a relational table or not
     const isRelational = lof.includes('Product');
 
     // Get the results table container element to populate it 
     const resultsTableContainerElm = document.getElementById('results-table-container');
 
+    console.log('resultsTableContainerElm');
+    console.log(resultsTableContainerElm);
+    
     // Check that resultsTableContainerElm actually exists to avoid errors 
     if(!resultsTableContainerElm) return [];
 

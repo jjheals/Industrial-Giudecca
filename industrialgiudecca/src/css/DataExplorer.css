@@ -21,15 +21,19 @@
     /* DE Table styles */
     --de-results-table-width: 90vw;
     --de-results-table-height: 80vh;
+    --de-results-side-margin: 1vw;
 }
 
 .main-container {
     margin: 0;
     padding: 0;
+    background-color: rgb(234, 234, 234);
+    height: calc(var(--de-results-table-height)*3);
+    overflow-y: hidden;
 }
 
 .data-explorer {
-    width: var(--de-width);
+    width: 100%;
     height: 70vh;
     margin: 0 auto 10vh auto;
     font-family: var(--main-font-family);
@@ -37,16 +41,14 @@
 
 /* Search bar styles */
 #search-bar-container {
-    width: var(--de-width);
     background-color: var(--de-primary-color);
-    margin-top: 5vh;
 }
 
 .de-search-bar {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    padding: 2vh 1vw 0 1vw;
+    padding: 7vh 1vw 5vh 1vw;
     overflow-y: visible;
     height: calc(4*(var(--search-bar-row-height) + var(--search-bar-row-margin)));
 }
@@ -54,7 +56,7 @@
 .de-search-bar-row {
     display: flex;
     flex-direction: row;
-    width: calc(var(--de-width) - 2vw);
+    width: 100%;
     margin-top: var(--search-bar-row-margin);
 }
 
@@ -100,8 +102,7 @@ select, .de-search-bar button {
 /* Results table styles */
 .de-results-table-container {
     max-height: var(--de-results-table-height);
-    width: var(--de-results-table-width);
-    margin: 2vh 0;
+    margin: 2vh var(--de-results-side-margin);
     overflow-y: scroll;
     border: 1px solid black;
 }
@@ -115,6 +116,7 @@ select, .de-search-bar button {
     font-family: var(--main-font-family);
     text-align: left;
     width: 100%;
+    
 }
 
 .de-results-table-thead {
@@ -158,7 +160,7 @@ select, .de-search-bar button {
 }
 
 .de-download-results {
-    margin-top: 2vh;
+    margin: 2vh var(--de-results-side-margin);
     width: 3vw;
     height: 3vw;
     border: 1px solid black;
