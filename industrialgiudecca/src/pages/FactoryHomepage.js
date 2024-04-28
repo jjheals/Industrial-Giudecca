@@ -10,6 +10,7 @@ import SearchBar from '../components/SearchBar';
 import { fetchFactoriesFL } from '../ArcGIS.js';
 import FactoriesMap from '../components/FactoriesMap/FactoriesMap.js';
 import { factoryStoryMapURLs } from '../GlobalConstants';
+import Footer from '../components/Footer.js';
 
 import LanguageSelector from '../components/LanguageSelector';
 import { LanguageContext } from '../context/LanguageContext.js';
@@ -130,6 +131,8 @@ function FactoryHomepage() {
                     ))}
                 </div>
             </div>
+
+            <Footer />
         </div>
     );
 }

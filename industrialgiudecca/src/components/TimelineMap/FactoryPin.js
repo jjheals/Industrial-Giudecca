@@ -1,4 +1,5 @@
 import { useEffect  } from "react";
+import { Link } from 'react-router-dom';
 
 export const FactoryPin = ({id, name, left, top}) => { 
     const markerWidthPx = 20;
@@ -43,30 +44,27 @@ export const FactoryPin = ({id, name, left, top}) => {
             pin.addEventListener('mouseout', () => { 
                 document.getElementById(`popup-${id}`).style.display= 'none'; 
             });
-
-            // Event listener to redirect to another page on marker click
-            pin.addEventListener('click', () => {
-                window.location.href = `/industrial-sites/${id}`;
-            });
         }
         
     }, []);
 
     return(
-        <div id={`pin-container-${id}`}>
-            <img className='factory-pin hidden'
-             id={`marker-${id}`}
-             src='pin-icon-2.png'
-             style={{
-                top: `${top - markerHeightPx}px`,
-                left: `${left - (markerWidthPx / 2)}px`,
-                width: markerWidthPx,
-                height: markerHeightPx,
-                display: 'none'
-             }}
-            >
-            </img>
-        </div>
+        <Link to={`/industrial-sites/${id}`} className='timeline-map-link'>
+            <div id={`pin-container-${id}`}>
+                <img className='factory-pin hidden'
+                id={`marker-${id}`}
+                src='pin-icon-2.png'
+                style={{
+                    top: `${top - markerHeightPx}px`,
+                    left: `${left - (markerWidthPx / 2)}px`,
+                    width: markerWidthPx,
+                    height: markerHeightPx,
+                    display: 'none'
+                }}
+                >
+                </img>
+            </div>
+        </Link>
     );
 
 }

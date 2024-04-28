@@ -30,6 +30,11 @@
     cursor: pointer;
 }
 
+.footer-link, .footer-link:visited { 
+    text-decoration: none;
+    color: inherit;
+}
+
 .footer-hr { 
     width: 20vw;
     margin: 0;

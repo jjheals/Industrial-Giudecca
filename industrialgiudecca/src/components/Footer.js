@@ -7,6 +7,7 @@
  */
 
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/components/Footer.css'; 
 import { LanguageContext } from '../context/LanguageContext.js';
 
@@ -17,9 +18,15 @@ const Footer = () => {
 
     return (
         <div className='footer'>
-            <button className='footer-button' onClick={() => window.location.href = '/'}>{ t('goToHome') }</button>
-            <button className='footer-button' onClick={() => window.location.href = '/'}>{ t('goToIndustrialSites') }</button>
-            <button className='footer-button' onClick={() => window.location.href = '/'}>{ t('goToStories') }</button>
+            <Link to='/' className='footer-link'>
+                <div className='footer-button'>{ t('goToHome') }</div>
+            </Link>
+            <Link to='/industrial-sites' className='footer-link'>
+                <div className='footer-button'>{ t('goToIndustrialSites') }</div>
+            </Link>
+            <Link to='industrial-stories' className='footer-link'>
+                <div className='footer-button'>{ t('goToStories') }</div>
+            </Link>
             <hr className='footer-hr'></hr>
         </div>
     );

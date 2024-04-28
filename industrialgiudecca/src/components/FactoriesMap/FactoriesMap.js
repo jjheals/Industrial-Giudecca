@@ -4,8 +4,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import '../../css/components/FactoriesMap.css';
 
 import { featureLayerServiceURLs, factoryStoryMapURLs } from '../../GlobalConstants.js';
-import { fetchFL, fetchFactoriesFL, latLongToPixel } from '../../ArcGIS.js';
-import Factory from '../../Factory.js';
+import { fetchFL, latLongToPixel } from '../../ArcGIS.js';
 import { BuildingPin } from './BuildingPin.js';
 
 const FactoriesMap = ({ factories, searchTerm, showStoriesOnly, language }) => {
