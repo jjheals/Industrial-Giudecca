@@ -8,12 +8,13 @@ import { fetchFL, fetchFactoriesFL, latLongToPixel } from '../../ArcGIS.js';
 import Factory from '../../Factory.js';
 import { BuildingPin } from './BuildingPin.js';
 
-const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, language }) => {
+const FactoriesMap = ({ factories, searchTerm, showStoriesOnly, language }) => {
     // Refs for accessing DOM elements
     const pageRef = useRef(null);
     const mapContainerRef = useRef(null);
     const clickedMarkerRef = useRef(null);
     const [buildings, setBuildings] = useState([]);
+    const [hoveredPin, setHoveredPin] = useState(null);
 
     // useEffect => fetch buildings and factories data
     useEffect(() => {
@@ -25,9 +26,6 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                     return d.attributes;
                 });
             });
-
-            console.log('buildings');
-            console.log(buildings);
 
             // If we are filtering by factories with stories, then create a 'where' filter for the fetchFL function
             let whereFilter = '';
@@ -67,9 +65,6 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                 if (theseFactoryIDs.length > 0) {
                     
                     theseFactoryIDs.map(r => {
-                        console.log('r');
-                        console.log(r);
-
                         let thisFactory = null;
                         const thisFactoryID = r.Factory_ID;
 
@@ -107,14 +102,19 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
 
     // Event handler for clicking a marker on the map
     const clickMarker = (marker) => {
-        if (clickedMarkerRef.current) {
-            clickedMarkerRef.current.classList.remove('clicked');
-            clickedMarkerRef.current.style.zIndex = '0';
-        }
+        
+        const clickedId = marker.target.id.split('-')[1];   // Get the ID of the clicked marker
+        if(clickedId == hoveredPin) return;                  // If the clicked ID is the same as the previously displayed building, do nothing
 
-        marker.classList.add('clicked');
-        marker.style.zIndex = '2';
-        clickedMarkerRef.current = marker;
+        // Get the clicked marker element
+        const popupElm = document.getElementById(`bpopup-div-${clickedId}`);
+
+        // Remove the previously hovered pin if it exists
+        if(hoveredPin) document.getElementById(`bpopup-div-${hoveredPin}`).classList.remove('is-hovered');
+
+        // Set the new hovered pin
+        setHoveredPin(clickedId);
+        popupElm.classList.add('is-hovered');
     };
 
     // useEffect => update the map if a search term is entered
@@ -147,7 +147,7 @@ const FactoriesMap = ({ factories, onMarkerClick, searchTerm, showStoriesOnly, l
                     style={{ height: window.innerHeight }}
                 >
                     {Object.keys(buildings).map(buildingID => (
-                        <div className='pin-wrapper' id={`pin-wrapper-${buildingID}`} key={buildingID}>
+                        <div className='pin-wrapper' id={`pin-wrapper-${buildingID}`} key={buildingID} onClick={clickMarker}>
                             <BuildingPin
                                 id={buildingID}
                                 factories={buildings[buildingID].lof}

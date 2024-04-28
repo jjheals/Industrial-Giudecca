@@ -66,11 +66,6 @@ function FactoryHomepage() {
         }
     };
 
-    const handleMarkerClick = (factoryId) => {
-        const clickedFactory = factories.find(factory => factory.Factory_ID === factoryId);
-        setFilteredFactories([clickedFactory]);
-    };
-
     const toggleShowStoriesOnly = () => {
         setShowStoriesOnly(prevState => {
             const newState = !prevState;
@@ -110,7 +105,6 @@ function FactoryHomepage() {
             {/* FactoriesMap component containing the map with markers to click on */}
             <FactoriesMap
                 factories={filteredFactories}
-                onMarkerClick={handleMarkerClick}
                 showStoriesOnly={showStoriesOnly}
                 language={language}
             />

@@ -12,6 +12,9 @@ export const BuildingPin = ({id, factories, left, top}) => {
         popupDivElm.className = 'bpopup-div';
         popupDivElm.id = `bpopup-div-${id}`;
 
+        // Add a link from the popupDivElm to the page for that factory
+        popupDivElm.addEventListener('click', () => { window.location.href = `/industrial-sites/${id}`});
+
         // Iterate over the factories and create the elements to display on the sidebar
         // NOTE: factoires.reverse() to display them in order of most recent to least recent 
         factories.reverse().map(factory => { 
@@ -53,17 +56,6 @@ export const BuildingPin = ({id, factories, left, top}) => {
 
         // Append the popup div to the side container
         document.getElementById('all-popup-divs-container').appendChild(popupDivElm);
-
-        // Event listeners to show/hide popups on hover
-        // Show the factory name tooltip on mouseover
-        pin.addEventListener('mouseover', () => {
-            document.getElementById(`bpopup-div-${id}`).style.display = 'flex';
-        });
-
-        // Hide the factory name tooltip on mouseout
-        pin.addEventListener('mouseout', () => { 
-            document.getElementById(`bpopup-div-${id}`).style.display= 'none'; 
-        });    
         
     }, []);
 
