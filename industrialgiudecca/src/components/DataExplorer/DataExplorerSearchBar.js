@@ -52,8 +52,6 @@ const DataExplorerSearchBar = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log('submission');
-
         let isRelational = false;   // Flag to determine whether the returned table will be relational or not 
         let queriedFLs = {};         // Keep a dict of the feature layers we query so we can pass them to the resulting table at the end 
 
@@ -79,14 +77,8 @@ const DataExplorerSearchBar = () => {
         let matchedFactoryIDs = {};
         const theseFilters = Object.keys(formData).filter(filter => formData[filter]);
 
-        console.log('theseFilters');
-        console.log(theseFilters);
-
         // Base case: If not given any filters, then we just want every factory
         if(theseFilters.length == 0) { 
-            console.log('theseFilers.length == 0');
-            console.log('getting all factories');
-
             const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });            
             setResultsTable(allFactoryIDs, [], queriedFLs, formData, language);
             return;
@@ -117,6 +109,8 @@ const DataExplorerSearchBar = () => {
 
         // -- Filter 2: Product over time -- //
         if(theseFilters.includes('Product')) { 
+            console.log('getting products');
+            
             const productOverTimeFL = await fetchFL(featureLayerServiceURLs['Product_Over_Time']);
             isRelational = true;
 
@@ -133,13 +127,17 @@ const DataExplorerSearchBar = () => {
                 if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
                 if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
 
+                console.log('filtering for products within years');
+                console.log(`minYear: ${minYear}`);
+                console.log(`maxYear: ${maxYear}`);
+
                 const matchProductTimes = filterFeatureLayerRange(
                     productOverTimeFL, 
                     minYear, 
                     maxYear, 
                     'Year_Started', 
                     'Year_Stopped', 
-                    'Product', 
+                    `Product_${language}`, 
                     formData.Product,
                     'Factory_ID'
                 );
@@ -239,10 +237,14 @@ const DataExplorerSearchBar = () => {
         /* NOTE: only to be ran if Product, Employment are not given, since those already include the min and max years
          * - If ran, min and max years correspond to the factory's operating dates
          * - If Product or Employment are given as filters, then do not run */
+
+        console.log((theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')));
+
         if( 
-            (theseFilters.includes('Min_Year') || theseFilters.includes['Max_Year']) &&     // Filters include Min_Year OR Max_Year
+            (theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')) &&     // Filters include Min_Year OR Max_Year
             !(theseFilters.includes('Product') || theseFilters.includes('Employment'))      // Filters DO NOT include Product NOR Employment
         ) { 
+
             // Init minYear as 0 and maxYear as 9999 to capture the entire timeframe desired
             let minYear = 0;
             let maxYear = 9999;

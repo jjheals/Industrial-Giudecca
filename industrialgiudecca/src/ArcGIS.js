@@ -114,14 +114,13 @@ export function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startC
 
     // Now refine to be within the minVal and maxVal and match the targetAttribute
     matchedFactories = matchedFactories.filter(dict => 
+        (dict.attributes[startCol] && dict.attributes[endCol]) && 
+
         // Clause 1 & 2: checking whether the value range is completely contained within the target range (clause 1) 
         //               OR that the target range is completely contained within the value range (clause 2)
         (
-            // Clause 1: After minVal AND before maxVal
-            (dict.attributes[startCol] >= minVal) || (dict.attributes[endCol] <= maxVal) ||
-
-            // Clause 2: Before minVal AND after maxVal 
-            (dict.attribute[startCol] <= minVal) && (dict.attributes[endCol] >= maxVal)  
+            (dict.attributes[startCol] >= minVal) && (dict.attributes[endCol] <= maxVal) ||     // Clause 1: After minVal AND before maxVal
+            (dict.attributes[startCol] <= minVal) && (dict.attributes[endCol] >= maxVal)        // Clause 2: Before minVal AND after maxVal 
         ) &&    
 
         // Final clause: either not given a target attribute OR matches target attribute
