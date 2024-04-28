@@ -142,7 +142,7 @@ function BasicFactoryTemplate() {
 
                     if(thisStartDate) {
                         const returnDict = { 
-                            'Title': `${factory.English_Name} ${t('startsProducing')} ${String(d.attributes[`Product_${language}`]).toLowerCase()}.`,
+                            'Title': `${t('startsProducing')} ${String(d.attributes[`Product_${language}`]).toLowerCase()}.`,
                             'Color': circleColors['products']
                         }
 

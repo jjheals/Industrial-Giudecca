@@ -54,7 +54,7 @@ const translations = {
         search: "Search",
 
         // BasicFactoryTemplate FactoryTimeline
-        startsProducing: "starts producing",
+        startsProducing: "Primary product/industry:",
         has: "has",
         employees: "employees",
         closes: "closes",
@@ -119,7 +119,7 @@ const translations = {
         search: "Ricera",
 
         // BasicFactoryTemplate FactoryTimeline
-        startsProducing: "inizia a produrre",
+        startsProducing: "prodotto primario/industria:",
         has: "ha", 
         employees: "dipendenti",
         closes: "Chiude",
