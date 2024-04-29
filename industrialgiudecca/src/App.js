@@ -16,7 +16,7 @@ import InteractiveMap from './pages/InteractiveMap.js';
 
 
 function App() {
-    sessionStorage.setItem('hasSelectedLanguage', 'false');
+    localStorage.setItem('hasSelectedLanguage', 'false');
 
     return (
         <Router>

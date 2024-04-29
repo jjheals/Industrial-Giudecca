@@ -233,7 +233,7 @@ function BasicFactoryTemplate() {
 
     return (
         <div className='factory-template-container'>
-            {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
             <div><Sidebar isOpen={showSidebar}/></div>
             <div><Title title={ title } imgSrc={ coverPicURL } titleColor='rgba(0,0,0,0.4)'/></div>
 

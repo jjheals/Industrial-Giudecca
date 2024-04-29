@@ -86,7 +86,7 @@ function FactoryHomepage() {
         <div className="factory-homepage">
             
             {/* Language selector if a language has not yet been chosen this session */}
-            {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Title and sidebar */}
             {!isMobile && (

@@ -13,7 +13,7 @@ export const BuildingPin = ({id, factories, left, top}) => {
         popupDivElm.id = `bpopup-div-${id}`;
 
         // Add a link from the popupDivElm to the page for that factory
-        popupDivElm.addEventListener('click', () => { window.location.href = `/industrial-sites/${id}`});
+        popupDivElm.addEventListener('click', () => { window.location.href = `/industrial-sites/${id}`}); 
 
         // Iterate over the factories and create the elements to display on the sidebar
         // NOTE: factoires.reverse() to display them in order of most recent to least recent 
