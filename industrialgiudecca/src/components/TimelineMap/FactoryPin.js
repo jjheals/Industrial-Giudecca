@@ -29,8 +29,6 @@ export const FactoryPin = ({id, name, left, top}) => {
             popupElm.style.left = `${popupLeft}px`;
             popupElm.style.top = `calc(${popupTop}px + ${marginPx}px - ${markerHeightPx * 4}px)`;
 
-            console.log(popupElm);
-
             // Append the popup element to the document body
             document.getElementById(`pin-container-${id}`).appendChild(popupElm);
             

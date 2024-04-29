@@ -96,7 +96,7 @@ function IndustrialStoriesPage() {
     }, [language]); 
     
     useEffect(() => { 
-        const scrollAmount = 440;
+        const scrollAmount = 450;
         const rightScrollArrow = document.getElementById('stories-scroll-right-arrow');
         const leftScrollArrow = document.getElementById('stories-scroll-left-arrow');
         const container = document.querySelector('.stories-top-container');
@@ -124,7 +124,7 @@ function IndustrialStoriesPage() {
     return (
         <div className="industrial-stories-page">
             {/* Language selector if a language has not yet been chosen this session */}
-            {localStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
+            {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
 
             {/* Title and sidebar */}
             <div><Sidebar selected='sideBarHistoricalStories'/></div>
