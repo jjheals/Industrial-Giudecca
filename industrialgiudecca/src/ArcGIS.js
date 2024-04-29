@@ -200,9 +200,12 @@ export function formatTimeperiodString(timeperiodDict, lang) {
  * @returns 
  */
 export function formatImageSource(imgDict) { 
+    console.log(imgDict);
     let s = '';
     s += imgDict['Source_Name'];
-    if(imgDict['ID_Inventory_Num']) s += imgDict['ID #/ Inventory Number'];
+    if(imgDict['ID_Inventory_Num']) s += ` (${imgDict['ID_Inventory_Num']})`;
+    console.log(s);
+
     return s;
 }
 

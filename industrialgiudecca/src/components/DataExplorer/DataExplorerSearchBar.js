@@ -297,6 +297,11 @@ const DataExplorerSearchBar = () => {
         getPurposes();
     }, [language]);
 
+    useEffect(() => { 
+        const searchButtonElm = document.getElementById('de-search-submit');
+        if(searchButtonElm) searchButtonElm.click();
+    }, []);
+
     return (
         <div className='de-search-bar'>
             <form id='de-search-form' onSubmit={handleSubmit}>
@@ -337,7 +342,7 @@ const DataExplorerSearchBar = () => {
 
                 {/* Row 3 for submit button */}
                 <div className='de-search-bar-row'>
-                    <button type='submit' className='de-search-submit'>{ t('search') }</button>
+                    <button type='submit' className='de-search-submit' id='de-search-submit'>{ t('search') }</button>
                 </div>
             </form>
         </div>

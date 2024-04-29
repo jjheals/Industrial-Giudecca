@@ -90,7 +90,7 @@ function FactoryHomepage() {
 
             {/* Title and sidebar */}
             {!isMobile && (
-                <Title title={t('factoryHomepageTitle')} titleColor='rgb(134,134,134,0.7)' imgSrc='stuckyHome.jpg' />
+                <Title title={t('factoryHomepageTitle')} titleColor='rgba(0,0,0,0.4)' imgSrc='stuckyHome.jpg' />
             )}
             <Sidebar selected='sideBarIndustrial'/>
 

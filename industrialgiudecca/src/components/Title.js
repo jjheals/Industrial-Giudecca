@@ -46,7 +46,7 @@ const Title = (title) => {
     }, []);
 
     return (
-        <div id='title-container' className={titleOpacity <= 0 ? 'fade-out' : ''} style={{ opacity: titleOpacity, backgroundImage: `url("${title.imgSrc}")`, backgroundSize: "100% 100%", backgroundAttachment: 'fixed' }}>
+        <div id='title-container' className={titleOpacity <= 0 ? 'fade-out' : ''} style={{ opacity: titleOpacity, backgroundImage: `url("${title.imgSrc}")`, backgroundSize: "100% 100%", backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
             <div class="title-inner" style={{ backgroundColor: title.titleColor }}> 
                 <h1 className="title" id="title">{ title.title }</h1>
             </div>

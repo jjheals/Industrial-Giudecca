@@ -95,6 +95,32 @@ function IndustrialStoriesPage() {
         return () => { isMounted = false; };
     }, [language]); 
     
+    useEffect(() => { 
+        const scrollAmount = 440;
+        const rightScrollArrow = document.getElementById('stories-scroll-right-arrow');
+        const leftScrollArrow = document.getElementById('stories-scroll-left-arrow');
+        const container = document.querySelector('.stories-top-container');
+    
+        // Add event listener to the right scroll arrow
+        rightScrollArrow.addEventListener('click', function() {
+            // Scroll the container to the right
+            container.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add event listener to the left scroll arrow
+        leftScrollArrow.addEventListener('click', function() {
+            // Scroll the container to the right
+            container.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth' // Add smooth scrolling effect
+            });
+        });
+    }, [])
+    
+
     return (
         <div className="industrial-stories-page">
             {/* Language selector if a language has not yet been chosen this session */}
@@ -128,8 +154,10 @@ function IndustrialStoriesPage() {
                         )
                     })
                 }
-
+                
             </div>
+            <div className='stories-scroll-arrow' id='stories-scroll-right-arrow'></div>
+            <div className='stories-scroll-arrow' id='stories-scroll-left-arrow'></div>
 
             {/* Container for the storymap iframe */}
             <div className='storymap-container'>

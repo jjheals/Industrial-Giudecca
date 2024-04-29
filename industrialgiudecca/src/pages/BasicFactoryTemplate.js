@@ -235,7 +235,7 @@ function BasicFactoryTemplate() {
         <div className='factory-template-container'>
             {sessionStorage.getItem('hasSelectedLanguage') == 'false' ? <LanguageSelector /> : ''}
             <div><Sidebar isOpen={showSidebar}/></div>
-            <div><Title title={ title } imgSrc={ coverPicURL }/></div>
+            <div><Title title={ title } imgSrc={ coverPicURL } titleColor='rgba(0,0,0,0.4)'/></div>
 
             {/* Gallery container under the title */}
             <div className='f-gallery-container'>

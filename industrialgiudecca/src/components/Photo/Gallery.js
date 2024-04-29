@@ -19,11 +19,37 @@ const Gallery = ({ Factory_ID, allAttachments }) => {
         setAllImgURLs(allAttachments);
     });
 
-    return (
-        <div class='gallery-container'> 
+    useEffect(() => { 
+        const scrollAmount = 500;
+        const rightScrollArrow = document.getElementById('gallery-scroll-right-arrow');
+        const leftScrollArrow = document.getElementById('gallery-scroll-left-arrow');
+        const container = document.querySelector('.gallery-inner');
+    
+        // Add event listener to the right scroll arrow
+        rightScrollArrow.addEventListener('click', function() {
+            // Scroll the container to the right
+            container.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
 
-                <div class='gallery-inner'>
-                    <div class='gallery' id={`gallery-${Factory_ID}`}> 
+        // Add event listener to the left scroll arrow
+        leftScrollArrow.addEventListener('click', function() {
+            // Scroll the container to the right
+            container.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth' // Add smooth scrolling effect
+            });
+        });
+    }, [])
+
+
+    return (
+        <div className='gallery-container'> 
+
+                <div className='gallery-inner'>
+                    <div className='gallery' id={`gallery-${Factory_ID}`}> 
                         {allAttachmentDicts.map(d => (
                             <Photo
                                 photoClass='gallery-image'
@@ -37,6 +63,9 @@ const Gallery = ({ Factory_ID, allAttachments }) => {
                         ))}
                     </div>
                 </div>
+
+                <div className='gallery-scroll-arrow' id='gallery-scroll-right-arrow'></div>
+                <div className='gallery-scroll-arrow' id='gallery-scroll-left-arrow'></div>
                 
             </div>
     );

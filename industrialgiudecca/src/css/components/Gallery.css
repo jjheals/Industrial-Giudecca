@@ -7,7 +7,8 @@
     padding-top: 3vh;
     padding-bottom: 3vh;
     background-color: black;
-    border-top: 2px solid white;
+    border-top: 2px solid var(--obsidian-accent-color);
+    border-bottom: 1px solid var(--obsidian-accent-color);
 }
 
 .gallery {
@@ -37,3 +38,25 @@
     display: none; /* Hide scrollbar in WebKit browsers */
 }
 
+.gallery-scroll-arrow {
+    border-top: var(--stories-side-arrow-border);
+    border-right: var(--stories-side-arrow-border);
+    border-radius: 0.25rem;
+    position: absolute;
+    top: 120vh;
+    z-index: 1000;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#gallery-scroll-right-arrow { 
+    transform: rotate(45deg);
+    left: 95vw;
+    
+}
+
+#gallery-scroll-left-arrow { 
+    transform: rotate(235deg);
+    left: 3vw;
+}

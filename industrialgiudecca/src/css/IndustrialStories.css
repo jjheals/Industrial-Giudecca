@@ -1,6 +1,7 @@
 :root {
     --top-container-bg: #0e1116;
     --primary-font: 'Playfair Display', serif;
+    --stories-side-arrow-border: 5px solid white;
 }
 
 .stories-top-container {
@@ -13,7 +14,7 @@
     overflow-y: hidden;
     border-top: 1px solid var(--obsidian-accent-color);
     border-bottom: 1px solid var(--obsidian-accent-color);
-    position: relative; /* Add this line */
+    position: relative; 
 }
 
 .stories-top-container::-webkit-scrollbar {
@@ -64,6 +65,29 @@
     font-family: 'Judson', serif;
     margin-top: 1vh;
     font-size: 0.8vw;
+}
+
+.stories-scroll-arrow {
+    border-top: var(--stories-side-arrow-border);
+    border-right: var(--stories-side-arrow-border);
+    border-radius: 0.25rem;
+    position: absolute;
+    top: 107vh;
+    z-index: 1000;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#stories-scroll-right-arrow { 
+    transform: rotate(45deg);
+    right: 2vw;
+    
+}
+
+#stories-scroll-left-arrow { 
+    transform: rotate(235deg);
+    left: 2vw;
 }
 
 /* Storymap container and iframe styles */
