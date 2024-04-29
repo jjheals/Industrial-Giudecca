@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="about page">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="about page translation finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" afterDir="false" />
     </list>
@@ -37,21 +37,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/parkerlavering/Documents/GitHub/Industrial-Giudecca/industrialgiudecca/public",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/parkerlavering/Documents/GitHub/Industrial-Giudecca/industrialgiudecca/public&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/industrialgiudecca/public" />
@@ -94,15 +94,8 @@
       <workItem from="1713942790320" duration="6098000" />
       <workItem from="1714117539429" duration="279000" />
       <workItem from="1714117875688" duration="10786000" />
-      <workItem from="1714292740563" duration="10983000" />
-    </task>
-    <task id="LOCAL-00020" summary="changed css a little for accordion no more overflow">
-      <option name="closed" value="true" />
-      <created>1710928261170</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1710928261170</updated>
+      <workItem from="1714292740563" duration="17193000" />
+      <workItem from="1714377456390" duration="1903000" />
     </task>
     <task id="LOCAL-00021" summary="hoverable images and refactored">
       <option name="closed" value="true" />
@@ -488,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714305669613</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="about page translation finished">
+      <option name="closed" value="true" />
+      <created>1714308742564</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1714308742564</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +507,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reset button" />
     <MESSAGE value="download button added" />
     <MESSAGE value="download button added fixed" />
     <MESSAGE value="download button at bottom still" />
@@ -531,6 +531,7 @@
     <MESSAGE value="about page editted for mobile" />
     <MESSAGE value="loading added to interactie map" />
     <MESSAGE value="about page" />
-    <option name="LAST_COMMIT_MESSAGE" value="about page" />
+    <MESSAGE value="about page translation finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="about page translation finished" />
   </component>
 </project>
