@@ -39,22 +39,26 @@ function AboutPage() {
             <div><Sidebar selected='sideBarAbout'/></div>
             <div><Title title={ t('aboutTitle') } imgSrc={ 'about-title-img.png' } /></div>
 
-            <div className='about-container'> 
+            <div className='about-container'>
 
                 {/* Row 0 (project overview) */}
-                <div className='about-row c'> 
+                <div className='about-row c'>
                     <div className='row-content-container' id='project-overview-row'>
                         <h1 className='row-title'>{t("projectOverview")}</h1>
                         <p className='about-content'>
                             {t('briefDescription')}
+                            <br/>
+                            <br/>
+                            {t("disclaimer")}
                         </p>
                     </div>
                 </div>
 
+
                 {/* Row 1 (right align) */}
                 <div className='about-row r'>
                     <div className='content-img-container'>
-                    <img src='landoHeadshot.jpg' />
+                        <img src='landoHeadshot.jpg'/>
                     </div>
                     <div className='row-content-container'>
                         <h1 className='row-title'>Dr. Pietro Lando</h1>
@@ -94,27 +98,27 @@ function AboutPage() {
 
                         <div className='content-img-row sdpt'>
                             <div className='content-img-subrow'>
-                                <img className='content-img sdpt' src='fabio.jpeg' />
+                                <img className='content-img sdpt' src='fabio.jpeg'/>
                                 <p className='content-img-caption'>Fabio Carerra</p>
                             </div>
                             <div className='content-img-subrow'>
-                                <img className='content-img sdpt' src='gianluca.jpeg' />
+                                <img className='content-img sdpt' src='gianluca.jpeg'/>
                                 <p className='content-img-caption'>Gianluca Coró</p>
                             </div>
-                            
+
                         </div>
 
                         <div className='content-img-row sdpt'>
                             <div className='content-img-subrow'>
-                                <img className='content-img sdpt' src='aurora.jpeg' />
+                                <img className='content-img sdpt' src='aurora.jpeg'/>
                                 <p className='content-img-caption'>Aurora del Sordo</p>
                             </div>
                             <div className='content-img-subrow'>
-                                <img className='content-img sdpt' src='marco.jpeg' />
+                                <img className='content-img sdpt' src='marco.jpeg'/>
                                 <p className='content-img-caption'>Marco Bertoldi</p>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -137,14 +141,14 @@ function AboutPage() {
                     </div>
                 </div>
             </div>
-            
+
             <div className='about-page-footer'>
                 <button className='about-learn-more' onClick={learnMoreClick}>
                     {t("buttonBottomAbout")}
                 </button>
             </div>
-            
-            <Footer />
+
+            <Footer/>
         </div>
     );
 }

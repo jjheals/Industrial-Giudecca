@@ -70,6 +70,10 @@ const translations = {
             "For this project, we seized an opportunity to digitize data about social, cultural, and economic history." +
             " We created a digital database and designed a digital platform to provide users with information about Giudecca’s industrial history." +
             " It is our hope that this project inspires future work to explore solutions for preserving delicate, culturally significant histories.",
+
+        disclaimer: "Disclaimer: While the website was created in collaboration with Dr. Lando, and sourced from his book, the book was translated by Google Translate and was interpreted by the Industrial Giudecca Team. Any inaccuracies in data came from the Industrial Giudecca Team and not Dr. Pietro Lando. Any Italian translations were done by DeepL and were not heavily proofread.\n",
+
+
         landoSection1: "Born in Lido di Venezia, where he has always lived, he graduated in Biological Sciences, in\n" +
             "                            Padua in 1978, and in History, in Venice in 2001.\n" +
             "                            Historian of industrial Venice at the turn of the 20th century, he published:",
@@ -179,7 +183,7 @@ const translations = {
         // About page translations
         projectOverview: "Panoramica del progetto",
         briefDescription: "La digitalizzazione dei dati storici è un processo reso possibile dai progressi della tecnologia moderna. I database digitali consentono a ricercatori e storici di accedere a una grande quantità di informazioni e dati; inoltre, la digitalizzazione dei dati facilita l'accesso a un pubblico più ampio. Per questo progetto, abbiamo colto l'opportunità di digitalizzare i dati sulla storia sociale, culturale ed economica, creando un database e progettando una piattaforma digitale per fornire agli utenti informazioni sulla storia industriale della Giudecca. Ci auguriamo che questo progetto ispiri un lavoro futuro per esplorare soluzioni per preservare storie delicate e culturalmente significative.\n",
-
+        disclaimer: "Disclaimer: Sebbene il sito sia stato creato in collaborazione con il Dr. Pietro Lando e tratto dal suo libro, quest'ultimo è stato tradotto da Google Translate ed è stato interpretato dal Team della Giudecca Industriale. Eventuali imprecisioni nei dati provengono dall'Industrial Giudecca Team e non dal Dr. Pietro Lando. Le traduzioni in Italiano sono state effettuate da DeepL e non sono state sottoposte a un'accurata revisione.\n",
         landoSection1: "Nato al Lido di Venezia, dove ha sempre vissuto, si è laureato in Scienze Biologiche a Padova nel 1978 e in Storia a Venezia nel 2001. \n" +
             "Storico della Venezia industriale a cavallo del 20th secolo, ha pubblicato: ",
         landoSection2: "2013 il volume Le ali di Venezia (cinquant'anni di storia veneziana del Novecento visti attraverso le vicende dell'aviazione) per l'editore Il Poligrafo di Padova\n" +
