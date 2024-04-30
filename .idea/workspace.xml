@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="about page translation finished">
+    <list default="true" id="cd4e3a16-210e-4f71-aa30-80ebaaee0c5b" name="Changes" comment="About page disclaimer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/css/AboutPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/pages/AboutPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/src/translations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/industrialgiudecca/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/industrialgiudecca/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,15 +93,9 @@
       <workItem from="1714117539429" duration="279000" />
       <workItem from="1714117875688" duration="10786000" />
       <workItem from="1714292740563" duration="17193000" />
-      <workItem from="1714377456390" duration="1903000" />
-    </task>
-    <task id="LOCAL-00021" summary="hoverable images and refactored">
-      <option name="closed" value="true" />
-      <created>1710937044687</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1710937044687</updated>
+      <workItem from="1714377456390" duration="3796000" />
+      <workItem from="1714396891940" duration="614000" />
+      <workItem from="1714464199887" duration="4504000" />
     </task>
     <task id="LOCAL-00022" summary="changed &quot;scroll to learn more&quot; to be relative to the text blurb">
       <option name="closed" value="true" />
@@ -489,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714308742564</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="About page disclaimer">
+      <option name="closed" value="true" />
+      <created>1714379703710</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1714379703710</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +507,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="download button added" />
     <MESSAGE value="download button added fixed" />
     <MESSAGE value="download button at bottom still" />
     <MESSAGE value="download button fully fixed and working #winning" />
@@ -532,6 +531,7 @@
     <MESSAGE value="loading added to interactie map" />
     <MESSAGE value="about page" />
     <MESSAGE value="about page translation finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="about page translation finished" />
+    <MESSAGE value="About page disclaimer" />
+    <option name="LAST_COMMIT_MESSAGE" value="About page disclaimer" />
   </component>
 </project>
