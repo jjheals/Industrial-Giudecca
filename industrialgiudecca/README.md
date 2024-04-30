@@ -101,13 +101,25 @@ src
 └── translations.js
 ```
 
-## Pages
-
 ## Components & Classes
 
-## Usage
+Each of the files contains detailed descriptions on the components and classes contained in that file. Each file can be consulted for documentation on the individual components, however, they broadly fall into these categories:
 
-## ArcGIS
+### ArcGIS integrations
+
+The ArcGIS integrations are done mostly in the functions defined in /src/ArcGIS.js. These functions interact with the ArcGIS API to retrieve FeatureLayer information and files such as pictures. These functions are also used throughout the application in various ways.
+
+### Data Explorer 
+
+The data explorer is likely the most complicated part of the application. It functions by using DataExplorerSearchBar to submit queries to the ArcGIS database; then, it filters these results using the functions in /src/ArcGIS.js and in /src/components/DataExplorer/DataExplorerFunctions.js. The results table is rendered using the setResultsTable() and renderResultsTable() functions in DataExplorerFunctions.js, and the component is located in /src/components/DataExplorer/DataExplorerResultsTable.js. 
+
+The logic of the data explorer is a series of chained AND queries. This is not the *most* efficient, but it works for the purposes of this project. There are certainly opportunities to simplify the logic and improve the implementation. 
+
+### Maps 
+
+The FactoriesMap and MapTimeline are based on the same logic of converting latitude/longitude coordinates into pixel coordinates on a map based on the lat/long coordinates of the corners of the map. In short, this function (defined in ArcGIS.js) takes the difference of the latitude/longitude, i.e. delta lat and delta long, and the delta pixels x and delta pixels y, and scales the latitude/longitude into pixels. This effectively transforms the lat/long coordinates into pixels on a 0,0 grid, where 0,0 is the top left of the map. 
+
+The logic for placing the pins on the map after the coordinates have been calculated are located in FactoryMap and TimelineMap. 
 
 ## Translations
 
