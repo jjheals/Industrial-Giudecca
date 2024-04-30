@@ -1,5 +1,15 @@
 # IndustrialGiudecca 
 
+## Description 
+
+Digitizing historical data is a process that has been made possible through advancements in modern technology. 
+Digital databases allow researchers and historians to access copious amounts of information and data; moreover, the digitization of data provides easier access to a wider range of audiences. 
+For this project, we seized an opportunity to digitize data about social, cultural, and economic history. 
+We created a digital database and designed a digital platform to provide users with information about the industrial history of Giudecca, an island in the Venetian lagoon. 
+It is our hope that this project inspires future work to explore solutions for preserving culturally significant histories.
+
+This file goes in depth on how to take care of and maintain the code provided to achieve this goal.
+
 ## Non-technical Overview
 The main idea behind this project was to create a scalable website to host information of the industrial history of Giudecca.
 Anyone looking to add onto this project in the future can know that by adding information into the ArcGIS database the website
@@ -17,15 +27,6 @@ export const factoryStoryMapURLs = {
     // ...
 }
 ```
-## Description 
-
-Digitizing historical data is a process that has been made possible through advancements in modern technology. 
-Digital databases allow researchers and historians to access copious amounts of information and data; moreover, the digitization of data provides easier access to a wider range of audiences. 
-For this project, we seized an opportunity to digitize data about social, cultural, and economic history. 
-We created a digital database and designed a digital platform to provide users with information about the industrial history of Giudecca, an island in the Venetian lagoon. 
-It is our hope that this project inspires future work to explore solutions for preserving culturally significant histories.
-
-This file goes in depth on how to take care of and maintain the code provided to achieve this goal.
 
 ## Directory structure 
 Public is used to store images not on ArcGIS such as photos of people on the about page.
