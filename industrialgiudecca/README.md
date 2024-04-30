@@ -226,6 +226,11 @@ The translations in this file were obtained using automatic translation tools su
 
 When using the translations, it's recommended to review and verify them to ensure they are appropriate and accurate for your application.
 
+## Using the create_sheets.ipynb notebook to update the database
+
+In the data_analysis/ folder, there is a Jupyter notebook containing instructions on how to use it to update the database with new data. In short, this notebook can take in an excel file with multiple sheets and convert these sheets to individual CSV files that can be uploaded to ArcGIS. Once in ArcGIS, the corresponding DataPipelines can be used to update the FeatureLayers with new data. 
+
+## Running the Application
 
 In the project directory, you can run:
 
