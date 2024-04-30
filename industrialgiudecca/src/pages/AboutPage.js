@@ -47,6 +47,9 @@ function AboutPage() {
                         <h1 className='row-title'>{t("projectOverview")}</h1>
                         <p className='about-content'>
                             {t('briefDescription')}
+                            <br></br>
+                            <br></br>
+                            {t('disclaimer')}
                         </p>
                     </div>
                 </div>

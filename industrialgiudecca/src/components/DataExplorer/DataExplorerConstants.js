@@ -1,4 +1,12 @@
+// src/components/DataExplorer/DataExplorerConstants.js
 
+/**
+ * @abstract contains constants specific to the DataExplorer.
+ * 
+ * @exports 
+ *      @const { Object } nonRelationalColumns
+ *      @const { Object } productRelationColumns
+ */
 
 // Array of the column names for non-relational tables (i.e. just entity tables for Factories)
 export const nonRelationalColumns = {
@@ -28,6 +36,7 @@ export const nonRelationalColumns = {
     ]
 }
 
+// Array of column names for relational tables (i.e. a Product table)
 export const productRelationColumns = {
     en: [
         'Factory ID',

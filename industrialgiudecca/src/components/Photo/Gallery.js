@@ -7,6 +7,8 @@
  * @param { str } Factory_Name - The factory name to display at the top of the gallery
  * @param { Promise } allImgsURLsPromise - A promise for the URLs for the images for this factory
  * 
+ * @exports 
+ *      @const { Component } Gallery 
  */
 import React, { useEffect, useState } from 'react';
 import Photo from './Photo.js';
@@ -15,15 +17,14 @@ import { formatImageSource } from '../../ArcGIS.js';
 const Gallery = ({ Factory_ID, allAttachments }) => {
     const [allAttachmentDicts, setAllImgURLs] = useState([]);
 
-    useEffect(() => { 
-        setAllImgURLs(allAttachments);
-    });
+    // useEffect() => set the images on the screen on load
+    useEffect(() => { setAllImgURLs(allAttachments); });
 
     useEffect(() => { 
-        const scrollAmount = 500;
-        const rightScrollArrow = document.getElementById('gallery-scroll-right-arrow');
-        const leftScrollArrow = document.getElementById('gallery-scroll-left-arrow');
-        const container = document.querySelector('.gallery-inner');
+        const scrollAmount = 500;                                                       // Amount to scroll across in px
+        const rightScrollArrow = document.getElementById('gallery-scroll-right-arrow'); // Right scroll arrow element
+        const leftScrollArrow = document.getElementById('gallery-scroll-left-arrow');   // Left scroll arrow element
+        const container = document.querySelector('.gallery-inner');                     // Container element
     
         // Add event listener to the right scroll arrow
         rightScrollArrow.addEventListener('click', function() {
@@ -47,7 +48,6 @@ const Gallery = ({ Factory_ID, allAttachments }) => {
 
     return (
         <div className='gallery-container'> 
-
                 <div className='gallery-inner'>
                     <div className='gallery' id={`gallery-${Factory_ID}`}> 
                         {allAttachmentDicts.map(d => (
