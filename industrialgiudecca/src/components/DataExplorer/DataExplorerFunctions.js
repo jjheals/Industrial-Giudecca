@@ -114,12 +114,6 @@ export function setResultsTable(results, lof, featureLayers, formData, lang) {
         let rows = results.map(fid => {
             if(fid && factoriesDictionary[fid]) { 
                 const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
-
-                console.log(`fid = ${fid}`);
-                console.log(fid);
-    
-                console.log('factoriesDictionary[fid]');
-                console.log(factoriesDictionary[fid]);
     
                 return [
                     fid,

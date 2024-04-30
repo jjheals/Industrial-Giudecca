@@ -5,14 +5,33 @@
  * @abstract The DataExplorerSearchBar is a component that is displayed on the DataExplorer Page. The search bar provides the filters and 
  * search functions for the DataExplorer. The fields correspond to the Entities and Relationships in the ArcGIS database.  
  * 
+ * @exports 
+ *      @const { default } DataExplorerSearchBar
  */
 import React, { useState, useEffect, useContext } from 'react';
+
+// Stylesheets
 import '../../css/DataExplorer.css';
 
-import { featureLayerServiceURLs, intersection } from '../../GlobalConstants.js';
-import { fetchFL, filterFeatureLayer, filterFeatureLayerRange, filterFeatureLayerDualRange } from '../../ArcGIS.js';
-import { setResultsTable, getProductCategories, getCurrPurposes } from './DataExplorerFunctions.js';
-import { LanguageContext } from '../../context/LanguageContext.js';
+// Components & functions
+import { 
+    featureLayerServiceURLs, // Dictionary containing the service layer URLs for all FLs 
+    intersection             // Function for taking intersections of sets
+} from '../../GlobalConstants.js';        
+
+import { 
+    fetchFL,                  // Fetches feature layers from ArcGIS
+    filterFeatureLayer,       // Filters feature layers for some value
+    filterFeatureLayerRange   // Filters feature layers across some range and for some value
+} from '../../ArcGIS.js';
+
+import { 
+    setResultsTable,       // Set the results table at the end
+    getProductCategories,  // Retrieve the product categories for the filter
+    getCurrPurposes        // Retrieve the current purposes for buildings for the filter
+} from './DataExplorerFunctions.js';
+
+import { LanguageContext } from '../../context/LanguageContext.js'; // On screen language 
 
 const DataExplorerSearchBar = () => {
     const [ products, setProducts ] = useState(['test']);
@@ -61,6 +80,7 @@ const DataExplorerSearchBar = () => {
         const employmentOverTimeFL = await fetchFL(featureLayerServiceURLs['Employment_Over_Time']);
         const factoryAtBuildingFL = await fetchFL(featureLayerServiceURLs['Factory_At_Building']);
 
+        // Store these in queriedFLs to use to call setResultsTable when the search is done
         queriedFLs['Factory'] = factoryFL;
         queriedFLs['Building'] = buildingFL;
         queriedFLs['Employment'] = employmentOverTimeFL;
@@ -77,9 +97,6 @@ const DataExplorerSearchBar = () => {
         let matchedFactoryIDs = {};
         const theseFilters = Object.keys(formData).filter(filter => formData[filter]);
 
-        console.log('search submitted');
-        console.log(formData);
-        
         // Base case: If not given any filters, then we just want every factory
         if(theseFilters.length == 0) { 
             const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });            
@@ -112,9 +129,11 @@ const DataExplorerSearchBar = () => {
 
         // -- Filter 2: Product over time -- //
         if(theseFilters.includes('Product')) { 
-            console.log('getting products');
             
+            // Fetch the Product_Over_Time FeatureLayer
             const productOverTimeFL = await fetchFL(featureLayerServiceURLs['Product_Over_Time']);
+
+            // Set that this is a relational query
             isRelational = true;
 
             // Add Product FL to queriedFLs
@@ -130,10 +149,7 @@ const DataExplorerSearchBar = () => {
                 if(theseFilters.includes('Min_Year')) minYear = parseInt(formData.Min_Year);
                 if(theseFilters.includes('Max_Year')) maxYear = parseInt(formData.Max_Year);
 
-                console.log('filtering for products within years');
-                console.log(`minYear: ${minYear}`);
-                console.log(`maxYear: ${maxYear}`);
-
+                // Filter the matched products across the years 
                 const matchProductTimes = filterFeatureLayerRange(
                     productOverTimeFL, 
                     minYear, 
@@ -145,16 +161,15 @@ const DataExplorerSearchBar = () => {
                     'Factory_ID'
                 );
 
-                console.log('matchProductTimes');
-                console.log(matchProductTimes);
-
                 matchedFactoryIDs['Product'] = matchProductTimes;
 
             } else { 
+                // No time frame given, so just filter the product over time FL 
                 const matchedProducts = filterFeatureLayer(productOverTimeFL, `Product_Cat_${language}`, formData.Product, 'Factory_ID');
                 matchedFactoryIDs['Product'] = matchedProducts;
             }
 
+            // Catchall incase of any errors
             if(matchedFactoryIDs['Product'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
                 setResultsTable([], [], queriedFLs, formData, language);
@@ -192,13 +207,8 @@ const DataExplorerSearchBar = () => {
             matchedFactoryIDs['Current_Purpose'] = currPurposeMatchedFactoryIDs;
         } 
 
-        console.log('theseFilters');
-        console.log(theseFilters);
-
         // -- Filter 4: Employment -- //
         if(theseFilters.includes('Max_Employment') || theseFilters.includes('Min_Employment')) { 
-
-            console.log('filtering employment');
 
             // Innit an array for the intersection 
             let intersectEmploymentMatches = [];
@@ -259,9 +269,6 @@ const DataExplorerSearchBar = () => {
 
             matchedFactoryIDs['Employment_Over_Time'] = intersectEmploymentMatches.map(d => { return d.attributes.Factory_ID; });
 
-            console.log('matchedFactoryIDs (after employment)');
-            console.log(matchedFactoryIDs);
-
             // Check that matchedFactoryIDs at Employment_Over_Time is populated; should never NOT be populated, but just incase something
             // goes wrong, i.e. a catchall 
             if(matchedFactoryIDs['Employment_Over_Time'].length == 0) {
@@ -288,9 +295,6 @@ const DataExplorerSearchBar = () => {
             if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
             if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
 
-            console.log('filtering years');
-            console.log(`minYear: ${minYear}, maxYear: ${maxYear}`);
-
             // Filter factoryFL so that the Opening_Year and Closing_Year are completely contained within the range (inclusive)
             const matchYears = factoryFL.filter(factory => (
                 parseInt(factory.attributes.Opening_Year) >= minYear && 
@@ -316,9 +320,7 @@ const DataExplorerSearchBar = () => {
         if(allMatches.length == 0) setResultsTable([], [], queriedFLs, formData, language); 
 
         // Edge case: only one filter was used
-        else if(allMatches.length == 1) { 
-            setResultsTable(allMatches[0], theseFilters, queriedFLs, formData, language);
-        }
+        else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, queriedFLs, formData, language);
     
         // Default case: more than one filter used, so intersect all of them to get the final AND result
         else { 
@@ -342,6 +344,7 @@ const DataExplorerSearchBar = () => {
         getPurposes();
     }, [language]);
 
+    // useEffect => render a blank table by default when the page loads
     useEffect(() => { 
         const searchButtonElm = document.getElementById('de-search-submit');
         if(searchButtonElm) searchButtonElm.click();

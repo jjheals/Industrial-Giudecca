@@ -1,20 +1,26 @@
 // src/components/DataExplorer/DataExplorerResultsTable.js
 
-import React, { useState, useEffect, useContext } from 'react';
-import '../../css/DataExplorer.css';
+/** { Component } DataExplorerResultsTable
+ * @abstract The results table that displays on the DataExplorerPage. Called by DataExplorer. Results are set using the setResultsTable()
+ * function in DataExplorerFunctions.js and rendered using renderResultsTable() function in DataExplorerFunctions.js
+ * 
+ * Note that all the search functions take place in DataExplorerSearchBar and all the results are retrieved and created using the above 
+ * functions from DataExplorerFunctions.js 
+ */
+import React, { useState, useEffect } from 'react';
 
+// Stylesheets
+import '../../css/DataExplorer.css';
 
 const DataExplorerResultsTable = ({ d }) => {
     const [queryResults, setQueryResults] = useState({ keys: [], rows: [] });
 
+    // useEffect => clean the rows array and render the results
     useEffect(() => {
+        // Check that results were given
         if (d.rows && d.rows.length > 0) {
-            console.log('DataExplorerResultsTable');
-            console.log(d.rows);
-
-            // Filter out undefined rows for error checking 
-            d.rows = d.rows.filter(r => (r));
-            setQueryResults(d);
+            d.rows = d.rows.filter(r => (r));   // Filter out undefined rows for error checking 
+            setQueryResults(d);                 // Set the table on the screen
         }
     }, [d]);
 
