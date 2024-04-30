@@ -64,7 +64,7 @@ export const featureLayerServiceURLs = {
 }
 ```
 
-Changing any of these links will updat the ArcGIS service location for the feature layers; in other words, the application will reach out to these links for the respsective feature layer. **Make sure the link ends in "/0" - by default, ArcGIS service URLs do not have this endpoint but it is necessary to properly retrieve the data.
+Changing any of these links will updat the ArcGIS service location for the feature layers; in other words, the application will reach out to these links for the respsective feature layer. **Make sure the link ends in "/0" - by default, ArcGIS service URLs do not have this endpoint but it is necessary to properly retrieve the data.**
 
 ## Directory structure 
 Public is used to store images not on ArcGIS such as photos of people on the about page.
