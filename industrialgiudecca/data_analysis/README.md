@@ -6,15 +6,15 @@ data_analysis/
 ├── README.md
 ├── create_sheets.ipynb
 ├── excel/
-|   |-- Giudecca_Factories.xlsx
+│   |-- Giudecca_Factories.xlsx
 ├── csvs/
-|   ├── Building.csv
-|   ├── Employment_Over_Time.csv
-|   ├── Factory_At_Building.csv
-|   ├── Factory.csv
-|   ├── Giudecca_Population_Over_Time.csv
-|   ├── Product_Over_Time.csv
-|   ├── Timeperiods.csv
+│   ├── Building.csv
+│   ├── Employment_Over_Time.csv
+│   ├── Factory_At_Building.csv
+│   ├── Factory.csv
+│   ├── Giudecca_Population_Over_Time.csv
+│   ├── Product_Over_Time.csv
+│   ├── Timeperiods.csv
 ```
 
 ### Description 
