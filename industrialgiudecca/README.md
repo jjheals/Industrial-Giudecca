@@ -11,11 +11,14 @@ It is our hope that this project inspires future work to explore solutions for p
 This file goes in depth on how to take care of and maintain the code provided to achieve this goal.
 
 ## Non-technical Overview
+
 The main idea behind this project was to create a scalable website to host information of the industrial history of Giudecca.
 Anyone looking to add onto this project in the future can know that by adding information into the ArcGIS database the website
-will be updated with the new information. For people who would like to write more story maps for this project they can simply
-copy the ArcGIS link into the `GlobalConstants.js`. The ArcGIS story maps need to have two versions, one of which in Italian
-and one in English. The link to the English story would reside in its factoryID in ArcGIS then the respective language.
+will be updated with the new information.
+
+### Updating story maps 
+
+New story maps for the website can be implemented by pasting two links into the `GlobalConstants.js` file. The ArcGIS story maps need to have two versions: one in Italian and one in English. The link to the English story would reside in the factoryStoryMapURLs dictionary under the 'en' key for that factory ID, and the Italian story under the 'it' key for that factoryID. 
 
 ```javascript
 export const factoryStoryMapURLs = {
@@ -27,6 +30,40 @@ export const factoryStoryMapURLs = {
     // ...
 }
 ```
+
+For example: 
+
+```javascript
+export const factoryStoryMapURLs = {
+    // ...
+    3: {
+        en: 'http://services.arcgis.com/path/to/english/storymap/for/factory/id_3/0',
+        it: 'http://services.arcgis.com/path/to/italian/storymap/for/factory/id_3/0'
+    },
+    // ... 
+}
+
+### Updating feature layer URLs
+
+If a new feature layer is created for some reason, e.g. it is accidently deleted, moved, or otherwise changes the link, then the code must be updated to reflect this change. This can be done by updating the link for that feature layer in the `GlobalConstants.js` file, in the dictionary `featureLayerServiceURLs`. The [ key : val ] pairs in the dictionary are [ FeatureLayerName : serviceURL ] as seen below: 
+
+
+```javascript
+// URL endpoints for the feature layers that host the data 
+export const featureLayerServiceURLs = { 
+    'Owner_Over_Time': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Owner_Over_Time/FeatureServer/0',
+    'Factory': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory/FeatureServer/0',
+    'Employment_Over_Time': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Employment_Over_Time/FeatureServer/0',
+    'Factory_Coords': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_Coords/FeatureServer/0',
+    'Product_Over_Time': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Product_Over_Time/FeatureServer/0',
+    'Building': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Building/FeatureServer/0',
+    'Factory_At_Building': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Factory_At_Building/FeatureServer/0',
+    'Timeperiod': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Timeperiod/FeatureServer/0',
+    'Photo_Sources': 'https://services7.arcgis.com/BEVijU9IvwRENrmx/arcgis/rest/services/Photo_Sources/FeatureServer/0'
+}
+```
+
+Changing any of these links will updat the ArcGIS service location for the feature layers; in other words, the application will reach out to these links for the respsective feature layer. **Make sure the link ends in "/0" - by default, ArcGIS service URLs do not have this endpoint but it is necessary to properly retrieve the data.
 
 ## Directory structure 
 Public is used to store images not on ArcGIS such as photos of people on the about page.
