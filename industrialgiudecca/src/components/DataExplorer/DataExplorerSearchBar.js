@@ -77,6 +77,9 @@ const DataExplorerSearchBar = () => {
         let matchedFactoryIDs = {};
         const theseFilters = Object.keys(formData).filter(filter => formData[filter]);
 
+        console.log('search submitted');
+        console.log(formData);
+        
         // Base case: If not given any filters, then we just want every factory
         if(theseFilters.length == 0) { 
             const allFactoryIDs = factoryFL.map(dict => { return dict.attributes.Factory_ID; });            
@@ -189,10 +192,39 @@ const DataExplorerSearchBar = () => {
             matchedFactoryIDs['Current_Purpose'] = currPurposeMatchedFactoryIDs;
         } 
 
+        console.log('theseFilters');
+        console.log(theseFilters);
+
         // -- Filter 4: Employment -- //
         if(theseFilters.includes('Max_Employment') || theseFilters.includes('Min_Employment')) { 
 
-            // Check if a time frame was also given 
+            console.log('filtering employment');
+
+            // Innit an array for the intersection 
+            let intersectEmploymentMatches = [];
+
+            // Init minEmployment as 0 and maxEmployment as 9999999 to capture the entire employment range desired
+            let minEmployment = 0;
+            let maxEmployment = 999999;
+
+            if(theseFilters.includes('Min_Employment')) minEmployment = formData.Min_Employment;
+            if(theseFilters.includes('Max_Employment')) maxEmployment = formData.Max_Employment;
+
+            // Filter the Employment FL to get the factories where the employment numbers fall within min and max employment
+            const minMaxEmploymentMatches = employmentOverTimeFL.filter(d => ( 
+                parseInt(d.attributes.Employment) <= maxEmployment &&    // Num employees < max employment
+                parseInt(d.attributes.Employment) >= minEmployment       // Num employees > min employment
+            ));
+
+            // Check if there were matches 
+            if(minMaxEmploymentMatches.length == 0) { 
+                // Filter given but no matches found, so we can stop searching since this is an AND query
+                setResultsTable([], [], queriedFLs, formData, language);
+                return;
+            }
+            
+            // Filter the returned FL to match the years if they were given 
+            let yearMatches = null;
             if(theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')) { 
                 // Init minYear as 0 and maxYear as 9999 to capture the entire timeframe desired
                 let minYear = 0;
@@ -202,47 +234,47 @@ const DataExplorerSearchBar = () => {
                 if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
                 if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
 
-                // Init minEmployment as 0 and maxEmployment as 9999999 to capture the entire employment range desired
-                let minEmployment = 0;
-                let maxEmployment = 999999;
+                // Filter the minMaxEmploymentFL by the years
+                yearMatches = minMaxEmploymentMatches.filter(d => (
+                    d.attributes['Year'] >= minYear && 
+                    d.attributes['Year'] <= maxYear
+                ));
 
-                if(theseFilters.includes('Min_Employment')) minEmployment = formData.Min_Employment;
-                if(theseFilters.includes('Max_Employment')) maxEmployment = formData.Max_Employment;
-
-                const matchEmploymentTimes = filterFeatureLayerDualRange(
-                    employmentOverTimeFL, 
-                    minYear, 
-                    maxYear, 
-                    'Year', 
-                    'Year', 
-                    'Employment',
-                    minEmployment,
-                    maxEmployment,
-                    'Factory_ID'
-                );
-
-                matchedFactoryIDs['Employment_Over_Time'] = matchEmploymentTimes;
-
+                // Check if there were matches 
+                if(yearMatches.length == 0) { 
+                    // Filter given but no matches found, so we can stop searching since this is an AND query
+                    setResultsTable([], [], queriedFLs, formData, language);
+                    return;
+                } else { 
+                    /* There were matches, so set intersectEmploymentMatches to be this array since we used minMaxEmploymentMatches
+                     * as the array to filter and create yearMatches (i.e. yearMatches is already the intersection of 
+                     * minMaxEmploymentMatches and the result of the year filter) */
+                    intersectEmploymentMatches = yearMatches;
+                }
             } else { 
-                const matchedEmployment = filterFeatureLayerRange(employmentOverTimeFL, formData.Min_Employment, formData.Max_Employment, 'Employment', 'Employment', 'Factory_ID');
-                matchedFactoryIDs['Employment_Over_Time'] = matchedEmployment;
+                // Not given year filters, so use minMaxEmploymentMatches as the intersection matches (i.e. there is no intersection to
+                // take, but to simplify the logic we can just use minMaxEmploymentMatches as the "intersectMatches")
+                intersectEmploymentMatches = minMaxEmploymentMatches;
             }
 
+            matchedFactoryIDs['Employment_Over_Time'] = intersectEmploymentMatches.map(d => { return d.attributes.Factory_ID; });
+
+            console.log('matchedFactoryIDs (after employment)');
+            console.log(matchedFactoryIDs);
+
+            // Check that matchedFactoryIDs at Employment_Over_Time is populated; should never NOT be populated, but just incase something
+            // goes wrong, i.e. a catchall 
             if(matchedFactoryIDs['Employment_Over_Time'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
                 setResultsTable([], [], queriedFLs, formData, language);
                 return;
             }
-            
         }
 
         // -- Filter 5: Min_Year & Max_Year -- //
         /* NOTE: only to be ran if Product, Employment are not given, since those already include the min and max years
          * - If ran, min and max years correspond to the factory's operating dates
          * - If Product or Employment are given as filters, then do not run */
-
-        console.log((theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')));
-
         if( 
             (theseFilters.includes('Min_Year') || theseFilters.includes('Max_Year')) &&     // Filters include Min_Year OR Max_Year
             !(theseFilters.includes('Product') || theseFilters.includes('Employment'))      // Filters DO NOT include Product NOR Employment
@@ -256,7 +288,19 @@ const DataExplorerSearchBar = () => {
             if(theseFilters.includes('Min_Year')) minYear = formData.Min_Year;
             if(theseFilters.includes('Max_Year')) maxYear = formData.Max_Year;
 
-            matchedFactoryIDs['Years'] = filterFeatureLayerRange(factoryFL, minYear, maxYear, 'Opening_Year', 'Closing_Year', '', '', 'Factory_ID');
+            console.log('filtering years');
+            console.log(`minYear: ${minYear}, maxYear: ${maxYear}`);
+
+            // Filter factoryFL so that the Opening_Year and Closing_Year are completely contained within the range (inclusive)
+            const matchYears = factoryFL.filter(factory => (
+                parseInt(factory.attributes.Opening_Year) >= minYear && 
+                parseInt(factory.attributes.Closing_Year) <= maxYear   
+            ));
+
+            // Set the results in matchedFactoryIDs
+            matchedFactoryIDs['Years'] = matchYears.map(d => { return d.attributes.Factory_ID; });
+
+            // Catchall; check if there were no results to limit future errors
             if(matchedFactoryIDs['Years'].length == 0) {
                 // Filter given but no matches found, so we can stop searching since this is an AND query
                 setResultsTable([], [], queriedFLs, formData, language);
@@ -265,7 +309,6 @@ const DataExplorerSearchBar = () => {
         }
 
         // -- DONE WITH FILTERS -- // 
-
         // Now intersect all the arrays in matchedFactoryIDs to get the factory IDs that match every parameter
         const allMatches = Object.values(matchedFactoryIDs);
 
@@ -273,7 +316,9 @@ const DataExplorerSearchBar = () => {
         if(allMatches.length == 0) setResultsTable([], [], queriedFLs, formData, language); 
 
         // Edge case: only one filter was used
-        else if(allMatches.length == 1) setResultsTable(allMatches[0], theseFilters, queriedFLs, formData, language);
+        else if(allMatches.length == 1) { 
+            setResultsTable(allMatches[0], theseFilters, queriedFLs, formData, language);
+        }
     
         // Default case: more than one filter used, so intersect all of them to get the final AND result
         else { 

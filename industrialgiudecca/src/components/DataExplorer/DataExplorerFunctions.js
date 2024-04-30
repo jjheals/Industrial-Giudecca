@@ -112,20 +112,30 @@ export function setResultsTable(results, lof, featureLayers, formData, lang) {
 
         // NOTE: in a non-relational table, each row is a factory 
         let rows = results.map(fid => {
-            const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
+            if(fid && factoriesDictionary[fid]) { 
+                const locationData = getLocationData(fid, buildingFL, factoryAtBuildingFL);
 
-            return [
-                fid,
-                factoriesDictionary[fid]['English_Name'],    // English_Name
-                factoriesDictionary[fid]['Italian_Name'],    // Italian_Name
-                factoriesDictionary[fid]['Opening_Year'],    // Opening_Year
-                factoriesDictionary[fid]['Closing_Year'],    // Closing_Year
-                factoriesDictionary[fid]['Min_Employment'],  // Min employment
-                factoriesDictionary[fid]['Max_Employment'],  // Max employment
-                factoriesDictionary[fid]['Current_Purpose'], // Current purpose 
-                locationData.lat,                            // Latitude
-                locationData.long                            // Longitude
-            ];
+                console.log(`fid = ${fid}`);
+                console.log(fid);
+    
+                console.log('factoriesDictionary[fid]');
+                console.log(factoriesDictionary[fid]);
+    
+                return [
+                    fid,
+                    factoriesDictionary[fid]['English_Name'],    // English_Name
+                    factoriesDictionary[fid]['Italian_Name'],    // Italian_Name
+                    factoriesDictionary[fid]['Opening_Year'],    // Opening_Year
+                    factoriesDictionary[fid]['Closing_Year'],    // Closing_Year
+                    factoriesDictionary[fid]['Min_Employment'],  // Min employment
+                    factoriesDictionary[fid]['Max_Employment'],  // Max employment
+                    factoriesDictionary[fid]['Current_Purpose'], // Current purpose 
+                    locationData.lat,                            // Latitude
+                    locationData.long                            // Longitude
+                ];
+            }
+
+            
         });
 
         renderResultsTable(resultsTableContainerElm, theseKeys, rows);

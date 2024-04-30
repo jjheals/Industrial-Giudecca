@@ -127,6 +127,9 @@ export function filterFeatureLayerRange(featureLayerDict, minVal, maxVal, startC
         (!targetAttribute || (dict.attributes[targetAttribute] == targetAttributeString)) 
     );
 
+    console.log('filterFeatureLayerRange matchedFactories');
+    console.log(matchedFactories);
+    
     // Map the matched factory dicts to the factory IDs
     matchedFactories.map(factoryDict => { 
         matchedFactoryIDs.push(factoryDict.attributes[returnAttribute]);
