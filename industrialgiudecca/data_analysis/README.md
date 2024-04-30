@@ -3,22 +3,18 @@
 ### Directory Structure 
 ```
 data_analysis/
-|-- README.md
-|-- create_sheets.ipynb
-|-- excel/
+├── README.md
+├── create_sheets.ipynb
+├── excel/
 |   |-- Giudecca_Factories.xlsx
-|-- csvs/
-|   |-- Building_Current_Purpose.csv
-|   |-- Building.csv
-|   |-- Employment_Over_Time.csv
-|   |-- Factory_At_Building.csv
-|   |-- Factory_Closing_Reason.csv
-|   |-- Factory_Stories.csv
-|   |-- Factory.csv
-|   |-- Giudecca_Population_Over_Time.csv
-|   |-- Owner_Over_Time.csv
-|   |-- Product_Over_Time.csv
-|   |-- Timeperiods.csv
+├── csvs/
+|   ├── Building.csv
+|   ├── Employment_Over_Time.csv
+|   ├── Factory_At_Building.csv
+|   ├── Factory.csv
+|   ├── Giudecca_Population_Over_Time.csv
+|   ├── Product_Over_Time.csv
+|   ├── Timeperiods.csv
 ```
 
 ### Description 
