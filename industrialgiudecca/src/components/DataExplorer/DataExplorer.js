@@ -6,6 +6,8 @@
  * src/components/DataExplorer. The DataExplorer handles a query based on the conditions in DataExplorerSearchBar and displays the results
  * in a DataExplorerResultsTable.
  *
+ * @exports 
+ *      @const { Component } DataExplorer
  */
 import React, { useEffect } from 'react';
 import '../../css/DataExplorer.css';
